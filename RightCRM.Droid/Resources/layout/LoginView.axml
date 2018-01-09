@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
+    <EditText
+        android:layout_marginTop="200px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="User Name"
+        android:textSize="25dp"
+        android:gravity="center"
+        local:MvxBind="Text UserName"
+        android:background="@drawable/loginshap" />
+    <EditText
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textSize="25dp"
+        android:gravity="center"
+        local:MvxBind="Text Password"
+        android:background="@drawable/loginshap" />
+    <Button
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:layout_marginTop="70px"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        local:MvxBind="Click LoginCommand"
+        android:background="@drawable/loginshap"
+        android:textSize="25dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        local:MvxBind="Text LoginResult"
+        android:drawableTint="#ffff1744" />
+    <mvvmcross.binding.droid.views.MvxImageView
+        android:layout_marginTop="110px"
+        android:layout_marginRight="0px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mvxImageView1"
+        android:scaleType="fitXY"
+        android:src="@drawable/bank" />
+</LinearLayout>
