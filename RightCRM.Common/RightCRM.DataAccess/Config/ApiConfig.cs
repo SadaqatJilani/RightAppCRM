@@ -24,5 +24,10 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}GetAllBusinesses";
         }
 
+        public static string GetUserProfile(string username)
+        {
+            return $"{SharedConfig.RightCrmApiRoot}GetUserProfile/{username}";
+        }
+
     }
 }

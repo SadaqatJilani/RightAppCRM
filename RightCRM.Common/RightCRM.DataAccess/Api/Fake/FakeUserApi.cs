@@ -18,7 +18,7 @@ namespace RightCRM.DataAccess.Api
         public async Task<UserSetting> GetUserProfile(string username)
         {
             UserSetting result = null;
-            var url = ApiConfig.GetAllBusinesses();
+            var url = ApiConfig.GetUserProfile(username);
 
 
 #if FAKE
