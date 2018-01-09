@@ -34,6 +34,14 @@
     <Compile Include="Api\Fake\FakeUserApi.cs" />
     <Compile Include="Api\IBusinessApi.cs" />
     <Compile Include="Api\Fake\FakeBusinessApi.cs" />
+    <Compile Include="Model\IRequest.cs" />
+    <Compile Include="Model\ResponseData.cs" />
+    <Compile Include="Model\ResponseStatus.cs" />
+    <Compile Include="Model\RightCrmRequest.cs" />
+    <Compile Include="Factories\IRequestFactory.cs" />
+    <Compile Include="Factories\RequestFactory.cs" />
+    <Compile Include="Api\ApiBase.cs" />
+    <Compile Include="Config\ApiConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -45,6 +53,18 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.224\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.0.3\lib\netstandard1.0\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\..\packages\Xam.Plugin.Connectivity.3.0.3\lib\netstandard1.0\Plugin.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -53,6 +73,8 @@
     <Folder Include="Model\" />
     <Folder Include="Api\" />
     <Folder Include="Api\Fake\" />
+    <Folder Include="Factories\" />
+    <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Common.csproj">

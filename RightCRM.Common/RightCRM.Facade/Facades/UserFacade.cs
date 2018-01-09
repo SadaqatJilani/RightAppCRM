@@ -7,9 +7,9 @@ namespace RightCRM.Facade.Facades
 {
     public class UserFacade : IUserFacade
     {
-        public Task<UserSetting> GetUserProfile(string username)
+        public async Task<UserSetting> GetUserProfile(string username)
         {
-            throw new NotImplementedException();
+            return new UserSetting();
         }
     }
 }
