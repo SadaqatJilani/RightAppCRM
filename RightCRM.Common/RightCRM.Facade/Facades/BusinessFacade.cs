@@ -18,5 +18,20 @@ namespace RightCRM.Facade.Facades
         {
             return  this.businessApi.GetBusinessList();
         }
+
+        public void AddBusiness(Business business)
+        {
+            this.businessApi.GetBusinessList();
+        }
+
+        public Business GetBusinessByID(int businessId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Business> SearchBusiness(string firstCriteria)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

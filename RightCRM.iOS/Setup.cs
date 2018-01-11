@@ -1,5 +1,6 @@
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
+using MvvmCross.iOS.Support.XamarinSidebar;
 using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform.Platform;
 using UIKit;
@@ -26,6 +27,12 @@ namespace RightCRM.iOS
         protected override IMvxTrace CreateDebugTrace()
         {
             return new DebugTrace();
+        }
+
+
+        protected override IMvxIosViewPresenter CreatePresenter()
+        {
+            return new MvxSidebarPresenter((MvxApplicationDelegate)ApplicationDelegate, Window);
         }
     }
 }
