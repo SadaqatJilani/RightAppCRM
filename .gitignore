@@ -286,3 +286,13 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+RightCRM.Core/ViewModels/HelpAViewModel.cs
+RightCRM.Core/ViewModels/SettingsViewModel.cs
+RightCRM.Core/ViewModels/Menu/SideBarMenuviewModel.cs
+RightCRM.Droid/Fragments/BusinessView.cs
+RightCRM.Droid/Fragments/LoginView.cs
+RightCRM.Droid/Resources/layout/drawernavigation.axml
+RightCRM.Droid/Resources/layout/navigationheader.axml
+RightCRM.Droid/Resources/menu/navigationmenu.axml
+RightCRM.Droid/Resources/values/dimens.xml
+RightCRM.Droid/Resources/values/style.xml

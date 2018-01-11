@@ -32,6 +32,18 @@
     <Compile Include="App.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\BusinessViewModel.cs" />
+    <Compile Include="ViewModels\Android\ExampleRecyclerViewModel.cs" />
+    <Compile Include="ViewModels\Android\ExampleViewPagerViewModel.cs" />
+    <Compile Include="ViewModels\Android\RecyclerViewModel.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Base\MainViewModel.cs" />
+    <Compile Include="ViewModels\Help\HelpAndFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Home\HomeViewModel.cs" />
+    <Compile Include="ViewModels\Home\InfoViewModel.cs" />
+    <Compile Include="ViewModels\Home\ThirdViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Menu\MenuViewModel.cs" />
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">
@@ -63,6 +75,15 @@
       <Project>{889192A6-990D-400A-A4D6-B588C39A581C}</Project>
       <Name>RightCRM.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\Android\" />
+    <Folder Include="ViewModels\Base\" />
+    <Folder Include="ViewModels\Help\" />
+    <Folder Include="ViewModels\Home\" />
+    <Folder Include="ViewModels\Login\" />
+    <Folder Include="ViewModels\Menu\" />
+    <Folder Include="ViewModels\Settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
