@@ -55,12 +55,12 @@
     <Compile Include="ViewModels\Android\RecyclerViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\Base\MainViewModel.cs" />
-    <Compile Include="ViewModels\Help\HelpAndFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Help\HelpViewModel.cs" />
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\InfoViewModel.cs" />
     <Compile Include="ViewModels\Home\ThirdViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Menu\MenuViewModel.cs" />
+    <Compile Include="ViewModels\Menu\MenusViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

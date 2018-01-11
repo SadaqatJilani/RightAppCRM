@@ -153,7 +153,7 @@
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\BusinessView.cs" />
     <Compile Include="Activities\LoginActivity.cs" />
-    <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Activities\MainsActivity.cs" />
     <Compile Include="Fragments\Android Specifice\ExampleRecyclerViewFragment.cs" />
     <Compile Include="Fragments\Android Specifice\ExampleViewPagerFragment.cs" />
     <Compile Include="Fragments\Android Specifice\RecyclerViewFragment.cs" />
@@ -207,7 +207,7 @@
     <AndroidResource Include="Resources\layout\fragment_recyclerview.axml" />
     <AndroidResource Include="Resources\layout\fragment_third.axml" />
     <AndroidResource Include="Resources\layout\listitem_recyclerviewexample.axml" />
-    <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
+    <AndroidResource Include="Resources\layout\toolbaar_actionbar.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
