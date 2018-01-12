@@ -163,7 +163,6 @@
     <Compile Include="Fragments\Android Specifice\ExampleRecyclerViewFragment.cs" />
     <Compile Include="Fragments\Android Specifice\ExampleViewPagerFragment.cs" />
     <Compile Include="Fragments\Android Specifice\RecyclerViewFragment.cs" />
-    <Compile Include="Fragments\Base\BaseFragment.cs" />
     <Compile Include="Fragments\Help\HelpFeedbackFragment.cs" />
     <Compile Include="Fragments\Home\HomeFragment.cs" />
     <Compile Include="Fragments\Home\InfoFragment.cs" />
@@ -172,6 +171,7 @@
     <Compile Include="Fragments\Settings\SettingsFragment.cs" />
     <Compile Include="Utilities\MvxPanelPopToRootPresentationHint.cs" />
     <Compile Include="Activities\MvxCachingFragmentCompatActivity.cs" />
+    <Compile Include="Fragments\Base\BaseFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -16,7 +16,7 @@ namespace RightCRM.Droid.Activities
         Label = "Main Activity",
         Theme = "@style/AppTheme",
         LaunchMode = LaunchMode.SingleTop,
-        Name = "xplatformmenus.droid.activities.MainActivity"
+        Name = "rightcrm.droid.activities.MainActivity"
     )]
     public class MainActivity : MvxCachingFragmentCompatActivity<MainViewModel>
     {

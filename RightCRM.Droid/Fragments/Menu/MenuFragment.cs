@@ -14,7 +14,7 @@ using MvvmCross.Droid.Shared.Attributes;
 namespace RightCRM.Droid.Fragments
 {
 	[MvxFragment(typeof(MainViewModel), Resource.Id.navigation_frame)]
-    [Register("xplatformmenus.droid.fragments.MenuFragment")]
+    [Register("rightcrm.droid.fragments.MenuFragment")]
     public class MenuFragment : MvxFragment<MenuViewModel>, NavigationView.IOnNavigationItemSelectedListener
     {
         private NavigationView _navigationView;private IMenuItem _previousMenuItem;
