@@ -32,7 +32,7 @@ namespace RightCRM.Core.ViewModels.Menu
             MenuItems = new List<MenuModel>
             {
                 new MenuModel() { Title = "Home", ImageName = "ic_build_white", Navigate = NavigateHome },
-                new MenuModel() { Title = "About", ImageName = "ic_description_white", Navigate = NavigateOtherViewModel },
+                new MenuModel() { Title = "Markets", ImageName = "ic_description_white", Navigate = NavigateOtherViewModel },
                 new MenuModel() { Title = "MvvmCross", ImageName = "ic_settings_white", Navigate = NavigateOtherViewModel },
                 new MenuModel() { Title = "Xamarin", ImageName = "ic_explore_white", Navigate = NavigateOtherViewModel },
                 new MenuModel() { Title = "Microsoft", ImageName = "ic_credit_card_white", Navigate = NavigateOtherViewModel },
