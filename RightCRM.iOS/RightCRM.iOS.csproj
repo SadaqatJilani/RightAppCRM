@@ -183,8 +183,8 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="Views\MenuView.xib" />
-    <InterfaceDefinition Include="Views\MenuTableViewCell.xib" />
+    <InterfaceDefinition Include="Views\Menu\MenuTableViewCell.xib" />
+    <InterfaceDefinition Include="Views\Menu\MenuView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -215,15 +215,15 @@
     <Compile Include="Views\BusinessViewCell.designer.cs">
       <DependentUpon>BusinessViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuView.cs" />
-    <Compile Include="Views\MenuView.designer.cs">
-      <DependentUpon>MenuView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MenuTableViewCell.cs" />
-    <Compile Include="Views\MenuTableViewCell.designer.cs">
+    <Compile Include="Views\Menu\MenuTableViewCell.cs" />
+    <Compile Include="Views\Menu\MenuTableViewCell.designer.cs">
       <DependentUpon>MenuTableViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuTableViewSource.cs" />
+    <Compile Include="Views\Menu\MenuTableViewSource.cs" />
+    <Compile Include="Views\Menu\MenuView.cs" />
+    <Compile Include="Views\Menu\MenuView.designer.cs">
+      <DependentUpon>MenuView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
