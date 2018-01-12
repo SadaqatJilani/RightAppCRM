@@ -5,7 +5,7 @@ using MvvmCross.iOS.Views;
 using RightCRM.Core.ViewModels.Home;
 using MvvmCross.iOS.Support.XamarinSidebar;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard("Main")]
     [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
@@ -19,6 +19,7 @@ namespace RightCRM.iOS
         {
             base.ViewDidLoad();
 
+            this.NavigationItem.Title = "Markets";
 
         }
 
