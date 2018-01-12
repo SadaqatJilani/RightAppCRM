@@ -6,9 +6,10 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using RightCRM.Core.ViewModels;
 using RightCRM.Droid.Activities;
-using MvvmCross.Droid.Shared.Attributes;
+
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
+using MvvmCross.Droid.Shared.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
@@ -16,8 +17,7 @@ namespace RightCRM.Droid.Fragments
     [Register("xplatformmenus.droid.fragments.MenuFragment")]
     public class MenuFragment : MvxFragment<MenuViewModel>, NavigationView.IOnNavigationItemSelectedListener
     {
-        private NavigationView _navigationView;
-        private IMenuItem _previousMenuItem;
+        private NavigationView _navigationView;private IMenuItem _previousMenuItem;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {

@@ -6,7 +6,7 @@ using MvvmCross.Droid.Shared.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
+   [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
     [Register("xplatformmenus.droid.fragments.HomeFragment")]
     public class HomeFragment : BaseFragment<HomeViewModel>
     {

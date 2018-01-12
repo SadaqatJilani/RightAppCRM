@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="vertical"
+    android:overScrollMode="ifContentScrolls"
+    android:background="@color/dark_gray">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_marginBottom="@dimen/element_margin_medium"
+        android:text="Register a new membership"
+        android:textColor="@color/white"
+        android:gravity="center" />
+<!--Account Name -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxAccountname"
+            local:MvxBind="Text Accountname"
+            android:layout_gravity="center_vertical"
+            android:inputType="textNoSuggestions"
+            android:textColorHint="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!--Account Type -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxAccountType"
+            local:MvxBind="Text AccountType"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Bussiness NTN -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxBussinessNTN"
+            local:MvxBind="Text BussinessNTN"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Bussiness Website -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxBussinessWebsite"
+            local:MvxBind="Text BussinessWebsite"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Industry -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxIndustry"
+            local:MvxBind="Text Industry"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Company Size -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxCompanySize"
+            local:MvxBind="Text CompanySize"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Annual Revenue -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxAnnualRevenue"
+            local:MvxBind="Text AnnualRevenue"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Compaign Name -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxCompaignName"
+            local:MvxBind="Text CompaignName"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Compaign Src -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxCompaignSrc"
+            local:MvxBind="Text CompaignSrc"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+<!-- Compaign Media -->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="400dp"
+        android:minWidth="400dp"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_gravity="center_horizontal">
+        <EditText
+            android:inputType="textNoSuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TbxCaompaignMedia"
+            local:MvxBind="Text CompaignMedia"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="@dimen/text_medium"
+            android:imeOptions="actionNext" />
+    </android.support.design.widget.TextInputLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        local:MvxBind="Visibility Visibility(IsLoading)"
+        android:id="@+id/progressBar1"
+        android:layout_marginTop="@dimen/element_margin_large"
+        android:layout_marginBottom="@dimen/element_margin_large" />
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_login_height"
+            android:maxWidth="400dp"
+            android:minWidth="400dp"
+            android:id="@+id/BtnSubmit"
+            local:MvxBind="Click SubmitCommand"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_gravity="center_horizontal"
+            android:text="Submit" />
+    </FrameLayout>
+</LinearLayout>

@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Views.InputMethods;
 using MvvmCross.Platform;
 using RightCRM.Core.ViewModels;
+using MvvmCross.Droid.Support.V7.AppCompat;
 
 
 namespace RightCRM.Droid.Activities

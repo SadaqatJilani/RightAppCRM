@@ -142,6 +142,12 @@
     <Reference Include="Xamarin.Android.Support.v7.AppCompat">
       <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.26.1.0.1\lib\MonoAndroid80\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Droid.Shared">
+      <HintPath>..\packages\MvvmCross.Droid.Shared.4.3.0\lib\MonoAndroid\MvvmCross.Droid.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Droid.Support.V7.RecyclerView">
+      <HintPath>..\packages\MvvmCross.Droid.Support.V7.RecyclerView.5.6.3\lib\MonoAndroid70\MvvmCross.Droid.Support.V7.RecyclerView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -164,6 +170,8 @@
     <Compile Include="Fragments\Home\ThirdFragment.cs" />
     <Compile Include="Fragments\Menu\MenuFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsFragment.cs" />
+    <Compile Include="Utilities\MvxPanelPopToRootPresentationHint.cs" />
+    <Compile Include="Activities\MvxCachingFragmentCompatActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -189,12 +197,9 @@
     <AndroidResource Include="Resources\drawable\loginshap.axml" />
     <AndroidResource Include="Resources\drawable\bank.jpg" />
     <AndroidResource Include="Resources\layout\fragment_navigation_header.axml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\drawable\downloads.png" />
     <AndroidResource Include="Resources\layout\fragment_navigation.axml" />
     <AndroidResource Include="Resources\menu\navigation_drawer.axml" />
-    <AndroidResource Include="Resources\values\style.xml" />
     <AndroidResource Include="Resources\layout\activity_main.axml" />
     <AndroidResource Include="Resources\layout\fragment_settings.axml" />
     <AndroidResource Include="Resources\layout\activity_login.axml" />
@@ -208,6 +213,9 @@
     <AndroidResource Include="Resources\layout\fragment_third.axml" />
     <AndroidResource Include="Resources\layout\listitem_recyclerviewexample.axml" />
     <AndroidResource Include="Resources\layout\toolbaar_actionbar.axml" />
+    <AndroidResource Include="Resources\values\coluors.xml" />
+    <AndroidResource Include="Resources\values\dimenss.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -220,6 +228,7 @@
     <Folder Include="Fragments\Home\" />
     <Folder Include="Fragments\Menu\" />
     <Folder Include="Fragments\Settings\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

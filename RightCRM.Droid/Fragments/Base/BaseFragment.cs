@@ -40,7 +40,7 @@ namespace RightCRM.Droid.Fragments
 
                 if (ShowHamburgerMenu)
                 {
-                    mainActivity.SupportActionBar?.SetDisplayHomeAsUpEnabled(true);
+                   mainActivity.SupportActionBar?.SetDisplayHomeAsUpEnabled(true);
 
                     DrawerToggle = new MvxActionBarDrawerToggle(
                         Activity,                               // host Activity

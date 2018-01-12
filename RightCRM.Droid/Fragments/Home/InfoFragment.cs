@@ -1,38 +1,38 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
-using MvvmCross.Droid.Shared.Attributes;
+
 using RightCRM.Core.ViewModels;
 using RightCRM.Droid.Activities;
 
 namespace RightCRM.Droid.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame, true)]
-    [Register("xplatformmenus.droid.fragments.InfoFragment")]
-    public class InfoFragment : BaseFragment<InfoViewModel>
+    //[MvxFragment(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    //[Register("xplatformmenus.droid.fragments.InfoFragment")]
+    public class InfoFragment //: BaseFragment<InfoViewModel>
     {
-        string oldTitle;
+        //string oldTitle;
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            oldTitle = ((MainActivity)Activity).Title;
-            ((MainActivity)Activity).Title = "Info Fragment";
+        //public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        //{
+        //    oldTitle = ((MainActivity)Activity).Title;
+        //    ((MainActivity)Activity).Title = "Info Fragment";
 
-            return base.OnCreateView(inflater, container, savedInstanceState);        
-        }
+        //    return base.OnCreateView(inflater, container, savedInstanceState);        
+        //}
 
-        public override void OnDestroyView()
-        {
-            ((MainActivity)Activity).Title = oldTitle;
-            base.OnDestroyView();
-        }
+        //public override void OnDestroyView()
+        //{
+        //    ((MainActivity)Activity).Title = oldTitle;
+        //    base.OnDestroyView();
+        //}
 
-        protected override int FragmentId 
-        {
-            get 
-            {
-                return Resource.Layout.fragment_info;
-            }
-        }
+        //protected override int FragmentId 
+        //{
+        //    get 
+        //    {
+        //        return Resource.Layout.fragment_info;
+        //    }
+        //}
     }
 }

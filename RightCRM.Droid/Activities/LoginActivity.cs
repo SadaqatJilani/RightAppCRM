@@ -11,7 +11,7 @@ namespace RightCRM.Droid.Activities
         Theme = "@style/AppTheme.Login",
         LaunchMode = LaunchMode.SingleTop,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize,
-        Name = "xplatformmenus.droid.activities.LoginActivity"
+        Name = "rightcrm.droid.activities.LoginActivity"
     )]			
     public class LoginActivity : MvxAppCompatActivity<LoginViewModel>
     {
