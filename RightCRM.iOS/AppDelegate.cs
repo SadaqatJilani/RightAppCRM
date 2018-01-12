@@ -15,9 +15,9 @@ namespace RightCRM.iOS
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            var presenter = new MvxIosViewPresenter(this, Window);
+            //var presenter = new MvxIosViewPresenter(this, Window);
 
-            var setup = new Setup(this, presenter);
+            var setup = new Setup(this, Window);
             setup.Initialize();
 
             var startup = Mvx.Resolve<IMvxAppStart>();

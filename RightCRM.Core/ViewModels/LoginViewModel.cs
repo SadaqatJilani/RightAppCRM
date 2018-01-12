@@ -46,7 +46,7 @@ namespace RightCRM.Core.ViewModels
             //}
 
             //ShowViewModel<AccountsViewModel>();
-            _navigationService.Navigate<MainViewModel>();
+            _navigationService.Navigate<BusinessViewModel>();
         }
     }
 }

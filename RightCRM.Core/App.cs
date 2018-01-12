@@ -1,3 +1,4 @@
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using RightCRM.DataAccess.Api;
@@ -15,7 +16,12 @@ namespace RightCRM.Core
                 .RegisterAsLazySingleton();
             Mvx.RegisterType<IBusinessApi, FakeBusinessApi>();
             Mvx.RegisterType<IBusinessFacade, BusinessFacade>();
-            RegisterAppStart<ViewModels.LoginViewModel>();
+
+            Mvx.ConstructAndRegisterSingleton<IMvxAppStart, AppStart>();
+            var appStart = Mvx.Resolve<IMvxAppStart>();
+
+            // register the appstart object
+            RegisterAppStart(appStart);
         }
 
 

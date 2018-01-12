@@ -36,13 +36,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FakeDebug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhone\FakeDebug</OutputPath>
+    <DefineConstants>FAKE;</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FakeDebug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\FakeDebug</OutputPath>
+    <DefineConstants>FAKE;</DefineConstants>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
@@ -62,6 +68,9 @@
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Menu\MenusViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
+    <Compile Include="AppStart.cs" />
+    <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="ViewModels\Menu\MenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">
@@ -102,6 +111,7 @@
     <Folder Include="ViewModels\Login\" />
     <Folder Include="ViewModels\Menu\" />
     <Folder Include="ViewModels\Settings\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

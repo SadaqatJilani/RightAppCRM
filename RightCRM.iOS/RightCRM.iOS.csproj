@@ -99,7 +99,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhone\FakeDebug</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;ENABLE_TEST_CLOUD;FAKE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
@@ -119,7 +119,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\FakeDebug</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG;ENABLE_TEST_CLOUD;FAKE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
@@ -178,10 +178,13 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
+    <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Views\MenuView.xib" />
+    <InterfaceDefinition Include="Views\MenuTableViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -212,6 +215,15 @@
     <Compile Include="Views\BusinessViewCell.designer.cs">
       <DependentUpon>BusinessViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuView.cs" />
+    <Compile Include="Views\MenuView.designer.cs">
+      <DependentUpon>MenuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuTableViewCell.cs" />
+    <Compile Include="Views\MenuTableViewCell.designer.cs">
+      <DependentUpon>MenuTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuTableViewSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
@@ -230,6 +242,9 @@
       <Project>{DD8EDAF8-24E0-46A3-A17A-FE729CF4CFBA}</Project>
       <Name>RightCRM.Facade</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\threelines.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

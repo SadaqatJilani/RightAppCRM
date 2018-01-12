@@ -5,10 +5,12 @@ using MvvmCross.iOS.Views;
 using RightCRM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.iOS.Views;
+using MvvmCross.iOS.Support.XamarinSidebar;
 
 namespace RightCRM.iOS
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
+    [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
     public partial class BusinessView : MvxTableViewController<BusinessViewModel>
     {
         public BusinessView (IntPtr handle) : base (handle)
