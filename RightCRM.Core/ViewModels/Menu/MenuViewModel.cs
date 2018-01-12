@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Core.Models;
+using RightCRM.Core.ViewModels.Home;
 
 namespace RightCRM.Core.ViewModels.Menu
 {
@@ -54,7 +55,7 @@ namespace RightCRM.Core.ViewModels.Menu
         {
             get
             {
-                navigateOtherViewModel = navigateOtherViewModel ?? new MvxCommand(() => navigationService.Navigate<MainViewModel>());
+                navigateOtherViewModel = navigateOtherViewModel ?? new MvxCommand(() => navigationService.Navigate<MarketsViewModel>());
                 return navigateOtherViewModel;
             }
         }

@@ -20,6 +20,9 @@ namespace RightCRM.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            this.NavigationItem.Title = "Home";
+
             var Set = this.CreateBindingSet<BusinessView, BusinessViewModel>();
             var source = new TableSource(this.TableView);
             Set.Bind(source).To(vm => vm.AllBusiness);

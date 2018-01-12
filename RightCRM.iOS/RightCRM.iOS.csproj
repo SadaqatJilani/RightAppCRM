@@ -224,6 +224,10 @@
     <Compile Include="Views\Menu\MenuView.designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="MarketsView.cs" />
+    <Compile Include="MarketsView.designer.cs">
+      <DependentUpon>MarketsView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

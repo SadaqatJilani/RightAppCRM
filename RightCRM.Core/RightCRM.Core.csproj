@@ -71,6 +71,7 @@
     <Compile Include="AppStart.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="ViewModels\Menu\MenuViewModel.cs" />
+    <Compile Include="ViewModels\Home\MarketsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">

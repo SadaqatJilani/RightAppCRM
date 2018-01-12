@@ -128,6 +128,36 @@
             </objects>
             <point key="canvasLocation" x="-3120" y="-898"/>
         </scene>
+        <scene sceneID="14309">
+            <objects>
+                <viewController id="14310" sceneMemberID="viewController" customClass="MarketsView" storyboardIdentifier="MarketsView" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <view key="view" contentMode="scaleToFill" id="14311">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="14308"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A summary about the current market scenarios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14586" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="64" y="110" width="289" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="14587" firstItem="14586" firstAttribute="top" secondItem="14308" secondAttribute="top" constant="90"/>
+                            <constraint id="14588" firstItem="14311" firstAttribute="trailingMargin" secondItem="14586" secondAttribute="trailing" constant="41"/>
+                            <constraint id="14589" firstItem="14586" firstAttribute="leading" secondItem="14311" secondAttribute="leadingMargin" constant="44"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblMarket" destination="14586" id="name-outlet-14586"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="14312" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2641" y="-895"/>
+        </scene>
     </scenes>
     <resources>
         <image name="threelines.png" width="24" height="24"/>
