@@ -21,7 +21,7 @@ namespace RightCRM.iOS
         {
             base.ViewDidLoad();
 
-            this.NavigationItem.Title = "Home";
+            this.NavigationItem.Title = ViewModel.Title;
 
             var Set = this.CreateBindingSet<BusinessView, BusinessViewModel>();
             var source = new TableSource(this.TableView);

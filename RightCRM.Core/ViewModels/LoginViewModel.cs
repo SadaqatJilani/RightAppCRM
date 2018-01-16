@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 
 namespace RightCRM.Core.ViewModels
 {
    
-    public class LoginViewModel : MvxViewModel
+    public class LoginViewModel : BaseViewModel
     {
         private readonly IMvxNavigationService _navigationService;
         
@@ -34,8 +35,8 @@ namespace RightCRM.Core.ViewModels
             set { SetProperty(ref _loginResult, value); }
         }
 
-        public IMvxCommand LoginCommand => new MvxCommand(Login);
-        private void Login()
+        public IMvxCommand LoginCommand => new MvxAsyncCommand(Login);
+        private async Task Login()
         {
             //if (UserName == "admin" && Password == "123"){
             //    LoginResult = "Login Successfully";
@@ -46,7 +47,7 @@ namespace RightCRM.Core.ViewModels
             //}
 
             //ShowViewModel<AccountsViewModel>();
-            _navigationService.Navigate<BusinessViewModel>();
+           await _navigationService.Navigate<BusinessViewModel>();
         }
     }
 }

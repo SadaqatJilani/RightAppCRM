@@ -19,7 +19,7 @@ namespace RightCRM.iOS.Views
         {
             base.ViewDidLoad();
 
-            this.NavigationItem.Title = "Markets";
+            this.NavigationItem.Title = ViewModel.Title;
 
         }
 

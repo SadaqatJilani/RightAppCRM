@@ -8,6 +8,7 @@
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Core.Models;
@@ -15,49 +16,48 @@ using RightCRM.Core.ViewModels.Home;
 
 namespace RightCRM.Core.ViewModels.Menu
 {
-    public class MenuViewModel : MvxViewModel
+    public class MenuViewModel : BaseViewModel
     {
-        
         private readonly IMvxNavigationService navigationService;
-
-        public List<MenuModel> MenuItems
-        {
-            get;
-        }
 
         public MenuViewModel(IMvxNavigationService navigationService)
         {
             this.navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
 
-            MenuItems = new List<MenuModel>
-            {
-                new MenuModel() { Title = "Home", ImageName = "ic_build_white", Navigate = NavigateHome },
-                new MenuModel() { Title = "Markets", ImageName = "ic_description_white", Navigate = NavigateOtherViewModel },
-                new MenuModel() { Title = "MvvmCross", ImageName = "ic_settings_white", Navigate = NavigateOtherViewModel },
-                new MenuModel() { Title = "Xamarin", ImageName = "ic_explore_white", Navigate = NavigateOtherViewModel },
-                new MenuModel() { Title = "Microsoft", ImageName = "ic_credit_card_white", Navigate = NavigateOtherViewModel },
-                new MenuModel() { Title = "Evolve", ImageName = "ic_device_hub_white", Navigate = NavigateOtherViewModel }
-            };
+            //MenuItems = new List<MenuModel>
+            MenuItems.Add(new MenuModel() { Title = "Home", ImageName = "ic_build_white", Navigate = NavigateHome });
+            MenuItems.Add(new MenuModel() { Title = "Markets", ImageName = "ic_description_white", Navigate = NavigateToMarkets });
+            MenuItems.Add(new MenuModel() { Title = "MvvmCross", ImageName = "ic_settings_white", Navigate = NavigateToMarkets });
+            MenuItems.Add(new MenuModel() { Title = "Xamarin", ImageName = "ic_explore_white", Navigate = NavigateToMarkets });
+            MenuItems.Add(new MenuModel() { Title = "Microsoft", ImageName = "ic_credit_card_white", Navigate = NavigateToMarkets });
+            MenuItems.Add(new MenuModel() { Title = "Evolve", ImageName = "ic_device_hub_white", Navigate = NavigateToMarkets });
         }
 
-        private MvxCommand resetCommand;
-        public MvxCommand NavigateHome
+        private IMvxCommand navigateHome;
+        public IMvxCommand NavigateHome
         {
             get
             {
-                resetCommand = resetCommand ?? new MvxCommand(() => navigationService.Navigate<BusinessViewModel>());
-                return resetCommand;
+                navigateHome = navigateHome ?? new MvxAsyncCommand(NavigateToViewModel<BusinessViewModel>);
+                return navigateHome;
             }
         }
 
-        private MvxCommand navigateOtherViewModel;
-        public MvxCommand NavigateOtherViewModel
+        private IMvxCommand navigateToMarkets;
+        public IMvxCommand NavigateToMarkets
         {
             get
             {
-                navigateOtherViewModel = navigateOtherViewModel ?? new MvxCommand(() => navigationService.Navigate<MarketsViewModel>());
-                return navigateOtherViewModel;
+                navigateToMarkets = navigateToMarkets ?? new MvxAsyncCommand(NavigateToViewModel<MarketsViewModel>);
+                return navigateToMarkets;
             }
         }
+
+
+        private async Task NavigateToViewModel<T>() where T : MvxViewModel
+        {
+            await navigationService.Navigate<T>();
+        }
+
     }
 }

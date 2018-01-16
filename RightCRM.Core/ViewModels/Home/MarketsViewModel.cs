@@ -11,10 +11,17 @@ using MvvmCross.Core.ViewModels;
 
 namespace RightCRM.Core.ViewModels.Home
 {
-    public class MarketsViewModel : MvxViewModel
+    public class MarketsViewModel : BaseViewModel
     {
         public MarketsViewModel()
         {
+        }
+
+        public override void Prepare()
+        {
+            base.Prepare();
+
+            Title = "Markets";
         }
     }
 }

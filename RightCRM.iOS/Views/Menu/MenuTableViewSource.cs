@@ -65,7 +65,6 @@ namespace RightCRM.iOS.Views
             MenuModel item = TableItems[indexPath.Row];
             item.Navigate.Execute();
             //Mvx.Resolve<IMvxSideMenu>().Close();
-
         }
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
