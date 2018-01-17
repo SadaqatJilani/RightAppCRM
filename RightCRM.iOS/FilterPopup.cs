@@ -5,6 +5,8 @@ using MvvmCross.iOS.Views;
 using RightCRM.Core.ViewModels.Popups;
 using MvvmCross.iOS.Support;
 using MvvmCross.iOS.Views.Presenters.Attributes;
+using MvvmCross.Binding.BindingContext;
+using CoreGraphics;
 
 namespace RightCRM.iOS
 {
@@ -24,6 +26,11 @@ namespace RightCRM.iOS
             base.ViewDidLoad();
 
             View.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0.5f);
+
+            var Set = this.CreateBindingSet<FilterPopup, FilterPopupViewModel>();
+            Set.Bind(btnClose).To(vm=> vm.Title);
+            Set.Bind(btnClose).To(vm => vm.CloseCommand);
+            Set.Apply();
         }
     }
 }

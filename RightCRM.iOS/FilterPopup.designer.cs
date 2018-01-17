@@ -18,10 +18,6 @@ namespace RightCRM.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnClose { get; set; }
 
-        [Action ("UIButton846_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton846_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (btnClose != null) {

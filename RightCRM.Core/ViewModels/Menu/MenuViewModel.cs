@@ -18,7 +18,7 @@ namespace RightCRM.Core.ViewModels.Menu
 {
     public class MenuViewModel : BaseViewModel
     {
-        public MenuViewModel(IMvxNavigationService navigationService) : base (navigationService)
+        public MenuViewModel(IMvxNavigationService navigationService)
         {
             this.navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
 

@@ -7,6 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
+using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 
@@ -14,9 +15,11 @@ namespace RightCRM.Core.ViewModels.Popups
 {
     public class FilterPopupViewModel : BaseViewModel
     {
-        public FilterPopupViewModel(MvxNavigationService navigationService) : base (navigationService)
+        public FilterPopupViewModel(IMvxNavigationService navigationService)
         {
             this.navigationService = navigationService;
+
+            CloseCommand = new MvxAsyncCommand(CloseFilters);
         }
 
         public override void Prepare()
@@ -24,14 +27,11 @@ namespace RightCRM.Core.ViewModels.Popups
             base.Prepare();
         }
 
-        private IMvxCommand filterPopupCommand;
-        public IMvxCommand FilterPopupCommand
+        public IMvxAsyncCommand CloseCommand { get; private set; }
+
+        async Task CloseFilters()
         {
-            get
-            {
-                filterPopupCommand = filterPopupCommand ?? new MvxAsyncCommand(NavigateToViewModel<FilterPopupViewModel>);
-                return filterPopupCommand;
-            }
+            await navigationService.Close(this);
         }
 
     }

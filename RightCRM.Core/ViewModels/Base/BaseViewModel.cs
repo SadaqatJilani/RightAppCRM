@@ -10,12 +10,7 @@ namespace RightCRM.Core.ViewModels
     {
         protected IMvxNavigationService navigationService;
 
-        protected BaseViewModel(IMvxNavigationService navigationService)
-        {
-            this.navigationService = navigationService;
-        }
-
-        protected BaseViewModel()
+        public BaseViewModel()
         {
         }
 

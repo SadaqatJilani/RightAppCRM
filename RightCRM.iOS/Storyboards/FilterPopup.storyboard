@@ -7,7 +7,7 @@
     <scenes>
         <scene sceneID="260">
             <objects>
-                <viewController id="261" sceneMemberID="viewController" customClass="FilterPopup" storyboardIdentifier="FilterPopup" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                <viewController id="261" sceneMemberID="viewController" customClass="FilterPopup" storyboardIdentifier="FilterPopup" useStoryboardIdentifierAsRestorationIdentifier="YES" modalPresentationStyle="overCurrentContext">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="258"/>
                         <viewControllerLayoutGuide type="bottom" id="259"/>
@@ -46,9 +46,7 @@
                                 <rect key="frame" x="364" y="83" width="30" height="30"/>
                                 <size key="titleShadowOffset" width="0" height="0"/>
                                 <state key="normal" backgroundImage="crossicon.png"/>
-                                <connections>
-                                    <action selector="UIButton846_TouchUpInside:" destination="261" id="847" eventType="touchUpInside"/>
-                                </connections>
+                                <connections/>
                             </button>
                         </subviews>
                         <constraints>

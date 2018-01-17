@@ -22,8 +22,7 @@ namespace RightCRM.iOS
             base.ViewDidLoad();
 
             var filterBtn = new UIBarButtonItem(UIImage.FromBundle("filtericon"),
-                                                             UIBarButtonItemStyle.Plain,
-                                                             HandleEventHandler);
+                                                UIBarButtonItemStyle.Plain, null);
 
             this.NavigationItem.RightBarButtonItem = filterBtn;
 
