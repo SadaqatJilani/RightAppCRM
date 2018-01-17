@@ -174,17 +174,20 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Menu\" />
+    <Folder Include="Storyboards\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Views\Menu\MenuTableViewCell.xib" />
     <InterfaceDefinition Include="Views\Menu\MenuView.xib" />
+    <InterfaceDefinition Include="Storyboards\FilterPopup.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -228,6 +231,10 @@
     <Compile Include="Views\MarketsView.designer.cs">
       <DependentUpon>MarketsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FilterPopup.cs" />
+    <Compile Include="FilterPopup.designer.cs">
+      <DependentUpon>FilterPopup.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
@@ -249,6 +256,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\threelines.png" />
+    <BundleResource Include="Resources\splash.png" />
+    <BundleResource Include="Resources\filtericon.png" />
+    <BundleResource Include="Resources\crossicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

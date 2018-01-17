@@ -4,6 +4,7 @@ using UIKit;
 using MvvmCross.iOS.Views;
 using RightCRM.Core.ViewModels.Home;
 using MvvmCross.iOS.Support.XamarinSidebar;
+using MvvmCross.Binding.BindingContext;
 
 namespace RightCRM.iOS.Views
 {
@@ -19,8 +20,9 @@ namespace RightCRM.iOS.Views
         {
             base.ViewDidLoad();
 
-            this.NavigationItem.Title = ViewModel.Title;
-
+            var Set = this.CreateBindingSet<MarketsView, MarketsViewModel>();
+            Set.Bind().For(v => v.Title).To(vm => vm.Title);
+            Set.Apply();
         }
 
         public override void DidReceiveMemoryWarning()

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Core.Models;
 
@@ -7,16 +8,15 @@ namespace RightCRM.Core.ViewModels
 {
     public class BaseViewModel : MvxViewModel
     {
-		protected BaseViewModel()
+        protected IMvxNavigationService navigationService;
+
+        protected BaseViewModel(IMvxNavigationService navigationService)
         {
-            MenuItems = new List<MenuModel>();
+            this.navigationService = navigationService;
         }
 
-        private List<MenuModel> menuItems;
-        public  List<MenuModel> MenuItems
+        protected BaseViewModel()
         {
-            get { return menuItems; }
-            set {SetProperty(ref menuItems, value);}
         }
 
         public string Title
@@ -31,6 +31,9 @@ namespace RightCRM.Core.ViewModels
             set;
         }
 
-
+        protected async Task NavigateToViewModel<T>() where T : MvxViewModel
+        {
+            await navigationService.Navigate<T>();
+        }
     }
 }

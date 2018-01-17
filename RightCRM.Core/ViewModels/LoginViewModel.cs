@@ -5,14 +5,18 @@ using MvvmCross.Core.ViewModels;
 
 namespace RightCRM.Core.ViewModels
 {
-   
+    /// <summary>
+    /// Login view model.
+    /// </summary>
     public class LoginViewModel : BaseViewModel
     {
-        private readonly IMvxNavigationService _navigationService;
-        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.LoginViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">Navigation service.</param>
         public LoginViewModel(IMvxNavigationService navigationService)
         {
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
         }
         private string _userName;
         public string UserName
@@ -47,7 +51,7 @@ namespace RightCRM.Core.ViewModels
             //}
 
             //ShowViewModel<AccountsViewModel>();
-           await _navigationService.Navigate<BusinessViewModel>();
+           await navigationService.Navigate<BusinessViewModel>();
         }
     }
 }
