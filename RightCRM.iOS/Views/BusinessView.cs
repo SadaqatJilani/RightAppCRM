@@ -43,17 +43,6 @@ namespace RightCRM.iOS
 
         }
 
-        void HandleEventHandler(object sender, EventArgs e)
-        {
-            FilterPopup yourController = new FilterPopup
-            {
-                ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext,
-                ModalTransitionStyle = UIModalTransitionStyle.CoverVertical
-            };
-            this.PresentViewController(yourController, true, null);
-
-        }
-
         public class TableSource : MvxTableViewSource
         {
             public TableSource(UITableView tableView)
