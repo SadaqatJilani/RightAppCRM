@@ -9,13 +9,10 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace RightCRM.iOS.Views
+namespace RightCRM.iOS
 {
-    [Register ("BusinessDetailTabView")]
-    partial class BusinessDetailTabView
+    [Register ("AddNewNoteView")]
+    partial class AddNewNoteView
     {
-        void ReleaseDesignerOutlets ()
-        {
-        }
     }
 }

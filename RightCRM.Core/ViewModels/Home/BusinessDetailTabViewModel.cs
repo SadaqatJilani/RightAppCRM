@@ -22,13 +22,10 @@ namespace RightCRM.Core.ViewModels.Home
         {
             this.navigationService = navigationService;
 
-            CloseBusinessDetailCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<BusinessViewModel, string>(Constants.TitleBusinessPage));
             ShowInitialViewModelsCommand = new MvxAsyncCommand(ShowInitialViewModels);
         }
 
         public IMvxAsyncCommand ShowInitialViewModelsCommand { get; private set; }
-        public IMvxCommand CloseBusinessDetailCommand { get; private set; }
-
 
         public override void Prepare()
         {

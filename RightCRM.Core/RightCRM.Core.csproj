@@ -77,6 +77,7 @@
     <Compile Include="ViewModels\Home\BusDetailTab2ViewModel.cs" />
     <Compile Include="ViewModels\Home\BusDetailTab1ViewModel.cs" />
     <Compile Include="ViewModels\Home\CreateNewBusViewModel.cs" />
+    <Compile Include="ViewModels\Home\AddNewNoteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">

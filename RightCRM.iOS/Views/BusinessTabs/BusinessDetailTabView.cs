@@ -6,10 +6,10 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 using RightCRM.Core.ViewModels.Home;
 using MvvmCross.Binding.BindingContext;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard("Main")]
-    [MvxRootPresentation(WrapInNavigationController = true)]
+    [MvxRootPresentation]
     //[MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverFullScreen, ModalTransitionStyle = UIModalTransitionStyle.CoverVertical)]
     public partial class BusinessDetailTabView : MvxTabBarViewController<BusinessDetailTabViewModel>
     {
@@ -40,7 +40,7 @@ namespace RightCRM.iOS
 
             var Set = this.CreateBindingSet<BusinessDetailTabView, BusinessDetailTabViewModel>();
 
-            Set.Bind(backbutton).To(vm => vm.CloseBusinessDetailCommand);
+            Set.Bind(backbutton).To(vm => vm.GoToRootMenuCommand);
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
             Set.Apply();
         }

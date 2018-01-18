@@ -252,6 +252,10 @@
     <Compile Include="Views\BusinessTabs\BusinessDetailTabView.designer.cs">
       <DependentUpon>BusinessDetailTabView.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddNewNoteView.cs" />
+    <Compile Include="AddNewNoteView.designer.cs">
+      <DependentUpon>AddNewNoteView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

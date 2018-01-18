@@ -22,5 +22,8 @@ namespace RightCRM.Common
 
         public const string TitleBusinessNotesPage = "Notes";
 
+        public const string TitleCreateNewNotePage = "New Note";
+
+
     }
 }

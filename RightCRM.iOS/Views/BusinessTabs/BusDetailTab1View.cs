@@ -6,7 +6,7 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 using MvvmCross.Binding.BindingContext;
 using RightCRM.Core.ViewModels.Home;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
     [MvxTabPresentation(TabIconName = "ic_paper", TabName = "Business Details")]
@@ -20,9 +20,13 @@ namespace RightCRM.iOS
         {
             base.ViewDidLoad();
 
+            UIBarButtonItem backbutton = new UIBarButtonItem(UIImage.FromBundle("ic_back"), UIBarButtonItemStyle.Done, null);
+
+            this.NavigationItem.LeftBarButtonItem = backbutton;
+
             var Set = this.CreateBindingSet<BusDetailTab1View, BusDetailTab1ViewModel>();
 
-            //Set.Bind(backbutton).To(vm => vm.CloseBusinessDetailCommand);
+            Set.Bind(backbutton).To(vm => vm.GoToRootMenuCommand);
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
             Set.Apply();
         }

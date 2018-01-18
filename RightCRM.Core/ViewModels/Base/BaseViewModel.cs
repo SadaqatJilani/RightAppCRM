@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using RightCRM.Common;
 using RightCRM.Core.Models;
 
 namespace RightCRM.Core.ViewModels
@@ -12,6 +13,7 @@ namespace RightCRM.Core.ViewModels
 
         public BaseViewModel()
         {
+            GoToRootMenuCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<BusinessViewModel, string>(Constants.TitleBusinessPage));
         }
 
         public string Title
@@ -25,6 +27,8 @@ namespace RightCRM.Core.ViewModels
             get;
             set;
         }
+
+        public IMvxCommand GoToRootMenuCommand { get; private set; }
 
         protected async Task NavigateToViewModel<T>() where T : MvxViewModel
         {
