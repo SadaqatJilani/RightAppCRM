@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="MarketsViewModel.cs" company="Zepto Systems">
+// // <copyright file="CreateNewBusViewModel.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   MarketsViewModel
+// //   CreateNewBusViewModel
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
@@ -11,17 +11,14 @@ using MvvmCross.Core.ViewModels;
 
 namespace RightCRM.Core.ViewModels.Home
 {
-    public class MarketsViewModel : BaseViewModel, IMvxViewModel<string>
+    public class CreateNewBusViewModel : BaseViewModel, IMvxViewModel<string>
     {
-        public MarketsViewModel()
+        public CreateNewBusViewModel()
         {
         }
 
-
         public void Prepare(string parameter)
         {
-            // throw new NotImplementedException();
-
             Title = parameter;
         }
     }

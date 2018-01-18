@@ -9,21 +9,32 @@ using MvvmCross.Binding.BindingContext;
 namespace RightCRM.iOS
 {
     [MvxFromStoryboard("Main")]
-    [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverFullScreen, ModalTransitionStyle = UIModalTransitionStyle.CoverVertical)]
+    [MvxRootPresentation(WrapInNavigationController = true)]
+    //[MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverFullScreen, ModalTransitionStyle = UIModalTransitionStyle.CoverVertical)]
     public partial class BusinessDetailTabView : MvxTabBarViewController<BusinessDetailTabViewModel>
     {
+        private bool isPresentedFirstTime = true;
+
         public BusinessDetailTabView (IntPtr handle) : base (handle)
         {
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            if (ViewModel != null && isPresentedFirstTime)
+            {
+                isPresentedFirstTime = false;
+                ViewModel.ShowInitialViewModelsCommand.ExecuteAsync(null);
+            }
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            UIBarButtonItem backbutton = new UIBarButtonItem("back", UIBarButtonItemStyle.Done, null);
-        //backbutton.Clicked += (o, e) => {
-        //        NavigationController.PopViewController(true);
-        //};
+            UIBarButtonItem backbutton = new UIBarButtonItem(UIImage.FromBundle("ic_back"), UIBarButtonItemStyle.Done, null);
 
             this.NavigationItem.LeftBarButtonItem = backbutton;
 

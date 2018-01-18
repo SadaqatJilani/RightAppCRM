@@ -9,15 +9,8 @@ using RightCRM.Facade.Facades;
 
 namespace RightCRM.Core.ViewModels
 {
-    public class BusinessViewModel : BaseViewModel
+    public class BusinessViewModel : BaseViewModel, IMvxViewModel<string>
     {
-        public override void Prepare()
-        {
-            base.Prepare();
-
-            Title = "Business";
-        }
-
         private MvxObservableCollection<Business> _allBusiness;
         public MvxObservableCollection<Business> AllBusiness{
             get { return _allBusiness; }
@@ -45,6 +38,11 @@ namespace RightCRM.Core.ViewModels
         private void BusinessFilter()
         {
             navigationService.Navigate<FilterPopupViewModel>();
+        }
+
+        public void Prepare(string parameter)
+        {
+            Title = parameter;
         }
 
         public IMvxCommand BusinessDetailCommand { get; private set; }

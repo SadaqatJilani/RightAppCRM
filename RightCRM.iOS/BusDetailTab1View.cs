@@ -9,7 +9,7 @@ using RightCRM.Core.ViewModels.Home;
 namespace RightCRM.iOS
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
-    [MvxTabPresentation(WrapInNavigationController = true)]
+    [MvxTabPresentation(TabIconName = "ic_paper", TabName = "Business Details")]
     public partial class BusDetailTab1View : MvxViewController<BusDetailTab1ViewModel>
     {
         public BusDetailTab1View (IntPtr handle) : base (handle)
@@ -20,13 +20,11 @@ namespace RightCRM.iOS
         {
             base.ViewDidLoad();
 
-            //var set = this.CreateBindingSet<BusDetailTab1View, Tab1ViewModel>();
+            var Set = this.CreateBindingSet<BusDetailTab1View, BusDetailTab1ViewModel>();
 
-            //set.Bind(btnModal).To(vm => vm.OpenModalCommand);
-            //set.Bind(btnNavModal).To(vm => vm.OpenNavModalCommand);
-            //set.Bind(btnChild).To(vm => vm.OpenChildCommand);
-
-            //set.Apply();
+            //Set.Bind(backbutton).To(vm => vm.CloseBusinessDetailCommand);
+            Set.Bind().For(v => v.Title).To(vm => vm.Title);
+            Set.Apply();
         }
     }
 }

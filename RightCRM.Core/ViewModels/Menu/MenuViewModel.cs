@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using RightCRM.Common;
 using RightCRM.Core.Models;
 using RightCRM.Core.ViewModels.Home;
 
@@ -24,12 +25,9 @@ namespace RightCRM.Core.ViewModels.Menu
 
             MenuItems = new List<MenuModel>
             {
-                new MenuModel() { Title = "Home", ImageName = "ic_build_white", Navigate = NavigateHome },
-                new MenuModel() { Title = "Markets", ImageName = "ic_description_white", Navigate = NavigateToMarkets },
-                new MenuModel() { Title = "MvvmCross", ImageName = "ic_settings_white", Navigate = NavigateToMarkets },
-                new MenuModel() { Title = "Xamarin", ImageName = "ic_explore_white", Navigate = NavigateToMarkets },
-                new MenuModel() { Title = "Microsoft", ImageName = "ic_credit_card_white", Navigate = NavigateToMarkets },
-                new MenuModel() { Title = "Evolve", ImageName = "ic_device_hub_white", Navigate = NavigateToMarkets }
+                new MenuModel() { Title = Constants.TitleBusinessPage, ImageName = "ic_build_white", Navigate = NavigateHome },
+                new MenuModel() { Title = Constants.TitleMarketsPage, ImageName = "ic_description_white", Navigate = NavigateToMarkets },
+                new MenuModel() { Title = Constants.TitleCreateNewPage, ImageName = "ic_settings_white", Navigate = NavigateToCreateNewB },
             };
         }
 
@@ -44,7 +42,8 @@ namespace RightCRM.Core.ViewModels.Menu
         {
             get
             {
-                navigateHome = navigateHome ?? new MvxAsyncCommand(NavigateToViewModel<BusinessViewModel>);
+                navigateHome = navigateHome ?? 
+                    new MvxAsyncCommand(async () => await navigationService.Navigate<BusinessViewModel, string>(MenuItems[0].Title));
                 return navigateHome;
             }
         }
@@ -54,8 +53,20 @@ namespace RightCRM.Core.ViewModels.Menu
         {
             get
             {
-                navigateToMarkets = navigateToMarkets ?? new MvxAsyncCommand(NavigateToViewModel<MarketsViewModel>);
+                navigateToMarkets = navigateToMarkets ?? 
+                    new MvxAsyncCommand(async () => await navigationService.Navigate<MarketsViewModel, string>(MenuItems[1].Title));
                 return navigateToMarkets;
+            }
+        }
+
+        private IMvxCommand navigateToCreateNewB;
+        public IMvxCommand NavigateToCreateNewB
+        {
+            get
+            {
+                navigateToCreateNewB = navigateToCreateNewB ??
+                    new MvxAsyncCommand(async () => await navigationService.Navigate<CreateNewBusViewModel, string>(MenuItems[2].Title));
+                return navigateToCreateNewB;
             }
         }
     }

@@ -58,6 +58,7 @@
     <Compile Include="Models\Business.cs" />
     <Compile Include="SharedConfig.cs" />
     <Compile Include="Models\BusinessDetails.cs" />
+    <Compile Include="Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

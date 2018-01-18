@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using RightCRM.Common;
 
 namespace RightCRM.Core.ViewModels
 {
@@ -51,7 +52,7 @@ namespace RightCRM.Core.ViewModels
             //}
 
             //ShowViewModel<AccountsViewModel>();
-           await navigationService.Navigate<BusinessViewModel>();
+            await navigationService.Navigate<BusinessViewModel, string>(Constants.TitleBusinessPage);
         }
     }
 }

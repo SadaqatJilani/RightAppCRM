@@ -167,14 +167,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="15371"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15694" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="316" y="627" width="63" height="30"/>
-                                <state key="normal" title="Add New"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15694" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="290" y="626" width="89" height="30"/>
+                                <state key="normal" title="New Note"/>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint id="15723" firstItem="15375" firstAttribute="trailingMargin" secondItem="15694" secondAttribute="trailing" constant="15"/>
-                            <constraint id="15724" firstItem="15371" firstAttribute="bottom" secondItem="15694" secondAttribute="bottom" constant="30"/>
+                            <constraint id="15724" firstItem="15371" firstAttribute="bottom" secondItem="15694" secondAttribute="bottom" constant="80"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="15376" title="Notes" image="ic_notes.png"/>
@@ -210,14 +210,25 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="15379" kind="relationship" relationship="viewControllers" id="15385"/>
-                        <segue destination="15374" kind="relationship" relationship="viewControllers" id="15386"/>
-                    </connections>
+                    <connections/>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15388" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2667" y="-899"/>
+        </scene>
+        <scene sceneID="16033">
+            <objects>
+                <viewController id="16034" sceneMemberID="viewController" storyboardIdentifier="CreateNewBusView" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="CreateNewBusView">
+                    <view key="view" contentMode="scaleToFill" id="16035">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="16032"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="16036" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3561" y="765"/>
         </scene>
     </scenes>
     <resources>
