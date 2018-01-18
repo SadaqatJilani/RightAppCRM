@@ -232,14 +232,6 @@
     <Compile Include="Views\MarketsView.designer.cs">
       <DependentUpon>MarketsView.cs</DependentUpon>
     </Compile>
-    <Compile Include="FilterPopup.cs" />
-    <Compile Include="FilterPopup.designer.cs">
-      <DependentUpon>FilterPopup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateNewBusView.cs" />
-    <Compile Include="CreateNewBusView.designer.cs">
-      <DependentUpon>CreateNewBusView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\BusinessTabs\BusDetailTab1View.cs" />
     <Compile Include="Views\BusinessTabs\BusDetailTab1View.designer.cs">
       <DependentUpon>BusDetailTab1View.cs</DependentUpon>
@@ -252,9 +244,17 @@
     <Compile Include="Views\BusinessTabs\BusinessDetailTabView.designer.cs">
       <DependentUpon>BusinessDetailTabView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewNoteView.cs" />
-    <Compile Include="AddNewNoteView.designer.cs">
+    <Compile Include="Views\BusinessTabs\AddNewNoteView.cs" />
+    <Compile Include="Views\BusinessTabs\AddNewNoteView.designer.cs">
       <DependentUpon>AddNewNoteView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateNewBusView.cs" />
+    <Compile Include="Views\CreateNewBusView.designer.cs">
+      <DependentUpon>CreateNewBusView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilterPopup.cs" />
+    <Compile Include="Views\FilterPopup.designer.cs">
+      <DependentUpon>FilterPopup.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
