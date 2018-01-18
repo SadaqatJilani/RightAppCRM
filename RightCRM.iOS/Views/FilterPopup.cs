@@ -8,7 +8,7 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 using MvvmCross.Binding.BindingContext;
 using CoreGraphics;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "FilterPopup")]
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext, ModalTransitionStyle = UIModalTransitionStyle.CoverVertical)]

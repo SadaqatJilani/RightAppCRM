@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [Register ("CreateNewBusView")]
     partial class CreateNewBusView

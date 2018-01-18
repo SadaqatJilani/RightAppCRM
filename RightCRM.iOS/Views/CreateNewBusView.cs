@@ -6,7 +6,7 @@ using RightCRM.Core.ViewModels.Home;
 using MvvmCross.iOS.Support.XamarinSidebar;
 using MvvmCross.Binding.BindingContext;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard("Main")]
     [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
