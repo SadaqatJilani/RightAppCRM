@@ -73,11 +73,11 @@
     <Compile Include="ViewModels\Menu\MenuViewModel.cs" />
     <Compile Include="ViewModels\Home\MarketsViewModel.cs" />
     <Compile Include="ViewModels\Popups\FilterPopupViewModel.cs" />
-    <Compile Include="ViewModels\Home\BusinessDetailTabViewModel.cs" />
-    <Compile Include="ViewModels\Home\BusDetailTab2ViewModel.cs" />
-    <Compile Include="ViewModels\Home\BusDetailTab1ViewModel.cs" />
     <Compile Include="ViewModels\Home\CreateNewBusViewModel.cs" />
-    <Compile Include="ViewModels\Home\AddNewNoteViewModel.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\AddNewNoteViewModel.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\BusDetailTab1ViewModel.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\BusDetailTab2ViewModel.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\BusinessDetailTabViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">
@@ -120,6 +120,7 @@
     <Folder Include="ViewModels\Settings\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\Popups\" />
+    <Folder Include="ViewModels\Home\BusinessTabs\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
