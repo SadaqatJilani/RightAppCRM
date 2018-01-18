@@ -235,6 +235,18 @@
     <Compile Include="FilterPopup.designer.cs">
       <DependentUpon>FilterPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="BusinessDetailTabView.cs" />
+    <Compile Include="BusinessDetailTabView.designer.cs">
+      <DependentUpon>BusinessDetailTabView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusDetailTab2View.cs" />
+    <Compile Include="BusDetailTab2View.designer.cs">
+      <DependentUpon>BusDetailTab2View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusDetailTab1View.cs" />
+    <Compile Include="BusDetailTab1View.designer.cs">
+      <DependentUpon>BusDetailTab1View.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
@@ -259,6 +271,9 @@
     <BundleResource Include="Resources\splash.png" />
     <BundleResource Include="Resources\filtericon.png" />
     <BundleResource Include="Resources\crossicon.png" />
+    <BundleResource Include="Resources\ic_back.png" />
+    <BundleResource Include="Resources\ic_notes.png" />
+    <BundleResource Include="Resources\ic_paper.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

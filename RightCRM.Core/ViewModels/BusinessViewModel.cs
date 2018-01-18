@@ -4,6 +4,7 @@ using MvvmCross.Core.ViewModels;
 using RightCRM.Common.Models;
 using RightCRM.Core.Models;
 using RightCRM.Core.ViewModels.Popups;
+using RightCRM.Core.ViewModels.Home;
 using RightCRM.Facade.Facades;
 
 namespace RightCRM.Core.ViewModels
@@ -29,6 +30,8 @@ namespace RightCRM.Core.ViewModels
             this.navigationService = navigationService;
             this.businessFacade = businessFacade;
             AllBusiness = new MvxObservableCollection<Business>(this.businessFacade.GetBusiness());
+
+            BusinessDetailCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<BusinessDetailTabViewModel>());
         }
 
         public IMvxCommand ShowBusinessFilterCommand
@@ -43,5 +46,7 @@ namespace RightCRM.Core.ViewModels
         {
             navigationService.Navigate<FilterPopupViewModel>();
         }
+
+        public IMvxCommand BusinessDetailCommand { get; private set; }
     }
 }

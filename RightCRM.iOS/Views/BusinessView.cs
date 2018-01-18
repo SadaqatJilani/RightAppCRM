@@ -6,6 +6,7 @@ using RightCRM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.iOS.Views;
 using MvvmCross.iOS.Support.XamarinSidebar;
+using MvvmCross.iOS.Views.Presenters.Attributes;
 
 namespace RightCRM.iOS
 {
@@ -21,6 +22,7 @@ namespace RightCRM.iOS
         {
             base.ViewDidLoad();
 
+
             var filterBtn = new UIBarButtonItem(UIImage.FromBundle("filtericon"),
                                                 UIBarButtonItemStyle.Plain, null);
 
@@ -29,6 +31,7 @@ namespace RightCRM.iOS
             var Set = this.CreateBindingSet<BusinessView, BusinessViewModel>();
             var source = new TableSource(this.TableView);
             Set.Bind(source).To(vm => vm.AllBusiness);
+            Set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.BusinessDetailCommand);
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
             Set.Bind(filterBtn).To(vm => vm.ShowBusinessFilterCommand);
             Set.Apply();
