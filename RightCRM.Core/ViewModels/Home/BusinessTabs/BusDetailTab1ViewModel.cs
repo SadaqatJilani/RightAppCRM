@@ -20,8 +20,6 @@ namespace RightCRM.Core.ViewModels.Home
             this.navigationService = navigationService;
         }
 
-       // public MvxAsyncCommand CloseBusinessDetailCommand { get; private set; }
-
         public override void Prepare()
         {
             base.Prepare();

@@ -19,13 +19,10 @@ namespace RightCRM.Core.ViewModels.Home
         {
             this.navigationService = navigationService;
 
-            CloseBusinessDetailCommand = new MvxAsyncCommand(async () => await navigationService.Close(this));
-
             NewNoteCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<AddNewNoteViewModel>());
         
         }
 
-        public IMvxCommand CloseBusinessDetailCommand { get; private set; }
         public IMvxCommand NewNoteCommand { get; private set; }
 
         public override void Prepare()
