@@ -14,5 +14,8 @@ namespace RightCRM.iOS
     [Register ("AddNewNoteView")]
     partial class AddNewNoteView
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }
