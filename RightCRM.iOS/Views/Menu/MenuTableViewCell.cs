@@ -46,6 +46,7 @@ namespace RightCRM.iOS.Views
         public MenuTableViewCell(IntPtr handle) : base(handle)
         {
         }
+
     }
 }
 

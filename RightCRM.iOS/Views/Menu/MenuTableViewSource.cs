@@ -45,6 +45,7 @@ namespace RightCRM.iOS.Views
 
             cell.MenuItemTextLabel.Text = item.Title;
             cell.MenuItemTextLabel.TextColor = UIColor.White;//;UIColor.FromRGB (230, 230, 230);
+            cell.MenuItemTextLabel.HighlightedTextColor = UIColor.Black;
 
             cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
@@ -71,6 +72,5 @@ namespace RightCRM.iOS.Views
         {
             return 40f;
         }
-
     }
 }

@@ -56,6 +56,8 @@ namespace RightCRM.iOS.Views
             EdgesForExtendedLayout = UIRectEdge.None;
 
             MenuTableView.BackgroundColor = UIColor.Clear;
+            MenuTableView.AlwaysBounceVertical = false;
+
             //Corner radius and color
             ProfileImage.Layer.CornerRadius = (ProfileImage.Frame.Width / 2);
             ProfileImage.Layer.BorderWidth = 1.5f;
@@ -70,7 +72,6 @@ namespace RightCRM.iOS.Views
             MenuTableView.SeparatorColor = UIColor.FromRGBA(187, 187, 187, 0.1f);
 
             MenuTableView.TableFooterView = new UIView(CGRect.Empty) { BackgroundColor = BackgroundColor };
-
 
             //MenuTableView.TableFooterView.Hidden = false;
         }
