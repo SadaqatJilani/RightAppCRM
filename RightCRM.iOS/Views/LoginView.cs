@@ -4,10 +4,12 @@ using UIKit;
 using MvvmCross.iOS.Views;
 using RightCRM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.iOS.Views.Presenters.Attributes;
 
 namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
+    [MvxRootPresentation]
     public partial class LoginView : MvxViewController<LoginViewModel>
     {
         public LoginView (IntPtr handler) : base (handler)

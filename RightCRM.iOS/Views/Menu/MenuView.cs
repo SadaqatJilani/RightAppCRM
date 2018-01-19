@@ -73,6 +73,8 @@ namespace RightCRM.iOS.Views
 
             MenuTableView.TableFooterView = new UIView(CGRect.Empty) { BackgroundColor = BackgroundColor };
 
+
+            MenuTableView.SelectRow(NSIndexPath.FromRowSection(0, 0), false, UITableViewScrollPosition.None);
             //MenuTableView.TableFooterView.Hidden = false;
         }
 
