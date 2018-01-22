@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="201">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +17,7 @@
             <objects>
                 <viewController storyboardIdentifier="LoginView" id="201" customClass="LoginView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="202">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="215">
@@ -22,7 +27,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="625">
-                                <rect key="frame" x="66" y="145" width="273.5" height="30"/>
+                                <rect key="frame" x="66" y="145" width="199" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -61,15 +66,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="BusinessView" id="7653" customClass="BusinessView" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7654">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessViewCell" rowHeight="63" id="7657" customClass="BusinessViewCell">
-                                <rect key="frame" x="0.0" y="28" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7657" id="7658">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="62.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7661">
@@ -85,7 +90,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14028">
-                                            <rect key="frame" x="308" y="8" width="42" height="20.5"/>
+                                            <rect key="frame" x="214" y="8" width="42" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -128,27 +133,28 @@
             </objects>
             <point key="canvasLocation" x="-3118" y="-901"/>
         </scene>
+        <!--Markets View-->
         <scene sceneID="14309">
             <objects>
-                <viewController id="14310" sceneMemberID="viewController" customClass="MarketsView" storyboardIdentifier="MarketsView" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                <viewController storyboardIdentifier="MarketsView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="14310" customClass="MarketsView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="14311">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="14308"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A summary about the current market scenarios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="14586" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A summary about the current market scenarios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14586">
                                 <rect key="frame" x="64" y="110" width="289" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint id="14587" firstItem="14586" firstAttribute="top" secondItem="14308" secondAttribute="top" constant="90"/>
-                            <constraint id="14588" firstItem="14311" firstAttribute="trailingMargin" secondItem="14586" secondAttribute="trailing" constant="41"/>
-                            <constraint id="14589" firstItem="14586" firstAttribute="leading" secondItem="14311" secondAttribute="leadingMargin" constant="44"/>
+                            <constraint firstItem="14586" firstAttribute="top" secondItem="14308" secondAttribute="top" constant="90" id="14587"/>
+                            <constraint firstAttribute="top" secondItem="14586" secondAttribute="trailing" constant="41" id="14588" firstItem="14308"/>
+                            <constraint firstItem="14586" firstAttribute="leading" secondItem="14311" secondAttribute="leadingMargin" constant="44" id="14589"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="14308"/>
                     </view>
                     <connections>
                         <outlet property="lblMarket" destination="14586" id="name-outlet-14586"/>
@@ -158,28 +164,28 @@
             </objects>
             <point key="canvasLocation" x="-3559" y="-99"/>
         </scene>
+        <!--Notes-->
         <scene sceneID="15373">
             <objects>
-                <viewController id="15374" sceneMemberID="viewController" storyboardIdentifier="BusDetailTab2View" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="BusDetailTab2View">
+                <viewController storyboardIdentifier="BusDetailTab2View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="15374" customClass="BusDetailTab2View" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="15375">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="15371"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15694" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15694">
                                 <rect key="frame" x="290" y="626" width="89" height="30"/>
                                 <state key="normal" title="New Note"/>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint id="15723" firstItem="15375" firstAttribute="trailingMargin" secondItem="15694" secondAttribute="trailing" constant="15"/>
-                            <constraint id="15724" firstItem="15371" firstAttribute="bottom" secondItem="15694" secondAttribute="bottom" constant="80"/>
+                            <constraint firstAttribute="top" secondItem="15694" secondAttribute="trailing" constant="15" id="15723" firstItem="15371"/>
+                            <constraint firstItem="15371" firstAttribute="bottom" secondItem="15694" secondAttribute="bottom" constant="80" id="15724"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="15371"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="15376" title="Notes" image="ic_notes.png"/>
+                    <tabBarItem key="tabBarItem" title="Notes" image="ic_notes.png" id="15376"/>
                     <connections>
-                        <outlet property="btnAddNewNote" destination="15718" id="name-outlet-15718"/>
                         <outlet property="btnAddNewNote" destination="15694" id="name-outlet-15694"/>
                     </connections>
                 </viewController>
@@ -187,54 +193,98 @@
             </objects>
             <point key="canvasLocation" x="-2004" y="-558"/>
         </scene>
+        <!--Business Details-->
         <scene sceneID="15378">
             <objects>
-                <viewController id="15379" sceneMemberID="viewController" customClass="BusDetailTab1View" storyboardIdentifier="BusDetailTab1View" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                <viewController storyboardIdentifier="BusDetailTab1View" useStoryboardIdentifierAsRestorationIdentifier="YES" id="15379" customClass="BusDetailTab1View" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="15380">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="15372"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="15381" title="Business Details" image="ic_paper.png"/>
+                    <tabBarItem key="tabBarItem" title="Business Details" image="ic_paper.png" id="15381"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15382" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2009" y="-1380"/>
         </scene>
+        <!--Business Detail Tab View-->
         <scene sceneID="15383">
             <objects>
-                <tabBarController id="15384" sceneMemberID="viewController" customClass="BusinessDetailTabView" storyboardIdentifier="BusinessDetailTabView" useStoryboardIdentifierAsRestorationIdentifier="YES" modalPresentationStyle="overFullScreen">
+                <tabBarController storyboardIdentifier="BusinessDetailTabView" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="15384" customClass="BusinessDetailTabView" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="15387">
-                        <rect key="frame" x="0.0" y="687" width="414" height="49"/>
+                        <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections/>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15388" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2667" y="-899"/>
         </scene>
+        <!--Create New Bus View-->
         <scene sceneID="16033">
             <objects>
-                <viewController id="16034" sceneMemberID="viewController" storyboardIdentifier="CreateNewBusView" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="CreateNewBusView">
+                <viewController storyboardIdentifier="CreateNewBusView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="16034" customClass="CreateNewBusView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16035">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ9-TD-od3">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s7n-9A-4cj" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s15-2J-nHr">
+                                                <rect key="frame" x="20" y="8" width="240" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint id="16761" firstItem="s7n-9A-4cj" firstAttribute="height" constant="548"/>
+                                            <constraint id="16762" firstItem="s7n-9A-4cj" firstAttribute="width" constant="320"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint id="16717" firstItem="s7n-9A-4cj" firstAttribute="top" secondItem="eZ9-TD-od3" secondAttribute="top"/>
+                                    <constraint id="16718" firstItem="s7n-9A-4cj" firstAttribute="trailing" secondItem="eZ9-TD-od3" secondAttribute="trailing"/>
+                                    <constraint id="16719" firstItem="s7n-9A-4cj" firstAttribute="bottom" secondItem="eZ9-TD-od3" secondAttribute="bottom"/>
+                                    <constraint id="16720" firstItem="s7n-9A-4cj" firstAttribute="leading" secondItem="eZ9-TD-od3" secondAttribute="leading"/>
+                                    <constraint id="16721" firstItem="s7n-9A-4cj" firstAttribute="centerX" secondItem="eZ9-TD-od3" secondAttribute="centerX"/>
+                                    <constraint id="16722" firstItem="s7n-9A-4cj" firstAttribute="centerY" secondItem="eZ9-TD-od3" secondAttribute="centerY"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="16032"/>
+                        <constraints>
+                            <constraint id="16679" firstItem="eZ9-TD-od3" firstAttribute="top" secondItem="16032" secondAttribute="top"/>
+                            <constraint id="16682" firstItem="eZ9-TD-od3" firstAttribute="trailing" secondItem="16032" secondAttribute="trailing"/>
+                            <constraint id="16683" firstItem="eZ9-TD-od3" firstAttribute="bottom" secondItem="16032" secondAttribute="bottom"/>
+                            <constraint id="16684" firstItem="eZ9-TD-od3" firstAttribute="leading" secondItem="16032" secondAttribute="leading"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="txtCompanyName" destination="s15-2J-nHr" id="name-outlet-s15-2J-nHr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16036" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3561" y="765"/>
+            <point key="canvasLocation" x="-3562.5" y="764.7888"/>
         </scene>
+        <!--Add New Note View-->
         <scene sceneID="16346">
             <objects>
-                <viewController id="16347" sceneMemberID="viewController" storyboardIdentifier="AddNewNoteView" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="AddNewNoteView">
+                <viewController storyboardIdentifier="AddNewNoteView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="16347" customClass="AddNewNoteView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16348">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="16345"/>
@@ -246,12 +296,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_notes.png" width="24" height="24"/>
+        <image name="ic_paper.png" width="24" height="24"/>
         <image name="threelines.png" width="24" height="24"/>
         <image name="splash.png" width="634" height="999"/>
         <image name="filtericon.png" width="24" height="24"/>
         <image name="crossicon.png" width="24" height="24"/>
         <image name="ic_back.png" width="24" height="24"/>
-        <image name="ic_notes.png" width="24" height="24"/>
-        <image name="ic_paper.png" width="24" height="24"/>
     </resources>
 </document>

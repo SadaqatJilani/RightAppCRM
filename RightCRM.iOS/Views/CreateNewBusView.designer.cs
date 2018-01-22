@@ -14,8 +14,16 @@ namespace RightCRM.iOS.Views
     [Register ("CreateNewBusView")]
     partial class CreateNewBusView
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtCompanyName { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (txtCompanyName != null) {
+                txtCompanyName.Dispose ();
+                txtCompanyName = null;
+            }
         }
     }
 }
