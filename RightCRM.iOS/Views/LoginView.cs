@@ -22,7 +22,7 @@ namespace RightCRM.iOS.Views
             set.Bind(UserNameFeild).To(vm => vm.UserName);
             set.Bind(PasswordFeild).To(vm => vm.Password);
             set.Bind(LoginButton).To(vm => vm.LoginCommand);
-            set.Bind(ResultLabel).To(vm => vm.LoginResult);
+           // set.Bind(ResultLabel).To(vm => vm.LoginResult);
             set.Apply();
 
         }
