@@ -5,11 +5,12 @@ using MvvmCross.iOS.Views;
 using MvvmCross.iOS.Views.Presenters.Attributes;
 using MvvmCross.Binding.BindingContext;
 using RightCRM.Core.ViewModels.Home;
+using RightCRM.Common;
 
 namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
-    [MvxTabPresentation(TabIconName = "ic_paper", TabName = "Business Details")]
+    [MvxTabPresentation(TabIconName = "ic_paper", TabName = Constants.TitleBusinessDetailsPage)]
     public partial class BusDetailTab1View : MvxViewController<BusDetailTab1ViewModel>
     {
         public BusDetailTab1View (IntPtr handle) : base (handle)
