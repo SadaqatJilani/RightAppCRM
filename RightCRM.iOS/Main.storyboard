@@ -18,40 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="215">
-                                <rect key="frame" x="66" y="95" width="243" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="215">
+                                <rect key="frame" x="66" y="206" width="243" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="625">
-                                <rect key="frame" x="66" y="145" width="226" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="625">
+                                <rect key="frame" x="66" y="256" width="243" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="626">
-                                <rect key="frame" x="95" y="233" width="185" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="626" customClass="BtnUniversal">
+                                <rect key="frame" x="95" y="344" width="185" height="30"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="1" alpha="1"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="627">
-                                <rect key="frame" x="40" y="279" width="296" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="19774" translatesAutoresizingMaskIntoConstraints="NO" image="right_crm_logo.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
+                                <rect key="frame" x="95" y="58" width="185" height="57"/>
+                                <constraints>
+                                    <constraint id="19826" firstItem="19774" firstAttribute="height" constant="57"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="1058"/>
+                        <constraints>
+                            <constraint id="19713" firstItem="202" firstAttribute="trailingMargin" secondItem="215" secondAttribute="trailing" constant="50"/>
+                            <constraint id="19714" firstItem="215" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="50"/>
+                            <constraint id="19716" firstItem="625" firstAttribute="top" secondItem="215" secondAttribute="bottom" constant="20"/>
+                            <constraint id="19719" firstItem="626" firstAttribute="top" secondItem="625" secondAttribute="bottom" constant="58"/>
+                            <constraint id="19720" firstItem="202" firstAttribute="trailingMargin" secondItem="626" secondAttribute="trailing" constant="79"/>
+                            <constraint id="19721" firstItem="626" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="79"/>
+                            <constraint id="19823" firstItem="19774" firstAttribute="top" secondItem="1058" secondAttribute="top" constant="38"/>
+                            <constraint id="19824" firstItem="19774" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="79"/>
+                            <constraint id="19825" firstItem="202" firstAttribute="trailingMargin" secondItem="19774" secondAttribute="trailing" constant="79"/>
+                            <constraint id="19827" firstItem="215" firstAttribute="top" secondItem="19774" secondAttribute="bottom" constant="91"/>
+                            <constraint id="19828" firstItem="625" firstAttribute="leading" secondItem="215" secondAttribute="leading"/>
+                            <constraint id="19829" firstItem="625" firstAttribute="trailing" secondItem="215" secondAttribute="trailing"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="LoginButton" destination="626" id="name-outlet-626"/>
                         <outlet property="PasswordFeild" destination="625" id="name-outlet-625"/>
-                        <outlet property="ResultLabel" destination="627" id="name-outlet-627"/>
                         <outlet property="UserNameFeild" destination="215" id="name-outlet-215"/>
                     </connections>
                 </viewController>
@@ -398,7 +409,125 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="16032"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="19934" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="19995" translatesAutoresizingMaskIntoConstraints="NO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20485" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Account Name">
+                                                <rect key="frame" x="8" y="26" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20801" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Account Type">
+                                                <rect key="frame" x="8" y="72" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20802" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Business NTN">
+                                                <rect key="frame" x="8" y="118" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20803" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Business Website">
+                                                <rect key="frame" x="8" y="164" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20804" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Industry">
+                                                <rect key="frame" x="8" y="210" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20805" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Company Size">
+                                                <rect key="frame" x="8" y="256" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20806" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Annual Revenue">
+                                                <rect key="frame" x="8" y="302" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20807" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Campaign Name">
+                                                <rect key="frame" x="8" y="348" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20808" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Campaign Source">
+                                                <rect key="frame" x="8" y="394" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="20872" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" placeholder="Campaign Media">
+                                                <rect key="frame" x="8" y="440" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="20873" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" customClass="BtnUniversal">
+                                                <rect key="frame" x="106" y="501" width="163" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="1" alpha="1"/>
+                                                <state key="normal" title="Create Business">
+                                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint id="20417" firstItem="19995" firstAttribute="top" secondItem="19934" secondAttribute="top"/>
+                                    <constraint id="20418" firstItem="19995" firstAttribute="trailing" secondItem="19934" secondAttribute="trailing"/>
+                                    <constraint id="20419" firstItem="19995" firstAttribute="bottom" secondItem="19934" secondAttribute="bottom"/>
+                                    <constraint id="20420" firstItem="19995" firstAttribute="leading" secondItem="19934" secondAttribute="leading"/>
+                                    <constraint id="20421" firstItem="19995" firstAttribute="centerX" secondItem="19934" secondAttribute="centerX"/>
+                                    <constraint id="20422" firstItem="19995" firstAttribute="centerY" secondItem="19934" secondAttribute="centerY"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="19935" firstItem="19934" firstAttribute="top" secondItem="16032" secondAttribute="top"/>
+                            <constraint id="19936" firstItem="19934" firstAttribute="trailing" secondItem="16032" secondAttribute="trailing"/>
+                            <constraint id="19937" firstItem="19934" firstAttribute="bottom" secondItem="16032" secondAttribute="bottom"/>
+                            <constraint id="19938" firstItem="19934" firstAttribute="leading" secondItem="16032" secondAttribute="leading"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="txtAccountName" destination="20485" id="name-outlet-20485"/>
+                        <outlet property="btnCreateBusiness" destination="20873" id="name-outlet-20873"/>
+                        <outlet property="txtAccountType" destination="20801" id="name-outlet-20801"/>
+                        <outlet property="txtBusinessNTN" destination="20802" id="name-outlet-20802"/>
+                        <outlet property="txtBusinessWebsite" destination="20803" id="name-outlet-20803"/>
+                        <outlet property="txtIndustry" destination="20804" id="name-outlet-20804"/>
+                        <outlet property="txtCompanySize" destination="20805" id="name-outlet-20805"/>
+                        <outlet property="txtAnnualRevenue" destination="20806" id="name-outlet-20806"/>
+                        <outlet property="txtCampaignName" destination="20807" id="name-outlet-20807"/>
+                        <outlet property="txtCampaignSrc" destination="20808" id="name-outlet-20808"/>
+                        <outlet property="txtCampaignMedia" destination="20872" id="name-outlet-20872"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16036" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -429,5 +558,6 @@
         <image name="ic_paper.png" width="24" height="24"/>
         <image name="xamarin.png" width="1200" height="650"/>
         <image name="Xamagon.png" width="609" height="609"/>
+        <image name="right_crm_logo.png" width="118" height="33"/>
     </resources>
 </document>

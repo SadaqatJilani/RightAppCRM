@@ -16,15 +16,11 @@ namespace RightCRM.iOS.Views
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton LoginButton { get; set; }
+        RightCRM.iOS.BtnUniversal LoginButton { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField PasswordFeild { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ResultLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -40,11 +36,6 @@ namespace RightCRM.iOS.Views
             if (PasswordFeild != null) {
                 PasswordFeild.Dispose ();
                 PasswordFeild = null;
-            }
-
-            if (ResultLabel != null) {
-                ResultLabel.Dispose ();
-                ResultLabel = null;
             }
 
             if (UserNameFeild != null) {

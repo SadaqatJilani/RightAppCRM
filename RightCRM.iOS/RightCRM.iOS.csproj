@@ -269,6 +269,10 @@
     <Compile Include="Views\FilterPopup.designer.cs">
       <DependentUpon>FilterPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="BtnUniversal.cs" />
+    <Compile Include="BtnUniversal.designer.cs">
+      <DependentUpon>BtnUniversal.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
@@ -298,6 +302,7 @@
     <BundleResource Include="Resources\ic_paper.png" />
     <BundleResource Include="Resources\xamarin.png" />
     <BundleResource Include="Resources\Xamagon.png" />
+    <BundleResource Include="Resources\right_crm_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
