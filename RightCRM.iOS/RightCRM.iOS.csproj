@@ -195,6 +195,7 @@
     <Folder Include="Views\Menu\" />
     <Folder Include="Storyboards\" />
     <Folder Include="Views\BusinessTabs\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -273,6 +274,7 @@
     <Compile Include="BtnUniversal.designer.cs">
       <DependentUpon>BtnUniversal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\NextPreviousToolbar.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

@@ -20,6 +20,10 @@ namespace RightCRM.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView scrollView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtAccountName { get; set; }
 
         [Outlet]
@@ -63,6 +67,11 @@ namespace RightCRM.iOS.Views
             if (btnCreateBusiness != null) {
                 btnCreateBusiness.Dispose ();
                 btnCreateBusiness = null;
+            }
+
+            if (scrollView != null) {
+                scrollView.Dispose ();
+                scrollView = null;
             }
 
             if (txtAccountName != null) {

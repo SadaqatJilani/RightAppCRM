@@ -18,6 +18,14 @@ namespace RightCRM.iOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            View.AddGestureRecognizer(new UITapGestureRecognizer(() => {
+                this.UserNameFeild.ResignFirstResponder();
+                this.PasswordFeild.ResignFirstResponder();
+            }));
+
+
+
             var set = this.CreateBindingSet<LoginView, LoginViewModel>();
             set.Bind(UserNameFeild).To(vm => vm.UserName);
             set.Bind(PasswordFeild).To(vm => vm.Password);
@@ -25,6 +33,13 @@ namespace RightCRM.iOS.Views
            // set.Bind(ResultLabel).To(vm => vm.LoginResult);
             set.Apply();
 
+        }
+
+        public override void DidReceiveMemoryWarning()
+        {
+            base.DidReceiveMemoryWarning();
+
+          //  View.RemoveGestureRecognizer();
         }
     }
 }
