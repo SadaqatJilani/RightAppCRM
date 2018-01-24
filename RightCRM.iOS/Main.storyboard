@@ -29,18 +29,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="626" customClass="BtnUniversal">
-                                <rect key="frame" x="95" y="344" width="130" height="30"/>
+                                <rect key="frame" x="96" y="344" width="128" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="1" alpha="1"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="19774" translatesAutoresizingMaskIntoConstraints="NO" image="right_crm_logo.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
-                                <rect key="frame" x="95" y="58" width="130" height="57"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="19774" translatesAutoresizingMaskIntoConstraints="NO" image="right_crm_logo.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
+                                <rect key="frame" x="16" y="46" width="288" height="60"/>
                                 <constraints>
-                                    <constraint id="19826" firstItem="19774" firstAttribute="height" constant="57"/>
+                                    <constraint id="19826" firstItem="19774" firstAttribute="height" constant="60"/>
                                 </constraints>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.027450980392156862" green="0.10980392156862745" blue="0.20392156862745098" alpha="1"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -50,12 +51,12 @@
                             <constraint id="19714" firstItem="215" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="50"/>
                             <constraint id="19716" firstItem="625" firstAttribute="top" secondItem="215" secondAttribute="bottom" constant="20"/>
                             <constraint id="19719" firstItem="626" firstAttribute="top" secondItem="625" secondAttribute="bottom" constant="58"/>
-                            <constraint id="19720" firstItem="202" firstAttribute="trailingMargin" secondItem="626" secondAttribute="trailing" constant="79"/>
-                            <constraint id="19721" firstItem="626" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="79"/>
-                            <constraint id="19823" firstItem="19774" firstAttribute="top" secondItem="1058" secondAttribute="top" constant="38"/>
-                            <constraint id="19824" firstItem="19774" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="79"/>
-                            <constraint id="19825" firstItem="202" firstAttribute="trailingMargin" secondItem="19774" secondAttribute="trailing" constant="79"/>
-                            <constraint id="19827" firstItem="215" firstAttribute="top" secondItem="19774" secondAttribute="bottom" constant="91"/>
+                            <constraint id="19720" firstItem="202" firstAttribute="trailingMargin" secondItem="626" secondAttribute="trailing" constant="80"/>
+                            <constraint id="19721" firstItem="626" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin" constant="80"/>
+                            <constraint id="19823" firstItem="19774" firstAttribute="top" secondItem="1058" secondAttribute="top" constant="26"/>
+                            <constraint id="19824" firstItem="19774" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin"/>
+                            <constraint id="19825" firstItem="202" firstAttribute="trailingMargin" secondItem="19774" secondAttribute="trailing"/>
+                            <constraint id="19827" firstItem="215" firstAttribute="top" secondItem="19774" secondAttribute="bottom" constant="100"/>
                             <constraint id="19828" firstItem="625" firstAttribute="leading" secondItem="215" secondAttribute="leading"/>
                             <constraint id="19829" firstItem="625" firstAttribute="trailing" secondItem="215" secondAttribute="trailing"/>
                         </constraints>

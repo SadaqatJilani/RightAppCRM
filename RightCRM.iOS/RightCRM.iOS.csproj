@@ -220,10 +220,6 @@
     <Compile Include="Views\LoginView.designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableCell.cs" />
-    <Compile Include="TableCell.designer.cs">
-      <DependentUpon>TableCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\BusinessView.cs" />
     <Compile Include="Views\BusinessView.designer.cs">
       <DependentUpon>BusinessView.cs</DependentUpon>
