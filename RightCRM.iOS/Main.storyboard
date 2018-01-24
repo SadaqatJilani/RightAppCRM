@@ -421,7 +421,7 @@
                                                 <rect key="frame" x="8" y="26" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24342" firstItem="20485" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -430,7 +430,7 @@
                                                 <rect key="frame" x="8" y="72" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24343" firstItem="20801" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -439,7 +439,7 @@
                                                 <rect key="frame" x="8" y="118" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24344" firstItem="20802" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -448,7 +448,7 @@
                                                 <rect key="frame" x="8" y="164" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24345" firstItem="20803" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -457,7 +457,7 @@
                                                 <rect key="frame" x="8" y="210" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24346" firstItem="20804" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -466,7 +466,7 @@
                                                 <rect key="frame" x="8" y="256" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24347" firstItem="20805" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -475,7 +475,7 @@
                                                 <rect key="frame" x="8" y="302" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24348" firstItem="20806" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -484,7 +484,7 @@
                                                 <rect key="frame" x="8" y="348" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24349" firstItem="20807" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -493,7 +493,7 @@
                                                 <rect key="frame" x="8" y="394" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24350" firstItem="20808" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -502,7 +502,7 @@
                                                 <rect key="frame" x="8" y="440" width="304" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                 <constraints>
                                                     <constraint id="24351" firstItem="20872" firstAttribute="height" constant="30"/>
                                                 </constraints>
@@ -585,6 +585,7 @@
                         <outlet property="txtCampaignSrc" destination="20808" id="name-outlet-20808"/>
                         <outlet property="txtCampaignMedia" destination="20872" id="name-outlet-20872"/>
                         <outlet property="scrollView" destination="19934" id="name-outlet-19934"/>
+                        <outlet property="contentView" destination="19995" id="name-outlet-19995"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16036" userLabel="First Responder" sceneMemberID="firstResponder"/>

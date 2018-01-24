@@ -42,7 +42,11 @@ namespace RightCRM.iOS.Views
 
         private bool UserInterfaceIdiomIsPhone
         {
-            get { return UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone; }
+            get
+            {
+                return (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) &&
+                    (UIDevice.CurrentDevice.Orientation == UIDeviceOrientation.Portrait);
+            }
         }
 
 

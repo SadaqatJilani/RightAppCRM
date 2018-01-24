@@ -11,7 +11,7 @@ namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
     [MvxTabPresentation(WrapInNavigationController = true, TabIconName = "ic_notes", TabName = Constants.TitleBusinessNotesPage)]
-    public partial class BusDetailTab2View : MvxViewController<BusDetailTab2ViewModel>
+    public partial class BusDetailTab2View : BaseViewController<BusDetailTab2ViewModel>
     {
         public BusDetailTab2View (IntPtr handle) : base (handle)
         {

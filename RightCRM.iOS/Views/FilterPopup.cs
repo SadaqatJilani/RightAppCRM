@@ -12,7 +12,7 @@ namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "FilterPopup")]
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext, ModalTransitionStyle = UIModalTransitionStyle.CoverVertical)]
-    public partial class FilterPopup : MvxViewController<FilterPopupViewModel>
+    public partial class FilterPopup : BaseViewController<FilterPopupViewModel>
     {
         public FilterPopup (IntPtr handle) : base (handle)
         {

@@ -6,11 +6,11 @@ using MvvmCross.Binding.BindingContext;
 using RightCRM.Core.ViewModels.Home;
 using MvvmCross.iOS.Views.Presenters.Attributes;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard("Main")]
     [MvxChildPresentation()]
-    public partial class AddNewNoteView : MvxViewController<AddNewNoteViewModel>
+    public partial class AddNewNoteView : BaseViewController<AddNewNoteViewModel>
     {
         public AddNewNoteView (IntPtr handle) : base (handle)
         {

@@ -10,7 +10,7 @@ namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
     [MvxRootPresentation]
-    public partial class LoginView : MvxViewController<LoginViewModel>
+    public partial class LoginView : BaseViewController<LoginViewModel>
     {
         public LoginView (IntPtr handler) : base (handler)
         {

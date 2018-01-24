@@ -5,6 +5,8 @@ namespace RightCRM.iOS.Helpers
 {
     /// <summary>
     /// Next previous tool bar.
+    /// Source:
+    /// https://www.spaceotechnologies.com/ease-ios-keyboard-handling-xamarin-app-development/
     /// </summary>
     public class NextPreviousToolBar : UIToolbar
     {

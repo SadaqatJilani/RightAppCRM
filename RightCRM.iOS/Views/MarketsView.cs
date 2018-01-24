@@ -10,7 +10,7 @@ namespace RightCRM.iOS.Views
 {
     [MvxFromStoryboard("Main")]
     [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
-    public partial class MarketsView : MvxViewController<MarketsViewModel>
+    public partial class MarketsView : BaseViewController<MarketsViewModel>
     {
         public MarketsView (IntPtr handle) : base (handle)
         {

@@ -20,6 +20,10 @@ namespace RightCRM.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView contentView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIScrollView scrollView { get; set; }
 
         [Outlet]
@@ -67,6 +71,11 @@ namespace RightCRM.iOS.Views
             if (btnCreateBusiness != null) {
                 btnCreateBusiness.Dispose ();
                 btnCreateBusiness = null;
+            }
+
+            if (contentView != null) {
+                contentView.Dispose ();
+                contentView = null;
             }
 
             if (scrollView != null) {

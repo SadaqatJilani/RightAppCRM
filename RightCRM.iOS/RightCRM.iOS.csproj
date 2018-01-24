@@ -213,7 +213,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -275,6 +274,10 @@
       <DependentUpon>BtnUniversal.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\NextPreviousToolbar.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Views\BaseViewController.cs" />
+    <Compile Include="Helpers\ScrollExtensions.cs" />
+    <Compile Include="Helpers\ViewExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
