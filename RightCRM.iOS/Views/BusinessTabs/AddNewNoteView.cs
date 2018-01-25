@@ -1,14 +1,10 @@
-using Foundation;
 using System;
-using UIKit;
-using MvvmCross.iOS.Views;
+using Cirrious.FluentLayouts.Touch;
 using MvvmCross.Binding.BindingContext;
-using RightCRM.Core.ViewModels.Home;
+using MvvmCross.iOS.Views;
 using MvvmCross.iOS.Views.Presenters.Attributes;
 using MvxPlugins.Picker.iOS;
-using MvvmCross.Binding.iOS.Views;
-using Cirrious.FluentLayouts.Touch;
-using RightCRM.Common.Models;
+using RightCRM.Core.ViewModels.Home;
 using RightCRM.iOS.Helpers;
 
 namespace RightCRM.iOS.Views

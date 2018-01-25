@@ -21,6 +21,10 @@ namespace RightCRM.iOS.Helpers
             this.TintColor = UIColor.Blue;
             this.BackgroundColor = UIColor.FromRGB(246, 248, 250);
 
+            this.Layer.BorderWidth = 0.5f;
+            this.Layer.BorderColor = UIColor.Black.CGColor;
+
+
             this.AddButtonToToolbar(new UIBarButtonItem(UIBarButtonSystemItem.Cancel, OnPickerDeselect));
         }
 
