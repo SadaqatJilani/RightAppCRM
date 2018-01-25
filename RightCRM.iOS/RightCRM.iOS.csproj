@@ -170,6 +170,9 @@
     <Reference Include="Cirrious.FluentLayouts.Touch">
       <HintPath>..\packages\Cirrious.FluentLayout.2.6.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="MvxPlugins.Picker.iOS">
+      <HintPath>..\packages\MvxPlugins.Picker.iOS.1.1.1\lib\Xamarin.iOS10\MvxPlugins.Picker.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -274,6 +277,7 @@
     <Compile Include="Views\BaseViewController.cs" />
     <Compile Include="Helpers\ScrollExtensions.cs" />
     <Compile Include="Helpers\ViewExtensions.cs" />
+    <Compile Include="Bootstrap\PickerPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
