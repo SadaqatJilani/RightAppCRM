@@ -17,9 +17,9 @@ namespace RightCRM.iOS.Helpers
     {
         public GlobalPicker()
         {
-            DisplayPropertyName = nameof(PickerItem.DisplayName);
-            TintColor = UIColor.Blue;
-            BackgroundColor = UIColor.FromRGB(246, 248, 250);
+            this.DisplayPropertyName = nameof(PickerItem.DisplayName);
+            this.TintColor = UIColor.Blue;
+            this.BackgroundColor = UIColor.FromRGB(246, 248, 250);
 
             this.AddButtonToToolbar(new UIBarButtonItem(UIBarButtonSystemItem.Cancel, OnPickerDeselect));
         }
