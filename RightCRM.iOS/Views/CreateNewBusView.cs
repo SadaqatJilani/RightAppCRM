@@ -14,9 +14,6 @@ namespace RightCRM.iOS.Views
     [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
     public partial class CreateNewBusView : BaseViewController<CreateNewBusViewModel>
     {
-
-
-
         public CreateNewBusView (IntPtr handle) : base (handle)
         {
         }
@@ -50,8 +47,6 @@ namespace RightCRM.iOS.Views
             txtCampaignSrc.InputAccessoryView = new NextPreviousToolBar(txtCampaignSrc, txtCampaignName, txtCampaignMedia);
             txtCampaignMedia.InputAccessoryView = new NextPreviousToolBar(txtCampaignMedia, txtCampaignSrc, null); 
 
-
-            var lastOffset = this.scrollView.ContentOffset;
 
             var Set = this.CreateBindingSet<CreateNewBusView, CreateNewBusViewModel>();
 

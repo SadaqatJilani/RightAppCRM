@@ -14,8 +14,25 @@ namespace RightCRM.iOS.Views
     [Register ("AddNewNoteView")]
     partial class AddNewNoteView
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel topHeading { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField txtNoteComment { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (topHeading != null) {
+                topHeading.Dispose ();
+                topHeading = null;
+            }
+
+            if (txtNoteComment != null) {
+                txtNoteComment.Dispose ();
+                txtNoteComment = null;
+            }
         }
     }
 }

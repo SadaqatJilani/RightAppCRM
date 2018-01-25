@@ -9,31 +9,82 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MvvmCross.Core.Navigation;
 using RightCRM.Common;
+using RightCRM.Common.Models;
 
 namespace RightCRM.Core.ViewModels.Home
 {
     public class AddNewNoteViewModel : BaseViewModel
     {
-        ObservableCollection<string> pickerItems = new ObservableCollection<string>() { "item1", "item2", "item3" };
+        private ObservableCollection<PickerItem> pickerQueryType;
+        private ObservableCollection<PickerItem> pickerAnswerType;
+        private ObservableCollection<PickerItem> pickerClientType;
 
-        public AddNewNoteViewModel()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.AddNewNoteViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">Navigation service.</param>
+        public AddNewNoteViewModel(IMvxNavigationService navigationService)
         {
+            this.navigationService = navigationService;
+
+            PickerQueryType = new ObservableCollection<PickerItem>() {
+            new PickerItem() {DisplayName = "Call", Value =0},
+            new PickerItem() {DisplayName = "Visit", Value =1},
+            new PickerItem() {DisplayName = "Email", Value = 2},
+            new PickerItem() {DisplayName = "General", Value = 3}
+        };
+            SelectedQueryType = PickerQueryType[0];
+
+            PickerAnswerType = new ObservableCollection<PickerItem>() {
+            new PickerItem() {DisplayName = "Answer", Value =0},
+            new PickerItem() {DisplayName = "No Answer", Value =1},
+            new PickerItem() {DisplayName = "Callback", Value = 2}
+        };
+            SelectedAnsType = PickerAnswerType[0];
+
+            PickerClientType = new ObservableCollection<PickerItem>() {
+            new PickerItem() {DisplayName = "Customer", Value =0},
+            new PickerItem() {DisplayName = "Company Agent", Value =1}
+        };
+            SelectedClientType = PickerClientType[0];
+
         }
 
-        public ObservableCollection<string> PickerItems
+        /// <summary>
+        /// Gets or sets the type of the picker query.
+        /// </summary>
+        /// <value>The type of the picker query.</value>
+        public ObservableCollection<PickerItem> PickerQueryType
         {
-            get
-            {
-                return pickerItems;
-            }
-            set
-            {
-                SetProperty(ref pickerItems, value);
-            }
+            get { return pickerQueryType; }
+            set { SetProperty(ref pickerQueryType, value); }
         }
 
-        public string SelectedItem { get; set; }
+        /// <summary>
+        /// Gets or sets the type of the picker answer.
+        /// </summary>
+        /// <value>The type of the picker answer.</value>
+        public ObservableCollection<PickerItem> PickerAnswerType
+        {
+            get { return pickerAnswerType; }
+            set { SetProperty(ref pickerAnswerType, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets the type of the picker client.
+        /// </summary>
+        /// <value>The type of the picker client.</value>
+        public ObservableCollection<PickerItem> PickerClientType
+        {
+            get { return pickerClientType; }
+            set { SetProperty(ref pickerClientType, value); }
+        }
+
+        public PickerItem SelectedQueryType { get; set; }
+        public PickerItem SelectedAnsType { get; set; }
+        public PickerItem SelectedClientType { get; set; }
 
         public override void Prepare()
         {

@@ -278,6 +278,7 @@
     <Compile Include="Helpers\ScrollExtensions.cs" />
     <Compile Include="Helpers\ViewExtensions.cs" />
     <Compile Include="Bootstrap\PickerPluginBootstrap.cs" />
+    <Compile Include="Helpers\GlobalPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

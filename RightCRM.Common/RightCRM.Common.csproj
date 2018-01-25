@@ -59,6 +59,7 @@
     <Compile Include="SharedConfig.cs" />
     <Compile Include="Models\BusinessDetails.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\PickerItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
