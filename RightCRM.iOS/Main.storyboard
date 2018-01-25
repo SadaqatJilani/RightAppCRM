@@ -29,17 +29,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="626" customClass="BtnUniversal">
-                                <rect key="frame" x="96" y="344" width="128" height="30"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="1" alpha="1"/>
+                                <rect key="frame" x="96" y="344" width="128" height="33"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.12156862745098039" green="0.30588235294117649" blue="0.592156862745098" alpha="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
+                                <connections/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="19774" translatesAutoresizingMaskIntoConstraints="NO" image="right_crm_logo.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
-                                <rect key="frame" x="16" y="46" width="288" height="60"/>
+                                <rect key="frame" x="16" y="46" width="288" height="50"/>
                                 <constraints>
-                                    <constraint id="19826" firstItem="19774" firstAttribute="height" constant="60"/>
+                                    <constraint id="19826" firstItem="19774" firstAttribute="height" constant="50"/>
                                 </constraints>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.027450980392156862" green="0.10980392156862745" blue="0.20392156862745098" alpha="1"/>
                             </imageView>
@@ -56,7 +58,7 @@
                             <constraint id="19823" firstItem="19774" firstAttribute="top" secondItem="1058" secondAttribute="top" constant="26"/>
                             <constraint id="19824" firstItem="19774" firstAttribute="leading" secondItem="202" secondAttribute="leadingMargin"/>
                             <constraint id="19825" firstItem="202" firstAttribute="trailingMargin" secondItem="19774" secondAttribute="trailing"/>
-                            <constraint id="19827" firstItem="215" firstAttribute="top" secondItem="19774" secondAttribute="bottom" constant="100"/>
+                            <constraint id="19827" firstItem="215" firstAttribute="top" secondItem="19774" secondAttribute="bottom" constant="110"/>
                             <constraint id="19828" firstItem="625" firstAttribute="leading" secondItem="215" secondAttribute="leading"/>
                             <constraint id="19829" firstItem="625" firstAttribute="trailing" secondItem="215" secondAttribute="trailing"/>
                         </constraints>
@@ -510,13 +512,18 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="20873" translatesAutoresizingMaskIntoConstraints="NO" customClass="BtnUniversal">
                                                 <rect key="frame" x="82" y="498" width="156" height="30"/>
-                                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="1" alpha="1"/>
+                                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.20392156862745098" green="0.67843137254901964" blue="0.396078431372549" alpha="1"/>
                                                 <state key="normal" title="Create Business">
                                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                                 </state>
                                                 <constraints>
                                                     <constraint id="21518" firstItem="20873" firstAttribute="height" constant="30"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
                                         <constraints>
