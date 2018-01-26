@@ -9,7 +9,10 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using MvvmCross.Core.Navigation;
+using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
 using RightCRM.Common.Models;
 
@@ -30,25 +33,34 @@ namespace RightCRM.Core.ViewModels.Home
             this.navigationService = navigationService;
 
             PickerQueryType = new ObservableCollection<PickerItem>() {
-            new PickerItem() {DisplayName = "Call", Value =0},
-            new PickerItem() {DisplayName = "Visit", Value =1},
+            new PickerItem() {DisplayName = "Call", Value = 0},
+            new PickerItem() {DisplayName = "Visit", Value = 1},
             new PickerItem() {DisplayName = "Email", Value = 2},
             new PickerItem() {DisplayName = "General", Value = 3}
         };
             SelectedQueryType = PickerQueryType[0];
 
             PickerAnswerType = new ObservableCollection<PickerItem>() {
-            new PickerItem() {DisplayName = "Answer", Value =0},
-            new PickerItem() {DisplayName = "No Answer", Value =1},
+            new PickerItem() {DisplayName = "Answer", Value = 0},
+            new PickerItem() {DisplayName = "No Answer", Value = 1},
             new PickerItem() {DisplayName = "Callback", Value = 2}
         };
             SelectedAnsType = PickerAnswerType[0];
 
             PickerClientType = new ObservableCollection<PickerItem>() {
-            new PickerItem() {DisplayName = "Customer", Value =0},
-            new PickerItem() {DisplayName = "Company Agent", Value =1}
+            new PickerItem() {DisplayName = "Customer", Value = 0},
+            new PickerItem() {DisplayName = "Company Agent", Value = 1}
         };
             SelectedClientType = PickerClientType[0];
+
+
+            AddCommentCommand = new MvxAsyncCommand(async () => await AddCommentAndGoBack());
+        }
+
+        private async Task AddCommentAndGoBack()
+        {
+           // throw new NotImplementedException();
+          await navigationService.Close(this);
 
         }
 
@@ -85,6 +97,8 @@ namespace RightCRM.Core.ViewModels.Home
         public PickerItem SelectedQueryType { get; set; }
         public PickerItem SelectedAnsType { get; set; }
         public PickerItem SelectedClientType { get; set; }
+
+        public IMvxCommand AddCommentCommand { get; set; }
 
         public override void Prepare()
         {

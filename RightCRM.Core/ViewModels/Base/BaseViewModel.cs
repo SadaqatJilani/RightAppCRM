@@ -30,7 +30,7 @@ namespace RightCRM.Core.ViewModels
 
         public IMvxCommand GoToRootMenuCommand { get; private set; }
 
-        protected async Task NavigateToViewModel<T>() where T : MvxViewModel
+        protected async Task NavigateToViewModel<T, TParameter>(TParameter hello) where T : MvxViewModel
         {
             await navigationService.Navigate<T>();
         }

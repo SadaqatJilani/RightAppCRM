@@ -616,6 +616,7 @@
                                 <constraints>
                                     <constraint id="29786" firstItem="29544" firstAttribute="width" constant="130"/>
                                 </constraints>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0.17254901960784313" green="0.29019607843137257" blue="0.41176470588235292" alpha="1"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="30411" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Type Your Comment Here" fixedFrame="YES">
                                 <rect key="frame" x="16" y="79" width="208" height="30"/>
@@ -624,6 +625,19 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="30916" translatesAutoresizingMaskIntoConstraints="NO" customClass="BtnUniversal" fixedFrame="YES">
+                                <rect key="frame" x="16" y="117" width="156" height="30"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.20392156862745098" green="0.67843137254901964" blue="0.396078431372549" alpha="1"/>
+                                <state key="normal" title="Add Comment">
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint id="29784" firstItem="29544" firstAttribute="top" secondItem="16345" secondAttribute="top" constant="30"/>
@@ -633,6 +647,7 @@
                     <connections>
                         <outlet property="topHeading" destination="29544" id="name-outlet-29544"/>
                         <outlet property="txtNoteComment" destination="30411" id="name-outlet-30411"/>
+                        <outlet property="btnAddComment" destination="30916" id="name-outlet-30916"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16349" userLabel="First Responder" sceneMemberID="firstResponder"/>

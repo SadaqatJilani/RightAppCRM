@@ -16,6 +16,10 @@ namespace RightCRM.iOS.Views
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        RightCRM.iOS.BtnUniversal btnAddComment { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel topHeading { get; set; }
 
         [Outlet]
@@ -24,6 +28,11 @@ namespace RightCRM.iOS.Views
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnAddComment != null) {
+                btnAddComment.Dispose ();
+                btnAddComment = null;
+            }
+
             if (topHeading != null) {
                 topHeading.Dispose ();
                 topHeading = null;

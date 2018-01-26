@@ -157,5 +157,7 @@ Global
 		$0.CSharpFormattingPolicy = $3
 		$3.scope = text/x-csharp
 		$0.VersionControlPolicy = $4
+		$0.StandardHeader = $5
+		$5.Text = @// --------------------------------------------------------------------------------------------------------------------\n// <copyright file="${FileName}" company="${CopyrightHolder}">\n//   ${CopyrightHolder}\n// </copyright>\n// <summary>\n//   ${FileNameWithoutExtension}\n// </summary>\n// --------------------------------------------------------------------------------------------------------------------
 	EndGlobalSection
 EndGlobal
