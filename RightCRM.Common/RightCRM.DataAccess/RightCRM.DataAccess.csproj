@@ -51,16 +51,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MyPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Api\IBusinessApi.cs" />
-    <Compile Include="Model\IRequest.cs" />
-    <Compile Include="Model\ResponseData.cs" />
-    <Compile Include="Model\ResponseStatus.cs" />
-    <Compile Include="Model\RightCrmRequest.cs" />
-    <Compile Include="Factories\IRequestFactory.cs" />
-    <Compile Include="Factories\RequestFactory.cs" />
-    <Compile Include="Api\ApiBase.cs" />
     <Compile Include="Config\ApiConfig.cs" />
     <Compile Include="Model\RequestModels\RequestUserLogin.cs" />
     <Compile Include="Model\ResponseModels\ResponseUserLogin.cs" />
