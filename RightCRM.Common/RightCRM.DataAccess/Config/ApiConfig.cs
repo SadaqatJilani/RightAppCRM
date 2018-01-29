@@ -28,6 +28,10 @@ namespace RightCRM.DataAccess.Config
         {
             return $"{SharedConfig.RightCrmApiRoot}GetUserProfile/{username}";
         }
+        public static string GetUserSessionId()
+        {
+            return $"{SharedConfig.RightApiAuthenticationRoot}users/login";
+        }
 
     }
 }

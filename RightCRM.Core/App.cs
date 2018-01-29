@@ -14,7 +14,7 @@ namespace RightCRM.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-            Mvx.RegisterType<IBusinessApi, FakeBusinessApi>();
+            //Mvx.RegisterType<IBusinessApi, FakeBusinessApi>();
             Mvx.RegisterType<IBusinessFacade, BusinessFacade>();
 
             Mvx.ConstructAndRegisterSingleton<IMvxAppStart, AppStart>();

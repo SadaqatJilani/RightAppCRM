@@ -1,13 +1,13 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="IUserFacade.cs" company="(c) Arif Imran">
+// // <copyright file="IUserApi.cs" company="(c) Arif Imran">
 // //   (c) Arif Imran
 // // </copyright>
 // // <summary>
-// //   IUserFacade
+// //   IUserApi
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-namespace RightCRM.Facade.Facades
+namespace RightCRM.DataAccess.Api
 {
     using System;
     using System.Threading.Tasks;
@@ -16,14 +16,14 @@ namespace RightCRM.Facade.Facades
     using RightCRM.DataAccess.Model.ResponseModels;
 
     /// <summary>
-    /// User facade.
+    /// User API.
     /// </summary>
-    public interface IUserFacade
+    public interface IUserApi
     {
         /// <summary>
-        /// Gets the user session identifier.
+        /// Gets the user profile.
         /// </summary>
-        /// <returns>The user session identifier.</returns>
+        /// <returns>The user profile.</returns>
         /// <param name="userLogin">User login.</param>
         Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin);
     }

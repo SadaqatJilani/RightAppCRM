@@ -24,7 +24,8 @@ namespace RightCRM.DataAccess.Model
         /// </summary>
         private readonly string url;
 
-        public RightCrmRequest(string url)
+        public 
+        RightCrmRequest(string url)
         {
             this.url = url;
         }
