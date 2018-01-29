@@ -13,6 +13,7 @@ namespace RightCRM.Core.Services
     using System.Diagnostics;
     using System.Net;
     using System.Net.Http;
+    using System.Text;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using RightCRM.DataAccess.Factories;
@@ -95,12 +96,10 @@ namespace RightCRM.Core.Services
                 {
                     var request = new HttpRequestMessage { Method = verb };
                     request.RequestUri = new Uri(requestUrl);
-
                     request.Headers.Add("Accept", "application/json");
-                    //request.Headers.Add("Content-Type", "application/json");
                     if (verb == HttpMethod.Post)
                     {
-                        result = await client.PostAsync(requestUrl, new StringContent(requestBody));
+                        result = await client.PostAsync(requestUrl, new StringContent(requestBody,Encoding.UTF8,"application/json"));
                     }
                     else if (verb == HttpMethod.Get)
                     {
