@@ -95,8 +95,9 @@ namespace RightCRM.Core.Services
                 {
                     var request = new HttpRequestMessage { Method = verb };
                     request.RequestUri = new Uri(requestUrl);
+
                     request.Headers.Add("Accept", "application/json");
-                    request.Headers.Add("Content-Type", "application/json");
+                    //request.Headers.Add("Content-Type", "application/json");
                     if (verb == HttpMethod.Post)
                     {
                         result = await client.PostAsync(requestUrl, new StringContent(requestBody));
@@ -108,12 +109,9 @@ namespace RightCRM.Core.Services
 
                     if (result.StatusCode == HttpStatusCode.OK)
                     {
-                        if (result.StatusCode == HttpStatusCode.OK)
-                        {
-                            responseData.ContentStatus = ResponseContentStatus.OK;
-                            var responseString = await result.Content.ReadAsStringAsync();
-                            responseData.Content = JsonConvert.DeserializeObject<T>(responseString);
-                        }
+                        responseData.ContentStatus = ResponseContentStatus.OK;
+                        var responseString = await result.Content.ReadAsStringAsync();
+                        responseData.Content = JsonConvert.DeserializeObject<T>(responseString);
                     }
                     else
                     {

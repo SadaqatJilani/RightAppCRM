@@ -15,8 +15,8 @@ namespace RightCRM.DataAccess.Model.ResponseModels
         public string msg { get; set; }
         public string sesid { get; set; }
         public string userid { get; set; }
-        public object username { get; set; }
-        public int agreement_req { get; set; }
+        public string username { get; set; }
+        public string agreement_req { get; set; }
     }
     public class ResponseUserLogin
     {
