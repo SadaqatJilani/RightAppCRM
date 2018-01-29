@@ -66,6 +66,10 @@
     <Compile Include="Model\ResponseModels\ResponseUserLogin.cs" />
     <Compile Include="Api\User\IUserApi.cs" />
     <Compile Include="Api\User\UserApi.cs" />
+    <Compile Include="Factories\IRestService.cs" />
+    <Compile Include="Factories\ApiResponse.cs" />
+    <Compile Include="Factories\ErrorResult.cs" />
+    <Compile Include="Factories\ResponseContentStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

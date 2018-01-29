@@ -6,22 +6,64 @@
 // //   UserApi
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-using System;
-using System.Threading.Tasks;
-using RightCRM.DataAccess.Model.RequestModels;
-using RightCRM.DataAccess.Model.ResponseModels;
 
 namespace RightCRM.DataAccess.Api.User
 {
+    using System;
+    using System.Diagnostics;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+    using RightCRM.DataAccess.Config;
+    using RightCRM.DataAccess.Factories;
+    using RightCRM.DataAccess.Model.RequestModels;
+    using RightCRM.DataAccess.Model.ResponseModels;
+
+    /// <summary>
+    /// User API.
+    /// </summary>
     public class UserApi : IUserApi
     {
-        public UserApi()
+        /// <summary>
+        /// The rest service.
+        /// </summary>
+        private readonly IRestService restService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RightCRM.DataAccess.Api.User.UserApi"/> class.
+        /// </summary>
+        /// <param name="restService">Rest service.</param>
+        public UserApi(IRestService restService)
         {
+            this.restService = restService;
         }
 
-        public Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin)
+        /// <summary>
+        /// Gets the user session identifier.
+        /// </summary>
+        /// <returns>The user session identifier.</returns>
+        /// <param name="userLogin">User login.</param>
+        public async Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string requestUrl = ApiConfig.GetUserSessionId();
+                var result = await this.restService.MakeOpenRequestAsync<ResponseUserLogin>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            JsonConvert.SerializeObject(new RequestUserLogin()
+                                                                                            {
+                                                                                                loginid = "khurram123_admin@zeptowork.com",
+                                                                                                token = "test123",
+                                                                                                svsid = "work"
+                                                                                            }));
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
         }
     }
 }
