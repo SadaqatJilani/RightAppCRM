@@ -16,6 +16,14 @@ namespace RightCRM.Common
         /// Gets the right crm API root.
         /// </summary>
         /// <value>The right crm API root.</value>
-        public static string RightCrmApiRoot { get => "http://asazgpkwapuat.azurewebsites.net/"; }
+        public static string RightCrmApiRoot { get => "http://18.221.200.133:8083/api/"; }
+
+        /// <summary>
+        /// Gets the right API authentication root.
+        /// </summary>
+        /// <value>The right API authentication root.</value>
+        public static string RightApiAuthenticationRoot{
+            get => "http://18.216.31.46:8081/api/";
+        }
     }
 }

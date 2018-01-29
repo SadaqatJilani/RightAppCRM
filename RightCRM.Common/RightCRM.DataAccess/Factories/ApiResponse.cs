@@ -1,15 +1,15 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="ResponseData.cs" company="Zepto Systems">
-// //   Zepto Systems
+// // <copyright file="ApiResponse.cs" company="(c) Arif Imran">
+// //   (c) Arif Imran
 // // </copyright>
 // // <summary>
-// //   ResponseData
+// //   ApiResponse
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
-namespace RightCRM.DataAccess.Model
+namespace RightCRM.DataAccess.Factories
 {
-    public class ResponseData<T>
+    public class ApiResponse<T>
     {
         /// <summary>
         /// Gets or sets the content.
@@ -18,15 +18,15 @@ namespace RightCRM.DataAccess.Model
         public T Content { get; set; }
 
         /// <summary>
-        /// Gets or sets the message.
+        /// Gets or sets the content status.
         /// </summary>
-        /// <value>The message.</value>
-        public string Message { get; set; }
+        /// <value>The content status.</value>
+        public ResponseContentStatus ContentStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets the status.
+        /// Gets or sets the error response.
         /// </summary>
-        /// <value>The status.</value>
-        public ResponseStatus Status { get; set; }
+        /// <value>The error response.</value>
+        public ErrorResult ErrorResponse { get; set; }
     }
 }

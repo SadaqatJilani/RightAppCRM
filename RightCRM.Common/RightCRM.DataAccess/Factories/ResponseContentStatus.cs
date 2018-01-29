@@ -1,20 +1,22 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="ResponseStatus.cs" company="Zepto Systems">
-// //   Zepto Systems
+// // <copyright file="ResponseContentStatus.cs" company="(c) Arif Imran">
+// //   (c) Arif Imran
 // // </copyright>
 // // <summary>
-// //   ResponseStatus
+// //   ResponseContentStatus
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-using System;
-namespace RightCRM.DataAccess.Model
+namespace RightCRM.DataAccess.Factories
 {
-    public enum ResponseStatus
+    /// <summary>
+    /// Response content status.
+    /// </summary>
+    public enum ResponseContentStatus
     {
         /// <summary>
-        /// The success.
+        /// The ok.
         /// </summary>
-        Success,
+        OK,
 
         /// <summary>
         /// The fail.
