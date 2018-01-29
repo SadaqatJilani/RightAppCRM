@@ -184,20 +184,110 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="15371"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15694" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="290" y="626" width="89" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15694" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="214" y="498" width="90" height="30"/>
                                 <state key="normal" title="New Note"/>
+                                <constraints>
+                                    <constraint id="31687" firstItem="15694" firstAttribute="width" constant="90"/>
+                                </constraints>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="31940" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="20" width="320" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="31941" rowHeight="110" customClass="NotesCell" reuseIdentifier="NotesCell_id">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="110"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31941" id="31942">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="32612" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="16" y="8" width="184" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17" weight="semibold"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.12941176470588237" green="0.22352941176470589" blue="0.33725490196078434" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="32750" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="16" y="36" width="288" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="33781" firstItem="32750" firstAttribute="height" constant="21"/>
+                                                    </constraints>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33029" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="16" y="61.5" width="80" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Call" image="ic_notes.png"/>
+                                                    <constraints>
+                                                        <constraint id="33783" firstItem="33029" firstAttribute="width" constant="80"/>
+                                                        <constraint id="37279" firstItem="33029" firstAttribute="height" constant="32"/>
+                                                    </constraints>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33032" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="224" y="61.5" width="80" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Message" image="ic_notes.png"/>
+                                                    <constraints>
+                                                        <constraint id="34239" firstItem="33032" firstAttribute="width" constant="80"/>
+                                                        <constraint id="37281" firstItem="33032" firstAttribute="height" constant="32"/>
+                                                    </constraints>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33178" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="120" y="61.5" width="80" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <state key="normal" title="Email" image="ic_paper.png"/>
+                                                    <constraints>
+                                                        <constraint id="33935" firstItem="33178" firstAttribute="width" constant="80"/>
+                                                        <constraint id="37278" firstItem="33178" firstAttribute="height" constant="32"/>
+                                                    </constraints>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint id="32615" firstItem="32612" firstAttribute="top" secondItem="31942" secondAttribute="top" constant="8"/>
+                                                <constraint id="32616" firstItem="32612" firstAttribute="leading" secondItem="31942" secondAttribute="leading" constant="16"/>
+                                                <constraint id="32751" firstItem="32750" firstAttribute="top" secondItem="32612" secondAttribute="bottom" constant="8"/>
+                                                <constraint id="32754" firstItem="32612" firstAttribute="trailing" secondItem="32750" secondAttribute="centerX" constant="40"/>
+                                                <constraint id="33033" firstItem="33032" firstAttribute="top" secondItem="32750" secondAttribute="bottom" constant="4.5"/>
+                                                <constraint id="33177" firstItem="33029" firstAttribute="top" secondItem="32750" secondAttribute="bottom" constant="4.5"/>
+                                                <constraint id="33179" firstItem="33178" firstAttribute="top" secondItem="32750" secondAttribute="bottom" constant="4.5"/>
+                                                <constraint id="33183" firstItem="33178" firstAttribute="centerX" secondItem="31942" secondAttribute="centerX"/>
+                                                <constraint id="36654" firstItem="31942" firstAttribute="trailing" secondItem="33032" secondAttribute="trailing" constant="16"/>
+                                                <constraint id="36811" firstItem="31942" firstAttribute="bottom" secondItem="33178" secondAttribute="bottom" constant="16"/>
+                                                <constraint id="36967" firstItem="33029" firstAttribute="leading" secondItem="31942" secondAttribute="leading" constant="16"/>
+                                                <constraint id="37122" firstItem="31942" firstAttribute="bottom" secondItem="33029" secondAttribute="bottom" constant="16"/>
+                                                <constraint id="37599" firstItem="32750" firstAttribute="leading" secondItem="31942" secondAttribute="leading" constant="16"/>
+                                                <constraint id="37600" firstItem="31942" firstAttribute="trailing" secondItem="32750" secondAttribute="trailing" constant="16"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblNoteUserName" destination="32612" id="name-outlet-32612"/>
+                                            <outlet property="lblNoteComment" destination="32750" id="name-outlet-32750"/>
+                                            <outlet property="btnCall" destination="33029" id="name-outlet-33029"/>
+                                            <outlet property="btnEmail" destination="33178" id="name-outlet-33178"/>
+                                            <outlet property="btnMessage" destination="33032" id="name-outlet-33032"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <constraints>
-                            <constraint id="15723" firstItem="15375" firstAttribute="trailingMargin" secondItem="15694" secondAttribute="trailing" constant="15"/>
-                            <constraint id="15724" firstItem="15371" firstAttribute="bottom" secondItem="15694" secondAttribute="bottom" constant="80"/>
+                            <constraint id="31684" firstItem="15694" firstAttribute="trailing" secondItem="15375" secondAttribute="trailingMargin"/>
+                            <constraint id="31685" firstItem="15371" firstAttribute="bottom" secondItem="15694" secondAttribute="bottom" constant="40"/>
+                            <constraint id="32069" firstItem="31940" firstAttribute="top" secondItem="15371" secondAttribute="top"/>
+                            <constraint id="32070" firstItem="31940" firstAttribute="trailing" secondItem="15375" secondAttribute="trailingMargin" constant="16"/>
+                            <constraint id="32071" firstItem="31940" firstAttribute="leading" secondItem="15375" secondAttribute="leadingMargin" constant="-16"/>
+                            <constraint id="32073" firstItem="15694" firstAttribute="top" secondItem="31940" secondAttribute="bottom" constant="8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" id="15376" title="Notes" image="ic_notes.png"/>
                     <connections>
                         <outlet property="btnAddNewNote" destination="15718" id="name-outlet-15718"/>
                         <outlet property="btnAddNewNote" destination="15694" id="name-outlet-15694"/>
+                        <outlet property="NotesTableView" destination="31940" id="name-outlet-31940"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15377" userLabel="First Responder" sceneMemberID="firstResponder"/>

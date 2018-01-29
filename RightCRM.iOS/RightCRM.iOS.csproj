@@ -279,6 +279,11 @@
     <Compile Include="Views\BusinessTabs\AddNewNoteView.designer.cs">
       <DependentUpon>AddNewNoteView.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotesCell.cs" />
+    <Compile Include="NotesCell.designer.cs">
+      <DependentUpon>NotesCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BusinessTabs\NotesTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

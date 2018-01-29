@@ -25,12 +25,22 @@ namespace RightCRM.iOS.Views
 
             this.NavigationItem.LeftBarButtonItem = backbutton;
 
+            var source = new NotesTVS(this.NotesTableView);
+
             var Set = this.CreateBindingSet<BusDetailTab2View, BusDetailTab2ViewModel>();
+
+            Set.Bind(source).To(vm => vm.AllNotesList);
+          //  Set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.NoteSelectedCommand);
 
             Set.Bind(backbutton).To(vm => vm.GoToRootMenuCommand);
             Set.Bind(btnAddNewNote).To(vm => vm.NewNoteCommand);
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
             Set.Apply();
+
+            this.NotesTableView.Source = source;
+            this.NotesTableView.RowHeight = UITableView.AutomaticDimension;
+            this.NotesTableView.EstimatedRowHeight = 30f;
+            this.NotesTableView.ReloadData();
         }
     }
 }

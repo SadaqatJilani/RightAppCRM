@@ -18,11 +18,20 @@ namespace RightCRM.iOS.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnAddNewNote { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView NotesTableView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (btnAddNewNote != null) {
                 btnAddNewNote.Dispose ();
                 btnAddNewNote = null;
+            }
+
+            if (NotesTableView != null) {
+                NotesTableView.Dispose ();
+                NotesTableView = null;
             }
         }
     }

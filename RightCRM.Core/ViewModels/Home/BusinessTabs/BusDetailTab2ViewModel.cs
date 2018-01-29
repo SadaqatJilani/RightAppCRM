@@ -12,6 +12,8 @@ namespace RightCRM.Core.ViewModels.Home
     using MvvmCross.Core.Navigation;
     using MvvmCross.Core.ViewModels;
     using RightCRM.Common;
+    using RightCRM.Common.Models;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Bus detail tab2 view model.
@@ -35,6 +37,9 @@ namespace RightCRM.Core.ViewModels.Home
         /// <value>The new note command.</value>
         public IMvxCommand NewNoteCommand { get; private set; }
 
+        MvxObservableCollection<NotesModel> allNotesList;
+        public MvxObservableCollection<NotesModel> AllNotesList { get { return allNotesList; } set { SetProperty(ref allNotesList, value); } }
+
         /// <summary>
         /// Prepare this instance.
         /// </summary>
@@ -43,6 +48,18 @@ namespace RightCRM.Core.ViewModels.Home
             base.Prepare();
 
             this.Title = Constants.TitleBusinessNotesPage;
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            AllNotesList = new MvxObservableCollection<NotesModel>
+            {
+                new NotesModel { NoteUserName = "ExhibitA", NoteComment="Heelloo this is a test" },
+                new NotesModel { NoteUserName="ExhibitB", NoteComment="Heelloo this is a test"}
+            };
+
         }
     }
 }
