@@ -21,7 +21,7 @@ namespace RightCRM.Core.ViewModels.Home
     /// </summary>
     public class BusinessDetailTabViewModel : BaseViewModel, IMvxViewModel<Business>
     {
-        private Business BusinessID;
+        private Business businessItem;
 
         /// <summary>
         /// The index of the item.
@@ -81,7 +81,7 @@ namespace RightCRM.Core.ViewModels.Home
 
         public void Prepare(Business parameter)
         {
-            BusinessID = parameter;
+            businessItem = parameter;
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace RightCRM.Core.ViewModels.Home
         {
             var tasks = new List<Task>
             {
-                navigationService.Navigate<BusDetailTab1ViewModel, Business>(BusinessID),
+                navigationService.Navigate<BusDetailTab1ViewModel, Business>(businessItem),
                 navigationService.Navigate<BusDetailTab2ViewModel>()
             };
             await Task.WhenAll(tasks);

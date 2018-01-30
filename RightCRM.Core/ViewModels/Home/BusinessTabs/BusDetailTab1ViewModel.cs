@@ -16,7 +16,7 @@ namespace RightCRM.Core.ViewModels.Home
 {
     public class BusDetailTab1ViewModel : BaseViewModel, IMvxViewModel<Business>
     {
-        private Business BusinessID;
+        private Business businessItem;
 
         public BusDetailTab1ViewModel(IMvxNavigationService navigationService)
         {
@@ -32,7 +32,7 @@ namespace RightCRM.Core.ViewModels.Home
 
         public void Prepare(Business parameter)
         {
-            BusinessID = parameter;
+            businessItem = parameter;
         }
     }
 }
