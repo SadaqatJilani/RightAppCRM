@@ -69,6 +69,8 @@ namespace RightCRM.Core.ViewModels
                 svsid = "work"
             });
             Debug.WriteLine("Session Id : " + result.user.sesid);
+
+            this.GoToRootMenuCommand.Execute();
         }
     }
 }
