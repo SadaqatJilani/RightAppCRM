@@ -57,6 +57,8 @@
     <Compile Include="Facades\UserFacade.cs" />
     <Compile Include="Facades\IBusinessFacade.cs" />
     <Compile Include="Facades\BusinessFacade.cs" />
+    <Compile Include="Facades\INotesFacade.cs" />
+    <Compile Include="Facades\NotesFacade.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -62,6 +62,7 @@
     <Compile Include="Factories\ApiResponse.cs" />
     <Compile Include="Factories\ErrorResult.cs" />
     <Compile Include="Factories\ResponseContentStatus.cs" />
+    <Compile Include="Api\Fake\FakeBusinessApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

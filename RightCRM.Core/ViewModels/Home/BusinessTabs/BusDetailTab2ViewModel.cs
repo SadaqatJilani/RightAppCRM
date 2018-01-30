@@ -14,21 +14,27 @@ namespace RightCRM.Core.ViewModels.Home
     using RightCRM.Common;
     using RightCRM.Common.Models;
     using System.Threading.Tasks;
+    using RightCRM.Facade.Facades;
+    using System.Linq;
 
     /// <summary>
     /// Bus detail tab2 view model.
     /// </summary>
     public class BusDetailTab2ViewModel : BaseViewModel
     {
+        private readonly INotesFacade notesFacade;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.BusDetailTab2ViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">Navigation service.</param>
-        public BusDetailTab2ViewModel(IMvxNavigationService navigationService)
+        public BusDetailTab2ViewModel(IMvxNavigationService navigationService, INotesFacade notesFacade)
         {
             this.navigationService = navigationService;
+            this.notesFacade = notesFacade;
 
             this.NewNoteCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<AddNewNoteViewModel>());
+            AllNotesList = new MvxObservableCollection<NotesModel>();
         }
 
         /// <summary>
@@ -54,11 +60,29 @@ namespace RightCRM.Core.ViewModels.Home
         {
             await base.Initialize();
 
-            AllNotesList = new MvxObservableCollection<NotesModel>
+            this.AllNotesList.Clear();
+
+            var result = await this.notesFacade.GetAllNotes();
+
+            if (result == null || !result.Any())
             {
-                new NotesModel { NoteUserName = "ExhibitA", NoteComment="Heelloo this is a test" },
-                new NotesModel { NoteUserName="ExhibitB", NoteComment="Heelloo this is a test"}
-            };
+                // show no result screen
+               // this.NoManualsFound = true;
+                return;
+            }
+
+            foreach (var note in result)
+            {
+                var noteItem = new NotesModel
+                {
+                    NoteUserID = note.NoteUserID,
+                    NoteUserName = note.NoteUserName,
+                    NoteComment = note.NoteComment
+                };
+
+                this.AllNotesList.Add(noteItem);
+    
+            }
 
         }
     }

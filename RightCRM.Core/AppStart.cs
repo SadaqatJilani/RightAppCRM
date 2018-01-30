@@ -15,11 +15,11 @@ namespace RightCRM.Core
 {
     public class AppStart : MvxNavigatingObject, IMvxAppStart
     {
-        private readonly IMvxNavigationService _navigationService;
+        private readonly IMvxNavigationService navigationService;
 
         public AppStart(IMvxNavigationService navigationService)
         {
-            _navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
+            this.navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace RightCRM.Core
         /// </summary>
         public void Start(object hint = null)
         {
-            _navigationService.Navigate<LoginViewModel>();
+            navigationService.Navigate<LoginViewModel>();
         }
     }
 }

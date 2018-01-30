@@ -24,6 +24,8 @@ namespace RightCRM.Common
 
         public const string TitleCreateNewNotePage = "New Note";
 
+        public const string LanguageSettingsKey = "Language";
 
+        public const string SessionID = "SessionID";
     }
 }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
+using RightCRM.Common.Services;
 using RightCRM.DataAccess.Model.RequestModels;
 using RightCRM.Facade.Facades;
 
@@ -20,13 +21,21 @@ namespace RightCRM.Core.ViewModels
         private readonly IUserFacade userFacade;
 
         /// <summary>
+        /// The cache service.
+        /// </summary>
+        private readonly ICacheService cacheService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.LoginViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">Navigation service.</param>
-        public LoginViewModel(IMvxNavigationService navigationService,IUserFacade userFacade)
+        public LoginViewModel(IMvxNavigationService navigationService,
+                              IUserFacade userFacade)
+                             // ICacheService cacheService)
         {
             this.navigationService = navigationService;
             this.userFacade = userFacade;
+           // this.cacheService = cacheService;
         }
         private string _userName;
         public string UserName
@@ -69,6 +78,7 @@ namespace RightCRM.Core.ViewModels
                 svsid = "work"
             });
             Debug.WriteLine("Session Id : " + result.user.sesid);
+
 
             this.GoToRootMenuCommand.Execute();
         }
