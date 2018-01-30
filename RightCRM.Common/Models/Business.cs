@@ -3,6 +3,8 @@ namespace RightCRM.Common.Models
 {
     public class Business
     {
+        public int BusinessID { get; set; }
+
         public string CompanyLogoURL { get; set; }
 
         public string CompanyName { get; set; }

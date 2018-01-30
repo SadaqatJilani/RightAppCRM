@@ -34,7 +34,7 @@ namespace RightCRM.Core.ViewModels.Home
             this.notesFacade = notesFacade;
 
             this.NewNoteCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<AddNewNoteViewModel>());
-            AllNotesList = new MvxObservableCollection<NotesModel>();
+            this.AllNotesList = new MvxObservableCollection<NotesModel>();
         }
 
         /// <summary>
@@ -60,7 +60,9 @@ namespace RightCRM.Core.ViewModels.Home
         {
             await base.Initialize();
 
-            this.AllNotesList.Clear();
+           // this.AllNotesList = new MvxObservableCollection<NotesModel>(await this.notesFacade.GetAllNotes());
+
+            //this.AllNotesList.Clear();
 
             var result = await this.notesFacade.GetAllNotes();
 

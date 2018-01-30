@@ -14,12 +14,15 @@ namespace RightCRM.Core.ViewModels.Home
     using MvvmCross.Core.Navigation;
     using MvvmCross.Core.ViewModels;
     using RightCRM.Common;
+    using RightCRM.Common.Models;
 
     /// <summary>
     /// Business detail tab view model.
     /// </summary>
-    public class BusinessDetailTabViewModel : BaseViewModel
+    public class BusinessDetailTabViewModel : BaseViewModel, IMvxViewModel<Business>
     {
+        private Business BusinessID;
+
         /// <summary>
         /// The index of the item.
         /// </summary>
@@ -76,6 +79,11 @@ namespace RightCRM.Core.ViewModels.Home
             this.Title = Constants.TitleBusinessDetailsPage;
         }
 
+        public void Prepare(Business parameter)
+        {
+            BusinessID = parameter;
+        }
+
         /// <summary>
         /// Shows the initial view models.
         /// </summary>
@@ -84,7 +92,7 @@ namespace RightCRM.Core.ViewModels.Home
         {
             var tasks = new List<Task>
             {
-                navigationService.Navigate<BusDetailTab1ViewModel>(),
+                navigationService.Navigate<BusDetailTab1ViewModel, Business>(BusinessID),
                 navigationService.Navigate<BusDetailTab2ViewModel>()
             };
             await Task.WhenAll(tasks);

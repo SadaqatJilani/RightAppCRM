@@ -10,11 +10,14 @@ using System;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
+using RightCRM.Common.Models;
 
 namespace RightCRM.Core.ViewModels.Home
 {
-    public class BusDetailTab1ViewModel : BaseViewModel
+    public class BusDetailTab1ViewModel : BaseViewModel, IMvxViewModel<Business>
     {
+        private Business BusinessID;
+
         public BusDetailTab1ViewModel(IMvxNavigationService navigationService)
         {
             this.navigationService = navigationService;
@@ -27,5 +30,9 @@ namespace RightCRM.Core.ViewModels.Home
             Title = Constants.TitleBusinessDetailsPage;
         }
 
+        public void Prepare(Business parameter)
+        {
+            BusinessID = parameter;
+        }
     }
 }

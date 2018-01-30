@@ -19,7 +19,7 @@ namespace RightCRM.Core.ViewModels.Popups
         {
             this.navigationService = navigationService;
 
-            CloseCommand = new MvxAsyncCommand(CloseFilters);
+            CloseCommand = CloseCommand ?? new MvxAsyncCommand(CloseFilters);
         }
 
         public override void Prepare()
