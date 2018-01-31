@@ -16,13 +16,13 @@ namespace RightCRM.DataAccess.Api
         {
             return new List<Business>()
             {
-                new Business(){CompanyName="Company Name",BusinessType="Business Type",AnnualRevenue=10000,CompanySize=500},
-                new Business(){CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
-                new Business(){CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
-                new Business(){CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
-                new Business(){CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
-                new Business(){CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
-                new Business(){CompanyName="Zepto Systems Ltd",BusinessType="Local Software",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=101, CompanyName="Company Name",BusinessType="Business Type",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=102, CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=103, CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=104, CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=105, CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=106, CompanyName="Zepto Systems Ltd",BusinessType="OffShore Software",AnnualRevenue=10000,CompanySize=500},
+                new Business(){BusinessID=107, CompanyName="Zepto Systems Ltd",BusinessType="Local Software",AnnualRevenue=10000,CompanySize=500},
             };
         }
     }
