@@ -30,9 +30,11 @@ namespace RightCRM.DataAccess.Api.BusinessApi
             });
 
 #else
-
-
-
+            return await Task.FromResult(new List<NotesModel>
+            {
+                new NotesModel { NoteUserName = "ExhibitA", NoteComment="Heelloo this is a test" },
+                new NotesModel { NoteUserName="ExhibitB", NoteComment="Heelloo this is a test"}
+            });
 
 #endif
 

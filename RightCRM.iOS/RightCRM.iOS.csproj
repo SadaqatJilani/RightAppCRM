@@ -173,9 +173,6 @@
     <Reference Include="MvxPlugins.Picker.iOS">
       <HintPath>..\packages\MvxPlugins.Picker.iOS.1.1.1\lib\Xamarin.iOS10\MvxPlugins.Picker.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Reactive.Interfaces">
       <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
@@ -211,6 +208,12 @@
     </Reference>
     <Reference Include="Akavache.Sqlite3">
       <HintPath>..\packages\akavache.sqlite3.5.0.0\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -318,12 +321,12 @@
     <Compile Include="Views\BusinessTabs\AddNewNoteView.designer.cs">
       <DependentUpon>AddNewNoteView.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotesCell.cs" />
-    <Compile Include="NotesCell.designer.cs">
-      <DependentUpon>NotesCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\BusinessTabs\NotesTVS.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Views\BusinessTabs\NotesCell.cs" />
+    <Compile Include="Views\BusinessTabs\NotesCell.designer.cs">
+      <DependentUpon>NotesCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
