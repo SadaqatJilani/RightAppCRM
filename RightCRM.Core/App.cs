@@ -4,6 +4,7 @@ using MvvmCross.Platform.IoC;
 using RightCRM.Common.Services;
 using RightCRM.Core.Services;
 using RightCRM.DataAccess.Api;
+using RightCRM.DataAccess.Api.BusinessApi;
 using RightCRM.DataAccess.Api.User;
 using RightCRM.DataAccess.Factories;
 using RightCRM.Facade.Facades;
@@ -19,7 +20,7 @@ namespace RightCRM.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            Mvx.RegisterType<IBusinessApi, FakeBusinessApi>();
+            Mvx.RegisterType<IBusinessApi, BusinessApi>();
             Mvx.RegisterType<IBusinessFacade, BusinessFacade>();
             Mvx.RegisterType<IRestService, RestService>();
             Mvx.RegisterType<IUserApi, UserApi>();

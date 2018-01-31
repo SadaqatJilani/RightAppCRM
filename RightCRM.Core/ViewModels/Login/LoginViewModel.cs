@@ -1,95 +1,86 @@
-﻿//using XPlatformMenus.Core.Interfaces;
-//using MvvmCross.Core.ViewModels;
+﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using MvvmCross.Core.Navigation;
+using MvvmCross.Core.ViewModels;
+using RightCRM.Common;
+using RightCRM.Common.Services;
+using RightCRM.DataAccess.Model.RequestModels;
+using RightCRM.Facade.Facades;
 
-//namespace RightCRM.Core.ViewModels
-//{
-//	public class LoginViewModel : BaseViewModel
-//    {
-//        private readonly ILoginService _loginService;
+namespace RightCRM.Core.ViewModels
+{
+    /// <summary>
+    /// Login view model.
+    /// </summary>
+    public class LoginViewModel : BaseViewModel
+    {
+        /// <summary>
+        /// The user facade.
+        /// </summary>
+        private readonly IUserFacade userFacade;
 
-//        private readonly IDialogService _dialogService;
+        /// <summary>
+        /// The cache service.
+        /// </summary>
+        private readonly ICacheService cacheService;
 
-//        public LoginViewModel(ILoginService loginService, IDialogService dialogService)
-//        {
-//            _loginService = loginService;
-//            _dialogService = dialogService;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.LoginViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">Navigation service.</param>
+        public LoginViewModel(IMvxNavigationService navigationService,
+                              IUserFacade userFacade)
+                             // ICacheService cacheService)
+        {
+            this.navigationService = navigationService;
+            this.userFacade = userFacade;
+           // this.cacheService = cacheService;
+        }
+        private string _userName = "khurram123_admin@zeptowork.com";
+        public string UserName
+        {
+            get { return _userName; }
+            set { SetProperty(ref _userName, value); }
+        }
 
-//            Username = "TestUser";
-//            Password = "YouCantSeeMe";
-//            IsLoading = false;
-//        }
+        private string _password = "test123";
+        public string Password
+        {
+            get { return _password; }
+            set { SetProperty(ref _password, value); }
+        }
 
-//        private string _username;
-//        public string Username
-//        {
-//            get
-//            {
-//                return _username;
-//            }
+        private string _loginResult;
+        public string LoginResult
+        {
+            get { return _loginResult; }
+            set { SetProperty(ref _loginResult, value); }
+        }
 
-//            set
-//            {
-//                SetProperty (ref _username, value);
-//                RaisePropertyChanged(() => Username);
-//            }
-//        }
+        public IMvxCommand LoginCommand => new MvxAsyncCommand(Login);
+        private async Task Login()
+        {
+            //if (UserName == "admin" && Password == "123"){
+            //    LoginResult = "Login Successfully";
+            //}
+            //else{
+            //LoginResult = "User Name or Password is Invalid";
 
-//        private string _password;
-//        public string Password
-//        {
-//            get
-//            {
-//                return _password;
-//            }
+            //}
 
-//            set
-//            {
-//                SetProperty (ref _password, value);
-//                RaisePropertyChanged(() => Password);
-//            }
-//        }
+            //ShowViewModel<AccountsViewModel>();
 
-//        private bool _isLoading;
+            var result = await this.userFacade.GetUserSessionId(new RequestUserLogin()
+            {
+                loginid = UserName,
+                token = Password,
+                svsid = "work"
+            });
+            Debug.WriteLine("Session Id : " + result.user.sesid);
 
-//        public bool IsLoading
-//        {
-//            get
-//            {
-//                return _isLoading;
-//            }
 
-//            set
-//            {
-//                SetProperty(ref _isLoading, value);
-//            }
-//        }
-
-//        private IMvxCommand _loginCommand;
-//        public virtual IMvxCommand LoginCommand
-//        {
-//            get
-//            {
-//                _loginCommand = _loginCommand ?? new MvxCommand(AttemptLogin, CanExecuteLogin);
-//                return _loginCommand;
-//            }
-//        }
-
-//        private void AttemptLogin()
-//        {
-//            if (_loginService.Login(Username, Password))
-//            {
-//                ShowViewModel<MainViewModel>();
-//            }
-//            else
-//            {
-//                _dialogService.Alert("We were unable to log you in!", "Login Failed", "OK");
-//            }
-//        }
-
-//        private bool CanExecuteLogin()
-//        {
-//            return (!string.IsNullOrEmpty(Username) || !string.IsNullOrWhiteSpace(Username))
-//                   && (!string.IsNullOrEmpty(Password) || !string.IsNullOrWhiteSpace(Password));
-//        }
-//    }
-//}
+            this.GoToRootMenuCommand.Execute();
+        }
+    }
+}

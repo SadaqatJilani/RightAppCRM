@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using RightCRM.Common.Models;
 
-namespace RightCRM.DataAccess.Api
+namespace RightCRM.DataAccess.Api.BusinessApi
 {
     public interface IBusinessApi
     {
-        IEnumerable<Business> GetBusinessList();
+        Task<IEnumerable<Business>> GetBusinessList();
     }
 }

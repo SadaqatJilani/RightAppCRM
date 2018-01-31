@@ -22,7 +22,7 @@ namespace RightCRM.Core.ViewModels
         {
             this.navigationService = navigationService;
             this.businessFacade = businessFacade;
-            AllBusiness = new MvxObservableCollection<Business>(this.businessFacade.GetBusiness());
+            AllBusiness = new MvxObservableCollection<Business>(this.businessFacade.GetBusiness().Result);
 
             BusinessDetailCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<BusinessDetailTabViewModel>());
         }

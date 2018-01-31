@@ -7,7 +7,7 @@ namespace RightCRM.Facade.Facades
 {
     public interface IBusinessFacade
     {
-        IEnumerable<Business> GetBusiness();
+        Task<IEnumerable<Business>> GetBusiness();
 
         Business GetBusinessByID(int businessId);
 
