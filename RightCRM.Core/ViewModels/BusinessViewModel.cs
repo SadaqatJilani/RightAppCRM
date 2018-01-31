@@ -23,7 +23,6 @@ namespace RightCRM.Core.ViewModels
         {
             this.navigationService = navigationService;
             this.businessFacade = businessFacade;
-            AllBusiness = new MvxObservableCollection<Business>(this.businessFacade.GetBusiness().Result);
 
             BusinessDetailCommand = new MvxAsyncCommand<Business>(ShowBusinessDetails);
         }
@@ -54,5 +53,12 @@ namespace RightCRM.Core.ViewModels
         }
 
         public IMvxCommand<Business> BusinessDetailCommand { get; private set; }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            AllBusiness = new MvxObservableCollection<Business>(await this.businessFacade.GetBusiness());
+        }
     }
 }
