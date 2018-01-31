@@ -3,7 +3,7 @@ using System;
 using UIKit;
 using MvvmCross.Binding.iOS.Views;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views
 {
     public partial class NotesCell : MvxTableViewCell
     {
