@@ -26,6 +26,7 @@ namespace RightCRM.Core
             Mvx.RegisterType<IUserApi, UserApi>();
             Mvx.RegisterType<IUserFacade, UserFacade>();
             Mvx.RegisterType<INotesFacade, NotesFacade>();
+            Mvx.RegisterType<INotesApi, NotesApi>();
 
             Mvx.ConstructAndRegisterSingleton<IMvxAppStart, AppStart>();
             var appStart = Mvx.Resolve<IMvxAppStart>();

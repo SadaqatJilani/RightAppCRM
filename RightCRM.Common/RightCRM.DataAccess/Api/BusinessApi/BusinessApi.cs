@@ -44,6 +44,22 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
         public async Task<IEnumerable<Business>> GetBusinessList()
         {
+
+#if FAKE
+
+            return await Task.FromResult(new List<Business>
+            {
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"}
+            });
+
+#else                  
+
             try
             {
                 string requestUrl = ApiConfig.GetAllBusinesses();
@@ -51,10 +67,11 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                 var result = await this.restService.MakeOpenRequestAsync<IEnumerable<Business>>(
                                                                                             requestUrl,
                                                                                             HttpMethod.Post,
-                    JsonConvert.SerializeObject(new GetBusinessRequestModel(){
-                    sessionid = sessionId
+                    JsonConvert.SerializeObject(new GetBusinessRequestModel()
+                    {
+                        sessionid = sessionId
 
-                }));
+                    }));
                 return result.Content;
             }
             catch (Exception ex)
@@ -62,6 +79,10 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                 Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
                 throw ex;
             }
+
+#endif
+
+
         }
     }
 }

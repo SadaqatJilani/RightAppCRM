@@ -10,13 +10,17 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using RightCRM.Common.Models;
+using RightCRM.DataAccess.Api.BusinessApi;
 
 namespace RightCRM.Facade.Facades
 {
     public class NotesFacade : INotesFacade
     {
-        public NotesFacade()
+        private readonly INotesApi notesApi;
+
+        public NotesFacade(INotesApi notesApi)
         {
+            this.notesApi = notesApi;
         }
 
         public void AddNewNote(NotesModel newNote)
@@ -24,15 +28,11 @@ namespace RightCRM.Facade.Facades
             //throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<NotesModel>> GetAllNotes()
+        public Task<IEnumerable<NotesModel>> GetAllNotes()
         {
-          //  throw new NotImplementedException();
+            //  throw new NotImplementedException();
 
-            return await Task.FromResult( new List<NotesModel>
-            {
-                new NotesModel { NoteUserName = "ExhibitA", NoteComment="Heelloo this is a test" },
-                new NotesModel { NoteUserName="ExhibitB", NoteComment="Heelloo this is a test"}
-            });
+            return notesApi.GetAllNotes();
         }
 
         public NotesModel GetNoteByID(int noteID)

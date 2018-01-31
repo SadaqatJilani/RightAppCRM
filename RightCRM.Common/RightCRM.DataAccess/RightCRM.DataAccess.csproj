@@ -64,6 +64,8 @@
     <Compile Include="Api\BusinessApi\BusinessApi.cs" />
     <Compile Include="Api\BusinessApi\IBusinessApi.cs" />
     <Compile Include="Model\Business\GetBusinessRequestModel.cs" />
+    <Compile Include="Api\BusinessApi\INotesApi.cs" />
+    <Compile Include="Api\BusinessApi\NotesApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
