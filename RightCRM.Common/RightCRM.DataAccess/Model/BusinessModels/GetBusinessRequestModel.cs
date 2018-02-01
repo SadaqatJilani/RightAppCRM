@@ -10,7 +10,7 @@ using System;
 using RightCRM.Common;
 using RightCRM.Common.Services;
 
-namespace RightCRM.DataAccess.Model.Business
+namespace RightCRM.DataAccess.Model.BusinessModel
 {
     public class GetBusinessRequestModel
     {

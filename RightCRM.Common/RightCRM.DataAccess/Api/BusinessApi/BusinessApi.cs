@@ -19,30 +19,31 @@
 namespace RightCRM.DataAccess.Api.BusinessApi
 {
     using System;
-    using RightCRM.Common.Models;
     using System.Collections.Generic;
-    using RightCRM.DataAccess.Factories;
-    using RightCRM.DataAccess.Config;
-    using System.Threading.Tasks;
     using System.Diagnostics;
-    using Newtonsoft.Json;
     using System.Net.Http;
-    using RightCRM.DataAccess.Model.Business;
-    using RightCRM.Common.Services;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
     using RightCRM.Common;
+    using RightCRM.Common.Models;
+    using RightCRM.Common.Services;
+    using RightCRM.DataAccess.Config;
+    using RightCRM.DataAccess.Factories;
+    using RightCRM.DataAccess.Model.BusinessModel;
 
     public class BusinessApi : IBusinessApi
     {
         private readonly IRestService restService;
         private readonly ICacheService cacheService;
+
         public BusinessApi(IRestService restService, ICacheService cacheService)
         {
             this.restService = restService;
             this.cacheService = cacheService;
-           
+
         }
 
-        public async Task<IEnumerable<Business>> GetBusinessList()
+        public async Task<GetBusinessResponseModel> GetBusinessList()
         {
 
 #if FAKE
@@ -64,14 +65,21 @@ namespace RightCRM.DataAccess.Api.BusinessApi
             {
                 string requestUrl = ApiConfig.GetAllBusinesses();
                 string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
-                var result = await this.restService.MakeOpenRequestAsync<IEnumerable<Business>>(
+                var result = await this.restService.MakeOpenRequestAsync<GetBusinessResponseModel>(
                                                                                             requestUrl,
                                                                                             HttpMethod.Post,
-                    JsonConvert.SerializeObject(new GetBusinessRequestModel()
-                    {
-                        sessionid = sessionId
-
-                    }));
+                                                                                            JsonConvert.SerializeObject(new GetBusinessRequestModel()
+                                                                                            {
+                                                                                                sessionid = sessionId,
+                                                                                                only_saved_accounts = false,
+                                                                                                srch_pageno = 1,
+                                                                                                srch_keywords = "",
+                                                                                                srch_ctag = "",
+                                                                                                srch_industry = "",
+                                                                                                srch_address_id = null,
+                                                                                                srch_company_size = "",
+                                                                                                srch_annual_revenue = ""
+                                                                                            }));
                 return result.Content;
             }
             catch (Exception ex)
