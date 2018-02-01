@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using RightCRM.Common.Models;
 using RightCRM.DataAccess.Api;
 using RightCRM.DataAccess.Api.BusinessApi;
+using RightCRM.DataAccess.Model.BusinessModel;
 
 namespace RightCRM.Facade.Facades
 {
@@ -15,7 +16,7 @@ namespace RightCRM.Facade.Facades
             this.businessApi = businessApi;
         }
 
-        public Task<IEnumerable<Business>> GetBusiness()
+        public Task<GetBusinessResponseModel> GetBusiness()
 
         {
             return  this.businessApi.GetBusinessList();

@@ -57,8 +57,9 @@ namespace RightCRM.Core.ViewModels
         public override async Task Initialize()
         {
             await base.Initialize();
+            var result = await this.businessFacade.GetBusiness();
 
-            AllBusiness = new MvxObservableCollection<Business>(await this.businessFacade.GetBusiness());
+            AllBusiness = new MvxObservableCollection<Business>(result.note.DataArray);
         }
     }
 }
