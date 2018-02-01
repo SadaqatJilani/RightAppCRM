@@ -11,8 +11,26 @@ namespace RightCRM.Common.Models
 {
     public class BusinessDetails
     {
-        public string CompanyAddress { get; set; }
+        public int? BusinessID { get; set; }
 
-        public string IndustryType { get; set; }
+        public string AccountName { get; set; }
+
+        public string AccountType { get; set; }
+
+        public string BusinessNTN { get; set; }
+
+        public string BusinessWebsite { get; set; }
+
+        public string Industry { get; set; }
+
+        public int? AnnualRevenue { get; set; }
+
+        public string CompanySize { get; set; }
+
+        public string CampaignName { get; set; }
+
+        public string CampaignSrc { get; set; }
+
+        public string CampaignMedia { get; set; }
     }
 }

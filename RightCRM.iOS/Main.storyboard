@@ -214,9 +214,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <constraints>
-                                                        <constraint id="33781" firstItem="32750" firstAttribute="height" constant="21"/>
-                                                    </constraints>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="33029" translatesAutoresizingMaskIntoConstraints="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES">
                                                     <rect key="frame" x="16" y="61.5" width="80" height="32"/>
@@ -261,6 +258,7 @@
                                                 <constraint id="37122" firstItem="31942" firstAttribute="bottom" secondItem="33029" secondAttribute="bottom" constant="16"/>
                                                 <constraint id="37599" firstItem="32750" firstAttribute="leading" secondItem="31942" secondAttribute="leading" constant="16"/>
                                                 <constraint id="37600" firstItem="31942" firstAttribute="trailing" secondItem="32750" secondAttribute="trailing" constant="16"/>
+                                                <constraint id="55333" firstItem="33178" firstAttribute="top" secondItem="32750" secondAttribute="centerY" constant="15"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -324,13 +322,13 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18807" translatesAutoresizingMaskIntoConstraints="NO" text="Account Name">
                                                 <rect key="frame" x="8" y="19" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18808" translatesAutoresizingMaskIntoConstraints="NO" text="Account Type">
                                                 <rect key="frame" x="8" y="61" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
@@ -339,7 +337,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18809" translatesAutoresizingMaskIntoConstraints="NO" text="Business NTN">
                                                 <rect key="frame" x="8" y="103" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
@@ -348,7 +346,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18810" translatesAutoresizingMaskIntoConstraints="NO" text="Business Website">
                                                 <rect key="frame" x="8" y="143" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
@@ -358,52 +356,52 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18811" translatesAutoresizingMaskIntoConstraints="NO" text="Industry">
                                                 <rect key="frame" x="8" y="183" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
                                                     <constraint id="38805" firstItem="18811" firstAttribute="height" constant="21"/>
                                                 </constraints>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18812" translatesAutoresizingMaskIntoConstraints="NO" text="Annual Revenue">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18812" translatesAutoresizingMaskIntoConstraints="NO" text="Company Size">
                                                 <rect key="frame" x="8" y="219" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
                                                     <constraint id="38807" firstItem="18812" firstAttribute="height" constant="21"/>
                                                 </constraints>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18813" translatesAutoresizingMaskIntoConstraints="NO" text="Company size">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18813" translatesAutoresizingMaskIntoConstraints="NO" text="Annual Revenue">
                                                 <rect key="frame" x="8" y="264" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
                                                     <constraint id="38808" firstItem="18813" firstAttribute="height" constant="21"/>
                                                 </constraints>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18814" translatesAutoresizingMaskIntoConstraints="NO" text="Compaign Name">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18814" translatesAutoresizingMaskIntoConstraints="NO" text="Campaign Name">
                                                 <rect key="frame" x="8" y="300" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
                                                     <constraint id="38811" firstItem="18814" firstAttribute="height" constant="21"/>
                                                 </constraints>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18815" translatesAutoresizingMaskIntoConstraints="NO" text="Compaign Src">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18815" translatesAutoresizingMaskIntoConstraints="NO" text="Campaign Src">
                                                 <rect key="frame" x="8" y="347" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
                                                     <constraint id="38813" firstItem="18815" firstAttribute="height" constant="21"/>
                                                 </constraints>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18816" translatesAutoresizingMaskIntoConstraints="NO" text="Compaign Media">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18816" translatesAutoresizingMaskIntoConstraints="NO" text="Campaign Media">
                                                 <rect key="frame" x="8" y="397" width="150" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="semibold"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <constraints>
@@ -603,12 +601,12 @@
                         <outlet property="lblBusinessNTN" destination="19372" id="name-outlet-19372"/>
                         <outlet property="lblBusWebsite" destination="19373" id="name-outlet-19373"/>
                         <outlet property="lblIndustry" destination="19374" id="name-outlet-19374"/>
-                        <outlet property="lblAnnualRevenue" destination="19375" id="name-outlet-19375"/>
-                        <outlet property="lblCompanySize" destination="19376" id="name-outlet-19376"/>
+                        <outlet property="lblCompanySize" destination="19375" id="name-outlet-19375"/>
                         <outlet property="lblCampaignName" destination="19377" id="name-outlet-19377"/>
                         <outlet property="lblCampaignSrc" destination="19378" id="name-outlet-19378"/>
                         <outlet property="lblCampaignMedia" destination="19379" id="name-outlet-19379"/>
                         <outlet property="nameBusWeb" destination="18810" id="name-outlet-18810"/>
+                        <outlet property="lblAnnualRevenue" destination="19376" id="name-outlet-19376"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15382" userLabel="First Responder" sceneMemberID="firstResponder"/>

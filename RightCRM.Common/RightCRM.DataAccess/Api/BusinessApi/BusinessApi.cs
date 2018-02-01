@@ -48,15 +48,22 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
 #if FAKE
 
-            return await Task.FromResult(new List<Business>
+            return await Task.FromResult(new GetBusinessResponseModel()
             {
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize=50, BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"}
+                note = new Note()
+                {
+                    DataArray = new Business[]
+
+                    {
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"}
+                    }
+                }
             });
 
 #else                  
