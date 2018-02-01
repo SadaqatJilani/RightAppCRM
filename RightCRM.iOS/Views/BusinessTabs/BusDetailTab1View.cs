@@ -6,6 +6,7 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 using MvvmCross.Binding.BindingContext;
 using RightCRM.Core.ViewModels.Home;
 using RightCRM.Common;
+using Cirrious.FluentLayouts.Touch;
 
 namespace RightCRM.iOS.Views
 {
@@ -24,6 +25,15 @@ namespace RightCRM.iOS.Views
             UIBarButtonItem backbutton = new UIBarButtonItem(UIImage.FromBundle("ic_back"), UIBarButtonItemStyle.Done, null);
 
             this.NavigationItem.LeftBarButtonItem = backbutton;
+
+            //  lblAccountName.RemoveConstraint(lblAccou);
+            // lblAccountName.RemoveConstraint(constraint: constr);
+
+
+            View.AddConstraints(
+                lblAccountName.Width().EqualTo(View.Center.X).Minus(30),
+                nameBusWeb.Width().EqualTo(View.Center.X).Minus(30)
+            );
 
             var Set = this.CreateBindingSet<BusDetailTab1View, BusDetailTab1ViewModel>();
 
