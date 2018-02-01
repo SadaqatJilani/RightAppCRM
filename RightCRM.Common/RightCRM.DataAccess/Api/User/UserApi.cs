@@ -51,7 +51,7 @@ namespace RightCRM.DataAccess.Api.User
                 var result = await this.restService.MakeOpenRequestAsync<ResponseUserLogin>(
                                                                                             requestUrl,
                                                                                             HttpMethod.Post,
-                                                                                            JsonConvert.SerializeObject(userLogin));
+                                                                                            userLogin);
                 return result.Content;
             }
             catch (Exception ex)

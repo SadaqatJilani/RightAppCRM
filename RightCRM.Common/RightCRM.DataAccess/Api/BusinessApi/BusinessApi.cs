@@ -68,7 +68,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                 var result = await this.restService.MakeOpenRequestAsync<GetBusinessResponseModel>(
                                                                                             requestUrl,
                                                                                             HttpMethod.Post,
-                                                                                            JsonConvert.SerializeObject(new GetBusinessRequestModel()
+                                                                                            new GetBusinessRequestModel()
                                                                                             {
                                                                                                 sessionid = sessionId,
                                                                                                 only_saved_accounts = false,
@@ -79,7 +79,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                                 srch_address_id = null,
                                                                                                 srch_company_size = "",
                                                                                                 srch_annual_revenue = ""
-                                                                                            }));
+                                                                                            });
                 return result.Content;
             }
             catch (Exception ex)

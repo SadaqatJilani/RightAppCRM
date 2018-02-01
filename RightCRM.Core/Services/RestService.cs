@@ -86,7 +86,7 @@ namespace RightCRM.Core.Services
         /// <param name="requestBody">Request body.</param>
         /// <param name="failSilent">If set to <c>true</c> fail silent.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public async Task<ApiResponse<T>> MakeOpenRequestAsync<T>(string requestUrl, HttpMethod verb, string requestBody, bool failSilent = false)
+        public async Task<ApiResponse<T>> MakeOpenRequestAsync<T>(string requestUrl, HttpMethod verb, object requestBody, bool failSilent = false)
         {
             var responseData = new ApiResponse<T>();
             HttpResponseMessage result = null;
@@ -99,7 +99,7 @@ namespace RightCRM.Core.Services
                     request.Headers.Add("Accept", "application/json");
                     if (verb == HttpMethod.Post)
                     {
-                        result = await client.PostAsync(requestUrl, new StringContent(requestBody,Encoding.UTF8,"application/json"));
+                        result = await client.PostAsync(requestUrl, new StringContent(JsonConvert.SerializeObject(requestBody),Encoding.UTF8,"application/json"));
                     }
                     else if (verb == HttpMethod.Get)
                     {

@@ -27,6 +27,6 @@ namespace RightCRM.DataAccess.Factories
        /// <param name="requestbody">Request body.</param>
        /// <param name="failSilent">If set to <c>true</c> fail silent.</param>
        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        Task<ApiResponse<T>> MakeOpenRequestAsync<T>(string requestUrl, HttpMethod verb, string requestbody = "", bool failSilent = false);
+        Task<ApiResponse<T>> MakeOpenRequestAsync<T>(string requestUrl, HttpMethod verb, object requestbody, bool failSilent = false);
     }
 }
