@@ -51,6 +51,18 @@ namespace RightCRM.iOS.Views
             var Set = this.CreateBindingSet<CreateNewBusView, CreateNewBusViewModel>();
 
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
+
+            Set.Bind(txtAccountName).To(vm => vm.NewBusinessDetails.AccountName);
+            Set.Bind(txtAccountType).To(vm => vm.NewBusinessDetails.AccountType);
+            Set.Bind(txtBusinessNTN).To(vm => vm.NewBusinessDetails.BusinessNTN);
+            Set.Bind(txtBusinessWebsite).To(vm => vm.NewBusinessDetails.BusinessWebsite);
+            Set.Bind(txtIndustry).To(vm => vm.NewBusinessDetails.Industry);
+            Set.Bind(txtCompanySize).To(vm => vm.NewBusinessDetails.CompanySize);
+            Set.Bind(txtAnnualRevenue).To(vm => vm.NewBusinessDetails.AnnualRevenue);
+            Set.Bind(txtCampaignName).To(vm => vm.NewBusinessDetails.CampaignName);
+            Set.Bind(txtCampaignSrc).To(vm => vm.NewBusinessDetails.CampaignSrc);
+            Set.Bind(txtCampaignMedia).To(vm => vm.NewBusinessDetails.CampaignMedia);
+
             Set.Apply();
         }
 
