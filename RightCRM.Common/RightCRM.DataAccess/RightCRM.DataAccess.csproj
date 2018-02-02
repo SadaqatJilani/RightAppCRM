@@ -67,6 +67,8 @@
     <Compile Include="Api\BusinessApi\INotesApi.cs" />
     <Compile Include="Api\BusinessApi\NotesApi.cs" />
     <Compile Include="Model\BusinessModels\GetBusinessResponseModel.cs" />
+    <Compile Include="Model\BusinessModels\BusDetailsRequestModel.cs" />
+    <Compile Include="Model\BusinessModels\BusDetailsResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

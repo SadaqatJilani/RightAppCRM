@@ -7,6 +7,7 @@ using RightCRM.Core.ViewModels.Popups;
 using RightCRM.Core.ViewModels.Home;
 using RightCRM.Facade.Facades;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 
 namespace RightCRM.Core.ViewModels
 {
@@ -19,10 +20,11 @@ namespace RightCRM.Core.ViewModels
         }
 
         readonly IBusinessFacade businessFacade;   
-        public BusinessViewModel(IBusinessFacade businessFacade, IMvxNavigationService navigationService)
+        public BusinessViewModel(IBusinessFacade businessFacade, IMvxNavigationService navigationService, IUserDialogs userDialogs) : base (userDialogs)
         {
             this.navigationService = navigationService;
             this.businessFacade = businessFacade;
+            this.userDialogs = userDialogs;
 
             BusinessDetailCommand = new MvxAsyncCommand<Business>(ShowBusinessDetails);
         }

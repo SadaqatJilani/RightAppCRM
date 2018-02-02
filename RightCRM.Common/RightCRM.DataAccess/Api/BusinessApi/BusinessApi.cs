@@ -29,7 +29,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
     using RightCRM.Common.Services;
     using RightCRM.DataAccess.Config;
     using RightCRM.DataAccess.Factories;
-    using RightCRM.DataAccess.Model.BusinessModel;
+    using RightCRM.DataAccess.Model.BusinessModels;
 
     public class BusinessApi : IBusinessApi
     {
@@ -43,6 +43,10 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
         }
 
+        /// <summary>
+        /// Gets the business list.
+        /// </summary>
+        /// <returns>The business list.</returns>
         public async Task<GetBusinessResponseModel> GetBusinessList()
         {
 
@@ -98,6 +102,57 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 #endif
 
 
+        }
+
+
+        public async Task<BusDetailsResponseModel> GetBusinessDetails(int? businessID)
+        {
+#if FAKE
+
+            return await Task.FromResult(new BusDetailsResponseModel()
+            {
+                account = new Account()
+                {
+                    Data = new BusinessDetails()
+                    {
+                        BusinessID = 101,
+                        AccountName = "hey",
+                        AccountType = "test",
+                        AnnualRevenue = 133,
+                        BusinessNTN = "93829391",
+                        BusinessWebsite = "www.helloworld.com",
+                        CampaignMedia = "bolwala",
+                        CampaignName = "hellomoto",
+                        CampaignSrc = "source",
+                        CompanySize = "1000",
+                        Industry = "Pharma"
+                    }
+                }
+
+            });
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.GetBusinessDetails();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                var result = await this.restService.MakeOpenRequestAsync<BusDetailsResponseModel>(
+                    requestUrl,
+                    HttpMethod.Post,
+                    new BusDetailsRequestModel()
+                    {
+                    session_id = sessionId, 
+                    account_number= businessID
+                    });
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+#endif
         }
     }
 }

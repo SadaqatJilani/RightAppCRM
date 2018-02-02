@@ -10,7 +10,7 @@
 using System;
 using Newtonsoft.Json;
 using RightCRM.Common.Models;
-namespace RightCRM.DataAccess.Model.BusinessModel
+namespace RightCRM.DataAccess.Model.BusinessModels
 {
     public class status
     {

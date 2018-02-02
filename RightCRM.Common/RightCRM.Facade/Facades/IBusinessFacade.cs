@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using RightCRM.Common.Models;
-using RightCRM.DataAccess.Model.BusinessModel;
+using RightCRM.DataAccess.Model.BusinessModels;
 
 namespace RightCRM.Facade.Facades
 {

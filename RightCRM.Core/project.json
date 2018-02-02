@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "Acr.UserDialogs": "6.5.1",
     "akavache.core": "5.0.0",
     "akavache.sqlite3": "5.0.0",
     "MvvmCross": "5.6.3",
@@ -13,9 +14,9 @@
     "Rx-Linq": "2.2.5",
     "Rx-Main": "2.2.5",
     "Rx-PlatformServices": "2.2.5",
-    "Splat": "1.6.0",
-    "SQLitePCLRaw.bundle_e_sqlite3": "1.1.0",
-    "SQLitePCLRaw.core": "1.1.0"
+    "Splat": "2.0.0",
+    "SQLitePCLRaw.bundle_e_sqlite3": "1.1.9",
+    "SQLitePCLRaw.core": "1.1.9"
   },
   "frameworks": {
     ".NETPortable,Version=v4.5,Profile=Profile111": {}

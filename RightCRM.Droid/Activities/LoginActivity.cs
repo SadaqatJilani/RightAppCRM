@@ -19,6 +19,9 @@ namespace RightCRM.Droid.Activities
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.activity_login);
+
+            //TODO
+           // UserDialogs.Init(() => Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity)
         }
     }
 }

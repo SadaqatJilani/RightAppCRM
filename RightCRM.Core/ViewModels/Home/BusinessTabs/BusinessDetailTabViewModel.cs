@@ -11,6 +11,7 @@ namespace RightCRM.Core.ViewModels.Home
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Acr.UserDialogs;
     using MvvmCross.Core.Navigation;
     using MvvmCross.Core.ViewModels;
     using RightCRM.Common;

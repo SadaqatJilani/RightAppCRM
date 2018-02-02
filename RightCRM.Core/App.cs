@@ -1,3 +1,4 @@
+using Acr.UserDialogs;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
@@ -27,6 +28,9 @@ namespace RightCRM.Core
             Mvx.RegisterType<IUserFacade, UserFacade>();
             Mvx.RegisterType<INotesFacade, NotesFacade>();
             Mvx.RegisterType<INotesApi, NotesApi>();
+            Mvx.RegisterType<IBusinessDetailsFacade, BusinessDetailsFacade>();
+
+            Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 
             Mvx.ConstructAndRegisterSingleton<IMvxAppStart, AppStart>();
             var appStart = Mvx.Resolve<IMvxAppStart>();

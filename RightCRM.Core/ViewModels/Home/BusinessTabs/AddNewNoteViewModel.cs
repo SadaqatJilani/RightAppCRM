@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
@@ -28,31 +29,11 @@ namespace RightCRM.Core.ViewModels.Home
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.AddNewNoteViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">Navigation service.</param>
-        public AddNewNoteViewModel(IMvxNavigationService navigationService)
+        public AddNewNoteViewModel(IMvxNavigationService navigationService,
+                                   IUserDialogs userDialogs) : base (userDialogs)
         {
             this.navigationService = navigationService;
-
-            PickerQueryType = new ObservableCollection<PickerItem>() {
-            new PickerItem() {DisplayName = "Call", Value = 0},
-            new PickerItem() {DisplayName = "Visit", Value = 1},
-            new PickerItem() {DisplayName = "Email", Value = 2},
-            new PickerItem() {DisplayName = "General", Value = 3}
-        };
-            SelectedQueryType = PickerQueryType[0];
-
-            PickerAnswerType = new ObservableCollection<PickerItem>() {
-            new PickerItem() {DisplayName = "Answer", Value = 0},
-            new PickerItem() {DisplayName = "No Answer", Value = 1},
-            new PickerItem() {DisplayName = "Callback", Value = 2}
-        };
-            SelectedAnsType = PickerAnswerType[0];
-
-            PickerClientType = new ObservableCollection<PickerItem>() {
-            new PickerItem() {DisplayName = "Customer", Value = 0},
-            new PickerItem() {DisplayName = "Company Agent", Value = 1}
-        };
-            SelectedClientType = PickerClientType[0];
-
+            this.userDialogs = userDialogs;
 
             AddCommentCommand = new MvxAsyncCommand(async () => await AddCommentAndGoBack());
         }
@@ -105,6 +86,32 @@ namespace RightCRM.Core.ViewModels.Home
             base.Prepare();
 
             Title = Constants.TitleCreateNewNotePage;
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            PickerQueryType = new ObservableCollection<PickerItem>() {
+            new PickerItem() {DisplayName = "Call", Value = 0},
+            new PickerItem() {DisplayName = "Visit", Value = 1},
+            new PickerItem() {DisplayName = "Email", Value = 2},
+            new PickerItem() {DisplayName = "General", Value = 3}
+        };
+            SelectedQueryType = PickerQueryType[0];
+
+            PickerAnswerType = new ObservableCollection<PickerItem>() {
+            new PickerItem() {DisplayName = "Answer", Value = 0},
+            new PickerItem() {DisplayName = "No Answer", Value = 1},
+            new PickerItem() {DisplayName = "Callback", Value = 2}
+        };
+            SelectedAnsType = PickerAnswerType[0];
+
+            PickerClientType = new ObservableCollection<PickerItem>() {
+            new PickerItem() {DisplayName = "Customer", Value = 0},
+            new PickerItem() {DisplayName = "Company Agent", Value = 1}
+        };
+            SelectedClientType = PickerClientType[0];
         }
     }
 }

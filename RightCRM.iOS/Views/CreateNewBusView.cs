@@ -51,6 +51,7 @@ namespace RightCRM.iOS.Views
             var Set = this.CreateBindingSet<CreateNewBusView, CreateNewBusViewModel>();
 
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
+            Set.Bind(btnCreateBusiness).To(vm => vm.SubmitBusinessCommand);
 
             Set.Bind(txtAccountName).To(vm => vm.NewBusinessDetails.AccountName);
             Set.Bind(txtAccountType).To(vm => vm.NewBusinessDetails.AccountType);

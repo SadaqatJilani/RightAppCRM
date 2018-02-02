@@ -10,6 +10,8 @@ using System;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Common.Models;
 using System.Threading.Tasks;
+using MvvmCross.Core.Navigation;
+using Acr.UserDialogs;
 
 namespace RightCRM.Core.ViewModels.Home
 {
@@ -17,11 +19,26 @@ namespace RightCRM.Core.ViewModels.Home
     {
         private BusinessDetails newBusinessDetails;
 
-        public CreateNewBusViewModel()
+        public CreateNewBusViewModel(IMvxNavigationService navigationService,
+                                     IUserDialogs userDialogs) : base (userDialogs)
         {
+            this.navigationService = navigationService;
+            this.userDialogs = userDialogs;
+
+            SubmitBusinessCommand = new MvxAsyncCommand(SubmitBusinessAsync);
+        }
+
+        private async Task SubmitBusinessAsync()
+        {
+            await Task.Delay(1000);
+
+            userDialogs.Alert("Business submitted successfully");
         }
 
         public BusinessDetails NewBusinessDetails{ get { return newBusinessDetails; } set{ SetProperty(ref newBusinessDetails, value);}}
+
+
+        public IMvxCommand SubmitBusinessCommand { get; private set; }
 
         public void Prepare(string parameter)
         {
@@ -32,20 +49,7 @@ namespace RightCRM.Core.ViewModels.Home
         {
             await base.Initialize();
 
-            NewBusinessDetails = new BusinessDetails()
-            {
-                BusinessID = 101,
-                AccountName = "hey",
-                AccountType = "test",
-                AnnualRevenue = 133,
-                BusinessNTN = "93829391",
-                BusinessWebsite = "www.helloworld.com",
-                CampaignMedia = "bolwala",
-                CampaignName = "hellomoto",
-                CampaignSrc = "source",
-                CompanySize = "1000",
-                Industry = "Pharma"
-            };
+            NewBusinessDetails = new BusinessDetails();
         }
     }
 }

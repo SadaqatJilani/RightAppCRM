@@ -16,6 +16,7 @@ namespace RightCRM.Core.ViewModels.Home
     using System.Threading.Tasks;
     using RightCRM.Facade.Facades;
     using System.Linq;
+    using Acr.UserDialogs;
 
     /// <summary>
     /// Bus detail tab2 view model.
@@ -28,10 +29,13 @@ namespace RightCRM.Core.ViewModels.Home
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.BusDetailTab2ViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">Navigation service.</param>
-        public BusDetailTab2ViewModel(IMvxNavigationService navigationService, INotesFacade notesFacade)
+        public BusDetailTab2ViewModel(IMvxNavigationService navigationService, 
+                                      INotesFacade notesFacade,
+                                      IUserDialogs userDialogs) : base(userDialogs)
         {
             this.navigationService = navigationService;
             this.notesFacade = notesFacade;
+            this.userDialogs = userDialogs;
 
             this.NewNoteCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<AddNewNoteViewModel>());
             this.AllNotesList = new MvxObservableCollection<NotesModel>();

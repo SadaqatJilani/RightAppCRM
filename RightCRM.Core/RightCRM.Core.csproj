@@ -63,7 +63,6 @@
     <Compile Include="ViewModels\Home\HomeViewModel.cs" />
     <Compile Include="ViewModels\Home\InfoViewModel.cs" />
     <Compile Include="ViewModels\Home\ThirdViewModel.cs" />
-    <Compile Include="ViewModels\Menu\MenusViewModel.cs" />
     <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
     <Compile Include="AppStart.cs" />
     <Compile Include="Models\MenuModel.cs" />

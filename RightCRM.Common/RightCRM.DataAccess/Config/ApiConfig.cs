@@ -33,5 +33,10 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightApiAuthenticationRoot}users/login";
         }
 
+        public static string GetBusinessDetails()
+        {
+            return $"{SharedConfig.RightApiAuthenticationRoot}accounts/profile";
+        }
+
     }
 }
