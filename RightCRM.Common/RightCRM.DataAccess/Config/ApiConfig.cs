@@ -38,5 +38,10 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightApiAuthenticationRoot}accounts/profile";
         }
 
+        public static string RegisterNewBusiness()
+        {
+            return $"{SharedConfig.RightApiAuthenticationRoot}registrations/businessaccount";
+        }
+
     }
 }

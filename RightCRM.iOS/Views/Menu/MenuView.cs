@@ -13,6 +13,7 @@ using Foundation;
 using CoreGraphics;
 using MvvmCross.iOS.Support.XamarinSidebar.Views;
 using RightCRM.Core.ViewModels.Menu;
+using MvvmCross.Binding.BindingContext;
 
 namespace RightCRM.iOS.Views
 {
@@ -77,9 +78,13 @@ namespace RightCRM.iOS.Views
 
             MenuTableView.TableFooterView = new UIView(CGRect.Empty) { BackgroundColor = BackgroundColor };
 
-
             MenuTableView.SelectRow(NSIndexPath.FromRowSection(0, 0), false, UITableViewScrollPosition.None);
             //MenuTableView.TableFooterView.Hidden = false;
+
+            var Set = this.CreateBindingSet<MenuView, MenuViewModel>();
+
+            Set.Bind(btnLogout).To(vm => vm.LogoutCommand);
+            Set.Apply();
         }
 
         public override void DidReceiveMemoryWarning()

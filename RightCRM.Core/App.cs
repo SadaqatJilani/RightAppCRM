@@ -29,6 +29,8 @@ namespace RightCRM.Core
             Mvx.RegisterType<INotesFacade, NotesFacade>();
             Mvx.RegisterType<INotesApi, NotesApi>();
             Mvx.RegisterType<IBusinessDetailsFacade, BusinessDetailsFacade>();
+            Mvx.RegisterType<INewBusFacade, NewBusFacade>();
+            Mvx.RegisterType<INewBusApi, NewBusApi>();
 
             Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 

@@ -74,11 +74,8 @@ namespace RightCRM.Core.ViewModels
         {
             base.ViewAppeared();
 
-            if (this.GetType() != typeof(LoginViewModel) && this.GetType() != typeof(MenuViewModel))
-            {
                 if (userDialogs != null && InitializeTask != null && this.InitializeTask.IsNotCompleted)
                     userDialogs.ShowLoading();
-            }
         }
 
         public override void ViewDisappeared()

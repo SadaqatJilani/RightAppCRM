@@ -17,12 +17,20 @@ namespace RightCRM.Core.Services
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using RightCRM.DataAccess.Factories;
+    using Acr.UserDialogs;
 
     /// <summary>
     /// Rest service.
     /// </summary>
     public class RestService : IRestService
     {
+        private readonly IUserDialogs userDialogs;
+
+        public RestService(IUserDialogs userDialogs)
+        {
+            this.userDialogs = userDialogs;
+        }
+
         /// <summary>
         /// The get error result.
         /// </summary>
@@ -88,6 +96,8 @@ namespace RightCRM.Core.Services
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public async Task<ApiResponse<T>> MakeOpenRequestAsync<T>(string requestUrl, HttpMethod verb, object requestBody, bool failSilent = false)
         {
+            userDialogs.ShowLoading();
+
             var responseData = new ApiResponse<T>();
             HttpResponseMessage result = null;
             using (var client = new HttpClient(new HttpClientHandler()))
@@ -135,6 +145,11 @@ namespace RightCRM.Core.Services
 
                     responseData.ContentStatus = ResponseContentStatus.Fail;
                     return responseData;
+                }
+
+                finally
+                {
+                    userDialogs.HideLoading();
                 }
             }
         }

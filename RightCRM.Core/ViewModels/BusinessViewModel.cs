@@ -61,7 +61,10 @@ namespace RightCRM.Core.ViewModels
             await base.Initialize();
             var result = await this.businessFacade.GetBusiness();
 
-            AllBusiness = new MvxObservableCollection<Business>(result.note.DataArray);
+            if (result != null)
+            {
+                AllBusiness = new MvxObservableCollection<Business>(result.note?.DataArray);
+            }
         }
     }
 }

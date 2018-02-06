@@ -20,6 +20,10 @@ namespace RightCRM.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnLogout { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView MenuTableView { get; set; }
 
         [Outlet]
@@ -35,6 +39,11 @@ namespace RightCRM.iOS.Views
             if (BigLabel != null) {
                 BigLabel.Dispose ();
                 BigLabel = null;
+            }
+
+            if (btnLogout != null) {
+                btnLogout.Dispose ();
+                btnLogout = null;
             }
 
             if (MenuTableView != null) {

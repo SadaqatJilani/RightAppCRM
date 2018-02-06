@@ -12,16 +12,34 @@ using RightCRM.Common.Models;
 using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using Acr.UserDialogs;
+using RightCRM.Facade.Facades;
+using RightCRM.DataAccess.Model.CreateNew;
 
 namespace RightCRM.Core.ViewModels.Home
 {
     public class CreateNewBusViewModel : BaseViewModel, IMvxViewModel<string>
     {
+        /// <summary>
+        /// The new bus facade.
+        /// </summary>
+        private readonly INewBusFacade newBusFacade;
+
+        /// <summary>
+        /// The new business details.
+        /// </summary>
         private BusinessDetails newBusinessDetails;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.CreateNewBusViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">Navigation service.</param>
+        /// <param name="userDialogs">User dialogs.</param>
+        /// <param name="newBusFacade">New bus facade.</param>
         public CreateNewBusViewModel(IMvxNavigationService navigationService,
-                                     IUserDialogs userDialogs) : base (userDialogs)
+                                     IUserDialogs userDialogs,
+                                     INewBusFacade newBusFacade) : base (userDialogs)
         {
+            this.newBusFacade = newBusFacade;
             this.navigationService = navigationService;
             this.userDialogs = userDialogs;
 
@@ -32,7 +50,19 @@ namespace RightCRM.Core.ViewModels.Home
         {
             await Task.Delay(1000);
 
-            userDialogs.Alert("Business submitted successfully");
+            var busRequestModel = new NewBusRequestModel
+            { 
+                acname = newBusinessDetails.AccountName,
+                actype = newBusinessDetails.AccountType
+            };
+
+           var res =  await newBusFacade.SubmitNewBusiness(busRequestModel);
+
+            if (res != null)
+                userDialogs.Alert(res.registration?.msg);
+
+            else
+                userDialogs.Alert("Something went wrong. Please try again");
         }
 
         public BusinessDetails NewBusinessDetails{ get { return newBusinessDetails; } set{ SetProperty(ref newBusinessDetails, value);}}

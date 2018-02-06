@@ -45,6 +45,23 @@ namespace RightCRM.DataAccess.Api.User
         /// <param name="userLogin">User login.</param>
         public async Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin)
         {
+
+#if FAKE
+
+            return await Task.FromResult(new ResponseUserLogin(){
+
+                user = new User()
+                {
+                    sesid = "101", 
+                    msg="success",
+                    status=1,
+                    userid=userLogin.loginid,
+                    username = userLogin.loginid, 
+                    agreement_req = null
+                }
+            });
+#else
+
             try
             {
                 string requestUrl = ApiConfig.GetUserSessionId();
@@ -59,6 +76,9 @@ namespace RightCRM.DataAccess.Api.User
                 Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
                 throw ex;
             }
+
+#endif
+
         }
     }
 }
