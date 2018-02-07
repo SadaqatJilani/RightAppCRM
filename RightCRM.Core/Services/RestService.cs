@@ -107,9 +107,11 @@ namespace RightCRM.Core.Services
                     var request = new HttpRequestMessage { Method = verb };
                     request.RequestUri = new Uri(requestUrl);
                     request.Headers.Add("Accept", "application/json");
+                    var jsonRequest = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
+
                     if (verb == HttpMethod.Post)
                     {
-                        result = await client.PostAsync(requestUrl, new StringContent(JsonConvert.SerializeObject(requestBody),Encoding.UTF8,"application/json"));
+                        result = await client.PostAsync(requestUrl, jsonRequest);
                     }
                     else if (verb == HttpMethod.Get)
                     {

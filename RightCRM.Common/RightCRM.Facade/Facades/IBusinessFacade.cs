@@ -12,8 +12,8 @@ namespace RightCRM.Facade.Facades
 
         Business GetBusinessByID(int businessId);
 
-        void AddBusiness(Business business);
+        void AddBusiness(Common.Models.Business business);
 
-        IEnumerable<Business> SearchBusiness(string firstCriteria);
+        IEnumerable<Common.Models.Business> SearchBusiness(string firstCriteria);
     }
 }

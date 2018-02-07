@@ -22,7 +22,7 @@ namespace RightCRM.Facade.Facades
             return  this.businessApi.GetBusinessList();
         }
 
-        public void AddBusiness(Business business)
+        public void AddBusiness(Common.Models.Business business)
         {
             this.businessApi.GetBusinessList();
         }
@@ -32,7 +32,7 @@ namespace RightCRM.Facade.Facades
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Business> SearchBusiness(string firstCriteria)
+        public IEnumerable<Common.Models.Business> SearchBusiness(string firstCriteria)
         {
             throw new NotImplementedException();
         }

@@ -9,7 +9,7 @@ namespace RightCRM.iOS.Views
     {
         public static readonly NSString Key = new NSString("NotesCell_id");
 
-        private const string BindingText = "NoteOwner NoteUserName; NoteComment NoteComment";
+        private const string BindingText = "NoteOwner BusinessUserName; NoteComment NoteString";
 
         public NotesCell (IntPtr handle) : base(BindingText, handle)
         {

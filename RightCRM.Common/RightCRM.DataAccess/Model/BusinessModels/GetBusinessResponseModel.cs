@@ -45,17 +45,26 @@ namespace RightCRM.DataAccess.Model.BusinessModels
         public string NAME;
         public int? COUNT;
     }
-    public class Note
+
+    public class Tags
+    {
+        public string CTAG;
+        public int? COUNT;
+    }
+
+    public class SalesWorkers
+    {
+        public int? AUSRID;
+        public string NAME;
+        public int? COUNT;
+    }
+
+    public class BusinessList
     {
         public string msg { get; set; }
         // OverHead Code to handle string response
-        public string status
-        {
-            set
-            {
-                StatusArray = JsonConvert.DeserializeObject<status[]>(value);
-            }
-        }
+        public int status { get; set; }
+
         public string industry
         {
             set
@@ -72,7 +81,7 @@ namespace RightCRM.DataAccess.Model.BusinessModels
             }
         }
 
-        public string revenue
+        public string annual_revenue
         {
             set
             {
@@ -88,13 +97,30 @@ namespace RightCRM.DataAccess.Model.BusinessModels
             }
         }
 
-        public string data
+        public string account_list
         {
             set
             {
                 DataArray = JsonConvert.DeserializeObject<Business[]>(value);
             }
         }
+
+        public string tags
+        {
+            set
+            {
+                TagsArray = JsonConvert.DeserializeObject<Tags[]>(value);
+            }
+        }
+
+        public string sales_workers
+        {
+            set
+            {
+                SalesWorkersArray = JsonConvert.DeserializeObject<SalesWorkers[]>(value);
+            }
+        }
+
         //
         public status[] StatusArray { get; set; }
         public industry[] IndustryArray { get; set; }
@@ -102,10 +128,14 @@ namespace RightCRM.DataAccess.Model.BusinessModels
         public revenue[] RevenueArray { get; set; }
         public address[] AddressArray { get; set; }
         public Business[] DataArray { get; set; }
+        public Tags[] TagsArray { get; set; }
+        public SalesWorkers[] SalesWorkersArray { get; set; }
     }
+
+
     public class GetBusinessResponseModel
     {
-        public Note note;
+        public BusinessList business;
     }
 }
 

@@ -81,9 +81,9 @@ namespace RightCRM.Core.ViewModels.Home
             {
                 var noteItem = new NotesModel
                 {
-                    NoteUserID = note.NoteUserID,
-                    NoteUserName = note.NoteUserName,
-                    NoteComment = note.NoteComment
+                    NoteID = note.NoteID,
+                    BusinessUserName = note.BusinessUserName,
+                    NoteString = note.NoteString
                 };
 
                 this.AllNotesList.Add(noteItem);

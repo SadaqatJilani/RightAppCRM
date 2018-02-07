@@ -25,15 +25,15 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 #if FAKE
             return await Task.FromResult(new List<NotesModel>
             {
-                new NotesModel { NoteUserName = "ExhibitA", NoteComment="Heelloo this is a test" },
-                new NotesModel { NoteUserName="ExhibitB", NoteComment="Heelloo this is a test"}
+                new NotesModel { BusinessUserName = "ExhibitA", NoteString="Heelloo this is a test" },
+                new NotesModel { BusinessUserName="ExhibitB", NoteString="Heelloo this is a test"}
             });
 
 #else
             return await Task.FromResult(new List<NotesModel>
             {
-                new NotesModel { NoteUserName = "ExhibitA", NoteComment="Heelloo this is a test" },
-                new NotesModel { NoteUserName="ExhibitB", NoteComment="Heelloo this is a test"}
+                new NotesModel { BusinessUserName = "ExhibitA", NoteString="Heelloo this is a test" },
+                new NotesModel { BusinessUserName="ExhibitB", NoteString="Heelloo this is a test"}
             });
 
 #endif

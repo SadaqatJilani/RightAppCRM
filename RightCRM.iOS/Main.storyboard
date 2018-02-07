@@ -615,7 +615,7 @@
         </scene>
         <scene sceneID="15383">
             <objects>
-                <tabBarController id="15384" sceneMemberID="viewController" customClass="BusinessDetailTabView" storyboardIdentifier="BusinessDetailTabView" useStoryboardIdentifierAsRestorationIdentifier="YES" modalPresentationStyle="overFullScreen">
+                <tabBarController id="15384" sceneMemberID="viewController" customClass="BusinessDetailTabView" storyboardIdentifier="BusinessDetailTabView" useStoryboardIdentifierAsRestorationIdentifier="YES" modalPresentationStyle="overFullScreen" hidesBottomBarWhenPushed="YES">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="15387">
                         <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -893,5 +893,6 @@
         <image name="ic_contact.png" width="24" height="24"/>
         <image name="ic_email.png" width="24" height="24"/>
         <image name="ic_telephone.png" width="24" height="24"/>
+        <image name="ic_logout.png" width="24" height="24"/>
     </resources>
 </document>

@@ -63,7 +63,7 @@ namespace RightCRM.Core.ViewModels
 
             if (result != null)
             {
-                AllBusiness = new MvxObservableCollection<Business>(result.note?.DataArray);
+                AllBusiness = new MvxObservableCollection<Business>(result.business?.DataArray);
             }
         }
     }

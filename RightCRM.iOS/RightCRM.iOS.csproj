@@ -229,6 +229,21 @@
     <Reference Include="Acr.UserDialogs.Interface">
       <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\Xamarin.iOS10\Acr.UserDialogs.Interface.dll</HintPath>
     </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\Xamarin.iOS10\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\Xamarin.iOS10\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\Xamarin.iOS10\Nito.AsyncEx.Enlightenment.dll</HintPath>
+    </Reference>
+    <Reference Include="Sequence.Plugins.InfiniteScroll">
+      <HintPath>..\packages\Sequence.Plugins.InfiniteScroll.1.0.1\lib\Xamarin.iOS10\Sequence.Plugins.InfiniteScroll.dll</HintPath>
+    </Reference>
+    <Reference Include="Sequence.Plugins.InfiniteScroll.iOS">
+      <HintPath>..\packages\Sequence.Plugins.InfiniteScroll.1.0.1\lib\Xamarin.iOS10\Sequence.Plugins.InfiniteScroll.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />

@@ -11,6 +11,7 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 namespace RightCRM.iOS
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
+   // [MvxRootPresentation(WrapInNavigationController = true)]
     [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
     public partial class BusinessView : MvxTableViewController<BusinessViewModel>
     {

@@ -54,18 +54,18 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
             return await Task.FromResult(new GetBusinessResponseModel()
             {
-                note = new Note()
+                business = new BusinessList()
                 {
                     DataArray = new Business[]
 
                     {
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
-                new Business(){ BusinessID = 101, AnnualRevenue = 1000, CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"}
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"}
                     }
                 }
             });
@@ -82,14 +82,14 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             new GetBusinessRequestModel()
                                                                                             {
                                                                                                 sessionid = sessionId,
-                                                                                                only_saved_accounts = false,
+                                                                                                only_saved_accounts = 0,
                                                                                                 srch_pageno = 1,
-                                                                                                srch_keywords = "",
-                                                                                                srch_ctag = "",
-                                                                                                srch_industry = "",
+                                                                                                srch_keywords = null,
+                                                                                                srch_ctag = null,
+                                                                                                srch_industry = null,
                                                                                                 srch_address_id = null,
-                                                                                                srch_company_size = "",
-                                                                                                srch_annual_revenue = ""
+                                                                                                srch_company_size = null,
+                                                                                                srch_annual_revenue = null
                                                                                             });
                 return result.Content;
             }
@@ -118,7 +118,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                         BusinessID = 101,
                         AccountName = "hey",
                         AccountType = "test",
-                        AnnualRevenue = 133,
+                        AnnualRevenue = "133",
                         BusinessNTN = "93829391",
                         BusinessWebsite = "www.helloworld.com",
                         CampaignMedia = "bolwala",

@@ -21,7 +21,7 @@ namespace RightCRM.DataAccess.Config
 
         public static string GetAllBusinesses()
         {
-            return $"{SharedConfig.RightCrmApiRoot}notes/account_list";
+            return $"{SharedConfig.RightCrmApiRoot}Businesses/account_list";
         }
 
         public static string GetUserProfile(string username)

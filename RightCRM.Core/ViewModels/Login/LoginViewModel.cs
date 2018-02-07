@@ -93,7 +93,6 @@ namespace RightCRM.Core.ViewModels
             //ShowViewModel<AccountsViewModel>();
            // userDialog.ShowLoading("logging in");
 
-           // userDialog.ShowLoading("Logging In");
 
             var result = await this.userFacade.GetUserSessionId(new RequestUserLogin()
             {
@@ -102,9 +101,20 @@ namespace RightCRM.Core.ViewModels
                 svsid = "work"
             });
 
-           // userDialog.HideLoading();
+            if (result != null && !string.IsNullOrWhiteSpace(result.user?.msg))
+            {
+                if(result.user?.msg == "Login Successful..." && result.user.status == 0)
+                    this.GoToRootMenuCommand.Execute();
 
-            this.GoToRootMenuCommand.Execute();
+                else
+                    await userDialog.AlertAsync("Credentials invalid. Please try again");
+            }
+
+            else
+            {
+                await userDialog.AlertAsync("Something went wrong.");
+                this.GoToRootMenuCommand.Execute();
+            }
         }
     }
 }

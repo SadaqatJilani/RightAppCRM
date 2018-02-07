@@ -23,7 +23,7 @@ namespace RightCRM.Common.Models
         public string CompanySize { get; set; }
 
         [JsonProperty("REVENUE")]
-        public int? AnnualRevenue { get; set; }
+        public string Revenue { get; set; }
 
         public int? ADD_ID { get; set; }
     }
