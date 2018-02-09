@@ -270,6 +270,7 @@
     <Folder Include="Storyboards\" />
     <Folder Include="Views\BusinessTabs\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -355,6 +356,14 @@
     <Compile Include="Views\BusinessTabs\NotesCell.cs" />
     <Compile Include="Views\BusinessTabs\NotesCell.designer.cs">
       <DependentUpon>NotesCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchHeaderCell.cs" />
+    <Compile Include="Views\Search\SearchHeaderCell.designer.cs">
+      <DependentUpon>SearchHeaderCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchItemCell.cs" />
+    <Compile Include="Views\Search\SearchItemCell.designer.cs">
+      <DependentUpon>SearchItemCell.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

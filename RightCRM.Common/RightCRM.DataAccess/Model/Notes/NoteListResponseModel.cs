@@ -21,7 +21,7 @@ namespace RightCRM.DataAccess.Model.Notes
         {
             set
             {
-                DataArray = JsonConvert.DeserializeObject<NotesModel[]>(value);
+                DataArray = JsonConvert.DeserializeObject<NotesModel[]>(value ?? string.Empty);
             }
         }
 

@@ -28,7 +28,7 @@ namespace RightCRM.iOS.Views
             View.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0.5f);
 
             var Set = this.CreateBindingSet<FilterPopup, FilterPopupViewModel>();
-            Set.Bind(btnClose).To(vm=> vm.Title);
+
             Set.Bind(btnClose).To(vm => vm.CloseCommand);
             Set.Apply();
         }

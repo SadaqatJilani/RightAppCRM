@@ -18,11 +18,29 @@ namespace RightCRM.iOS.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnClose { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSearch { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView tblViewSearch { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (btnClose != null) {
                 btnClose.Dispose ();
                 btnClose = null;
+            }
+
+            if (btnSearch != null) {
+                btnSearch.Dispose ();
+                btnSearch = null;
+            }
+
+            if (tblViewSearch != null) {
+                tblViewSearch.Dispose ();
+                tblViewSearch = null;
             }
         }
     }

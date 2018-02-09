@@ -40,7 +40,7 @@ namespace RightCRM.Core.ViewModels.Home
             this.notesFacade = notesFacade;
             this.userDialogs = userDialogs;
 
-            this.NewNoteCommand = new MvxAsyncCommand(async ()=> await SaveNoteAndReturn());
+            this.NewNoteCommand = new MvxAsyncCommand(SaveNoteAndReturn);
             this.AllNotesList = new MvxObservableCollection<NotesModel>();
         }
 
@@ -49,7 +49,9 @@ namespace RightCRM.Core.ViewModels.Home
             var res = await navigationService.Navigate<AddNewNoteViewModel, int, bool>(business.BusinessID.GetValueOrDefault());
 
             if (res == true)
-            this.Initialize();
+            {
+                await this.Initialize();
+            }
                 
         }
 
