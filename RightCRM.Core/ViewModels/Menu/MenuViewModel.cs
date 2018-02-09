@@ -24,13 +24,6 @@ namespace RightCRM.Core.ViewModels.Menu
         {
             this.navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
             this.userDialogs = userDialogs;
-
-            MenuItems = new List<MenuModel>
-            {
-                new MenuModel() { Title = Constants.TitleBusinessPage, ImageName = "ic_build_white", Navigate = NavigateHome },
-                new MenuModel() { Title = Constants.TitleMarketsPage, ImageName = "ic_description_white", Navigate = NavigateToMarkets },
-                new MenuModel() { Title = Constants.TitleCreateNewPage, ImageName = "ic_settings_white", Navigate = NavigateToCreateNewB },
-            };
         }
 
         public List<MenuModel> MenuItems
@@ -90,6 +83,18 @@ namespace RightCRM.Core.ViewModels.Menu
             {
                 await navigationService.Navigate<LoginViewModel>();
             }
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            MenuItems = new List<MenuModel>
+            {
+                new MenuModel() { Title = Constants.TitleBusinessPage, ImageName = "ic_build_white", Navigate = NavigateHome },
+                new MenuModel() { Title = Constants.TitleMarketsPage, ImageName = "ic_description_white", Navigate = NavigateToMarkets },
+                new MenuModel() { Title = Constants.TitleCreateNewPage, ImageName = "ic_settings_white", Navigate = NavigateToCreateNewB },
+            };
         }
     }
 }

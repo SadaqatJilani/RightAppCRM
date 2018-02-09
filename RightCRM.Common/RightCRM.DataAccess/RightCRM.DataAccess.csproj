@@ -73,6 +73,10 @@
     <Compile Include="Model\CreateNew\NewBusResponseModel.cs" />
     <Compile Include="Api\BusinessApi\INewBusApi.cs" />
     <Compile Include="Api\BusinessApi\NewBusApi.cs" />
+    <Compile Include="Model\Notes\NoteListRequestModel.cs" />
+    <Compile Include="Model\Notes\NoteListResponseModel.cs" />
+    <Compile Include="Model\Notes\NewNoteRequestModel.cs" />
+    <Compile Include="Model\Notes\NewNoteResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -112,6 +116,7 @@
     <Folder Include="Api\BusinessApi\" />
     <Folder Include="Model\BusinessModels\" />
     <Folder Include="Model\CreateNew\" />
+    <Folder Include="Model\Notes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Common.csproj">

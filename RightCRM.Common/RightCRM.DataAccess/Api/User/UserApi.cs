@@ -14,6 +14,7 @@ namespace RightCRM.DataAccess.Api.User
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using RightCRM.Common;
     using RightCRM.DataAccess.Config;
     using RightCRM.DataAccess.Factories;
     using RightCRM.DataAccess.Model.RequestModels;
@@ -53,8 +54,8 @@ namespace RightCRM.DataAccess.Api.User
                 user = new User()
                 {
                     sesid = "101", 
-                    msg="success",
-                    status=1,
+                    msg= Constants.LoginSuccessString,
+                    status=0,
                     userid=userLogin.loginid,
                     username = userLogin.loginid, 
                     agreement_req = null

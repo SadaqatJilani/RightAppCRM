@@ -43,14 +43,14 @@ namespace RightCRM.Core.ViewModels
             this.userDialog = userDialog;
            // this.cacheService = cacheService;
         }
-        private string _userName = "khurram123_admin@zeptowork.com";
+        private string _userName = "shahbaz.mirza@zeptosystems.com";
         public string UserName
         {
             get { return _userName; }
             set { SetProperty(ref _userName, value); }
         }
 
-        private string _password = "test123";
+        private string _password = "abc";
         public string Password
         {
             get { return _password; }
@@ -98,21 +98,21 @@ namespace RightCRM.Core.ViewModels
             {
                 loginid = UserName,
                 token = Password,
-                svsid = "work"
+                svsid = "crm"
             });
 
             if (result != null && !string.IsNullOrWhiteSpace(result.user?.msg))
             {
-                if(result.user?.msg == "Login Successful..." && result.user.status == 0)
+                if(result.user?.msg == Constants.LoginSuccessString && result.user.status == 0)
                     this.GoToRootMenuCommand.Execute();
 
                 else
-                    await userDialog.AlertAsync("Credentials invalid. Please try again");
+                    await userDialog.AlertAsync(result.user?.msg);
             }
 
             else
             {
-                await userDialog.AlertAsync("Something went wrong.");
+                await userDialog.AlertAsync(Constants.SomethingWrong);
                 this.GoToRootMenuCommand.Execute();
             }
         }

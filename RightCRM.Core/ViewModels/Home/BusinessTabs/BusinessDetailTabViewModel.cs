@@ -94,7 +94,7 @@ namespace RightCRM.Core.ViewModels.Home
             var tasks = new List<Task>
             {
                 navigationService.Navigate<BusDetailTab1ViewModel, Business>(businessItem),
-                navigationService.Navigate<BusDetailTab2ViewModel>()
+                navigationService.Navigate<BusDetailTab2ViewModel, Business>(businessItem)
             };
             await Task.WhenAll(tasks);
         }

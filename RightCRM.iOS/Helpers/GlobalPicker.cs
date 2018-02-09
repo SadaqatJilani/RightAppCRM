@@ -22,7 +22,7 @@ namespace RightCRM.iOS.Helpers
         {
             this.DisplayPropertyName = nameof(PickerItem.DisplayName);
             this.Font = UIFont.SystemFontOfSize(UIFont.SmallSystemFontSize);
-            this.Highlighted = true;
+            this.TextAlignment = UITextAlignment.Center;
 
             this.TintColor = UIColor.LightGray;
             this.BackgroundColor = UIColor.FromRGB(246, 248, 250);
@@ -45,30 +45,30 @@ namespace RightCRM.iOS.Helpers
         //public UIEdgeableLabel(CGRect frame) : base(frame) { }
         //protected UIEdgeableLabel(NSObjectFlag t) : base(t) { }
 
-        private UIEdgeInsets _edgeInset = UIEdgeInsets.Zero;
-        public UIEdgeInsets EdgeInsets
-        {
-            get { return _edgeInset; }
-            set
-            {
-                _edgeInset = value;
-                this.InvalidateIntrinsicContentSize();
-            }
-        }
+        //private UIEdgeInsets _edgeInset = UIEdgeInsets.Zero;
+        //public UIEdgeInsets EdgeInsets
+        //{
+        //    get { return _edgeInset; }
+        //    set
+        //    {
+        //        _edgeInset = value;
+        //        this.InvalidateIntrinsicContentSize();
+        //    }
+        //}
 
-        public override CGRect TextRect(CGRect forBounds)
-        {
-            var rect = base.TextRect(EdgeInsets.InsetRect(forBounds));
-            return new CGRect(x: rect.X - EdgeInsets.Left,
-                              y: rect.Y - EdgeInsets.Top,
-                              width: rect.Width + EdgeInsets.Left + EdgeInsets.Right,
-                              height: rect.Height + EdgeInsets.Top + EdgeInsets.Bottom);
-        }
+        //public override CGRect TextRect(CGRect forBounds)
+        //{
+        //    var rect = base.TextRect(EdgeInsets.InsetRect(forBounds));
+        //    return new CGRect(x: rect.X - EdgeInsets.Left,
+        //                      y: rect.Y - EdgeInsets.Top,
+        //                      width: rect.Width + EdgeInsets.Left + EdgeInsets.Right,
+        //                      height: rect.Height + EdgeInsets.Top + EdgeInsets.Bottom);
+        //}
 
-        public override void DrawText(CGRect rect)
-        {
-            base.DrawText(this.EdgeInsets.InsetRect(rect));
-        }
+        //public override void DrawText(CGRect rect)
+        //{
+        //    base.DrawText(this.EdgeInsets.InsetRect(rect));
+        //}
 
     }
 }

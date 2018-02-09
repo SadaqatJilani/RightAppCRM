@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using RightCRM.Common.Models;
 using RightCRM.DataAccess.Api.BusinessApi;
+using RightCRM.DataAccess.Model.Notes;
 
 namespace RightCRM.Facade.Facades
 {
@@ -23,16 +24,11 @@ namespace RightCRM.Facade.Facades
             this.notesApi = notesApi;
         }
 
-        public void AddNewNote(NotesModel newNote)
-        {
-            //throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<NotesModel>> GetAllNotes()
+        public Task<IEnumerable<NotesModel>> GetAllNotes(int accountNum)
         {
             //  throw new NotImplementedException();
 
-            return notesApi.GetAllNotes();
+            return notesApi.GetAllNotes(accountNum);
         }
 
         public NotesModel GetNoteByID(int noteID)
@@ -40,6 +36,11 @@ namespace RightCRM.Facade.Facades
             //  throw new NotImplementedException();
 
             return new NotesModel();
+        }
+
+        public Task<NewNoteResponseModel> SaveNewNote(NewNoteRequestModel newNote)
+        {
+            return notesApi.SaveNewNote(newNote);
         }
     }
 }

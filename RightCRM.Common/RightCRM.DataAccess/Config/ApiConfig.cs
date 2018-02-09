@@ -18,16 +18,6 @@ namespace RightCRM.DataAccess.Config
         /// </summary>
         public static string SharedApiKey = "95925a94-bd18-4e7e-ae52-731832f63c57";
 
-
-        public static string GetAllBusinesses()
-        {
-            return $"{SharedConfig.RightCrmApiRoot}Businesses/account_list";
-        }
-
-        public static string GetUserProfile(string username)
-        {
-            return $"{SharedConfig.RightCrmApiRoot}GetUserProfile/{username}";
-        }
         public static string GetUserSessionId()
         {
             return $"{SharedConfig.RightApiAuthenticationRoot}users/login";
@@ -42,6 +32,28 @@ namespace RightCRM.DataAccess.Config
         {
             return $"{SharedConfig.RightApiAuthenticationRoot}registrations/businessaccount";
         }
+
+        public static string GetAllBusinesses()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Businesses/account_list";
+        }
+
+        public static string GetUserProfile(string username)
+        {
+            return $"{SharedConfig.RightCrmApiRoot}GetUserProfile/{username}";
+        }
+
+        public static string GetAllNotes()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Notes/getallnotes";
+        }
+
+        public static string SaveNewNote()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Notes/savenote";
+        }
+
+        //Notes/getallnotes
 
     }
 }

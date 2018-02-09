@@ -14,6 +14,7 @@ using MvvmCross.Core.Navigation;
 using Acr.UserDialogs;
 using RightCRM.Facade.Facades;
 using RightCRM.DataAccess.Model.CreateNew;
+using RightCRM.Common;
 
 namespace RightCRM.Core.ViewModels.Home
 {
@@ -62,7 +63,7 @@ namespace RightCRM.Core.ViewModels.Home
                 userDialogs.Alert(res.registration?.msg);
 
             else
-                userDialogs.Alert("Something went wrong. Please try again");
+                userDialogs.Alert(Constants.SomethingWrong);
         }
 
         public BusinessDetails NewBusinessDetails{ get { return newBusinessDetails; } set{ SetProperty(ref newBusinessDetails, value);}}

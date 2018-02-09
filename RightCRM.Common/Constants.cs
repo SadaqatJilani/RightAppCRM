@@ -27,5 +27,11 @@ namespace RightCRM.Common
         public const string LanguageSettingsKey = "Language";
 
         public const string SessionID = "SessionID";
+
+        public const string LoginSuccessString = "Login Successful...";
+
+        public const string UserID = "UserID";
+
+        public const string SomethingWrong = "Something went wrong. Please try again";
     }
 }

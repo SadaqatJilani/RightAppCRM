@@ -53,7 +53,10 @@ namespace RightCRM.Facade.Facades
             var res = await this.userApi.GetUserSessionId(userLogin);
 
             if (res != null)
+            {
                 await cacheService.SaveSettings<string>(Constants.SessionID, res.user?.sesid);
+                await cacheService.SaveSettings<string>(Constants.UserID, res.user?.userid);
+            }
 
             return res;
         }

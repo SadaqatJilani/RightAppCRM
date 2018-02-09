@@ -76,6 +76,8 @@ namespace RightCRM.iOS.Views
             Set.Bind(pickerClient).For(v => v.ItemsSource).To(vm => vm.PickerClientType);
             Set.Bind(pickerClient).For(v => v.SelectedItem).To(vm => vm.SelectedClientType).TwoWay();
 
+            Set.Bind(txtNoteComment).To(vm => vm.CommentText);
+
             Set.Bind(btnAddComment).To(vm => vm.AddCommentCommand);
             Set.Apply();
         }

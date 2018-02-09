@@ -17,13 +17,16 @@ namespace RightCRM.Core.ViewModels.Home
     using RightCRM.Facade.Facades;
     using System.Linq;
     using Acr.UserDialogs;
+    using System;
 
     /// <summary>
     /// Bus detail tab2 view model.
     /// </summary>
-    public class BusDetailTab2ViewModel : BaseViewModel
+    public class BusDetailTab2ViewModel : BaseViewModel, IMvxViewModel<Business>
     {
         private readonly INotesFacade notesFacade;
+
+        private Business business;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.BusDetailTab2ViewModel"/> class.
@@ -37,8 +40,17 @@ namespace RightCRM.Core.ViewModels.Home
             this.notesFacade = notesFacade;
             this.userDialogs = userDialogs;
 
-            this.NewNoteCommand = new MvxAsyncCommand(async () => await navigationService.Navigate<AddNewNoteViewModel>());
+            this.NewNoteCommand = new MvxAsyncCommand(async ()=> await SaveNoteAndReturn());
             this.AllNotesList = new MvxObservableCollection<NotesModel>();
+        }
+
+        async Task SaveNoteAndReturn()
+        {
+            var res = await navigationService.Navigate<AddNewNoteViewModel, int, bool>(business.BusinessID.GetValueOrDefault());
+
+            if (res == true)
+            this.Initialize();
+                
         }
 
         /// <summary>
@@ -48,6 +60,7 @@ namespace RightCRM.Core.ViewModels.Home
         public IMvxCommand NewNoteCommand { get; private set; }
 
         MvxObservableCollection<NotesModel> allNotesList;
+
         public MvxObservableCollection<NotesModel> AllNotesList { get { return allNotesList; } set { SetProperty(ref allNotesList, value); } }
 
         /// <summary>
@@ -64,11 +77,11 @@ namespace RightCRM.Core.ViewModels.Home
         {
             await base.Initialize();
 
-           // this.AllNotesList = new MvxObservableCollection<NotesModel>(await this.notesFacade.GetAllNotes());
+            // this.AllNotesList = new MvxObservableCollection<NotesModel>(await this.notesFacade.GetAllNotes());
 
-            //this.AllNotesList.Clear();
-
-            var result = await this.notesFacade.GetAllNotes();
+            this.AllNotesList.Clear();
+                                    
+            var result = await this.notesFacade.GetAllNotes(business.BusinessID.GetValueOrDefault());
 
             if (result == null || !result.Any())
             {
@@ -87,9 +100,13 @@ namespace RightCRM.Core.ViewModels.Home
                 };
 
                 this.AllNotesList.Add(noteItem);
-    
             }
 
+        }
+
+        public void Prepare(Business parameter)
+        {
+            business = parameter;
         }
     }
 }

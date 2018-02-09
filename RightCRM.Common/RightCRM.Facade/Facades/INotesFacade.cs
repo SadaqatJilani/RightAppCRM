@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using RightCRM.Common.Models;
+using RightCRM.DataAccess.Model.Notes;
 
 namespace RightCRM.Facade.Facades
 {
@@ -19,7 +20,7 @@ namespace RightCRM.Facade.Facades
         /// Gets all notes.
         /// </summary>
         /// <returns>The all notes.</returns>
-        Task<IEnumerable<NotesModel>> GetAllNotes();
+        Task<IEnumerable<NotesModel>> GetAllNotes(int accountNum);
 
         /// <summary>
         /// Gets the note by identifier.
@@ -32,6 +33,6 @@ namespace RightCRM.Facade.Facades
         /// Adds the new note.
         /// </summary>
         /// <param name="newNote">New note.</param>
-        void AddNewNote(NotesModel newNote);
+        Task<NewNoteResponseModel> SaveNewNote(NewNoteRequestModel newNote);
     }
 }

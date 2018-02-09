@@ -191,7 +191,7 @@
                                     <constraint id="31687" firstItem="15694" firstAttribute="width" constant="90"/>
                                 </constraints>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="31940" translatesAutoresizingMaskIntoConstraints="NO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="31940" translatesAutoresizingMaskIntoConstraints="NO" allowsSelection="NO">
                                 <rect key="frame" x="0.0" y="20" width="375" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>

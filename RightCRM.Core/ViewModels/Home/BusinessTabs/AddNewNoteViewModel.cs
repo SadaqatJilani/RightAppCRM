@@ -16,22 +16,36 @@ using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
 using RightCRM.Common.Models;
+using RightCRM.Common.Services;
+using RightCRM.Facade.Facades;
 
 namespace RightCRM.Core.ViewModels.Home
 {
-    public class AddNewNoteViewModel : BaseViewModel
+    public class AddNewNoteViewModel : BaseViewModel, IMvxViewModel<int, bool>
     {
+        private readonly INotesFacade notesFacade;
+
+        private readonly ICacheService cacheService;
+
         private ObservableCollection<PickerItem> pickerQueryType;
         private ObservableCollection<PickerItem> pickerAnswerType;
         private ObservableCollection<PickerItem> pickerClientType;
+
+        private int accountNum;
+
+        private string commentText;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.AddNewNoteViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">Navigation service.</param>
         public AddNewNoteViewModel(IMvxNavigationService navigationService,
-                                   IUserDialogs userDialogs) : base (userDialogs)
+                                   IUserDialogs userDialogs,
+                                   INotesFacade notesFacade,
+                                  ICacheService cacheService) : base (userDialogs)
         {
+            this.cacheService = cacheService;
+            this.notesFacade = notesFacade;
             this.navigationService = navigationService;
             this.userDialogs = userDialogs;
 
@@ -40,8 +54,26 @@ namespace RightCRM.Core.ViewModels.Home
 
         private async Task AddCommentAndGoBack()
         {
-           // throw new NotImplementedException();
-          await navigationService.Close(this);
+            // throw new NotImplementedException();
+          var res =  await notesFacade.SaveNewNote(new DataAccess.Model.Notes.NewNoteRequestModel()
+            {
+                ACNUM= accountNum,
+                HOWCOMM = SelectedQueryType.Value,
+                TELRESP = SelectedAnsType.Value,
+                WHOCOMM = SelectedClientType.Value, 
+                Note = CommentText, 
+                USRID = Convert.ToInt32(await cacheService.RetrieveSettings<string>(Constants.UserID))
+            });
+
+            bool refreshList = false;
+
+            if (res != null)
+            {
+                await userDialogs.AlertAsync(res.note?.msg);
+                refreshList = true;
+            }
+
+            await navigationService.Close<bool>(this, refreshList);
 
         }
 
@@ -79,7 +111,23 @@ namespace RightCRM.Core.ViewModels.Home
         public PickerItem SelectedAnsType { get; set; }
         public PickerItem SelectedClientType { get; set; }
 
+        public string CommentText
+        {
+            get { return commentText; }
+            set { SetProperty(ref commentText, value); }
+        }
+
         public IMvxCommand AddCommentCommand { get; set; }
+
+        public TaskCompletionSource<object> CloseCompletionSource { get; set; }
+
+        public override void ViewDestroy(bool viewFinishing = true)
+        {
+            if (viewFinishing && CloseCompletionSource != null && !CloseCompletionSource.Task.IsCompleted && !CloseCompletionSource.Task.IsFaulted)
+                CloseCompletionSource?.TrySetCanceled();
+
+            base.ViewDestroy(viewFinishing);
+        }
 
         public override void Prepare()
         {
@@ -112,6 +160,11 @@ namespace RightCRM.Core.ViewModels.Home
             new PickerItem() {DisplayName = "Company Agent", Value = 1}
         };
             SelectedClientType = PickerClientType[0];
+        }
+
+        public void Prepare(int parameter)
+        {
+            accountNum = parameter;
         }
     }
 }
