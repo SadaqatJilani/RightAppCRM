@@ -332,10 +332,6 @@
     <Compile Include="Views\CreateNewBusView.designer.cs">
       <DependentUpon>CreateNewBusView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FilterPopup.cs" />
-    <Compile Include="Views\FilterPopup.designer.cs">
-      <DependentUpon>FilterPopup.cs</DependentUpon>
-    </Compile>
     <Compile Include="BtnUniversal.cs" />
     <Compile Include="BtnUniversal.designer.cs">
       <DependentUpon>BtnUniversal.cs</DependentUpon>
@@ -364,6 +360,10 @@
     <Compile Include="Views\Search\SearchItemCell.cs" />
     <Compile Include="Views\Search\SearchItemCell.designer.cs">
       <DependentUpon>SearchItemCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\FilterPopup.cs" />
+    <Compile Include="Views\Search\FilterPopup.designer.cs">
+      <DependentUpon>FilterPopup.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
