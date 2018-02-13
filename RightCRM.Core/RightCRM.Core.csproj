@@ -78,8 +78,6 @@
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Services\CacheService.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
-    <Compile Include="Models\FilterModel.cs" />
-    <Compile Include="Models\FilterList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

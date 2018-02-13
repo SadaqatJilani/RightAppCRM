@@ -62,6 +62,8 @@
     <Compile Include="Models\PickerItem.cs" />
     <Compile Include="Models\NotesModel.cs" />
     <Compile Include="Services\ICacheService.cs" />
+    <Compile Include="Models\FilterList.cs" />
+    <Compile Include="Models\FilterModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
