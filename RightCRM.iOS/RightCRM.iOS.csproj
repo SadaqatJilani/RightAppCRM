@@ -365,6 +365,7 @@
     <Compile Include="Views\Search\FilterPopup.designer.cs">
       <DependentUpon>FilterPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Search\SearchTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

@@ -102,6 +102,9 @@ namespace RightCRM.Core.Services
             HttpResponseMessage result = null;
             using (var client = new HttpClient(new HttpClientHandler()))
             {
+
+                client.Timeout = TimeSpan.FromSeconds(20);
+
                 try
                 {
                     var request = new HttpRequestMessage { Method = verb };
@@ -146,6 +149,10 @@ namespace RightCRM.Core.Services
                     }
 
                     responseData.ContentStatus = ResponseContentStatus.Fail;
+
+                    userDialogs.HideLoading();
+                    await userDialogs.AlertAsync(responseData.ErrorResponse.StatusDescription);
+
                     return responseData;
                 }
 

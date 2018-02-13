@@ -10,21 +10,31 @@ using System;
 using System.Diagnostics;
 using Foundation;
 using MvvmCross.Binding.iOS.Views;
+using MvvmCross.iOS.Support.Views.Expandable;
 using UIKit;
 
 namespace RightCRM.iOS.Views.Search
 {
-    public partial class SearchHeaderCell : MvxTableViewCell
+    public partial class SearchHeaderCell : MvxTableViewCell, IExpandableHeaderCell
     {
-        public static readonly NSString Key = new NSString("SearchHeaderCell");
-        private const string BindingText = "Name CompanyName";
+        public static readonly NSString Key = new NSString(nameof(SearchHeaderCell));
+        private const string BindingText = "SearchHeader Heading";
 
         public SearchHeaderCell(IntPtr handle)  : base (BindingText, handle)
         {
-            Debug.WriteLine("BusinessViewCell ctor");
+            Debug.WriteLine("SearchHeaderCell ctor");
         }
 
-        //public string Name { get { return CompanyName.Text; } set { CompanyName.Text = value; } }
+        public string SearchHeader { get { return lblSrchHeader.Text; } set { lblSrchHeader.Text = value; } }
 
+        public void OnExpanded()
+        {
+            ContentView.BackgroundColor = UIColor.Blue;
+        }
+
+        public void OnCollapsed()
+        {
+            ContentView.BackgroundColor = UIColor.Green;
+        }
     }
 }

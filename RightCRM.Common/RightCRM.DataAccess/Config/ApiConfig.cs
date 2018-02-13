@@ -20,12 +20,12 @@ namespace RightCRM.DataAccess.Config
 
         public static string GetUserSessionId()
         {
-            return $"{SharedConfig.RightApiAuthenticationRoot}users/login";
+            return $"{SharedConfig.RightApiAuthenticationRoot}Individuals/login";
         }
 
         public static string GetBusinessDetails()
         {
-            return $"{SharedConfig.RightApiAuthenticationRoot}accounts/profile";
+            return $"{SharedConfig.RightApiAuthenticationRoot}Individuals/profile";
         }
 
         public static string RegisterNewBusiness()
@@ -35,7 +35,7 @@ namespace RightCRM.DataAccess.Config
 
         public static string GetAllBusinesses()
         {
-            return $"{SharedConfig.RightCrmApiRoot}Businesses/account_list";
+            return $"{SharedConfig.RightCrmApiRoot}Businesses/businesslist";
         }
 
         public static string GetUserProfile(string username)

@@ -16,14 +16,22 @@ namespace RightCRM.iOS.Views.Search
 {
     public partial class SearchItemCell : MvxTableViewCell
     {
-        public static readonly NSString Key = new NSString("SearchItemCell");
-        private const string BindingText = "Name CompanyName";
+        public static readonly NSString Key = new NSString(nameof(SearchItemCell));
+        private const string BindingText = "SearchItem FilterName; FilterItemSelected IsSelected";
 
         public SearchItemCell(IntPtr handle)  : base (BindingText, handle)
         {
-            Debug.WriteLine("BusinessViewCell ctor");
+            Debug.WriteLine("SearchItemCell ctor");
         }
 
-        //public string Name { get { return CompanyName.Text; } set { CompanyName.Text = value; } }
+
+        public static float GetCellHeight()
+        {
+            return 120f;
+        }
+
+        public string SearchItem { get { return lblSrchItem.Text; } set { lblSrchItem.Text = value; } }
+
+        public bool FilterItemSelected { get { return this.Selected; } set { this.Selected = value; } }
     }
 }

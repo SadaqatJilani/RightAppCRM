@@ -14,7 +14,7 @@ namespace RightCRM.iOS.Views
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
-            var cell = (NotesCell)tableView.DequeueReusableCell(NotesCell.Key, indexPath);
+            var cell = (NotesCell)tableView.DequeueReusableCell(NotesCell.Key);
 
             return cell;
         }

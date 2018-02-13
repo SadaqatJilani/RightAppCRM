@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace RightCRM.iOS.Views
+namespace RightCRM.iOS.Views.Search
 {
     [Register ("FilterPopup")]
     partial class FilterPopup

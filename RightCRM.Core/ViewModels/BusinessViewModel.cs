@@ -8,11 +8,16 @@ using RightCRM.Core.ViewModels.Home;
 using RightCRM.Facade.Facades;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using System.Collections.Generic;
+using RightCRM.DataAccess.Model.BusinessModels;
 
 namespace RightCRM.Core.ViewModels
 {
     public class BusinessViewModel : BaseViewModel, IMvxViewModel<string>
     {
+        private BusinessList businessFilters;
+
+
         private MvxObservableCollection<Business> _allBusiness;
         public MvxObservableCollection<Business> AllBusiness{
             get { return _allBusiness; }
@@ -36,17 +41,27 @@ namespace RightCRM.Core.ViewModels
             await navigationService.Navigate<BusinessDetailTabViewModel, Business>(business);
         }
 
+        IMvxCommand showBusinessFilterCommand;
         public IMvxCommand ShowBusinessFilterCommand
         {
             get
             {
-                return new MvxCommand(BusinessFilter);
+                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
+                return showBusinessFilterCommand;
             }
         }
 
-        private void BusinessFilter()
+        private async Task BusinessFilter()
         {
-            navigationService.Navigate<FilterPopupViewModel>();
+          var filterList =  await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterList>>(businessFilters);
+
+            if (filterList != null)
+            {
+                AllBusiness.Clear();
+
+                var result = await this.businessFacade.FilterBusinesses(filterList);
+                await Initialize();
+            }
         }
 
         public void Prepare(string parameter)
@@ -63,7 +78,14 @@ namespace RightCRM.Core.ViewModels
 
             if (result != null)
             {
+                businessFilters = result.business;
+
                 AllBusiness = new MvxObservableCollection<Business>(result.business?.DataArray);
+            }
+
+            else 
+            {
+              //  ShowBusinessFilterCommand.
             }
         }
     }

@@ -1,18 +1,28 @@
-﻿// WARNING
+// WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
 using Foundation;
+using System;
+using System.CodeDom.Compiler;
 
 namespace RightCRM.iOS.Views.Search
 {
-    [Register("SearchItemCell")]
+    [Register ("SearchItemCell")]
     partial class SearchItemCell
     {
-        void ReleaseDesignerOutlets()
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblSrchItem { get; set; }
+
+        void ReleaseDesignerOutlets ()
         {
+            if (lblSrchItem != null) {
+                lblSrchItem.Dispose ();
+                lblSrchItem = null;
+            }
         }
     }
 }

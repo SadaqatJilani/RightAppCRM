@@ -16,21 +16,41 @@ namespace RightCRM.DataAccess.Model.BusinessModels
     {
         public string STATUS;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return STATUS;
+        }
     }
     public class industry
     {
         public string INDUSTRY;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return INDUSTRY;
+        }
     }
     public class company_size
     {
         public string COMPANY_SIZE;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return COMPANY_SIZE;
+        }
     }
     public class revenue
     {
         public string ANNUAL_REVENUE;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return ANNUAL_REVENUE;
+        }
     }
     public class address
     {
@@ -38,18 +58,33 @@ namespace RightCRM.DataAccess.Model.BusinessModels
         public string REGION;
         public int COUNT;
         public city[] cities;
+
+        public override string ToString()
+        {
+            return REGION;
+        }
     }
     public class city
     {
         public int? ID;
         public string NAME;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return NAME;
+        }
     }
 
     public class Tags
     {
         public string CTAG;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return CTAG;
+        }
     }
 
     public class SalesWorkers
@@ -57,6 +92,11 @@ namespace RightCRM.DataAccess.Model.BusinessModels
         public int? AUSRID;
         public string NAME;
         public int? COUNT;
+
+        public override string ToString()
+        {
+            return NAME;
+        }
     }
 
     public class BusinessList
