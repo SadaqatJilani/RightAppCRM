@@ -12,7 +12,7 @@ using RightCRM.Common.Models;
 
 namespace RightCRM.DataAccess.Model.BusinessModels
 {
-    public class Account
+    public class BusInfo
     {
         public string msg { get; set; }
 
@@ -35,6 +35,6 @@ namespace RightCRM.DataAccess.Model.BusinessModels
 
     public class BusDetailsResponseModel
     {
-        public Account account;
+        public BusInfo business;
     }
 }

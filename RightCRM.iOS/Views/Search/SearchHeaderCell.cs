@@ -29,12 +29,15 @@ namespace RightCRM.iOS.Views.Search
 
         public void OnExpanded()
         {
-            ContentView.BackgroundColor = UIColor.Blue;
+            ContentView.BackgroundColor = UIColor.LightGray;
         }
 
         public void OnCollapsed()
         {
-            ContentView.BackgroundColor = UIColor.Green;
+            ContentView.BackgroundColor = UIColor.White;
+
+            ContentView.Layer.BorderWidth = 1f;
+            ContentView.Layer.BorderColor = UIColor.LightGray.CGColor;
         }
     }
 }

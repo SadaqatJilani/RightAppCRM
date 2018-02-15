@@ -55,7 +55,7 @@ namespace RightCRM.Core.ViewModels.Home
             var res = await businessDetailsFacade.GetBusinessDetails(businessItem.BusinessID);
 
             if (res != null)
-                ListBusinessDetails = res.account?.Data ?? new BusinessDetails();
+                ListBusinessDetails = res.business?.Data ?? new BusinessDetails();
 
             //ListBusinessDetails = new BusinessDetails() { 
                 //BusinessID = 101, 

@@ -14,7 +14,7 @@ using MvvmCross.Core.ViewModels;
 using RightCRM.Common.Models;
 using System.Linq;
 using RightCRM.DataAccess.Model.BusinessModels;
-using RightCRM.Core.Models;
+using RightCRM.Common;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
@@ -81,11 +81,11 @@ namespace RightCRM.Core.ViewModels.Popups
         {
             var listAddress = new List<FilterModel>();
 
-            foreach (var item in businessList.AddressArray)
+            foreach (var item in businessList.AddressArray ?? Enumerable.Empty<address>())
             {
                 listAddress.Add(new FilterModel()
                 {
-                    SectionName = "Address",
+                    SectionName = Constants.AddressFilter,
                     FilterName = item.REGION,
                     Count = item.COUNT
                 });
@@ -93,11 +93,11 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listCompany = new List<FilterModel>();
 
-            foreach (var item in businessList.CompanyArray)
+            foreach (var item in businessList.CompanyArray ?? Enumerable.Empty<company_size>())
             {
                 listCompany.Add(new FilterModel()
                 {
-                    SectionName = "Company Size",
+                    SectionName = Constants.CompanySizeFilter,
                     FilterName = item.COMPANY_SIZE,
                     Count = item.COUNT.GetValueOrDefault()
                 });
@@ -106,11 +106,11 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listIndustry = new List<FilterModel>();
 
-            foreach (var item in businessList.IndustryArray)
+            foreach (var item in businessList.IndustryArray ?? Enumerable.Empty<industry>())
             {
                 listIndustry.Add(new FilterModel()
                 {
-                    SectionName = "Industry",
+                    SectionName = Constants.IndustryFilter,
                     FilterName = item.INDUSTRY,
                     Count = item.COUNT.GetValueOrDefault()
                 });
@@ -118,11 +118,11 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listRevenue = new List<FilterModel>();
 
-            foreach (var item in businessList.RevenueArray)
+            foreach (var item in businessList.RevenueArray ?? Enumerable.Empty<revenue>())
             {
                 listRevenue.Add(new FilterModel()
                 {
-                    SectionName = "Revenue",
+                    SectionName = Constants.RevenueFilter,
                     FilterName = item.ANNUAL_REVENUE,
                     Count = item.COUNT.GetValueOrDefault()
                 });
@@ -130,11 +130,11 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listTags = new List<FilterModel>();
 
-            foreach (var item in businessList.TagsArray)
+            foreach (var item in businessList.TagsArray ?? Enumerable.Empty<Tags>())
             {
                 listTags.Add(new FilterModel()
                 {
-                    SectionName = "Tags",
+                    SectionName = Constants.TagsFilter,
                     FilterName = item.CTAG,
                     Count = item.COUNT.GetValueOrDefault()
                 });
@@ -142,11 +142,11 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listSalesWorkers = new List<FilterModel>();
 
-            foreach (var item in businessList.SalesWorkersArray)
+            foreach (var item in businessList.SalesWorkersArray ?? Enumerable.Empty<SalesWorkers>())
             {
                 listSalesWorkers.Add(new FilterModel()
                 {
-                    SectionName = "Sales Workers",
+                    SectionName = Constants.SalesWorkFilter,
                     FilterName = item.NAME,
                     Count = item.COUNT.GetValueOrDefault()
                 });
@@ -158,7 +158,7 @@ namespace RightCRM.Core.ViewModels.Popups
             {
                 listStatus.Add(new FilterModel()
                 {
-                    SectionName = "Status",
+                    SectionName = Constants.StatusFilter,
                     FilterName = item.STATUS,
                     Count = item.COUNT.GetValueOrDefault()
                 });

@@ -11,7 +11,6 @@ namespace RightCRM.Common
 {
     public static class Constants
     {
-        
         public const string TitleBusinessPage = "Business";
 
         public const string TitleMarketsPage = "Markets";
@@ -33,5 +32,22 @@ namespace RightCRM.Common
         public const string UserID = "UserID";
 
         public const string SomethingWrong = "Something went wrong. Please try again";
+
+        //Filter Texts
+        public const string AddressFilter = "Address";
+
+        public const string CompanySizeFilter = "Company Size";
+
+        public const string IndustryFilter = "Industry";
+
+        public const string RevenueFilter = "Revenue";
+
+        public const string TagsFilter = "Tags";
+
+        public const string SalesWorkFilter = "Sales Workers";
+
+        public const string StatusFilter = "Status";
+
+
     }
 }

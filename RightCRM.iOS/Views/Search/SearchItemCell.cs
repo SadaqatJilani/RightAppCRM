@@ -17,7 +17,7 @@ namespace RightCRM.iOS.Views.Search
     public partial class SearchItemCell : MvxTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(SearchItemCell));
-        private const string BindingText = "SearchItem FilterName; FilterItemSelected IsSelected";
+        private const string BindingText = "SearchItem FilterName";
 
         public SearchItemCell(IntPtr handle)  : base (BindingText, handle)
         {
@@ -32,6 +32,6 @@ namespace RightCRM.iOS.Views.Search
 
         public string SearchItem { get { return lblSrchItem.Text; } set { lblSrchItem.Text = value; } }
 
-        public bool FilterItemSelected { get { return this.Selected; } set { this.Selected = value; } }
+       // public bool FilterItemSelected { get { return this.Selected; } set { this.Selected = value; } }
     }
 }

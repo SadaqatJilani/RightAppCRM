@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RightCRM.Core.Models
+namespace RightCRM.Common.Models
 {
     public class FilterList : List<FilterModel>
     {

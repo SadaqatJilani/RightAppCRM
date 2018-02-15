@@ -47,7 +47,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         /// Gets the business list.
         /// </summary>
         /// <returns>The business list.</returns>
-        public async Task<GetBusinessResponseModel> GetBusinessList()
+        public async Task<GetBusinessResponseModel> GetBusinessList(int pageNo)
         {
 
 #if FAKE
@@ -82,8 +82,8 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             new GetBusinessRequestModel()
                                                                                             {
                                                                                                 sessionid = sessionId,
-                                                                                                only_saved_accounts = 0,
-                                                                                                srch_pageno = 1,
+                                                                                                only_saved = 0,
+                                                                                                srch_pageno = pageNo,
                                                                                                 srch_keywords = null,
                                                                                                 srch_ctag = null,
                                                                                                 srch_industry = null,
@@ -111,7 +111,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
             return await Task.FromResult(new BusDetailsResponseModel()
             {
-                account = new Account()
+                business = new BusInfo()
                 {
                     Data = new BusinessDetails()
                     {
@@ -152,6 +152,57 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                 Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
                 throw ex;
             }
+#endif
+        }
+
+
+        public async Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest)
+        {
+
+#if FAKE
+
+            return await Task.FromResult(new GetBusinessResponseModel()
+            {
+                business = new BusinessList()
+                {
+                    DataArray = new Business[]
+
+                    {
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"},
+                        new Business(){ BusinessID = 101, Revenue = "1000", CompanySize="50", BusinessType="e-commerce", CompanyName = "Portal", IndustryType="Industrial"}
+                    }
+                }
+            });
+
+#else
+
+            try
+            {
+                string requestUrl = ApiConfig.GetAllBusinesses();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+
+                filterRequest.sessionid = sessionId;
+                filterRequest.srch_pageno = 1;
+
+                var result = await this.restService.MakeOpenRequestAsync<GetBusinessResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            filterRequest);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+
 #endif
         }
     }

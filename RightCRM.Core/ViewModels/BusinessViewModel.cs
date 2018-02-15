@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using System.Collections.Generic;
 using RightCRM.DataAccess.Model.BusinessModels;
+using System.Linq;
 
 namespace RightCRM.Core.ViewModels
 {
@@ -32,12 +33,13 @@ namespace RightCRM.Core.ViewModels
             this.userDialogs = userDialogs;
 
             BusinessDetailCommand = new MvxAsyncCommand<Business>(ShowBusinessDetails);
+            AllBusiness = new MvxObservableCollection<Business>();
         }
 
         private async Task ShowBusinessDetails(Business business)
         {
             // throw new NotImplementedException();
-
+            if (business != null)
             await navigationService.Navigate<BusinessDetailTabViewModel, Business>(business);
         }
 
@@ -46,9 +48,38 @@ namespace RightCRM.Core.ViewModels
         {
             get
             {
-                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
+                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter, CanFilter);
                 return showBusinessFilterCommand;
             }
+        }
+
+        IMvxCommand assignTagCommand;
+        public IMvxCommand AssignTagCommand
+        {
+            get
+            {
+                assignTagCommand = assignTagCommand ?? new MvxAsyncCommand(AssignFilter);
+                return assignTagCommand;
+            }
+        }
+
+        private async Task AssignFilter()
+        {
+
+          //  AllBusiness.chang
+            foreach(var bus in AllBusiness)
+            {
+                
+            }
+        }
+
+        private bool CanFilter()
+        {
+            if (AllBusiness.Count == 0)
+            {
+                return false;
+            }
+            return true;
         }
 
         private async Task BusinessFilter()
@@ -60,7 +91,35 @@ namespace RightCRM.Core.ViewModels
                 AllBusiness.Clear();
 
                 var result = await this.businessFacade.FilterBusinesses(filterList);
-                await Initialize();
+
+                if (result != null)
+                {
+                    PopulateBusinesses(result.business?.DataArray);
+                }
+            }
+        }
+
+        private void PopulateBusinesses(Business[] businesses)
+        {
+            if (businesses == null || !businesses.Any())
+            {
+                return;
+            }
+
+            foreach (var business in businesses)
+            {
+                var businessItem = new Business
+                {
+                    BusinessID = business.BusinessID,
+                    BusinessType = business.BusinessType,
+                    CompanyName = business.CompanyName,
+                    CompanySize = business.CompanySize,
+                    IndustryType = business.IndustryType,
+                    Revenue = business.Revenue,
+                    ADD_ID = business.ADD_ID
+                };
+
+                this.AllBusiness.Add(businessItem);
             }
         }
 
@@ -74,19 +133,17 @@ namespace RightCRM.Core.ViewModels
         public override async Task Initialize()
         {
             await base.Initialize();
-            var result = await this.businessFacade.GetBusiness();
+            var result = await this.businessFacade.GetBusiness(1);
 
             if (result != null)
             {
                 businessFilters = result.business;
 
-                AllBusiness = new MvxObservableCollection<Business>(result.business?.DataArray);
+                PopulateBusinesses(result.business?.DataArray);
+
             }
 
-            else 
-            {
-              //  ShowBusinessFilterCommand.
-            }
+            ShowBusinessFilterCommand.RaiseCanExecuteChanged();
         }
     }
 }

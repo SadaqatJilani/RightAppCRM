@@ -161,6 +161,14 @@ namespace RightCRM.DataAccess.Model.BusinessModels
             }
         }
 
+        public string business_status
+        {
+            set
+            {
+                StatusArray = JsonConvert.DeserializeObject<status[]>(value);
+            }
+        }
+
         //
         public status[] StatusArray { get; set; }
         public industry[] IndustryArray { get; set; }

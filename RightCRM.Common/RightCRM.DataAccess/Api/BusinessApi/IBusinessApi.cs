@@ -8,8 +8,10 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 {
     public interface IBusinessApi
     {
-        Task<GetBusinessResponseModel> GetBusinessList();
+        Task<GetBusinessResponseModel> GetBusinessList(int pageNo);
 
         Task<BusDetailsResponseModel> GetBusinessDetails(int? businessID);
+
+        Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest);
     }
 }

@@ -50,7 +50,7 @@ namespace RightCRM.iOS.Views.Search
 
             var item = GetItemAt(indexPath);
 
-            if (this.SelectionChangedCommand != null)
+           if (this.SelectionChangedCommand != null)
                 this.SelectionChangedCommand.Execute(item);
         }
 
@@ -64,6 +64,11 @@ namespace RightCRM.iOS.Views.Search
             if (this.SelectionChangedCommand != null)
                 this.SelectionChangedCommand.Execute(item);
         }
+
+        //public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+        //{
+        //    return 30f;
+        //}
 
         //private readonly NSString _cellIdentifier;
         //protected virtual NSString CellIdentifier => _cellIdentifier;

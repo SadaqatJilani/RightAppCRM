@@ -7,7 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
-namespace RightCRM.Core.Models
+namespace RightCRM.Common.Models
 {
     public class FilterModel
     {

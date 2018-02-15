@@ -25,7 +25,7 @@ namespace RightCRM.DataAccess.Config
 
         public static string GetBusinessDetails()
         {
-            return $"{SharedConfig.RightApiAuthenticationRoot}Individuals/profile";
+            return $"{SharedConfig.RightApiAuthenticationRoot}Businesses/getbusinessprofile";
         }
 
         public static string RegisterNewBusiness()

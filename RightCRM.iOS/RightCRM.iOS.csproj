@@ -278,6 +278,7 @@
     <InterfaceDefinition Include="Views\Menu\MenuTableViewCell.xib" />
     <InterfaceDefinition Include="Views\Menu\MenuView.xib" />
     <InterfaceDefinition Include="Storyboards\FilterPopup.storyboard" />
+    <InterfaceDefinition Include="Storyboards\AddBusinessTag.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -366,6 +367,10 @@
       <DependentUpon>FilterPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Search\SearchTVS.cs" />
+    <Compile Include="BusAddTagView.cs" />
+    <Compile Include="BusAddTagView.designer.cs">
+      <DependentUpon>BusAddTagView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

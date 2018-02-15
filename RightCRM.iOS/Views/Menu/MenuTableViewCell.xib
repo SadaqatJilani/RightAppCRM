@@ -15,14 +15,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMx-dI-fSD">
-                        <rect key="frame" x="36" y="11" width="276" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMx-dI-fSD">
+                        <rect key="frame" x="44" y="11" width="260" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_build_white" translatesAutoresizingMaskIntoConstraints="NO" id="N3C-Ic-OME">
-                        <rect key="frame" x="8" y="12" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N3C-Ic-OME">
+                        <rect key="frame" x="16" y="12" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="dkv-hP-Iqv"/>
                             <constraint firstAttribute="height" constant="20" id="ucR-N5-KpB"/>
@@ -46,5 +46,19 @@
     </objects>
     <resources>
         <image name="threelines.png" width="24" height="24"/>
+        <image name="splash.png" width="634" height="999"/>
+        <image name="filtericon.png" width="24" height="24"/>
+        <image name="crossicon.png" width="24" height="24"/>
+        <image name="ic_back.png" width="24" height="24"/>
+        <image name="ic_notes.png" width="24" height="24"/>
+        <image name="ic_paper.png" width="24" height="24"/>
+        <image name="xamarin.png" width="1200" height="650"/>
+        <image name="Xamagon.png" width="609" height="609"/>
+        <image name="right_crm_logo.png" width="118" height="33"/>
+        <image name="ic_compose.png" width="24" height="24"/>
+        <image name="ic_contact.png" width="24" height="24"/>
+        <image name="ic_email.png" width="24" height="24"/>
+        <image name="ic_telephone.png" width="24" height="24"/>
+        <image name="ic_logout.png" width="24" height="24"/>
     </resources>
 </document>

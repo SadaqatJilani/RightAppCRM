@@ -26,5 +26,7 @@ namespace RightCRM.Common.Models
         public string Revenue { get; set; }
 
         public int? ADD_ID { get; set; }
+
+        public bool IsSelected { get; set; }
     }
 }
