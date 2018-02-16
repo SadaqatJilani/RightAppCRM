@@ -13,7 +13,7 @@ using System.Linq;
 namespace RightCRM.iOS.Views.Search
 {
     [MvxFromStoryboard(StoryboardName = "FilterPopup")]
-    [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext, ModalTransitionStyle = UIModalTransitionStyle.CoverVertical)]
+    [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext, ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve)]
     public partial class FilterPopup : BaseViewController<FilterPopupViewModel>
     {
         public FilterPopup (IntPtr handle) : base (handle)
@@ -27,7 +27,7 @@ namespace RightCRM.iOS.Views.Search
         {
             base.ViewDidLoad();
 
-            View.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0.5f);
+           // View.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0.5f);
 
             var Set = this.CreateBindingSet<FilterPopup, FilterPopupViewModel>();
 
