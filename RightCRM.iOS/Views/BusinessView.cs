@@ -9,6 +9,8 @@ using MvvmCross.iOS.Support.XamarinSidebar;
 using MvvmCross.iOS.Views.Presenters.Attributes;
 using MvvmCross.Binding.ExtensionMethods;
 using MvvmCross.Binding.iOS;
+using MvvmCross.Binding.iOS.Views.Gestures;
+using RightCRM.iOS.Helpers;
 
 namespace RightCRM.iOS
 {
@@ -27,10 +29,18 @@ namespace RightCRM.iOS
         {
         }
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            this.TableView.LongPress().PropertyChanged += Handle_LongPress;
+
+ 
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
 
             filterBtn = new UIBarButtonItem(UIImage.FromBundle("filtericon"),
                                                 UIBarButtonItemStyle.Plain, null);
@@ -55,6 +65,7 @@ namespace RightCRM.iOS
 
             Set.Bind(filterBtn).To(vm => vm.ShowBusinessFilterCommand);
             Set.Bind(assignTagBtn).To(vm => vm.AssignTagCommand);
+            Set.Bind(TableView.LongPress()).For(lp => lp.Command).To(vm => vm.BusLongPressedCommand);
             Set.Apply();
 
             this.TableView.Source = source;
@@ -66,11 +77,17 @@ namespace RightCRM.iOS
             {
                 MinimumPressDuration = 1
             };
-            // longPressGesture.CancelsTouchesInView = false;
 
-            this.TableView.AddGestureRecognizer(longPressGesture);
-
+          //  this.TableView.LongPress().;
         }
+
+        void Handle_LongPress(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            this.NavigationItem.SetRightBarButtonItem(assignTagBtn, true);
+
+            this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+        }
+
 
         private void LongPressBusiness(UILongPressGestureRecognizer gestureRecognizer)
         {
@@ -98,26 +115,24 @@ namespace RightCRM.iOS
                     this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
                 }
 
-                // TableView.SelectRow(indexPath, true, UITableViewScrollPosition.None);
-
-                if (selectedCell.Selected == false)
-                {
-                    TableView.SelectRow(indexPath, true, UITableViewScrollPosition.None);
-                    TableView.Delegate?.RowSelected(TableView, indexPath);
-                }
-                else
-                {
-                    TableView.DeselectRow(indexPath, true);
-                    TableView.Delegate?.RowDeselected(TableView, indexPath);
-                }
             }
         }
 
-        public override void ViewDidDisappear(bool animated)
+        public override void ViewWillDisappear(bool animated)
         {
-            base.ViewDidDisappear(animated);
+          //  this.NavigationController.NavigationBar.BarTintColor = null;
 
-            this.TableView.RemoveGestureRecognizer(longPressGesture);
+            base.ViewWillDisappear(animated);
+
+            this.TableView.LongPress().PropertyChanged -= Handle_LongPress;
+
+        }
+
+        public override void DidReceiveMemoryWarning()
+        {
+            base.DidReceiveMemoryWarning();
+
+            //this.TableView.RemoveGestureRecognizer(longPressGesture);
         }
 
         public class TableSource : MvxTableViewSource

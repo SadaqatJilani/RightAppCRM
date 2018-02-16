@@ -288,7 +288,6 @@
     <None Include="AppDelegate.cs.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -371,6 +370,8 @@
     <Compile Include="Views\BusAddTagView.designer.cs">
       <DependentUpon>BusAddTagView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main.cs" />
+    <Compile Include="Helpers\MvxBehaviourExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

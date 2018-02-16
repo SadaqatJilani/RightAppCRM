@@ -8,7 +8,7 @@
     <scenes>
         <scene sceneID="526">
             <objects>
-                <viewController id="527" sceneMemberID="viewController" customClass="BusAddTagView">
+                <viewController id="527" sceneMemberID="viewController" customClass="BusAddTagView" storyboardIdentifier="BusAddTagView" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <view key="view" contentMode="scaleToFill" id="528">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,6 +44,10 @@
                             <constraint id="7348" firstItem="1056" firstAttribute="top" secondItem="793" secondAttribute="top" constant="10"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblAssignTag" destination="1056" id="name-outlet-1056"/>
+                        <outlet property="btnAssignTag" destination="1058" id="name-outlet-1058"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="529" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

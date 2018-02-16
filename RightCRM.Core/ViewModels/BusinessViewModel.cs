@@ -33,7 +33,23 @@ namespace RightCRM.Core.ViewModels
             this.userDialogs = userDialogs;
 
             BusinessDetailCommand = new MvxAsyncCommand<Business>(ShowBusinessDetails);
+            BusLongPressedCommand = new MvxAsyncCommand<int>(SelectBusForTag);
             AllBusiness = new MvxObservableCollection<Business>();
+        }
+
+        private async Task SelectBusForTag(int selectedBusinessRow)
+        {
+            if (IsLongPress ==false)
+                IsLongPress = true;
+
+            if (AllBusiness[selectedBusinessRow].IsSelected == false)
+            {
+                AllBusiness[selectedBusinessRow].IsSelected = true;
+            }
+            else
+            {
+                AllBusiness[selectedBusinessRow].IsSelected = false;
+            }
         }
 
         private async Task ShowBusinessDetails(Business business)
@@ -63,14 +79,23 @@ namespace RightCRM.Core.ViewModels
             }
         }
 
+        private bool isLongPress = false;
+        public bool IsLongPress
+        {
+            get { return isLongPress; }
+            set
+            {
+                isLongPress = value;
+                RaisePropertyChanged(() => IsLongPress);
+            }
+        }
+
         private async Task AssignFilter()
         {
 
-          //  AllBusiness.chang
-            foreach(var bus in AllBusiness)
-            {
-                
-            }
+            //  AllBusiness.chang
+
+            await navigationService.Navigate<BusAddTagViewModel>();
         }
 
         private bool CanFilter()
@@ -129,6 +154,7 @@ namespace RightCRM.Core.ViewModels
         }
 
         public IMvxCommand<Business> BusinessDetailCommand { get; private set; }
+        public IMvxCommand<int> BusLongPressedCommand { get; private set; }
 
         public override async Task Initialize()
         {
