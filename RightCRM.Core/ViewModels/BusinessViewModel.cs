@@ -1,18 +1,18 @@
-﻿using System;
-using MvvmCross.Core.Navigation;
-using MvvmCross.Core.ViewModels;
-using RightCRM.Common.Models;
-using RightCRM.Core.Models;
-using RightCRM.Core.ViewModels.Popups;
-using RightCRM.Core.ViewModels.Home;
-using RightCRM.Facade.Facades;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using System.Collections.Generic;
-using RightCRM.DataAccess.Model.BusinessModels;
-using System.Linq;
-using RightCRM.Core.Services;
+using MvvmCross.Core.Navigation;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using RightCRM.Common;
+using RightCRM.Common.Models;
+using RightCRM.Common.Services;
+using RightCRM.Core.Services;
+using RightCRM.Core.ViewModels.Home;
+using RightCRM.Core.ViewModels.Popups;
+using RightCRM.DataAccess.Model.BusinessModels;
+using RightCRM.Facade.Facades;
 
 namespace RightCRM.Core.ViewModels
 {
@@ -21,8 +21,7 @@ namespace RightCRM.Core.ViewModels
         private BusinessList businessFilters;
         private int businessPageno = 1;
 
-        private LongPressMessage message;
-
+        private LongPressMessage longPressMessage;
 
         private MvxObservableCollection<Business> _allBusiness;
         public MvxObservableCollection<Business> AllBusiness{
@@ -34,12 +33,17 @@ namespace RightCRM.Core.ViewModels
         readonly INavBarService navBarService;
         readonly IMvxMessenger messenger;
 
+        private List<FilterList> listOfFilters;
+        readonly ICacheService cacheService;
+
         public BusinessViewModel(IBusinessFacade businessFacade, 
                                  IMvxNavigationService navigationService, 
                                  IUserDialogs userDialogs, 
                                  INavBarService navBarService,
-                                 IMvxMessenger messenger) : base (userDialogs)
+                                 IMvxMessenger messenger,
+                                 ICacheService cacheService) : base (userDialogs)
         {
+            this.cacheService = cacheService;
             this.messenger = messenger;
             this.navBarService = navBarService;
             this.navigationService = navigationService;
@@ -50,20 +54,19 @@ namespace RightCRM.Core.ViewModels
             BusLongPressedCommand = new MvxAsyncCommand<int>(SelectBusForTag);
             LoadMoreBusinessesCommand = new MvxAsyncCommand(LoadMoreBusinesses);
             AllBusiness = new MvxObservableCollection<Business>();
+
+            listOfFilters = new List<FilterList>();
         }
 
         private async Task LoadMoreBusinesses()
         {
             businessPageno++;
 
-            var result = await this.businessFacade.GetBusiness(businessPageno);
+            var result = await this.businessFacade.FilterBusinesses(listOfFilters, businessPageno);
 
             if (result != null)
             {
-                businessFilters = result.business;
-
                 PopulateBusinesses(result.business?.DataArray);
-
             }
         }
 
@@ -73,8 +76,8 @@ namespace RightCRM.Core.ViewModels
             {
                 IsLongPress = true;
 
-                message = new LongPressMessage(this, true);
-                messenger.Publish(message);
+                longPressMessage = new LongPressMessage(this, true);
+                messenger.Publish(longPressMessage);
 
                 //navBarService.TaggingModeEnabled(true);
             }
@@ -152,9 +155,12 @@ namespace RightCRM.Core.ViewModels
 
             if (filterList != null)
             {
+                listOfFilters = new List<FilterList>(filterList);
+
                 AllBusiness.Clear();
 
-                var result = await this.businessFacade.FilterBusinesses(filterList);
+                businessPageno = 1;
+                var result = await this.businessFacade.FilterBusinesses(listOfFilters, businessPageno);
 
                 if (result != null)
                 {
@@ -199,17 +205,29 @@ namespace RightCRM.Core.ViewModels
         public override async Task Initialize()
         {
             await base.Initialize();
-            var result = await this.businessFacade.GetBusiness(businessPageno);
+
+            businessPageno = 1;
+            var result = await this.businessFacade.FilterBusinesses(listOfFilters, businessPageno);
 
             if (result != null)
             {
                 businessFilters = result.business;
+                await cacheService.InsertObject(Constants.AllSavedFilters, businessFilters);
 
                 PopulateBusinesses(result.business?.DataArray);
-
             }
 
             ShowBusinessFilterCommand.RaiseCanExecuteChanged();
+        }
+
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+
+            IsLongPress = false;
+
+            longPressMessage = new LongPressMessage(this, false);
+            messenger.Publish(longPressMessage);
         }
     }
 }

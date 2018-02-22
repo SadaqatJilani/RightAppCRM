@@ -9,16 +9,11 @@
 
 namespace RightCRM.DataAccess.Api.User
 {
-    using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Net.Http;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
     using RightCRM.Common;
     using RightCRM.Common.Models;
     using RightCRM.Common.Services;
-    using RightCRM.DataAccess.Config;
     using RightCRM.DataAccess.Factories;
     using RightCRM.DataAccess.Model.RequestModels;
     using RightCRM.DataAccess.Model.ResponseModels;
@@ -48,7 +43,12 @@ namespace RightCRM.DataAccess.Api.User
         public async Task<IEnumerable<UserInfo>> GetUserList(GetUsersRequestModel userFilters)
         {
 #if FAKE
-            return await Task.FromResult(new GetUsersResponseModel());
+            return await Task.FromResult(new List<UserInfo>(){
+                new UserInfo(){ UserID = 23, UserName = "Alfred" },
+                new UserInfo(){ UserID = 24, UserName = "Batman" },
+                new UserInfo(){ UserID = 25, UserName = "Superman" },
+                new UserInfo(){ UserID = 26, UserName = "Spongbob" },
+            });
 
 #else
             try

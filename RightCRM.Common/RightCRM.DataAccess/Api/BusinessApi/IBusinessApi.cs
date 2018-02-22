@@ -12,7 +12,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
         Task<BusDetailsResponseModel> GetBusinessDetails(int? businessID);
 
-        Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest);
+        Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest, int pageNo);
 
         Task<AddTagsResponseModel> AddTagToBusiness(AddTagsRequestModel requestedTags);
 

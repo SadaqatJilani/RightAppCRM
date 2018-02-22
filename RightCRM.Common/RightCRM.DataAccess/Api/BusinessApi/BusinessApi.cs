@@ -158,7 +158,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         }
 
 
-        public async Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest)
+        public async Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest, int pageNo)
         {
 
 #if FAKE
@@ -189,7 +189,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                 string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
 
                 filterRequest.sessionid = sessionId;
-                filterRequest.srch_pageno = 1;
+                filterRequest.srch_pageno = pageNo;
 
                 var result = await this.restService.MakeOpenRequestAsync<GetBusinessResponseModel>(
                                                                                             requestUrl,
@@ -249,7 +249,13 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         {
 #if FAKE
 
-            return await Task.FromResult(new GetTagsResponseModel());
+            return await Task.FromResult(new List<TagData>(){
+
+                new TagData(){ list = "new", parent = "ctag"},
+                new TagData(){ list = "hot", parent = "ctag"},
+                new TagData(){ list = "sexy", parent = "ctag"},
+                new TagData(){ list = "latest", parent = "ctag"},
+            });
 #else
 
             try

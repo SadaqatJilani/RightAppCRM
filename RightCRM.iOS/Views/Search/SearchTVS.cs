@@ -46,7 +46,7 @@ namespace RightCRM.iOS.Views.Search
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            tableView.CellAt(indexPath).Accessory = UITableViewCellAccessory.Checkmark;
+           // tableView.CellAt(indexPath).Accessory = UITableViewCellAccessory.Checkmark;
 
             var item = GetItemAt(indexPath);
 
@@ -57,7 +57,7 @@ namespace RightCRM.iOS.Views.Search
 
         public override void RowDeselected(UITableView tableView, NSIndexPath indexPath)
         {
-            tableView.CellAt(indexPath).Accessory = UITableViewCellAccessory.None;
+           // tableView.CellAt(indexPath).Accessory = UITableViewCellAccessory.None;
 
             var item = GetItemAt(indexPath);
 

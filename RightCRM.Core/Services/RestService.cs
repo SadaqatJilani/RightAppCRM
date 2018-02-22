@@ -18,6 +18,7 @@ namespace RightCRM.Core.Services
     using Newtonsoft.Json;
     using RightCRM.DataAccess.Factories;
     using Acr.UserDialogs;
+    using RightCRM.Common.Helpers;
 
     /// <summary>
     /// Rest service.
@@ -125,7 +126,7 @@ namespace RightCRM.Core.Services
                     {
                         responseData.ContentStatus = ResponseContentStatus.OK;
                         var responseString = await result.Content.ReadAsStringAsync();
-                        responseData.Content = JsonConvert.DeserializeObject<T>(responseString);
+                        responseData.Content = JsonConvert.DeserializeObject<T>(responseString, new JsonSettings());
                     }
                     else
                     {

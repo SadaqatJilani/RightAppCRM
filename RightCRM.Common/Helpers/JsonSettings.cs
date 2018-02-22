@@ -1,17 +1,21 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="PickerItem.cs" company="Zepto Systems">
+// // <copyright file="JsonSettings.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   PickerItem
+// //   JsonSettings
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
-namespace RightCRM.Common.Models
+using Newtonsoft.Json;
+
+namespace RightCRM.Common.Helpers
 {
-    public class PickerItem
+    public class JsonSettings : JsonSerializerSettings
     {
-        public string DisplayName { get; set; }
-        public int? Value { get; set; }
+        public JsonSettings()
+        {
+            NullValueHandling = NullValueHandling.Ignore;
+        }
     }
 }

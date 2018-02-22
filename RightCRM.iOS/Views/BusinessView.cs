@@ -16,6 +16,7 @@ using System.ComponentModel;
 using MvvmCross.Platform.WeakSubscription;
 using MvvmCross.Plugins.Messenger;
 using RightCRM.Core.Services;
+using System.Linq;
 
 namespace RightCRM.iOS
 {
@@ -43,6 +44,22 @@ namespace RightCRM.iOS
 
                 this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
             }
+
+            else
+            {
+                this.NavigationItem.SetRightBarButtonItem(filterBtn, true);
+
+                this.NavigationController.NavigationBar.BarTintColor = null;
+
+                if (TableView.IndexPathsForSelectedRows != null && TableView.IndexPathsForSelectedRows.Any())
+                {
+                    foreach (var index in TableView.IndexPathsForSelectedRows)
+                    {
+                        TableView.DeselectRow(index, true);
+                        TableView.Delegate?.RowDeselected(TableView, index);
+                    }
+                }
+            }
         }
 
         public override void ViewWillAppear(bool animated)
@@ -63,13 +80,6 @@ namespace RightCRM.iOS
 
             assignTagBtn = new UIBarButtonItem(UIImage.FromBundle("ic_compose"),
                          UIBarButtonItemStyle.Plain, null);
-
-            var rightBarItems = new UIBarButtonItem[] { filterBtn, assignTagBtn};
-
-            this.NavigationItem.SetRightBarButtonItem(filterBtn, true);
-
-            //this.NavigationItem.RightBarButtonItems[0].CustomView.Hidden = true;
-
 
             var Set = this.CreateBindingSet<BusinessView, BusinessViewModel>();
 

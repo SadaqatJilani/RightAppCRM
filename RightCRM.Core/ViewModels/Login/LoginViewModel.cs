@@ -103,7 +103,7 @@ namespace RightCRM.Core.ViewModels
 
             if (result != null && !string.IsNullOrWhiteSpace(result.user?.msg))
             {
-                if(result.user?.msg == Constants.LoginSuccessString && result.user.status == 0)
+                if(result.user.status == 0)
                     this.GoToRootMenuCommand.Execute();
 
                 else
@@ -113,7 +113,7 @@ namespace RightCRM.Core.ViewModels
             else
             {
                 await userDialog.AlertAsync(Constants.SomethingWrong);
-                this.GoToRootMenuCommand.Execute();
+                //this.GoToRootMenuCommand.Execute();
             }
         }
     }

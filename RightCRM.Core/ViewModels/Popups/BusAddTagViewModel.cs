@@ -44,7 +44,7 @@ namespace RightCRM.Core.ViewModels.Popups
         private async Task AddTagForBusiness()
         {
             //  throw new NotImplementedException();
-            var accNums = accountList.Select(x => x.BusinessID);
+            var accNums = accountList.Select(x => x.BusinessID).ToList();
 
             var res = new AddTagsResponseModel();
 
@@ -54,8 +54,24 @@ namespace RightCRM.Core.ViewModels.Popups
             }
             else
             {
-                res = await businessFacade.AddTagToBusinesses(accNums, SelectedTag.DisplayName);
-                await userDialogs.AlertAsync(res?.lead?.msg ?? string.Empty);
+                if (SelectedUser.Value == 0)
+                {
+                    res = await businessFacade.AddTagToBusinesses(accNums, SelectedTag.DisplayName);
+                }
+                else
+                {
+                    res = await businessFacade.AddTagToBusinesses(accNums, SelectedTag.DisplayName, selectedUser.Value);
+                }
+
+                if (res?.lead?.status == 0)
+                {
+                    userDialogs.Toast(res?.lead?.msg ?? string.Empty);
+                }
+
+                else
+                {
+                    await userDialogs.AlertAsync(res?.lead?.msg ?? string.Empty);
+                }
             }
         }
 
@@ -92,9 +108,10 @@ namespace RightCRM.Core.ViewModels.Popups
 
         async Task<IEnumerable<PickerItem>> GetTagsFromList()
         {
-            var tagList = new List<PickerItem>();
-
-            tagList.Add(new PickerItem() { DisplayName = "Select Tag", Value = 0 });
+            var tagList = new List<PickerItem>
+            {
+                new PickerItem() { DisplayName = "Select Tag", Value = 0 }
+            };
 
             var res = await businessFacade.GetTagsFromList("ctag");
 
@@ -118,9 +135,10 @@ namespace RightCRM.Core.ViewModels.Popups
 
         async Task<IEnumerable<PickerItem>> GetUsersFromList()
         {
-            var tagList = new List<PickerItem>();
-
-            tagList.Add(new PickerItem() { DisplayName = "Select User to Assign Tag", Value = 0 });
+            var tagList = new List<PickerItem>
+            {
+                new PickerItem() { DisplayName = "Select User to Assign Tag", Value = 0 }
+            };
 
             var res = await userFacade.GetAllUsers(new DataAccess.Model.Users.GetUsersRequestModel()
             {
@@ -136,7 +154,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 var tagItem = new PickerItem
                 {
                     DisplayName = res.ElementAt(i).UserName,
-                    Value = i + 1
+                    Value = res.ElementAt(i).UserID.GetValueOrDefault()
                 };
 
                 tagList.Add(tagItem);

@@ -48,6 +48,10 @@ namespace RightCRM.Common
 
         public const string StatusFilter = "Status";
 
+        public const string AllSavedFilters = "AllSavedFilters";
+
+        public const string SelectedFilters = "SelectedFilters";
+
 
     }
 }

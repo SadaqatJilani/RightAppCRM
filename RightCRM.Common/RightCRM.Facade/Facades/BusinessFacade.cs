@@ -26,22 +26,23 @@ namespace RightCRM.Facade.Facades
             return this.businessApi.GetBusinessList(pageNo);
         }
 
-        public Task<AddTagsResponseModel> AddTagToBusinesses(IEnumerable<int?> accountList, string lead)
+        public Task<AddTagsResponseModel> AddTagToBusinesses(IEnumerable<int?> accountList, string tagText, int? workerID = null)
         {
             var tagRequest = new AddTagsRequestModel();
 
             if (accountList != null && accountList.Any())
             {
-                tagRequest.account_list = JsonConvert.SerializeObject(accountList);
+                tagRequest.business_list = JsonConvert.SerializeObject(accountList);
             }
 
-            tagRequest.tag = lead;
+            tagRequest.tag = tagText;
+            tagRequest.worker_userid = workerID;
 
             return this.businessApi.AddTagToBusiness(tagRequest);
         }
 
 
-        public Task<GetBusinessResponseModel> FilterBusinesses(IEnumerable<FilterList> filterList)
+        public Task<GetBusinessResponseModel> FilterBusinesses(IEnumerable<FilterList> filterList, int pageNo)
         {
             var filterRequest = new GetBusinessRequestModel
             {
@@ -60,7 +61,7 @@ namespace RightCRM.Facade.Facades
                 user_status = JsonStringFromList(filterList, Constants.StatusFilter)
             };
 
-            return this.businessApi.FilterBusinesses(filterRequest);
+            return this.businessApi.FilterBusinesses(filterRequest, pageNo);
         }
 
 

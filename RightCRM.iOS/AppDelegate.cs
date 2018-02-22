@@ -4,6 +4,7 @@ using MvvmCross.Platform;
 using Foundation;
 using UIKit;
 using MvvmCross.iOS.Views.Presenters;
+using Akavache;
 
 namespace RightCRM.iOS
 {
@@ -27,5 +28,13 @@ namespace RightCRM.iOS
 
             return true;
         }
+
+        public override void WillTerminate(UIApplication application)
+        {
+            BlobCache.Shutdown().Wait();
+
+            base.WillTerminate(application);
+        }
+
     }
 }

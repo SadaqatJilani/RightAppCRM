@@ -12,7 +12,9 @@ namespace RightCRM.DataAccess.Model.BusinessModels
     public class AddTagsRequestModel
     {
         public string session_id { get; set; }
-        public string account_list { get; set; }
+        public string business_list { get; set; }
+        public string individual_list { get; set; }
         public string tag { get; set; }
+        public int? worker_userid { get; set; }
     }
 }

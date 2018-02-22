@@ -15,15 +15,18 @@ using RightCRM.Common.Models;
 using System.Linq;
 using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Common;
+using RightCRM.Common.Services;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
     public class FilterPopupViewModel : BaseViewModel, IMvxViewModel<BusinessList, IEnumerable<FilterList>>
     {
         private BusinessList businessList;
+        private readonly ICacheService cacheService;
 
-        public FilterPopupViewModel(IMvxNavigationService navigationService)
+        public FilterPopupViewModel(IMvxNavigationService navigationService, ICacheService cacheService)
         {
+            this.cacheService = cacheService;
             this.navigationService = navigationService;
 
             CloseCommand = CloseCommand ?? new MvxAsyncCommand(CloseFilters);
@@ -74,11 +77,20 @@ namespace RightCRM.Core.ViewModels.Popups
 
         private async Task SearchParameters()
         {
+
+            await cacheService.InsertObject<IEnumerable<FilterList>>(Constants.SelectedFilters, Demolist);
             await navigationService.Close(this, Demolist);
         }
 
-        private Task<List<FilterList>> ExtractFilterItems()
+        private async Task<List<FilterList>> ExtractFilterItems()
         {
+            var cachedFilters = await cacheService.GetObject<IEnumerable<FilterList>>(Constants.SelectedFilters);
+
+            if(cachedFilters != null)
+            {
+                return new List<FilterList>(cachedFilters);
+            }
+
             var listAddress = new List<FilterModel>();
 
             foreach (var item in businessList.AddressArray ?? Enumerable.Empty<address>())
@@ -176,7 +188,7 @@ namespace RightCRM.Core.ViewModels.Popups
             };
 
 
-            return Task.FromResult(filterList);
+            return filterList;
         }
 
         private MvxObservableCollection<FilterList> demolist;
