@@ -227,6 +227,9 @@
     <Reference Include="Sequence.Plugins.InfiniteScroll.Droid">
       <HintPath>..\packages\Sequence.Plugins.InfiniteScroll.1.0.1\lib\MonoAndroid10\Sequence.Plugins.InfiniteScroll.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.6.3\lib\MonoAndroid\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -250,6 +253,7 @@
     <Compile Include="Fragments\Menu\MenuFragment.cs" />
     <Compile Include="Fragments\Settings\SettingsFragment.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

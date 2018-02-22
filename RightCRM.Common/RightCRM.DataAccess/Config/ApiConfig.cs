@@ -53,6 +53,23 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Notes/savenote";
         }
 
+        public static string AddTagsToLead()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Leads/saveleads";
+        }
+
+        public static string GetList()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Lists/getlist";
+        }
+
+        public static string GetUsers()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Individuals/userlist";
+        }
+
+        //Lists/getlist
+
         //Notes/getallnotes
 
     }

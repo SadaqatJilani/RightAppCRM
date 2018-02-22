@@ -244,6 +244,9 @@
     <Reference Include="Sequence.Plugins.InfiniteScroll.iOS">
       <HintPath>..\packages\Sequence.Plugins.InfiniteScroll.1.0.1\lib\Xamarin.iOS10\Sequence.Plugins.InfiniteScroll.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.6.3\lib\Xamarin.iOS10\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -271,6 +274,7 @@
     <Folder Include="Views\BusinessTabs\" />
     <Folder Include="Helpers\" />
     <Folder Include="Views\Search\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -372,6 +376,8 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="Helpers\MvxBehaviourExtensions.cs" />
+    <Compile Include="Services\NavBarService.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

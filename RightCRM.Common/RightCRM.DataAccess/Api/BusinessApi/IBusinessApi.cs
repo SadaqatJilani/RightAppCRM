@@ -13,5 +13,9 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         Task<BusDetailsResponseModel> GetBusinessDetails(int? businessID);
 
         Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequest);
+
+        Task<AddTagsResponseModel> AddTagToBusiness(AddTagsRequestModel requestedTags);
+
+        Task<IEnumerable<TagData>> GetTagsFromList(string listName);
     }
 }

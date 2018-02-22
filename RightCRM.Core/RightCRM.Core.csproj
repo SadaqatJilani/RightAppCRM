@@ -79,6 +79,8 @@
     <Compile Include="Services\CacheService.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Popups\BusAddTagViewModel.cs" />
+    <Compile Include="Services\INavBarService.cs" />
+    <Compile Include="Services\LongPressMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

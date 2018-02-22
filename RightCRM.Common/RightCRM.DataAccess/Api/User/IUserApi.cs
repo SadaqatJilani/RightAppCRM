@@ -14,6 +14,8 @@ namespace RightCRM.DataAccess.Api
     using RightCRM.Common.Models;
     using RightCRM.DataAccess.Model.RequestModels;
     using RightCRM.DataAccess.Model.ResponseModels;
+    using RightCRM.DataAccess.Model.Users;
+    using System.Collections.Generic;
 
     /// <summary>
     /// User API.
@@ -26,5 +28,7 @@ namespace RightCRM.DataAccess.Api
         /// <returns>The user profile.</returns>
         /// <param name="userLogin">User login.</param>
         Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin);
+
+        Task<IEnumerable<UserInfo>> GetUserList(GetUsersRequestModel userFilters);
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="Services\ICacheService.cs" />
     <Compile Include="Models\FilterList.cs" />
     <Compile Include="Models\FilterModel.cs" />
+    <Compile Include="Models\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

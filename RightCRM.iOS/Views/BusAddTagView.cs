@@ -64,6 +64,8 @@ namespace RightCRM.iOS.Views
             Set.Bind(pickerSelectUserForTag).For(v => v.ItemsSource).To(vm => vm.PickerTagUser);
             Set.Bind(pickerSelectUserForTag).For(v => v.SelectedItem).To(vm => vm.SelectedUser).TwoWay();
 
+            Set.Bind(btnAssignTag).To(vm => vm.AddTagCommand);
+
             Set.Apply();
 
 

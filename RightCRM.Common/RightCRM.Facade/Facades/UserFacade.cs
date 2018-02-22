@@ -10,6 +10,7 @@
 namespace RightCRM.Facade.Facades
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using RightCRM.Common;
     using RightCRM.Common.Models;
@@ -17,6 +18,7 @@ namespace RightCRM.Facade.Facades
     using RightCRM.DataAccess.Api;
     using RightCRM.DataAccess.Model.RequestModels;
     using RightCRM.DataAccess.Model.ResponseModels;
+    using RightCRM.DataAccess.Model.Users;
 
     /// <summary>
     /// User facade.
@@ -59,6 +61,11 @@ namespace RightCRM.Facade.Facades
             }
 
             return res;
+        }
+
+        public Task<IEnumerable<UserInfo>> GetAllUsers(GetUsersRequestModel userFilters)
+        {
+            return this.userApi.GetUserList(userFilters);;
         }
     }
 }

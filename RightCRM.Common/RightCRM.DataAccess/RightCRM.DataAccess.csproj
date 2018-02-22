@@ -77,6 +77,12 @@
     <Compile Include="Model\Notes\NoteListResponseModel.cs" />
     <Compile Include="Model\Notes\NewNoteRequestModel.cs" />
     <Compile Include="Model\Notes\NewNoteResponseModel.cs" />
+    <Compile Include="Model\BusinessModels\AddTagsRequestModel.cs" />
+    <Compile Include="Model\BusinessModels\AddTagsResponseModel.cs" />
+    <Compile Include="Model\BusinessModels\GetTagsRequestModel.cs" />
+    <Compile Include="Model\BusinessModels\GetTagsResponseModel.cs" />
+    <Compile Include="Model\Users\GetUsersRequestModel.cs" />
+    <Compile Include="Model\Users\GetUsersResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -117,6 +123,7 @@
     <Folder Include="Model\BusinessModels\" />
     <Folder Include="Model\CreateNew\" />
     <Folder Include="Model\Notes\" />
+    <Folder Include="Model\Users\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Common.csproj">

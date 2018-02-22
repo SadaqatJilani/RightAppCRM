@@ -9,6 +9,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using MvvmCross.Binding.ExtensionMethods;
 using MvvmCross.Binding.iOS.Views.Gestures;
 using UIKit;
 
@@ -25,13 +26,11 @@ namespace RightCRM.iOS.Helpers
 
 
     public class MvxLongPressGestureRecognizerBehaviour
-        : MvxGestureRecognizerBehavior<UILongPressGestureRecognizer>, INotifyPropertyChanged
+        : MvxGestureRecognizerBehavior<UILongPressGestureRecognizer>
     {
         readonly object param;
         private readonly UITableView target;
         public bool isLongPress;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         protected override void HandleGesture(UILongPressGestureRecognizer gesture)
         {
@@ -63,10 +62,13 @@ namespace RightCRM.iOS.Helpers
                 }
 
 
-                //One-time execution
-                if (IsLongPress == false)
+                if(target.IndexPathsForSelectedRows.Count() > 0)
                 {
                     IsLongPress = true;
+                }
+                else
+                {
+                    isLongPress = false;
                 }
             }
         }
@@ -75,7 +77,7 @@ namespace RightCRM.iOS.Helpers
         {
             var lp = new UILongPressGestureRecognizer(HandleGesture)
             {
-                MinimumPressDuration = 1
+                MinimumPressDuration = 1,
             };
 
             this.target = target as UITableView;
@@ -96,15 +98,14 @@ namespace RightCRM.iOS.Helpers
                 if (value != this.isLongPress)
                 {
                     this.isLongPress = value;
-                    NotifyPropertyChanged();
                 }
             }
         }
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        //private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
 
 
         void FireCommand2(object param = null)

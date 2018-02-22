@@ -26,20 +26,20 @@ namespace RightCRM.Facade.Facades
             return this.businessApi.GetBusinessList(pageNo);
         }
 
-        public void AddBusiness(Common.Models.Business business)
+        public Task<AddTagsResponseModel> AddTagToBusinesses(IEnumerable<int?> accountList, string lead)
         {
-            //  this.businessApi.GetBusinessList();
+            var tagRequest = new AddTagsRequestModel();
+
+            if (accountList != null && accountList.Any())
+            {
+                tagRequest.account_list = JsonConvert.SerializeObject(accountList);
+            }
+
+            tagRequest.tag = lead;
+
+            return this.businessApi.AddTagToBusiness(tagRequest);
         }
 
-        public Business GetBusinessByID(int businessId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Common.Models.Business> SearchBusiness(string firstCriteria)
-        {
-            throw new NotImplementedException();
-        }
 
         public Task<GetBusinessResponseModel> FilterBusinesses(IEnumerable<FilterList> filterList)
         {
@@ -78,6 +78,9 @@ namespace RightCRM.Facade.Facades
                 return JsonConvert.SerializeObject(filterString);
         }
 
-
+        public Task<IEnumerable<TagData>> GetTagsFromList(string listName)
+        {
+            return businessApi.GetTagsFromList(listName);
+        }
     }
 }

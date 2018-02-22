@@ -851,7 +851,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="30916" translatesAutoresizingMaskIntoConstraints="NO" customClass="BtnUniversal" fixedFrame="YES">
                                 <rect key="frame" x="16" y="117" width="156" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.20392156862745098" green="0.67843137254901964" blue="0.396078431372549" alpha="1"/>
-                                <state key="normal" title="Add Comment">
+                                <state key="normal" title="Add Note">
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

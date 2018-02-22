@@ -19,8 +19,10 @@
 namespace RightCRM.DataAccess.Api.BusinessApi
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -203,6 +205,75 @@ namespace RightCRM.DataAccess.Api.BusinessApi
             }
 
 
+#endif
+        }
+
+        /// <summary>
+        /// Adds the tag to business.
+        /// </summary>
+        /// <returns>The tag to business.</returns>
+        /// <param name="requestedTags">Requested tags.</param>
+        public async Task<AddTagsResponseModel> AddTagToBusiness(AddTagsRequestModel requestedTags)
+        {
+#if FAKE
+
+            return await Task.FromResult(new AddTagsResponseModel());
+#else
+
+            try
+            {
+                string requestUrl = ApiConfig.AddTagsToLead();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+
+                requestedTags.session_id = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<AddTagsResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            requestedTags);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+
+#endif
+
+        }
+
+        public async Task<IEnumerable<TagData>> GetTagsFromList(string listName)
+        {
+#if FAKE
+
+            return await Task.FromResult(new GetTagsResponseModel());
+#else
+
+            try
+            {
+                string requestUrl = ApiConfig.GetList();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+
+                var result = await this.restService.MakeOpenRequestAsync<GetTagsResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                    new GetTagsRequestModel()
+                    {
+                    sessionid = sessionId, 
+                    list_name= listName
+                });
+
+                return result.Content?.list?.TagDataArray ?? Enumerable.Empty<TagData>();
+                
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
 #endif
         }
     }

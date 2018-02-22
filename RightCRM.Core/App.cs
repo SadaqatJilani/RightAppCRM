@@ -2,6 +2,7 @@ using Acr.UserDialogs;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
+using MvvmCross.Plugins.Messenger;
 using RightCRM.Common.Services;
 using RightCRM.Core.Services;
 using RightCRM.DataAccess.Api;
@@ -31,6 +32,8 @@ namespace RightCRM.Core
             Mvx.RegisterType<IBusinessDetailsFacade, BusinessDetailsFacade>();
             Mvx.RegisterType<INewBusFacade, NewBusFacade>();
             Mvx.RegisterType<INewBusApi, NewBusApi>();
+
+            Mvx.LazyConstructAndRegisterSingleton<IMvxMessenger, MvxMessengerHub>();
 
             Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 

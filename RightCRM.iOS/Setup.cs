@@ -2,7 +2,10 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Support.XamarinSidebar;
 using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
+using RightCRM.Core.Services;
+using RightCRM.iOS.Services;
 using UIKit;
 
 namespace RightCRM.iOS
@@ -33,6 +36,13 @@ namespace RightCRM.iOS
         protected override IMvxIosViewPresenter CreatePresenter()
         {
             return new MvxSidebarPresenter((MvxApplicationDelegate)ApplicationDelegate, Window);
+        }
+
+
+        protected override void InitializeFirstChance()
+        {
+            Mvx.RegisterSingleton<INavBarService>(new NavBarService());
+            base.InitializeFirstChance();
         }
     }
 }

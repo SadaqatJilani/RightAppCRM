@@ -11,29 +11,45 @@ using MvvmCross.Binding.ExtensionMethods;
 using MvvmCross.Binding.iOS;
 using MvvmCross.Binding.iOS.Views.Gestures;
 using RightCRM.iOS.Helpers;
+using MvvmCross.Platform;
+using System.ComponentModel;
+using MvvmCross.Platform.WeakSubscription;
+using MvvmCross.Plugins.Messenger;
+using RightCRM.Core.Services;
 
 namespace RightCRM.iOS
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
-   // [MvxRootPresentation(WrapInNavigationController = true)]
+    // [MvxRootPresentation(WrapInNavigationController = true)]
     [MvxSidebarPresentation(MvxPanelEnum.Center, MvxPanelHintType.ResetRoot, false)]
     public partial class BusinessView : MvxTableViewController<BusinessViewModel>
     {
         UILongPressGestureRecognizer longPressGesture;
         TableSource source;
-        bool isLongPress;
         UIBarButtonItem filterBtn;
         UIBarButtonItem assignTagBtn;
+        private readonly MvxSubscriptionToken token;
 
-        public BusinessView (IntPtr handle) : base (handle)
+        public BusinessView(IntPtr handle) : base(handle)
         {
+            token = Mvx.Resolve<IMvxMessenger>().Subscribe<LongPressMessage>(OnLongPress);
+        }
+
+        private void OnLongPress(LongPressMessage message)
+        {
+            if (message.IsLongPress == true)
+            {
+                this.NavigationItem.SetRightBarButtonItem(assignTagBtn, true);
+
+                this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+            }
         }
 
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
 
-            this.TableView.LongPress().PropertyChanged += Handle_LongPress;
+         //   this.TableView.LongPress().PropertyChanged += Handle_LongPress;
 
  
         }
@@ -57,9 +73,10 @@ namespace RightCRM.iOS
 
             var Set = this.CreateBindingSet<BusinessView, BusinessViewModel>();
 
-            source = new TableSource(this.TableView);
+            source = new TableSource(this.TableView, ViewModel);
             Set.Bind(source).To(vm => vm.AllBusiness);
             Set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.BusinessDetailCommand);
+
 
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
 
@@ -73,10 +90,11 @@ namespace RightCRM.iOS
             this.TableView.EstimatedRowHeight = 5f;
             this.TableView.ReloadData();
 
-            longPressGesture = new UILongPressGestureRecognizer(LongPressBusiness)
-            {
-                MinimumPressDuration = 1
-            };
+
+            //longPressGesture = new UILongPressGestureRecognizer(LongPressBusiness)
+            //{
+            //    MinimumPressDuration = 1
+            //};
 
           //  this.TableView.LongPress().;
         }
@@ -88,35 +106,36 @@ namespace RightCRM.iOS
             this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
         }
 
+        #region
+        //private void LongPressBusiness(UILongPressGestureRecognizer gestureRecognizer)
+        //{
+        //    var point = gestureRecognizer.LocationInView(this.TableView);
 
-        private void LongPressBusiness(UILongPressGestureRecognizer gestureRecognizer)
-        {
-            var point = gestureRecognizer.LocationInView(this.TableView);
+        //    var indexPath = this.TableView.IndexPathForRowAtPoint(point);
 
-            var indexPath = this.TableView.IndexPathForRowAtPoint(point);
+        //    var selectedCell = TableView.CellAt(indexPath);
 
-            var selectedCell = TableView.CellAt(indexPath);
+        //    if (indexPath == null)
+        //    {
+        //        System.Console.WriteLine("Long press on table view, not row.");
+        //    }
 
-            if (indexPath == null)
-            {
-                System.Console.WriteLine("Long press on table view, not row.");
-            }
+        //    else if (gestureRecognizer.State == UIGestureRecognizerState.Began)
+        //    {
+        //        System.Console.WriteLine($"Long press on row, at {indexPath.Row}");
 
-            else if (gestureRecognizer.State == UIGestureRecognizerState.Began)
-            {
-                System.Console.WriteLine($"Long press on row, at {indexPath.Row}");
+        //        if (isLongPress == false)
+        //        {
+        //            isLongPress = true;
 
-                if (isLongPress == false)
-                {
-                    isLongPress = true;
+        //            this.NavigationItem.SetRightBarButtonItem(assignTagBtn, true);
 
-                    this.NavigationItem.SetRightBarButtonItem(assignTagBtn, true);
+        //            this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+        //        }
 
-                    this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
-                }
-
-            }
-        }
+        //    }
+        //}
+#endregion
 
         public override void ViewWillDisappear(bool animated)
         {
@@ -124,7 +143,7 @@ namespace RightCRM.iOS
 
             base.ViewWillDisappear(animated);
 
-            this.TableView.LongPress().PropertyChanged -= Handle_LongPress;
+         //   this.TableView.LongPress().PropertyChanged -= Handle_LongPress;
 
         }
 
@@ -139,10 +158,12 @@ namespace RightCRM.iOS
         {
             private readonly bool isScrolling;
             private int lastViewedPosition = 0;
+            readonly BusinessViewModel busview;
 
-            public TableSource(UITableView tableView)
+            public TableSource(UITableView tableView, BusinessViewModel busview)
                 : base(tableView)
             {
+                this.busview = busview;
                 tableView.SeparatorStyle = UITableViewCellSeparatorStyle.SingleLine;
 
                 lastViewedPosition = 0;
@@ -160,6 +181,26 @@ namespace RightCRM.iOS
                 }
 
                 return (BusinessViewCell)TableView.DequeueReusableCell(BusinessViewCell.Key, indexPath);
+            }
+
+            public override void RowDeselected(UITableView tableView, NSIndexPath indexPath)
+            {
+                busview.BusLongPressedCommand.Execute(indexPath.Row);
+            }
+
+            public override void DecelerationEnded(UIScrollView scrollView)
+            {
+                if ((scrollView.ContentOffset.Y + 1) >= (scrollView.ContentSize.Height - scrollView.Frame.Size.Height))
+                {
+                    //bottom reached
+                    //Mvx.Resolve<BusinessViewModel>().LoadMoreBusinessesCommand.Execute();
+                    busview.LoadMoreBusinessesCommand.Execute();
+                }
+            }
+
+            public override void WillDisplayFooterView(UITableView tableView, UIView footerView, nint section)
+            {
+                //base.WillDisplayFooterView(tableView, footerView, section);
             }
 
         }
