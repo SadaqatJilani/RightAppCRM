@@ -281,16 +281,12 @@
     <AndroidResource Include="Resources\drawable\loginshap.axml" />
     <AndroidResource Include="Resources\drawable\bank.jpg" />
     <AndroidResource Include="Resources\layout\fragment_navigation_header.axml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\drawable\downloads.png" />
     <AndroidResource Include="Resources\layout\fragment_navigation.axml" />
     <AndroidResource Include="Resources\menu\navigation_drawer.axml" />
-    <AndroidResource Include="Resources\values\style.xml" />
     <AndroidResource Include="Resources\layout\activity_main.axml" />
     <AndroidResource Include="Resources\layout\fragment_settings.axml" />
     <AndroidResource Include="Resources\layout\activity_login.axml" />
-    <AndroidResource Include="Resources\drawable\screenshot.png" />
     <AndroidResource Include="Resources\layout\fragment_example_recyclerview.axml" />
     <AndroidResource Include="Resources\layout\fragment_example_viewpager.axml" />
     <AndroidResource Include="Resources\layout\fragment_helpfeedback.axml" />
@@ -299,7 +295,14 @@
     <AndroidResource Include="Resources\layout\fragment_recyclerview.axml" />
     <AndroidResource Include="Resources\layout\fragment_third.axml" />
     <AndroidResource Include="Resources\layout\listitem_recyclerviewexample.axml" />
-    <AndroidResource Include="Resources\layout\toolbaar_actionbar.axml" />
+    <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
+    <AndroidResource Include="Resources\values\dimen.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\right_crm_logo.png" />
+    <AndroidResource Include="Resources\drawable\borderedittext.xml" />
+    <AndroidResource Include="Resources\drawable\borderbtn.xml" />
+    <AndroidResource Include="Resources\drawable\basicbtn.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
