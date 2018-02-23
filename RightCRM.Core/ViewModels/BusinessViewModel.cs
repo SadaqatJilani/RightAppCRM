@@ -5,11 +5,13 @@ using Acr.UserDialogs;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using Newtonsoft.Json;
 using RightCRM.Common;
 using RightCRM.Common.Models;
 using RightCRM.Common.Services;
 using RightCRM.Core.Services;
 using RightCRM.Core.ViewModels.Home;
+using RightCRM.Core.ViewModels.ItemViewModels;
 using RightCRM.Core.ViewModels.Popups;
 using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Facade.Facades;
@@ -33,7 +35,7 @@ namespace RightCRM.Core.ViewModels
         readonly INavBarService navBarService;
         readonly IMvxMessenger messenger;
 
-        private List<FilterList> listOfFilters;
+        private List<FilterListViewModel> listOfFilters;
         readonly ICacheService cacheService;
 
         public BusinessViewModel(IBusinessFacade businessFacade, 
@@ -55,14 +57,14 @@ namespace RightCRM.Core.ViewModels
             LoadMoreBusinessesCommand = new MvxAsyncCommand(LoadMoreBusinesses);
             AllBusiness = new MvxObservableCollection<Business>();
 
-            listOfFilters = new List<FilterList>();
+            listOfFilters = new List<FilterListViewModel>();
         }
 
         private async Task LoadMoreBusinesses()
         {
             businessPageno++;
 
-            var result = await this.businessFacade.FilterBusinesses(listOfFilters, businessPageno);
+            var result = await this.businessFacade.FilterBusinesses(ConvertToBusRequest(listOfFilters), businessPageno);
 
             if (result != null)
             {
@@ -151,16 +153,16 @@ namespace RightCRM.Core.ViewModels
 
         private async Task BusinessFilter()
         {
-          var filterList =  await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterList>>(businessFilters);
+          var filterList =  await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterListViewModel>>(businessFilters);
 
             if (filterList != null)
             {
-                listOfFilters = new List<FilterList>(filterList);
+                listOfFilters = new List<FilterListViewModel>(filterList);
 
                 AllBusiness.Clear();
 
                 businessPageno = 1;
-                var result = await this.businessFacade.FilterBusinesses(listOfFilters, businessPageno);
+                var result = await this.businessFacade.FilterBusinesses(ConvertToBusRequest(listOfFilters), businessPageno);
 
                 if (result != null)
                 {
@@ -207,7 +209,7 @@ namespace RightCRM.Core.ViewModels
             await base.Initialize();
 
             businessPageno = 1;
-            var result = await this.businessFacade.FilterBusinesses(listOfFilters, businessPageno);
+            var result = await this.businessFacade.FilterBusinesses(ConvertToBusRequest(listOfFilters), businessPageno);
 
             if (result != null)
             {
@@ -229,5 +231,44 @@ namespace RightCRM.Core.ViewModels
             longPressMessage = new LongPressMessage(this, false);
             messenger.Publish(longPressMessage);
         }
+
+
+        GetBusinessRequestModel ConvertToBusRequest(IEnumerable<FilterListViewModel> filterList)
+        {
+            var filterRequest = new GetBusinessRequestModel
+            {
+                srch_address_id = JsonStringFromList(filterList, Constants.AddressFilter),
+
+                srch_company_size = JsonStringFromList(filterList, Constants.CompanySizeFilter),
+
+                srch_industry = JsonStringFromList(filterList, Constants.IndustryFilter),
+
+                srch_annual_revenue = JsonStringFromList(filterList, Constants.RevenueFilter),
+
+                srch_ctag = JsonStringFromList(filterList, Constants.TagsFilter),
+
+                user_list = JsonStringFromList(filterList, Constants.SalesWorkFilter),
+
+                user_status = JsonStringFromList(filterList, Constants.StatusFilter)
+            };
+
+
+            return filterRequest;
+        }
+
+        string JsonStringFromList(IEnumerable<FilterListViewModel> filterList, string filterField)
+        {
+            var filterString = filterList.FirstOrDefault(x => x.Heading == filterField)?
+                                         .Where(x => x.IsSelected == true)?
+                                         .Select(x => x.FilterName)?
+                                         .ToList();
+
+            if (filterString == null || !filterString.Any())
+                return null;
+
+            else
+                return JsonConvert.SerializeObject(filterString);
+        }
+
     }
 }

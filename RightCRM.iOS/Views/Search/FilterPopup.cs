@@ -40,7 +40,7 @@ namespace RightCRM.iOS.Views.Search
             };
 
             Set.Bind(btnClose).To(vm => vm.CloseCommand);
-            Set.Bind(source).For(x=>x.ItemsSource).To(vm=>vm.Demolist);
+            Set.Bind(source).For(x=>x.ItemsSource).To(vm=>vm.FilterList);
            // Set.Bind(source).For(x => x.SelectedItem).To(vm => vm.SelectedFilter);
             Set.Bind(source).For(x => x.SelectionChangedCommand).To(vm => vm.FilterChangedCommand);
 

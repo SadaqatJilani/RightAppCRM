@@ -81,6 +81,8 @@
     <Compile Include="ViewModels\Popups\BusAddTagViewModel.cs" />
     <Compile Include="Services\INavBarService.cs" />
     <Compile Include="Services\LongPressMessage.cs" />
+    <Compile Include="ViewModels\ItemViewModels\FilterItemViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModels\FilterListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -111,6 +113,7 @@
     <Folder Include="ViewModels\Popups\" />
     <Folder Include="ViewModels\Home\BusinessTabs\" />
     <Folder Include="Services\" />
+    <Folder Include="ViewModels\ItemViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

@@ -44,15 +44,15 @@ namespace RightCRM.iOS.Views.Search
            // return tableView.DequeueReusableCell(HeaderCellIdentifier);
         }
 
-        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-        {
-           // tableView.CellAt(indexPath).Accessory = UITableViewCellAccessory.Checkmark;
+        //public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        //{
+        //   // tableView.CellAt(indexPath).Accessory = UITableViewCellAccessory.Checkmark;
 
-            var item = GetItemAt(indexPath);
+        //    var item = GetItemAt(indexPath);
 
-           if (this.SelectionChangedCommand != null)
-                this.SelectionChangedCommand.Execute(item);
-        }
+        //   if (this.SelectionChangedCommand != null)
+        //        this.SelectionChangedCommand.Execute(item);
+        //}
 
 
         public override void RowDeselected(UITableView tableView, NSIndexPath indexPath)

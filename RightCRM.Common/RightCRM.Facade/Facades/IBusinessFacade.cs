@@ -10,7 +10,7 @@ namespace RightCRM.Facade.Facades
     {
         Task<GetBusinessResponseModel> GetBusiness(int pageNo);
 
-        Task<GetBusinessResponseModel> FilterBusinesses(IEnumerable<FilterList> filterList, int pageNo);
+        Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequestModel, int pageNo);
 
         Task<AddTagsResponseModel> AddTagToBusinesses(IEnumerable<int?> accountList, string tagText, int? workerUserID = null);
 

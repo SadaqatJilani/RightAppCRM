@@ -42,26 +42,10 @@ namespace RightCRM.Facade.Facades
         }
 
 
-        public Task<GetBusinessResponseModel> FilterBusinesses(IEnumerable<FilterList> filterList, int pageNo)
+        public Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequestModel, int pageNo)
         {
-            var filterRequest = new GetBusinessRequestModel
-            {
-                srch_address_id = JsonStringFromList(filterList, Constants.AddressFilter),
 
-                srch_company_size = JsonStringFromList(filterList, Constants.CompanySizeFilter),
-
-                srch_industry = JsonStringFromList(filterList, Constants.IndustryFilter),
-
-                srch_annual_revenue = JsonStringFromList(filterList, Constants.RevenueFilter),
-
-                srch_ctag = JsonStringFromList(filterList, Constants.TagsFilter),
-
-                user_list = JsonStringFromList(filterList, Constants.SalesWorkFilter),
-
-                user_status = JsonStringFromList(filterList, Constants.StatusFilter)
-            };
-
-            return this.businessApi.FilterBusinesses(filterRequest, pageNo);
+            return this.businessApi.FilterBusinesses(filterRequestModel, pageNo);
         }
 
 

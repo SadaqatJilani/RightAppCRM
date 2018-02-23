@@ -16,10 +16,11 @@ using System.Linq;
 using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Common;
 using RightCRM.Common.Services;
+using RightCRM.Core.ViewModels.ItemViewModels;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
-    public class FilterPopupViewModel : BaseViewModel, IMvxViewModel<BusinessList, IEnumerable<FilterList>>
+    public class FilterPopupViewModel : BaseViewModel, IMvxViewModel<BusinessList, IEnumerable<FilterListViewModel>>
     {
         private BusinessList businessList;
         private readonly ICacheService cacheService;
@@ -31,12 +32,12 @@ namespace RightCRM.Core.ViewModels.Popups
 
             CloseCommand = CloseCommand ?? new MvxAsyncCommand(CloseFilters);
 
-            FilterChangedCommand = new MvxCommand<FilterModel>(FilterOptions);
+            FilterChangedCommand = new MvxCommand<FilterItemViewModel>(FilterOptions);
 
             SearchBusinessesCommand = new MvxAsyncCommand(SearchParameters);
         }
 
-        private void FilterOptions(FilterModel filterItem)
+        private void FilterOptions(FilterItemViewModel filterItem)
         {
             if (filterItem.IsSelected == false)
             {
@@ -71,31 +72,31 @@ namespace RightCRM.Core.ViewModels.Popups
         {
             await base.Initialize();
 
-            Demolist = new MvxObservableCollection<FilterList>(await ExtractFilterItems());
+            FilterList = new MvxObservableCollection<FilterListViewModel>(await ExtractFilterItems());
 
         }
 
         private async Task SearchParameters()
         {
 
-            await cacheService.InsertObject<IEnumerable<FilterList>>(Constants.SelectedFilters, Demolist);
-            await navigationService.Close(this, Demolist);
+            await cacheService.InsertObject<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters, FilterList);
+            await navigationService.Close(this, FilterList);
         }
 
-        private async Task<List<FilterList>> ExtractFilterItems()
+        private async Task<List<FilterListViewModel>> ExtractFilterItems()
         {
-            var cachedFilters = await cacheService.GetObject<IEnumerable<FilterList>>(Constants.SelectedFilters);
+            var cachedFilters = await cacheService.GetObject<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters);
 
             if(cachedFilters != null)
             {
-                return new List<FilterList>(cachedFilters);
+                return new List<FilterListViewModel>(cachedFilters);
             }
 
-            var listAddress = new List<FilterModel>();
+            var listAddress = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.AddressArray ?? Enumerable.Empty<address>())
             {
-                listAddress.Add(new FilterModel()
+                listAddress.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.AddressFilter,
                     FilterName = item.REGION,
@@ -103,11 +104,11 @@ namespace RightCRM.Core.ViewModels.Popups
                 });
             }
 
-            var listCompany = new List<FilterModel>();
+            var listCompany = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.CompanyArray ?? Enumerable.Empty<company_size>())
             {
-                listCompany.Add(new FilterModel()
+                listCompany.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.CompanySizeFilter,
                     FilterName = item.COMPANY_SIZE,
@@ -116,11 +117,11 @@ namespace RightCRM.Core.ViewModels.Popups
             }
 
 
-            var listIndustry = new List<FilterModel>();
+            var listIndustry = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.IndustryArray ?? Enumerable.Empty<industry>())
             {
-                listIndustry.Add(new FilterModel()
+                listIndustry.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.IndustryFilter,
                     FilterName = item.INDUSTRY,
@@ -128,11 +129,11 @@ namespace RightCRM.Core.ViewModels.Popups
                 });
             }
 
-            var listRevenue = new List<FilterModel>();
+            var listRevenue = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.RevenueArray ?? Enumerable.Empty<revenue>())
             {
-                listRevenue.Add(new FilterModel()
+                listRevenue.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.RevenueFilter,
                     FilterName = item.ANNUAL_REVENUE,
@@ -140,11 +141,11 @@ namespace RightCRM.Core.ViewModels.Popups
                 });
             }
 
-            var listTags = new List<FilterModel>();
+            var listTags = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.TagsArray ?? Enumerable.Empty<Tags>())
             {
-                listTags.Add(new FilterModel()
+                listTags.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.TagsFilter,
                     FilterName = item.CTAG,
@@ -152,11 +153,11 @@ namespace RightCRM.Core.ViewModels.Popups
                 });
             }
 
-            var listSalesWorkers = new List<FilterModel>();
+            var listSalesWorkers = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.SalesWorkersArray ?? Enumerable.Empty<SalesWorkers>())
             {
-                listSalesWorkers.Add(new FilterModel()
+                listSalesWorkers.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.SalesWorkFilter,
                     FilterName = item.NAME,
@@ -164,11 +165,11 @@ namespace RightCRM.Core.ViewModels.Popups
                 });
             }
 
-            var listStatus = new List<FilterModel>();
+            var listStatus = new List<FilterItemViewModel>();
 
             foreach (var item in businessList.StatusArray ?? Enumerable.Empty<status>())
             {
-                listStatus.Add(new FilterModel()
+                listStatus.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.StatusFilter,
                     FilterName = item.STATUS,
@@ -176,26 +177,26 @@ namespace RightCRM.Core.ViewModels.Popups
                 });
             }
 
-            var filterList = new List<FilterList>
+            var filteredList = new List<FilterListViewModel>
             {
-                new FilterList(listAddress),
-                new FilterList(listCompany),
-                new FilterList(listIndustry),
-                new FilterList(listRevenue),
-                new FilterList(listTags),
-                new FilterList(listSalesWorkers),
-                new FilterList(listStatus)
+                new FilterListViewModel(listAddress),
+                new FilterListViewModel(listCompany),
+                new FilterListViewModel(listIndustry),
+                new FilterListViewModel(listRevenue),
+                new FilterListViewModel(listTags),
+                new FilterListViewModel(listSalesWorkers),
+                new FilterListViewModel(listStatus)
             };
 
 
-            return filterList;
+            return filteredList;
         }
 
-        private MvxObservableCollection<FilterList> demolist;
-        public MvxObservableCollection<FilterList> Demolist { get { return demolist; } set { SetProperty(ref demolist, value); } }
+        private MvxObservableCollection<FilterListViewModel> filterList;
+        public MvxObservableCollection<FilterListViewModel> FilterList { get { return filterList; } set { SetProperty(ref filterList, value); } }
 
-        private FilterModel selectedFilter;
-        public FilterModel SelectedFilter
+        private FilterItemViewModel selectedFilter;
+        public FilterItemViewModel SelectedFilter
         {
             get
             {
@@ -211,7 +212,7 @@ namespace RightCRM.Core.ViewModels.Popups
             }
         }
 
-        public IMvxCommand<FilterModel> FilterChangedCommand { get; private set; }
+        public IMvxCommand<FilterItemViewModel> FilterChangedCommand { get; private set; }
         public IMvxCommand SearchBusinessesCommand { get; private set; }
 
         public TaskCompletionSource<object> CloseCompletionSource { get; set; }

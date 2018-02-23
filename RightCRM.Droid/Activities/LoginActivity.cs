@@ -3,6 +3,9 @@ using Android.Content.PM;
 using Android.OS;
 using RightCRM.Core.ViewModels;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using Acr.UserDialogs;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid.Platform;
 
 namespace RightCRM.Droid.Activities
 {
@@ -21,7 +24,7 @@ namespace RightCRM.Droid.Activities
             SetContentView(Resource.Layout.activity_login);
 
             //TODO
-           // UserDialogs.Init(() => Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity)
+            UserDialogs.Init(() => Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
         }
     }
 }

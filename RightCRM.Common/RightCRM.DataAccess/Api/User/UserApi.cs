@@ -9,11 +9,16 @@
 
 namespace RightCRM.DataAccess.Api.User
 {
+    using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Net.Http;
+    using Newtonsoft.Json;
     using System.Threading.Tasks;
     using RightCRM.Common;
     using RightCRM.Common.Models;
     using RightCRM.Common.Services;
+    using RightCRM.DataAccess.Config;
     using RightCRM.DataAccess.Factories;
     using RightCRM.DataAccess.Model.RequestModels;
     using RightCRM.DataAccess.Model.ResponseModels;
