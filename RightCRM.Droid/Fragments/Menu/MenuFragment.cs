@@ -6,14 +6,15 @@ using Android.Support.Design.Widget;
 using Android.Views;
 using RightCRM.Core.ViewModels;
 using RightCRM.Droid.Activities;
-using MvvmCross.Droid.Shared.Attributes;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
+using MvvmCross.Droid.Views.Attributes;
+using RightCRM.Core.ViewModels.Menu;
 
 namespace RightCRM.Droid.Fragments
 {
-	[MvxFragment(typeof(MainViewModel), Resource.Id.navigation_frame)]
-    [Register("xplatformmenus.droid.fragments.MenuFragment")]
+	[MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.navigation_frame)]
+    [Register("rightcrm.droid.fragments.MenuFragment")]
     public class MenuFragment : MvxFragment<MenuViewModel>, NavigationView.IOnNavigationItemSelectedListener
     {
         private NavigationView _navigationView;
@@ -25,7 +26,7 @@ namespace RightCRM.Droid.Fragments
 
             var view = this.BindingInflate(Resource.Layout.fragment_navigation, null);
 
-            _navigationView = view.FindViewById<NavigationView>(Resource.Id.navigation_view);
+            _navigationView = view.FindViewById<NavigationView>(Resource.Id.nav_view);
             _navigationView.SetNavigationItemSelectedListener(this);
             _navigationView.Menu.FindItem(Resource.Id.nav_home).SetChecked(true);
 
@@ -59,19 +60,19 @@ namespace RightCRM.Droid.Fragments
             switch (itemId) 
             {
                 case Resource.Id.nav_home:
-                    ViewModel.ShowHomeCommand.Execute();
+                    //ViewModel.ShowHomeCommand.Execute();
                     break;
                 case Resource.Id.nav_viewpager:
-                    ViewModel.ShowViewPagerCommand.Execute();
+                    //ViewModel.ShowViewPagerCommand.Execute();
                     break;
                 case Resource.Id.nav_recyclerview:
-                    ViewModel.ShowRecyclerCommand.Execute();
+                    //ViewModel.ShowRecyclerCommand.Execute();
                     break;
                 case Resource.Id.nav_settings:
-                    ViewModel.ShowSettingCommand.Execute();
+                    //ViewModel.ShowSettingCommand.Execute();
                     break;
                 case Resource.Id.nav_helpfeedback:
-                    ViewModel.ShowHelpCommand.Execute();
+                   // ViewModel.ShowHelpCommand.Execute();
                     break;
             }
         }

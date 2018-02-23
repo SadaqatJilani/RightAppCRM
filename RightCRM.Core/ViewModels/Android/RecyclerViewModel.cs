@@ -3,97 +3,90 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MvvmCross.Core.ViewModels;
+using RightCRM.Common.Models;
 
 namespace RightCRM.Core.ViewModels
 {
 	public class RecyclerViewModel : BaseViewModel
     {
-        //private ListItem _selectedItem;
+        private ListItem _selectedItem;
 
-        //public RecyclerViewModel()
-        //{
-        //    Items = new ObservableCollection<ListItem> {
-        //        new ListItem { Title = "title one" },
-        //        new ListItem { Title = "title two" },
-        //        new ListItem { Title = "title three" },
-        //        new ListItem { Title = "title four" },
-        //        new ListItem { Title = "title five" },
-        //    };
-        //}
+        public RecyclerViewModel()
+        {
+            Items = new ObservableCollection<ListItem> {
+                new ListItem { Title = "title one" },
+                new ListItem { Title = "title two" },
+                new ListItem { Title = "title three" },
+                new ListItem { Title = "title four" },
+                new ListItem { Title = "title five" }
+            };
 
-        //private ObservableCollection<ListItem> _items;
+            for (int i = 0; i < 20; ++i)
+                Items.Add(new ListItem() { Title = "Test FAB Behavior " + i });
+        }
 
-        //public ObservableCollection<ListItem> Items
-        //{
-        //    get { return _items; }
-        //    set
-        //    {
-        //        _items = value;
-        //        RaisePropertyChanged(() => Items);
-        //    }
-        //}
+        private ObservableCollection<ListItem> _items;
 
-        //public ListItem SelectedItem
-        //{
-        //    get { return _selectedItem; }
-        //    set
-        //    {
-        //        _selectedItem = value;
-        //        RaisePropertyChanged(() => SelectedItem);
-        //    }
-        //}
+        public ObservableCollection<ListItem> Items
+        {
+            get { return _items; }
+            set { SetProperty(ref _items, value); }
+        }
 
-        //public virtual ICommand ItemSelected
-        //{
-        //    get
-        //    {
-        //        return new MvxCommand<ListItem>(item => {
-        //            SelectedItem = item;
-        //        });
-        //    }
-        //}
+        public ListItem SelectedItem
+        {
+            get { return _selectedItem; }
+            set { SetProperty(ref _selectedItem, value); }
+        }
 
-        //private bool _isRefreshing;
+        public virtual ICommand ItemSelected
+        {
+            get
+            {
+                return new MvxCommand<ListItem>(item =>
+                {
+                    SelectedItem = item;
+                });
+            }
+        }
 
-        //public virtual bool IsRefreshing
-        //{
-        //    get { return _isRefreshing; }
-        //    set
-        //    {
-        //        _isRefreshing = value;
-        //        RaisePropertyChanged(() => IsRefreshing);
-        //    }
-        //}
+        private bool _isRefreshing;
 
-        //public ICommand ReloadCommand
-        //{
-        //    get
-        //    {
-        //        return new MvxCommand(async () =>
-        //        {
-        //            IsRefreshing = true;
+        public virtual bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
+        }
 
-        //            await ReloadData();
+        public ICommand ReloadCommand
+        {
+            get
+            {
+                return new MvxCommand(async () =>
+                {
+                    IsRefreshing = true;
 
-        //            IsRefreshing = false;
-        //        });
-        //    }
-        //}
+                    await ReloadData();
 
-        //public virtual async Task ReloadData()
-        //{
-        //    // By default return a completed Task
-        //    await Task.Delay(5000);
+                    IsRefreshing = false;
+                });
+            }
+        }
 
-        //    var rand = new Random();
-        //    Func<char> randChar = () => (char)rand.Next(65, 90);
-        //    Func<int, string> randStr = null;
-        //    randStr = x => (x > 0) ? randStr(--x) + randChar() : "";
+        public virtual async Task ReloadData()
+        {
+            // By default return a completed Task
+            await Task.Delay(5000);
 
-        //    var newItemCount = rand.Next(3);
+            var rand = new Random();
+            Func<char> randChar = () => (char)rand.Next(65, 90);
+            Func<int, string> randStr = null;
+            randStr = x => x > 0 ? randStr(--x) + randChar() : "";
 
-        //    for (var i = 0; i < newItemCount; i++)
-        //        Items.Add(new ListItem { Title = "title " + randStr(4)});
-        //}
+            var newItemCount = rand.Next(3);
+
+            for (var i = 0; i < newItemCount; i++)
+                Items.Add(new ListItem { Title = "title " + randStr(4) });
+        }
     }
 }

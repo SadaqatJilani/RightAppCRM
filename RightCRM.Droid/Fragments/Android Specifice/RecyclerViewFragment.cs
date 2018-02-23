@@ -10,10 +10,12 @@ using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platform.WeakSubscription;
 using MvvmCross.Droid.Support.V4;
+using MvvmCross.Droid.Views.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
-	[Register("xplatformmenus.droid.fragments.RecyclerViewFragment")]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+	[Register("rightcrm.droid.fragments.RecyclerViewFragment")]
     public class RecyclerViewFragment : MvxFragment<RecyclerViewModel>
     {
         private IDisposable _itemSelectedToken;
@@ -30,13 +32,18 @@ namespace RightCRM.Droid.Fragments
                 recyclerView.HasFixedSize = true;
                 var layoutManager = new LinearLayoutManager(Activity);
                 recyclerView.SetLayoutManager(layoutManager);
+                (recyclerView.Adapter as IMvxRecyclerAdapterBindableHolder).MvxViewHolderBound += (args) =>
+                {
+                    var item = args.Holder.ItemView;
+                    // you can access bound holder item here.
+                };
             }
 
             _itemSelectedToken = ViewModel.WeakSubscribe(() => ViewModel.SelectedItem,
                 (sender, args) => {
                     if (ViewModel.SelectedItem != null)
                         Toast.MakeText(Activity,
-                            string.Format("Selected: {0}", ViewModel.SelectedItem.Title),
+                            $"Selected: {ViewModel.SelectedItem.Title}",
                             ToastLength.Short).Show();
                 });
 
@@ -54,5 +61,6 @@ namespace RightCRM.Droid.Fragments
             _itemSelectedToken.Dispose();
             _itemSelectedToken = null;
         }
+
     }
 }

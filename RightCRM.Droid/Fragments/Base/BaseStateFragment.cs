@@ -1,4 +1,12 @@
-﻿using Android.Content.Res;
+﻿// // --------------------------------------------------------------------------------------------------------------------
+// // <copyright file="BaseStateFragment.cs" company="Zepto Systems">
+// //   Zepto Systems
+// // </copyright>
+// // <summary>
+// //   BaseStateFragment
+// // </summary>
+// // --------------------------------------------------------------------------------------------------------------------
+using Android.Content.Res;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -8,25 +16,12 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Droid.Support.V4;
 
-namespace RightCRM.Droid.Fragments
+namespace RightCRM.Droid.Fragments.Base
 {
-    public abstract class BaseFragment : MvxFragment
+    public abstract class BaseStateFragment : MvxFragment
     {
         private Toolbar toolbar;
         private MvxActionBarDrawerToggle drawerToggle;
-
-        public MvxAppCompatActivity ParentActivity
-        {
-            get
-            {
-                return (MvxAppCompatActivity)Activity;
-            }
-        }
-
-        protected BaseFragment()
-        {
-            RetainInstance = true;
-        }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -37,18 +32,18 @@ namespace RightCRM.Droid.Fragments
             toolbar = view.FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
             {
-                ParentActivity.SetSupportActionBar(toolbar);
-                ParentActivity.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+                ((MainActivity)Activity).SetSupportActionBar(toolbar);
+                ((MainActivity)Activity).SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
                 drawerToggle = new MvxActionBarDrawerToggle(
                     Activity,                               // host Activity
-                    (ParentActivity as INavigationActivity).DrawerLayout,  // DrawerLayout object
+                    ((MainActivity)Activity).DrawerLayout,  // DrawerLayout object
                     toolbar,                               // nav drawer icon to replace 'Up' caret
                     Resource.String.drawer_open,            // "open drawer" description
                     Resource.String.drawer_close            // "close drawer" description
                 );
-                drawerToggle.DrawerOpened += (object sender, ActionBarDrawerEventArgs e) => (Activity as MainActivity)?.HideSoftKeyboard();
-                (ParentActivity as INavigationActivity).DrawerLayout.AddDrawerListener(drawerToggle);
+
+                ((MainActivity)Activity).DrawerLayout.AddDrawerListener(drawerToggle);
             }
 
             return view;
@@ -71,7 +66,7 @@ namespace RightCRM.Droid.Fragments
         }
     }
 
-    public abstract class BaseFragment<TViewModel> : BaseFragment where TViewModel : class, IMvxViewModel
+    public abstract class BaseStateFragment<TViewModel> : BaseStateFragment where TViewModel : class, IMvxViewModel
     {
         public new TViewModel ViewModel
         {
@@ -79,5 +74,5 @@ namespace RightCRM.Droid.Fragments
             set { base.ViewModel = value; }
         }
     }
-}
 
+}

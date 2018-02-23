@@ -66,6 +66,7 @@
     <Compile Include="Models\FilterModel.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Helpers\JsonSettings.cs" />
+    <Compile Include="Models\ListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

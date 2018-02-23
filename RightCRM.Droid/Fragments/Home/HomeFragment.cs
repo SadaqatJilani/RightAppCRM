@@ -2,17 +2,17 @@
 using RightCRM.Core.ViewModels;
 using Android.OS;
 using Android.Views;
-using MvvmCross.Droid.Shared.Attributes;
+using MvvmCross.Droid.Views.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
-    [Register("xplatformmenus.droid.fragments.HomeFragment")]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame)]
+    [Register("rightcrm.droid.fragments.HomeFragment")]
     public class HomeFragment : BaseFragment<HomeViewModel>
     {
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ShowHamburgerMenu = true;
+          //  ShowHamburgerMenu = true;
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
 

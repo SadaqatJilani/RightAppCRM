@@ -5,32 +5,38 @@ using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Views;
 using RightCRM.Core.ViewModels;
-using MvvmCross.Droid.Shared.Attributes;
 using MvvmCross.Droid.Support.V4;
+using MvvmCross.Droid.Views.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
-	[MvxFragment(typeof(MainViewModel), Resource.Id.content_frame, true)]
-    [Register("xplatformmenus.droid.fragments.ExampleViewPagerFragment")]
+	[MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [Register("rightcrm.droid.fragments.ExampleViewPagerFragment")]
     public class ExampleViewPagerFragment : BaseFragment<ExampleViewPagerViewModel>
     {
+        protected override int FragmentId => Resource.Layout.fragment_example_viewpager;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ShowHamburgerMenu = true;
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
             var viewPager = view.FindViewById<ViewPager>(Resource.Id.viewpager);
             if (viewPager != null)
             {
-                var fragments = new List<MvxCachingFragmentStatePagerAdapter.FragmentInfo>
+                var fragments = new List<MvxViewPagerFragmentInfo>
                 {
-					new MvxCachingFragmentStatePagerAdapter.FragmentInfo("RecyclerView 1", typeof(RecyclerViewFragment), typeof(RecyclerViewModel)),
-					new MvxCachingFragmentStatePagerAdapter.FragmentInfo("RecyclerView 2", typeof(RecyclerViewFragment), typeof(RecyclerViewModel)),
-					new MvxCachingFragmentStatePagerAdapter.FragmentInfo("RecyclerView 3", typeof(RecyclerViewFragment), typeof(RecyclerViewModel)),
-					new MvxCachingFragmentStatePagerAdapter.FragmentInfo("RecyclerView 4", typeof(RecyclerViewFragment), typeof(RecyclerViewModel)),
-					new MvxCachingFragmentStatePagerAdapter.FragmentInfo("RecyclerView 5", typeof(RecyclerViewFragment), typeof(RecyclerViewModel))                };
-
-                viewPager.Adapter = new MvxCachingFragmentStatePagerAdapter(Activity, ChildFragmentManager, fragments);
+                    new MvxViewPagerFragmentInfo("RecyclerView 1", typeof(RecyclerViewFragment),
+                        typeof(RecyclerViewModel)),
+                    new MvxViewPagerFragmentInfo("RecyclerView 2", typeof(RecyclerViewFragment),
+                        typeof(RecyclerViewModel)),
+                    new MvxViewPagerFragmentInfo("RecyclerView 3", typeof(RecyclerViewFragment),
+                        typeof(RecyclerViewModel)),
+                    new MvxViewPagerFragmentInfo("RecyclerView 4", typeof(RecyclerViewFragment),
+                        typeof(RecyclerViewModel)),
+                    new MvxViewPagerFragmentInfo("RecyclerView 5", typeof(RecyclerViewFragment),
+                        typeof(RecyclerViewModel))
+                };
+                viewPager.Adapter = new MvxFragmentPagerAdapter(Activity, ChildFragmentManager, fragments);
             }
 
             var tabLayout = view.FindViewById<TabLayout>(Resource.Id.tabs);
@@ -38,7 +44,5 @@ namespace RightCRM.Droid.Fragments
 
             return view;
         }
-
-		protected override int FragmentId => Resource.Layout.fragment_example_viewpager;
     }
 }

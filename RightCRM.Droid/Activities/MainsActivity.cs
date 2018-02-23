@@ -5,6 +5,7 @@ using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Views.InputMethods;
+using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Platform;
 using RightCRM.Core.ViewModels;
 
@@ -15,11 +16,11 @@ namespace RightCRM.Droid.Activities
         Label = "Main Activity",
         Theme = "@style/AppTheme",
         LaunchMode = LaunchMode.SingleTop,
-        Name = "xplatformmenus.droid.activities.MainActivity"
+        Name = "rightcrm.droid.activities.MainActivity"
     )]
-    public class MainActivity : MvxCachingFragmentCompatActivity<MainViewModel>
+    public class MainActivity : MvxAppCompatActivity<MainViewModel>, INavigationActivity
     {
-        public DrawerLayout DrawerLayout;       
+        public DrawerLayout DrawerLayout { get; set; }
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -31,7 +32,6 @@ namespace RightCRM.Droid.Activities
 
             if (bundle == null)
                 ViewModel.ShowMenu();
-                    
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -42,27 +42,47 @@ namespace RightCRM.Droid.Activities
                     DrawerLayout.OpenDrawer(GravityCompat.Start);
                     return true;
             }
-
             return base.OnOptionsItemSelected(item);
         }
 
-        private void ShowBackButton()
+        /*public override IFragmentCacheConfiguration BuildFragmentCacheConfiguration()
+        {
+            return new FragmentCacheConfigurationCustomFragmentInfo(); // custom FragmentCacheConfiguration is used because custom IMvxFragmentInfo is used -> CustomFragmentInfo
+        }*/
+
+        /*public override void OnFragmentCreated(IMvxCachedFragmentInfo fragmentInfo, FragmentTransaction transaction)
+        {
+            base.OnFragmentCreated(fragmentInfo, transaction);
+            var myCustomInfo = fragmentInfo as CustomFragmentInfo;
+            // You can do fragment + transaction based configurations here.
+            // Note that, the cached fragment might be reused in another transaction afterwards.
+        }*/
+
+        /*private void CheckIfMenuIsNeeded(CustomFragmentInfo myCustomInfo)
+        {
+            //If not root, we will block the menu sliding gesture and show the back button on top
+            if (myCustomInfo.IsRoot)
+                ShowHamburguerMenu();
+            else
+                ShowBackButton();
+        }*/
+
+        /*private void ShowBackButton()
         {
             //TODO Tell the toggle to set the indicator off
             //this.DrawerToggle.DrawerIndicatorEnabled = false;
-
             //Block the menu slide gesture
             DrawerLayout.SetDrawerLockMode(DrawerLayout.LockModeLockedClosed);
-        }
+        }*/
 
-        private void ShowHamburguerMenu()
+        /*private void ShowHamburguerMenu()
         {
             //TODO set toggle indicator as enabled 
             //this.DrawerToggle.DrawerIndicatorEnabled = true;
-
             //Unlock the menu sliding gesture
             DrawerLayout.SetDrawerLockMode(DrawerLayout.LockModeUnlocked);
         }
+        */
 
         public override void OnBackPressed()
         {
@@ -72,14 +92,14 @@ namespace RightCRM.Droid.Activities
                 base.OnBackPressed();
         }
 
-		public void HideSoftKeyboard()
-		{
-			if (CurrentFocus == null) return;
+        public void HideSoftKeyboard()
+        {
+            if (CurrentFocus == null) return;
 
-			InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(InputMethodService);
-			inputMethodManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
+            InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(InputMethodService);
+            inputMethodManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
 
-			CurrentFocus.ClearFocus();
-		}
+            CurrentFocus.ClearFocus();
+        }
     }
 }

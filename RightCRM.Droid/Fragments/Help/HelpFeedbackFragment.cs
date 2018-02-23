@@ -2,17 +2,17 @@
 using RightCRM.Core.ViewModels;
 using Android.Views;
 using Android.OS;
-using MvvmCross.Droid.Shared.Attributes;
+using MvvmCross.Droid.Views.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
-	[MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
-    [Register("xplatformmenus.droid.fragments.HelpFeedbackFragment")]
+	[MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame)]
+    [Register("rightcrm.droid.fragments.HelpFeedbackFragment")]
     public class HelpFeedbackFragment : BaseFragment<HelpAndFeedbackViewModel>
     {
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ShowHamburgerMenu = true;
+           // ShowHamburgerMenu = true;
             return base.OnCreateView(inflater, container, savedInstanceState);
         }
 

@@ -1,14 +1,14 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
-using MvvmCross.Droid.Shared.Attributes;
+using MvvmCross.Droid.Views.Attributes;
 using RightCRM.Core.ViewModels;
 using RightCRM.Droid.Activities;
 
 namespace RightCRM.Droid.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame, true)]
-    [Register("xplatformmenus.droid.fragments.InfoFragment")]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [Register("rightcrm.droid.fragments.InfoFragment")]
     public class InfoFragment : BaseFragment<InfoViewModel>
     {
         string oldTitle;

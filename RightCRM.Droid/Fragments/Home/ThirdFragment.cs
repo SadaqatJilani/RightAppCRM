@@ -3,13 +3,12 @@ using Android.Runtime;
 using Android.Views;
 using RightCRM.Core.ViewModels;
 using RightCRM.Droid.Activities;
-using MvvmCross.Droid.Shared.Attributes;
-using RightCRM.Droid.Utilities;
+using MvvmCross.Droid.Views.Attributes;
 
 namespace RightCRM.Droid.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame, true)]
-    [Register("xplatformmenus.droid.fragments.ThirdFragment")]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [Register("rightcrm.droid.fragments.ThirdFragment")]
     public class ThirdFragment : BaseFragment<ThirdViewModel>
     {
         string oldTitle;
