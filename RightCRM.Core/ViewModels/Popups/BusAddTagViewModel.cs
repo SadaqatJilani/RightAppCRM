@@ -17,15 +17,16 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using Acr.UserDialogs;
 using RightCRM.DataAccess.Model.BusinessModels;
+using RightCRM.Core.ViewModels.ItemViewModels;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
-    public class BusAddTagViewModel : BaseViewModel, IMvxViewModel<IEnumerable<Business>>
+    public class BusAddTagViewModel : BaseViewModel, IMvxViewModel<IEnumerable<BusinessItemViewModel>>
     {
         private MvxObservableCollection<PickerItem> pickerTagUser;
         private MvxObservableCollection<PickerItem> pickerSelectTag;
         private readonly IBusinessFacade businessFacade;
-        private List<Business> accountList;
+        private List<BusinessItemViewModel> accountList;
         private readonly IUserFacade userFacade;
 
         public BusAddTagViewModel(IMvxNavigationService navigationService, 
@@ -164,9 +165,9 @@ namespace RightCRM.Core.ViewModels.Popups
         }
 
 
-        public void Prepare(IEnumerable<Business> parameter)
+        public void Prepare(IEnumerable<BusinessItemViewModel> parameter)
         {
-            accountList = new List<Business>(parameter);
+            accountList = new List<BusinessItemViewModel>(parameter);
         }
     }
 }

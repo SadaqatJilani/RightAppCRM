@@ -24,6 +24,7 @@ namespace RightCRM.iOS.Views.Search
             Debug.WriteLine("SearchItemCell ctor");
 
             Accessory = UITableViewCellAccessory.Checkmark;
+            this.SelectionStyle = UITableViewCellSelectionStyle.None;
         }
 
 

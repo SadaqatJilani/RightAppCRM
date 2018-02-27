@@ -79,6 +79,28 @@ namespace RightCRM.Core.Services
         }
 
         /// <summary>
+        /// Gets the object from mem.
+        /// </summary>
+        /// <returns>The object from mem.</returns>
+        /// <param name="key">Key.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public async Task<T> GetObjFromMem<T>(string key)
+        {
+            if (await this.ContainsKeyForTempMemory(key))
+            {
+                var result = await BlobCache.InMemory.GetObject<T>(key);
+                if (result == null)
+                {
+                    await BlobCache.InMemory.InvalidateObject<T>(key);
+                }
+
+                return result;
+            }
+
+            return default(T);
+        }
+
+        /// <summary>
         /// Inserts the object.
         /// </summary>
         /// <returns>The object.</returns>
@@ -93,6 +115,23 @@ namespace RightCRM.Core.Services
             }
 
             await BlobCache.LocalMachine.InsertObject(key, value);
+        }
+
+        /// <summary>
+        /// Inserts the object in mem.
+        /// </summary>
+        /// <returns>The object in mem.</returns>
+        /// <param name="key">Key.</param>
+        /// <param name="value">Value.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public async Task InsertObjInMem<T>(string key, T value)
+        {
+            if (await this.ContainsKeyForTempMemory(key))
+            {
+                await this.RemoveObject(key);
+            }
+
+            await BlobCache.InMemory.InsertObject(key, value);
         }
 
         /// <summary>
@@ -175,6 +214,20 @@ namespace RightCRM.Core.Services
         private async Task<bool> ContainsKeyForSettings(string key)
         {
             var keys = await BlobCache.UserAccount.GetAllKeys();
+
+            var result = keys.FirstOrDefault(x => x == key);
+
+            return !string.IsNullOrEmpty(result);
+        }
+
+        /// <summary>
+        /// Containses the key for temp memory.
+        /// </summary>
+        /// <returns>The key for temp memory.</returns>
+        /// <param name="key">Key.</param>
+        private async Task<bool> ContainsKeyForTempMemory(string key)
+        {
+            var keys = await BlobCache.InMemory.GetAllKeys();
 
             var result = keys.FirstOrDefault(x => x == key);
 

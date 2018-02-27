@@ -25,6 +25,14 @@ namespace RightCRM.Common.Services
         Task<T> GetObject<T>(string key);
 
         /// <summary>
+        /// Gets the object from mem.
+        /// </summary>
+        /// <returns>The object from mem.</returns>
+        /// <param name="key">Key.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        Task<T> GetObjFromMem<T>(string key);
+
+        /// <summary>
         /// Gets the and fetch object by key.
         /// </summary>
         /// <returns>The and fetch object by key.</returns>
@@ -41,6 +49,15 @@ namespace RightCRM.Common.Services
         /// <param name="value">The Value.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         Task InsertObject<T>(string key, T value);
+
+        /// <summary>
+        /// Inserts the object in mem.
+        /// </summary>
+        /// <returns>The object in mem.</returns>
+        /// <param name="key">Key.</param>
+        /// <param name="value">Value.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        Task InsertObjInMem<T>(string key, T value);
 
         /// <summary>
         /// Removes the object.

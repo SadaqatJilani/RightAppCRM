@@ -18,15 +18,16 @@ namespace RightCRM.Core.ViewModels.Home
     using System.Linq;
     using Acr.UserDialogs;
     using System;
+    using RightCRM.Core.ViewModels.ItemViewModels;
 
     /// <summary>
     /// Bus detail tab2 view model.
     /// </summary>
-    public class BusDetailTab2ViewModel : BaseViewModel, IMvxViewModel<Business>
+    public class BusDetailTab2ViewModel : BaseViewModel, IMvxViewModel<int>
     {
         private readonly INotesFacade notesFacade;
 
-        private Business business;
+        private int businessID;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.BusDetailTab2ViewModel"/> class.
@@ -46,7 +47,7 @@ namespace RightCRM.Core.ViewModels.Home
 
         async Task SaveNoteAndReturn()
         {
-            var res = await navigationService.Navigate<AddNewNoteViewModel, int, bool>(business.BusinessID.GetValueOrDefault());
+            var res = await navigationService.Navigate<AddNewNoteViewModel, int, bool>(businessID);
 
             if (res == true)
             {
@@ -83,7 +84,7 @@ namespace RightCRM.Core.ViewModels.Home
 
             this.AllNotesList.Clear();
                                     
-            var result = await this.notesFacade.GetAllNotes(business.BusinessID.GetValueOrDefault());
+            var result = await this.notesFacade.GetAllNotes(businessID);
 
             if (result == null || !result.Any())
             {
@@ -106,9 +107,9 @@ namespace RightCRM.Core.ViewModels.Home
 
         }
 
-        public void Prepare(Business parameter)
+        public void Prepare(int parameter)
         {
-            business = parameter;
+            businessID = parameter;
         }
     }
 }

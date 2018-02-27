@@ -25,25 +25,29 @@ namespace RightCRM.Core.ViewModels
 
         private LongPressMessage longPressMessage;
 
-        private MvxObservableCollection<Business> _allBusiness;
-        public MvxObservableCollection<Business> AllBusiness{
+        private MvxObservableCollection<BusinessItemViewModel> _allBusiness;
+        public MvxObservableCollection<BusinessItemViewModel> AllBusiness
+        {
             get { return _allBusiness; }
-            set{SetProperty(ref _allBusiness,value, "AllBus");}
+            set { SetProperty(ref _allBusiness, value, "AllBus"); }
         }
 
         readonly IBusinessFacade businessFacade;
         readonly INavBarService navBarService;
         readonly IMvxMessenger messenger;
 
-        private List<FilterListViewModel> listOfFilters;
+        private List<FilterListViewModel> cachedFilters;
         readonly ICacheService cacheService;
+        private bool moreItemsLoaded;
 
-        public BusinessViewModel(IBusinessFacade businessFacade, 
-                                 IMvxNavigationService navigationService, 
-                                 IUserDialogs userDialogs, 
+        private string searchKeyword;
+
+        public BusinessViewModel(IBusinessFacade businessFacade,
+                                 IMvxNavigationService navigationService,
+                                 IUserDialogs userDialogs,
                                  INavBarService navBarService,
                                  IMvxMessenger messenger,
-                                 ICacheService cacheService) : base (userDialogs)
+                                 ICacheService cacheService) : base(userDialogs)
         {
             this.cacheService = cacheService;
             this.messenger = messenger;
@@ -52,27 +56,30 @@ namespace RightCRM.Core.ViewModels
             this.businessFacade = businessFacade;
             this.userDialogs = userDialogs;
 
-            BusinessDetailCommand = new MvxAsyncCommand<Business>(ShowBusinessDetails);
-            BusLongPressedCommand = new MvxAsyncCommand<int>(SelectBusForTag);
+            BusinessDetailCommand = new MvxAsyncCommand<BusinessItemViewModel>(ShowBusinessDetails);
+            BusLongPressedCommand = new MvxCommand<int>(SelectBusForTag);
             LoadMoreBusinessesCommand = new MvxAsyncCommand(LoadMoreBusinesses);
-            AllBusiness = new MvxObservableCollection<Business>();
+            AllBusiness = new MvxObservableCollection<BusinessItemViewModel>();
 
-            listOfFilters = new List<FilterListViewModel>();
+            cachedFilters = new List<FilterListViewModel>();
         }
 
         private async Task LoadMoreBusinesses()
         {
-            businessPageno++;
-
-            var result = await this.businessFacade.FilterBusinesses(ConvertToBusRequest(listOfFilters), businessPageno);
-
-            if (result != null)
+            if (moreItemsLoaded)
             {
-                PopulateBusinesses(result.business?.DataArray);
+                businessPageno++;
+
+                var result = await this.businessFacade.FilterBusinesses(await ConvertToBusRequest(cachedFilters), businessPageno);
+
+                if (result != null)
+                {
+                    PopulateBusinesses(result.business?.DataArray);
+                }
             }
         }
 
-        private async Task SelectBusForTag(int selectedBusinessRow)
+        private void SelectBusForTag(int selectedBusinessRow)
         {
             if (IsLongPress == false)
             {
@@ -95,11 +102,11 @@ namespace RightCRM.Core.ViewModels
 
         }
 
-        private async Task ShowBusinessDetails(Business business)
+        private async Task ShowBusinessDetails(BusinessItemViewModel business)
         {
             // throw new NotImplementedException();
             if (business != null)
-            await navigationService.Navigate<BusinessDetailTabViewModel, Business>(business);
+                await navigationService.Navigate<BusinessDetailTabViewModel, BusinessItemViewModel>(business);
         }
 
         IMvxCommand showBusinessFilterCommand;
@@ -107,7 +114,7 @@ namespace RightCRM.Core.ViewModels
         {
             get
             {
-                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter, CanFilter);
+                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
                 return showBusinessFilterCommand;
             }
         }
@@ -133,13 +140,20 @@ namespace RightCRM.Core.ViewModels
             }
         }
 
+        private bool isFilterOn;
+        public bool IsFilterOn
+        {
+            get { return isFilterOn; }
+            set{SetProperty(ref isFilterOn, value); }
+        }
+
         private async Task AssignFilter()
         {
 
             //  AllBusiness.chang
-            var selectedBusinesses =  AllBusiness.Where(x => x.IsSelected == true);
+            var selectedBusinesses = AllBusiness.Where(x => x.IsSelected == true);
 
-            await navigationService.Navigate<BusAddTagViewModel, IEnumerable<Business>>(selectedBusinesses);
+            await navigationService.Navigate<BusAddTagViewModel, IEnumerable<BusinessItemViewModel>>(selectedBusinesses);
         }
 
         private bool CanFilter()
@@ -153,16 +167,16 @@ namespace RightCRM.Core.ViewModels
 
         private async Task BusinessFilter()
         {
-          var filterList =  await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterListViewModel>>(businessFilters);
+            var filterList = await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterListViewModel>>(businessFilters);
 
             if (filterList != null)
             {
-                listOfFilters = new List<FilterListViewModel>(filterList);
+                cachedFilters = new List<FilterListViewModel>(filterList);
 
                 AllBusiness.Clear();
 
                 businessPageno = 1;
-                var result = await this.businessFacade.FilterBusinesses(ConvertToBusRequest(listOfFilters), businessPageno);
+                var result = await this.businessFacade.FilterBusinesses(await ConvertToBusRequest(cachedFilters), businessPageno);
 
                 if (result != null)
                 {
@@ -175,12 +189,17 @@ namespace RightCRM.Core.ViewModels
         {
             if (businesses == null || !businesses.Any())
             {
+                moreItemsLoaded = false;
                 return;
+            }
+            else
+            {
+                moreItemsLoaded = true;
             }
 
             foreach (var business in businesses)
             {
-                var businessItem = new Business
+                var businessItem = new BusinessItemViewModel
                 {
                     BusinessID = business.BusinessID,
                     BusinessType = business.BusinessType,
@@ -200,7 +219,7 @@ namespace RightCRM.Core.ViewModels
             Title = parameter;
         }
 
-        public IMvxCommand<Business> BusinessDetailCommand { get; private set; }
+        public IMvxCommand<BusinessItemViewModel> BusinessDetailCommand { get; private set; }
         public IMvxCommand<int> BusLongPressedCommand { get; private set; }
         public IMvxCommand LoadMoreBusinessesCommand { get; private set; }
 
@@ -209,7 +228,10 @@ namespace RightCRM.Core.ViewModels
             await base.Initialize();
 
             businessPageno = 1;
-            var result = await this.businessFacade.FilterBusinesses(ConvertToBusRequest(listOfFilters), businessPageno);
+            cachedFilters = new List<FilterListViewModel>(await cacheService.GetObjFromMem<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters) ??
+                                                          Enumerable.Empty<FilterListViewModel>());
+
+            var result = await this.businessFacade.FilterBusinesses(await ConvertToBusRequest(cachedFilters), businessPageno);
 
             if (result != null)
             {
@@ -233,8 +255,10 @@ namespace RightCRM.Core.ViewModels
         }
 
 
-        GetBusinessRequestModel ConvertToBusRequest(IEnumerable<FilterListViewModel> filterList)
+       async Task<GetBusinessRequestModel> ConvertToBusRequest(IEnumerable<FilterListViewModel> filterList)
         {
+            var savedKeyword = await cacheService.GetObjFromMem<string>(Constants.SavedKeyword);
+
             var filterRequest = new GetBusinessRequestModel
             {
                 srch_address_id = JsonStringFromList(filterList, Constants.AddressFilter),
@@ -249,9 +273,10 @@ namespace RightCRM.Core.ViewModels
 
                 user_list = JsonStringFromList(filterList, Constants.SalesWorkFilter),
 
-                user_status = JsonStringFromList(filterList, Constants.StatusFilter)
-            };
+                user_status = JsonStringFromList(filterList, Constants.StatusFilter),
 
+                srch_keywords = savedKeyword?.ToLower()
+            };
 
             return filterRequest;
         }

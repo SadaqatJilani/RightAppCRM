@@ -17,6 +17,7 @@ using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Common;
 using RightCRM.Common.Services;
 using RightCRM.Core.ViewModels.ItemViewModels;
+using Acr.UserDialogs;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
@@ -25,8 +26,11 @@ namespace RightCRM.Core.ViewModels.Popups
         private BusinessList businessList;
         private readonly ICacheService cacheService;
 
-        public FilterPopupViewModel(IMvxNavigationService navigationService, ICacheService cacheService)
+        public FilterPopupViewModel(IMvxNavigationService navigationService, 
+                                    ICacheService cacheService,
+                                    IUserDialogs userDialogs)
         {
+            this.userDialogs = userDialogs;
             this.cacheService = cacheService;
             this.navigationService = navigationService;
 
@@ -34,7 +38,29 @@ namespace RightCRM.Core.ViewModels.Popups
 
             FilterChangedCommand = new MvxCommand<FilterItemViewModel>(FilterOptions);
 
-            SearchBusinessesCommand = new MvxAsyncCommand(SearchParameters);
+            SearchBusinessesCommand = new MvxAsyncCommand(CloseAndSearch);
+
+            ResetFiltersCommand = new MvxAsyncCommand(ClearFilters);
+        }
+
+        private async Task ClearFilters()
+        {
+           var confirmDialog = await userDialogs.ConfirmAsync("Are you sure you want to reset the current filters?", "Confirmation", "YES", "NO");
+
+            if (confirmDialog)
+            {
+                foreach (var filterItem in FilterList)
+                {
+                    foreach (var item in filterItem)
+                    {
+                        item.IsSelected = false;
+                    }
+                }
+
+                SearchKeyword = string.Empty;
+
+                await CloseAndSearch();
+            }
         }
 
         private void FilterOptions(FilterItemViewModel filterItem)
@@ -74,20 +100,22 @@ namespace RightCRM.Core.ViewModels.Popups
 
             FilterList = new MvxObservableCollection<FilterListViewModel>(await ExtractFilterItems());
 
+            SearchKeyword = await cacheService.GetObjFromMem<string>(Constants.SavedKeyword);
         }
 
-        private async Task SearchParameters()
+        private async Task CloseAndSearch()
         {
+            await cacheService.InsertObjInMem<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters, FilterList);
+            await cacheService.InsertObjInMem<string>(Constants.SavedKeyword, SearchKeyword);
 
-            await cacheService.InsertObject<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters, FilterList);
             await navigationService.Close(this, FilterList);
         }
 
         private async Task<List<FilterListViewModel>> ExtractFilterItems()
         {
-            var cachedFilters = await cacheService.GetObject<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters);
+            var cachedFilters = await cacheService.GetObjFromMem<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters);
 
-            if(cachedFilters != null)
+            if(cachedFilters != null && cachedFilters.Any())
             {
                 return new List<FilterListViewModel>(cachedFilters);
             }
@@ -99,7 +127,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 listAddress.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.AddressFilter,
-                    FilterName = item.REGION,
+                    FilterName = item.REGION_NAME,
                     Count = item.COUNT
                 });
             }
@@ -212,10 +240,18 @@ namespace RightCRM.Core.ViewModels.Popups
             }
         }
 
+        private string searchKeyword;
+        public string SearchKeyword
+        {
+            get { return searchKeyword; }
+            set { SetProperty(ref searchKeyword, value); }
+        }
+
         public IMvxCommand<FilterItemViewModel> FilterChangedCommand { get; private set; }
         public IMvxCommand SearchBusinessesCommand { get; private set; }
 
         public TaskCompletionSource<object> CloseCompletionSource { get; set; }
+        public IMvxCommand ResetFiltersCommand { get; private set; }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {

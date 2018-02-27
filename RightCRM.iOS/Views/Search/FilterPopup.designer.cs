@@ -20,17 +20,30 @@ namespace RightCRM.iOS.Views.Search
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnReset { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnSearch { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView tblViewSearch { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISearchBar txtKeywordSearch { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (btnClose != null) {
                 btnClose.Dispose ();
                 btnClose = null;
+            }
+
+            if (btnReset != null) {
+                btnReset.Dispose ();
+                btnReset = null;
             }
 
             if (btnSearch != null) {
@@ -41,6 +54,11 @@ namespace RightCRM.iOS.Views.Search
             if (tblViewSearch != null) {
                 tblViewSearch.Dispose ();
                 tblViewSearch = null;
+            }
+
+            if (txtKeywordSearch != null) {
+                txtKeywordSearch.Dispose ();
+                txtKeywordSearch = null;
             }
         }
     }

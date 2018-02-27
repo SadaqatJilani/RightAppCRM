@@ -54,25 +54,25 @@ namespace RightCRM.DataAccess.Model.BusinessModels
     }
     public class address
     {
-        public int? ID;
-        public string REGION;
+        public int? ID_REGION;
+        public string REGION_NAME;
         public int COUNT;
-        public city[] cities;
+        public city[] CITIES;
 
         public override string ToString()
         {
-            return REGION;
+            return REGION_NAME;
         }
     }
     public class city
     {
-        public int? ID;
-        public string NAME;
+        public int? ID_CITY;
+        public string CITY_NAME;
         public int? COUNT;
 
         public override string ToString()
         {
-            return NAME;
+            return CITY_NAME;
         }
     }
 

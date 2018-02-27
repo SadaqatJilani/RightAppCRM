@@ -14,12 +14,13 @@ using RightCRM.Common.Models;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using RightCRM.Facade.Facades;
+using RightCRM.Core.ViewModels.ItemViewModels;
 
 namespace RightCRM.Core.ViewModels.Home
 {
-    public class BusDetailTab1ViewModel : BaseViewModel, IMvxViewModel<Business>
+    public class BusDetailTab1ViewModel : BaseViewModel, IMvxViewModel<int>
     {
-        private Business businessItem;
+        private int businessID;
 
         private BusinessDetails listBusinessDetails;
 
@@ -43,16 +44,16 @@ namespace RightCRM.Core.ViewModels.Home
             Title = Constants.TitleBusinessDetailsPage;
         }
 
-        public void Prepare(Business parameter)
+        public void Prepare(int parameter)
         {
-            businessItem = parameter;
+            businessID = parameter;
         }
 
         public override async Task Initialize()
         {
             await base.Initialize();
 
-            var res = await businessDetailsFacade.GetBusinessDetails(businessItem.BusinessID);
+            var res = await businessDetailsFacade.GetBusinessDetails(businessID);
 
             if (res != null)
                 ListBusinessDetails = res.business?.Data ?? new BusinessDetails();

@@ -24,11 +24,7 @@ namespace RightCRM.iOS.Helpers
             this.nextTextField = next;
             AddButtonsToToolBar();
 
-            currentTextField.ShouldReturn += (textField) => {
-
-                textField.ResignFirstResponder();
-                return true;
-            };
+            currentTextField.ShouldReturn += CurrentTextField_ShouldReturn;
         }
 
         void AddButtonsToToolBar()
@@ -55,6 +51,19 @@ namespace RightCRM.iOS.Helpers
                 currentTextField.ResignFirstResponder();
                 })
                             };
+        }
+
+        bool CurrentTextField_ShouldReturn(UITextField textField)
+        {
+            textField.ResignFirstResponder();
+            return true;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            currentTextField.ShouldReturn -= CurrentTextField_ShouldReturn;
+
+            base.Dispose(disposing);
         }
     }
 }

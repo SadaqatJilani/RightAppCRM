@@ -29,6 +29,8 @@ namespace RightCRM.iOS.Views.Search
 
            // View.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0.5f);
 
+            DismissKeyboardOnBackgroundTap();
+
             var Set = this.CreateBindingSet<FilterPopup, FilterPopupViewModel>();
 
             var source = new SearchTVS(this.tblViewSearch)
@@ -39,12 +41,16 @@ namespace RightCRM.iOS.Views.Search
                 IsAccordionExpandCollapseEnabled = true
             };
 
+            txtKeywordSearch.SearchButtonClicked += TxtKeywordSearch_SearchButtonClicked;
+
             Set.Bind(btnClose).To(vm => vm.CloseCommand);
             Set.Bind(source).For(x=>x.ItemsSource).To(vm=>vm.FilterList);
-           // Set.Bind(source).For(x => x.SelectedItem).To(vm => vm.SelectedFilter);
             Set.Bind(source).For(x => x.SelectionChangedCommand).To(vm => vm.FilterChangedCommand);
 
+            Set.Bind(txtKeywordSearch).For(x => x.Text).To(vm => vm.SearchKeyword);
+
             Set.Bind(btnSearch).To(vm => vm.SearchBusinessesCommand);
+            Set.Bind(btnReset).To(vm => vm.ResetFiltersCommand);
 
             Set.Apply();
 
@@ -59,6 +65,19 @@ namespace RightCRM.iOS.Views.Search
             //this.tblViewSearch.EstimatedRowHeight = 120f;
             this.tblViewSearch.ReloadData();
 
+        }
+
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            txtKeywordSearch.SearchButtonClicked -= TxtKeywordSearch_SearchButtonClicked;
+
+            base.ViewDidDisappear(animated);
+        }
+
+        void TxtKeywordSearch_SearchButtonClicked(object sender, EventArgs e)
+        {
+            txtKeywordSearch.ResignFirstResponder();
         }
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="Services\LongPressMessage.cs" />
     <Compile Include="ViewModels\ItemViewModels\FilterItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModels\FilterListViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModels\BusinessItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
