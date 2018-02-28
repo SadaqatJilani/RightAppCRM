@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -12,6 +13,7 @@ using RightCRM.Common.Services;
 using RightCRM.Core.Services;
 using RightCRM.Core.ViewModels.Home;
 using RightCRM.Core.ViewModels.ItemViewModels;
+using RightCRM.Core.ViewModels.Menu;
 using RightCRM.Core.ViewModels.Popups;
 using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Facade.Facades;
@@ -33,7 +35,6 @@ namespace RightCRM.Core.ViewModels
         }
 
         readonly IBusinessFacade businessFacade;
-        readonly INavBarService navBarService;
         readonly IMvxMessenger messenger;
 
         private List<FilterListViewModel> cachedFilters;
@@ -45,13 +46,11 @@ namespace RightCRM.Core.ViewModels
         public BusinessViewModel(IBusinessFacade businessFacade,
                                  IMvxNavigationService navigationService,
                                  IUserDialogs userDialogs,
-                                 INavBarService navBarService,
                                  IMvxMessenger messenger,
                                  ICacheService cacheService) : base(userDialogs)
         {
             this.cacheService = cacheService;
             this.messenger = messenger;
-            this.navBarService = navBarService;
             this.navigationService = navigationService;
             this.businessFacade = businessFacade;
             this.userDialogs = userDialogs;
@@ -62,6 +61,11 @@ namespace RightCRM.Core.ViewModels
             AllBusiness = new MvxObservableCollection<BusinessItemViewModel>();
 
             cachedFilters = new List<FilterListViewModel>();
+        }
+
+        public void ShowMenu()
+        {
+            navigationService.Navigate<MenuViewModel>();
         }
 
         private async Task LoadMoreBusinesses()

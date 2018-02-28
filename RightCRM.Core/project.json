@@ -8,6 +8,7 @@
     "MvvmCross.Core": "5.6.3",
     "MvvmCross.Platform": "5.6.3",
     "MvvmCross.Plugin.Messenger": "5.6.3",
+    "MvvmCross.Plugin.Visibility": "5.6.3",
     "MvvmCross.StarterPack": "5.6.3",
     "Newtonsoft.Json": "10.0.3",
     "Rx-Core": "2.2.5",

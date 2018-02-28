@@ -39,10 +39,10 @@ namespace RightCRM.iOS
         }
 
 
-        protected override void InitializeFirstChance()
-        {
-            Mvx.RegisterSingleton<INavBarService>(new NavBarService());
-            base.InitializeFirstChance();
-        }
+        //protected override void InitializeFirstChance()
+        //{
+        //    Mvx.RegisterSingleton<INavBarService>(new NavBarService());
+        //    base.InitializeFirstChance();
+        //}
     }
 }

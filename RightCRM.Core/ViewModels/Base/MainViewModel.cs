@@ -1,10 +1,19 @@
-﻿namespace RightCRM.Core.ViewModels
+﻿using MvvmCross.Core.Navigation;
+using RightCRM.Core.ViewModels.Menu;
+
+namespace RightCRM.Core.ViewModels
 {
 	public class MainViewModel : BaseViewModel
     {
+
+        public MainViewModel(IMvxNavigationService navigationService)
+        {
+            this.navigationService = navigationService;
+        }
+
         public void ShowMenu()
         {
-            ShowViewModel<HomeViewModel>();
+            navigationService.Navigate<MenuViewModel>();
             //ShowViewModel<MenuViewModel>();            
         }
 

@@ -76,6 +76,11 @@ namespace RightCRM.Core.ViewModels.Menu
             }
         }
 
+        public void ShowViewModelAndroid(Type type)
+        {
+            throw new NotImplementedException();
+        }
+
         private async Task LogoutFromApp()
         {
 
