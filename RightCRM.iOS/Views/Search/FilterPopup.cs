@@ -16,6 +16,8 @@ namespace RightCRM.iOS.Views.Search
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext, ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve)]
     public partial class FilterPopup : BaseViewController<FilterPopupViewModel>
     {
+        SearchTVS source;
+
         public FilterPopup (IntPtr handle) : base (handle)
         {
         }
@@ -33,7 +35,7 @@ namespace RightCRM.iOS.Views.Search
 
             var Set = this.CreateBindingSet<FilterPopup, FilterPopupViewModel>();
 
-            var source = new SearchTVS(this.tblViewSearch)
+            source = new SearchTVS(this.tblViewSearch)
             {
                 UseAnimations = true,
                 AddAnimation = UITableViewRowAnimation.Left,
@@ -42,6 +44,7 @@ namespace RightCRM.iOS.Views.Search
             };
 
             txtKeywordSearch.SearchButtonClicked += TxtKeywordSearch_SearchButtonClicked;
+            source.SelectedItemChanged += TxtKeywordSearch_SearchButtonClicked;
 
             Set.Bind(btnClose).To(vm => vm.CloseCommand);
             Set.Bind(source).For(x=>x.ItemsSource).To(vm=>vm.FilterList);
@@ -71,13 +74,17 @@ namespace RightCRM.iOS.Views.Search
         public override void ViewDidDisappear(bool animated)
         {
             txtKeywordSearch.SearchButtonClicked -= TxtKeywordSearch_SearchButtonClicked;
-
+            source.SelectedItemChanged -= TxtKeywordSearch_SearchButtonClicked;
+                  
             base.ViewDidDisappear(animated);
         }
 
         void TxtKeywordSearch_SearchButtonClicked(object sender, EventArgs e)
         {
-            txtKeywordSearch.ResignFirstResponder();
+            if (txtKeywordSearch.CanResignFirstResponder)
+            {
+                txtKeywordSearch.ResignFirstResponder();
+            }
         }
     }
 }

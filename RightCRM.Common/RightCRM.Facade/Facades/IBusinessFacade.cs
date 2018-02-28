@@ -16,5 +16,7 @@ namespace RightCRM.Facade.Facades
 
         Task<IEnumerable<TagData>> GetTagsFromList(string listName);
 
+        Task<SaveSearchResponseModel> SaveSearchFilters(SaveSearchRequestModel selectedFilters);
+
     }
 }

@@ -158,11 +158,14 @@ namespace RightCRM.Core.ViewModels
 
         private bool CanFilter()
         {
-            if (AllBusiness.Count == 0)
+            if (this.AllBusiness != null && this.AllBusiness.Any())
+            {
+                return true;
+            }
+            else
             {
                 return false;
             }
-            return true;
         }
 
         private async Task BusinessFilter()
@@ -279,20 +282,6 @@ namespace RightCRM.Core.ViewModels
             };
 
             return filterRequest;
-        }
-
-        string JsonStringFromList(IEnumerable<FilterListViewModel> filterList, string filterField)
-        {
-            var filterString = filterList.FirstOrDefault(x => x.Heading == filterField)?
-                                         .Where(x => x.IsSelected == true)?
-                                         .Select(x => x.FilterName)?
-                                         .ToList();
-
-            if (filterString == null || !filterString.Any())
-                return null;
-
-            else
-                return JsonConvert.SerializeObject(filterString);
         }
 
     }

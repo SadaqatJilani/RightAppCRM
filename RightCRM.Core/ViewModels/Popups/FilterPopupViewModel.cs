@@ -122,19 +122,19 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listAddress = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.AddressArray ?? Enumerable.Empty<address>())
+            foreach (var item in businessList?.AddressArray ?? Enumerable.Empty<address>())
             {
                 listAddress.Add(new FilterItemViewModel()
                 {
                     SectionName = Constants.AddressFilter,
                     FilterName = item.REGION_NAME,
-                    Count = item.COUNT
+                    Count = item.COUNT.GetValueOrDefault()
                 });
             }
 
             var listCompany = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.CompanyArray ?? Enumerable.Empty<company_size>())
+            foreach (var item in businessList?.CompanyArray ?? Enumerable.Empty<company_size>())
             {
                 listCompany.Add(new FilterItemViewModel()
                 {
@@ -147,7 +147,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listIndustry = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.IndustryArray ?? Enumerable.Empty<industry>())
+            foreach (var item in businessList?.IndustryArray ?? Enumerable.Empty<industry>())
             {
                 listIndustry.Add(new FilterItemViewModel()
                 {
@@ -159,7 +159,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listRevenue = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.RevenueArray ?? Enumerable.Empty<revenue>())
+            foreach (var item in businessList?.RevenueArray ?? Enumerable.Empty<revenue>())
             {
                 listRevenue.Add(new FilterItemViewModel()
                 {
@@ -171,7 +171,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listTags = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.TagsArray ?? Enumerable.Empty<Tags>())
+            foreach (var item in businessList?.TagsArray ?? Enumerable.Empty<Tags>())
             {
                 listTags.Add(new FilterItemViewModel()
                 {
@@ -183,7 +183,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listSalesWorkers = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.SalesWorkersArray ?? Enumerable.Empty<SalesWorkers>())
+            foreach (var item in businessList?.SalesWorkersArray ?? Enumerable.Empty<SalesWorkers>())
             {
                 listSalesWorkers.Add(new FilterItemViewModel()
                 {
@@ -195,7 +195,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var listStatus = new List<FilterItemViewModel>();
 
-            foreach (var item in businessList.StatusArray ?? Enumerable.Empty<status>())
+            foreach (var item in businessList?.StatusArray ?? Enumerable.Empty<status>())
             {
                 listStatus.Add(new FilterItemViewModel()
                 {
@@ -252,6 +252,31 @@ namespace RightCRM.Core.ViewModels.Popups
 
         public TaskCompletionSource<object> CloseCompletionSource { get; set; }
         public IMvxCommand ResetFiltersCommand { get; private set; }
+
+        private SaveSearchRequestModel ConvertToSaveSearchRequest(IEnumerable<FilterListViewModel> list)
+        {
+
+            var filterRequest = new SaveSearchRequestModel
+            {
+                srch_address_id = JsonStringFromList(list, Constants.AddressFilter, true),
+
+                srch_company_size = JsonStringFromList(list, Constants.CompanySizeFilter),
+
+                srch_industry = JsonStringFromList(list, Constants.IndustryFilter),
+
+                srch_annual_revenue = JsonStringFromList(list, Constants.RevenueFilter),
+
+                srch_ctag = JsonStringFromList(list, Constants.TagsFilter),
+
+                assign_user_list = JsonStringFromList(list, Constants.SalesWorkFilter),
+
+                business_status = JsonStringFromList(list, Constants.StatusFilter),
+
+                srch_keywords = SearchKeyword
+            };
+
+            return filterRequest;
+        }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {

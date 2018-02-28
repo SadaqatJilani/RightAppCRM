@@ -56,7 +56,7 @@ namespace RightCRM.DataAccess.Model.BusinessModels
     {
         public int? ID_REGION;
         public string REGION_NAME;
-        public int COUNT;
+        public int? COUNT;
         public city[] CITIES;
 
         public override string ToString()

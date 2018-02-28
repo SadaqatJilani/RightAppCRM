@@ -68,6 +68,11 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Individuals/userlist";
         }
 
+        public static string SaveSearch()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Businesses/savesearch";
+        }
+
         //Lists/getlist
 
         //Notes/getallnotes

@@ -1,9 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Akavache;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using Newtonsoft.Json;
 using RightCRM.Common;
+using RightCRM.Core.ViewModels.ItemViewModels;
 using RightCRM.Core.ViewModels.Menu;
 
 namespace RightCRM.Core.ViewModels
@@ -91,6 +95,39 @@ namespace RightCRM.Core.ViewModels
             where U : class
         {
             await navigationService.Navigate<T, U>(hello);
+        }
+
+
+        protected string JsonStringFromList(IEnumerable<FilterListViewModel> filterList, string filterField, bool intList = false)
+        {
+            if (intList)
+            {
+                var filterInt = filterList.FirstOrDefault(x => x.Heading == filterField)?
+                                          .Where(x => x.IsSelected == true)?
+                                          .Select(x => x.FilterID)?
+                                          .ToList();
+
+                if (filterInt == null || !filterInt.Any())
+                    return null;
+
+                else
+                    return JsonConvert.SerializeObject(filterInt);
+                
+            }
+
+            else
+            {
+                var filterString = filterList.FirstOrDefault(x => x.Heading == filterField)?
+                                             .Where(x => x.IsSelected == true)?
+                                             .Select(x => x.FilterName)?
+                                             .ToList();
+
+                if (filterString == null || !filterString.Any())
+                    return null;
+
+                else
+                    return JsonConvert.SerializeObject(filterString);
+            }
         }
     }
 }

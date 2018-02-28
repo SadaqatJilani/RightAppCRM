@@ -15,6 +15,13 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
         {
         }
 
+        int filterID;
+        public int FilterID
+        {
+            get { return filterID; }
+            set { SetProperty(ref filterID, value); }
+        }
+
         string sectionName;
         public string SectionName
         {

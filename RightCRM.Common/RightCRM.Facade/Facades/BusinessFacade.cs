@@ -67,5 +67,10 @@ namespace RightCRM.Facade.Facades
         {
             return businessApi.GetTagsFromList(listName);
         }
+
+        public Task<SaveSearchResponseModel> SaveSearchFilters(SaveSearchRequestModel selectedFilters)
+        {
+            return businessApi.SaveSearchFilters(selectedFilters);
+        }
     }
 }
