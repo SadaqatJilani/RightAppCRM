@@ -72,5 +72,10 @@ namespace RightCRM.Facade.Facades
         {
             return businessApi.SaveSearchFilters(selectedFilters);
         }
+
+        public Task<GetSearchesResponseModel> GetSavedSearches()
+        {
+            return businessApi.GetSavedSearches(new GetSearchesRequestModel());
+        }
     }
 }

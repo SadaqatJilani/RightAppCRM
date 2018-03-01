@@ -18,5 +18,7 @@ namespace RightCRM.Facade.Facades
 
         Task<SaveSearchResponseModel> SaveSearchFilters(SaveSearchRequestModel selectedFilters);
 
+        Task<GetSearchesResponseModel> GetSavedSearches();
+
     }
 }

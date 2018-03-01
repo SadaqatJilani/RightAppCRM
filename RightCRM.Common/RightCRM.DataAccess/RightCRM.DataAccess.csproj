@@ -85,6 +85,8 @@
     <Compile Include="Model\Users\GetUsersResponseModel.cs" />
     <Compile Include="Model\BusinessModels\SaveSearchRequestModel.cs" />
     <Compile Include="Model\BusinessModels\SaveSearchResponseModel.cs" />
+    <Compile Include="Model\BusinessModels\GetSearchesRequestModel.cs" />
+    <Compile Include="Model\BusinessModels\GetSearchesResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

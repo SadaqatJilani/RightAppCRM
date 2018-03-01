@@ -29,7 +29,7 @@ namespace RightCRM.DataAccess.Model.BusinessModels
         public string srch_annual_revenue { get; set; }
         public string srch_ctag { get; set; } 
         public string user_list { get; set; } 
-        public int? saved_search_id { get; set; } 
+        public string saved_search_id { get; set; } 
 
         //{ sessionid:saved_search_id: null } 'hmoyssyuhijydamxrdwgnwqpjxisugfa', 
             //srch_pageno: 1, 

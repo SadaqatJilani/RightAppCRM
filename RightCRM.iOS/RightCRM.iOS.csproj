@@ -385,6 +385,11 @@
     <Compile Include="Services\NavBarService.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
+    <Compile Include="SavedSearchCell.cs" />
+    <Compile Include="SavedSearchCell.designer.cs">
+      <DependentUpon>SavedSearchCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SavedSearchesTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

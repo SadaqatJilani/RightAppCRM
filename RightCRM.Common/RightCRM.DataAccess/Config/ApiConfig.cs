@@ -73,6 +73,13 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Businesses/savesearch";
         }
 
+        public static string LoadSavedSearches()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Businesses/loadsavedsearches";
+        }
+
+        //Businesses/loadsavedsearches
+
         //Lists/getlist
 
         //Notes/getallnotes

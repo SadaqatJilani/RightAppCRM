@@ -19,5 +19,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         Task<IEnumerable<TagData>> GetTagsFromList(string listName);
 
         Task<SaveSearchResponseModel> SaveSearchFilters(SaveSearchRequestModel selectedFilters);
+
+        Task<GetSearchesResponseModel> GetSavedSearches(GetSearchesRequestModel saveSearchParams);
     }
 }

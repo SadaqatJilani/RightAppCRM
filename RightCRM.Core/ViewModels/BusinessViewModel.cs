@@ -58,6 +58,7 @@ namespace RightCRM.Core.ViewModels
             BusinessDetailCommand = new MvxAsyncCommand<BusinessItemViewModel>(ShowBusinessDetails);
             BusLongPressedCommand = new MvxCommand<int>(SelectBusForTag);
             LoadMoreBusinessesCommand = new MvxAsyncCommand(LoadMoreBusinesses);
+                
             AllBusiness = new MvxObservableCollection<BusinessItemViewModel>();
 
             cachedFilters = new List<FilterListViewModel>();
@@ -174,6 +175,11 @@ namespace RightCRM.Core.ViewModels
 
         private async Task BusinessFilter()
         {
+            if(AllBusiness == null || !AllBusiness.Any())
+            {
+                return;
+            }
+
             var filterList = await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterListViewModel>>(businessFilters);
 
             if (filterList != null)
@@ -261,31 +267,45 @@ namespace RightCRM.Core.ViewModels
             messenger.Publish(longPressMessage);
         }
 
-
-       async Task<GetBusinessRequestModel> ConvertToBusRequest(IEnumerable<FilterListViewModel> filterList)
+        async Task<GetBusinessRequestModel> ConvertToBusRequest(IEnumerable<FilterListViewModel> filterList)
         {
-            var savedKeyword = await cacheService.GetObjFromMem<string>(Constants.SavedKeyword);
+            var savedSearch = await cacheService.GetObjFromMem<string>(Constants.SavedSearch);
 
-            var filterRequest = new GetBusinessRequestModel
+            if (savedSearch != null)
             {
-                srch_address_id = JsonStringFromList(filterList, Constants.AddressFilter),
+                var savedFilterRequest = new GetBusinessRequestModel
+                {
+                    saved_search_id = savedSearch
+                };
 
-                srch_company_size = JsonStringFromList(filterList, Constants.CompanySizeFilter),
+                return savedFilterRequest;
+            }
 
-                srch_industry = JsonStringFromList(filterList, Constants.IndustryFilter),
+            else
+            {
+                var savedKeyword = await cacheService.GetObjFromMem<string>(Constants.SavedKeyword);
 
-                srch_annual_revenue = JsonStringFromList(filterList, Constants.RevenueFilter),
+                var filterRequest = new GetBusinessRequestModel
+                {
+                    srch_address_id = JsonStringFromList(filterList, Constants.AddressFilter),
 
-                srch_ctag = JsonStringFromList(filterList, Constants.TagsFilter),
+                    srch_company_size = JsonStringFromList(filterList, Constants.CompanySizeFilter),
 
-                user_list = JsonStringFromList(filterList, Constants.SalesWorkFilter),
+                    srch_industry = JsonStringFromList(filterList, Constants.IndustryFilter),
 
-                user_status = JsonStringFromList(filterList, Constants.StatusFilter),
+                    srch_annual_revenue = JsonStringFromList(filterList, Constants.RevenueFilter),
 
-                srch_keywords = savedKeyword?.ToLower()
-            };
+                    srch_ctag = JsonStringFromList(filterList, Constants.TagsFilter),
 
-            return filterRequest;
+                    user_list = JsonStringFromList(filterList, Constants.SalesWorkFilter),
+
+                    user_status = JsonStringFromList(filterList, Constants.StatusFilter),
+
+                    srch_keywords = savedKeyword?.ToLowerInvariant()
+                };
+
+                return filterRequest;
+            }
         }
 
     }

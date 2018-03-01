@@ -29,7 +29,7 @@
                                 </constraints>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6551" translatesAutoresizingMaskIntoConstraints="NO" allowsMultipleSelection="YES">
-                                <rect key="frame" x="0.0" y="162" width="320" height="360"/>
+                                <rect key="frame" x="0.0" y="292" width="320" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6552" customClass="SearchHeaderCell" reuseIdentifier="SearchHeaderCell">
@@ -112,6 +112,49 @@
                                 <rect key="frame" x="0.0" y="90" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" keyboardType="namePhonePad"/>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="18047" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="154" width="320" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="18048" customClass="SavedSearchCell" reuseIdentifier="SavedSearchCell">
+                                        <rect key="frame" x="0.0" y="49" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="18048" id="18049">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18160" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="16" y="0.0" width="304" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" colorSpace="calibratedRGB" red="0.17254901960784313" green="0.29411764705882354" blue="0.41568627450980394" alpha="1"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <constraints>
+                                                        <constraint id="18911" firstItem="18160" firstAttribute="height" constant="44"/>
+                                                    </constraints>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint id="18271" firstItem="18160" firstAttribute="leading" secondItem="18049" secondAttribute="leading" constant="16"/>
+                                                <constraint id="18272" firstItem="18160" firstAttribute="top" secondItem="18049" secondAttribute="top"/>
+                                                <constraint id="18273" firstItem="18160" firstAttribute="trailing" secondItem="18049" secondAttribute="trailing"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblSavedSearch" destination="18160" id="name-outlet-18160"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <constraints>
+                                    <constraint id="18317" firstItem="18047" firstAttribute="height" constant="120"/>
+                                </constraints>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Searches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="18318" key="tableHeaderView">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </tableView>
                         </subviews>
                         <constraints>
                             <constraint id="5233" firstItem="4182" firstAttribute="top" secondItem="3914" secondAttribute="top" constant="24"/>
@@ -126,7 +169,10 @@
                             <constraint id="17408" firstItem="17407" firstAttribute="top" secondItem="4182" secondAttribute="bottom" constant="16"/>
                             <constraint id="17409" firstItem="17407" firstAttribute="leading" secondItem="3914" secondAttribute="leading"/>
                             <constraint id="17410" firstItem="17407" firstAttribute="trailing" secondItem="3914" secondAttribute="trailing"/>
-                            <constraint id="17442" firstItem="6551" firstAttribute="top" secondItem="17407" secondAttribute="bottom" constant="16"/>
+                            <constraint id="18050" firstItem="18047" firstAttribute="top" secondItem="17407" secondAttribute="bottom" constant="8"/>
+                            <constraint id="18051" firstItem="18047" firstAttribute="trailing" secondItem="3914" secondAttribute="trailing"/>
+                            <constraint id="18052" firstItem="18047" firstAttribute="leading" secondItem="3914" secondAttribute="leading"/>
+                            <constraint id="18316" firstItem="6551" firstAttribute="top" secondItem="18047" secondAttribute="bottom" constant="18"/>
                         </constraints>
                     </view>
                     <connections>
@@ -135,6 +181,7 @@
                         <outlet property="tblViewSearch" destination="6551" id="name-outlet-6551"/>
                         <outlet property="btnReset" destination="16786" id="name-outlet-16786"/>
                         <outlet property="txtKeywordSearch" destination="17407" id="name-outlet-17407"/>
+                        <outlet property="tblViewSavedSearches" destination="18047" id="name-outlet-18047"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3918" userLabel="First Responder" sceneMemberID="firstResponder"/>

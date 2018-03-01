@@ -28,6 +28,10 @@ namespace RightCRM.iOS.Views.Search
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView tblViewSavedSearches { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView tblViewSearch { get; set; }
 
         [Outlet]
@@ -49,6 +53,11 @@ namespace RightCRM.iOS.Views.Search
             if (btnSearch != null) {
                 btnSearch.Dispose ();
                 btnSearch = null;
+            }
+
+            if (tblViewSavedSearches != null) {
+                tblViewSavedSearches.Dispose ();
+                tblViewSavedSearches = null;
             }
 
             if (tblViewSearch != null) {

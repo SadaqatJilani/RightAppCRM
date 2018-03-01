@@ -18,6 +18,7 @@ using RightCRM.Common;
 using RightCRM.Common.Services;
 using RightCRM.Core.ViewModels.ItemViewModels;
 using Acr.UserDialogs;
+using RightCRM.Facade.Facades;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
@@ -25,11 +26,14 @@ namespace RightCRM.Core.ViewModels.Popups
     {
         private BusinessList businessList;
         private readonly ICacheService cacheService;
+        private readonly IBusinessFacade businessFacade;
 
         public FilterPopupViewModel(IMvxNavigationService navigationService, 
                                     ICacheService cacheService,
-                                    IUserDialogs userDialogs)
+                                    IUserDialogs userDialogs,
+                                    IBusinessFacade businessFacade)
         {
+            this.businessFacade = businessFacade;
             this.userDialogs = userDialogs;
             this.cacheService = cacheService;
             this.navigationService = navigationService;
@@ -41,6 +45,15 @@ namespace RightCRM.Core.ViewModels.Popups
             SearchBusinessesCommand = new MvxAsyncCommand(CloseAndSearch);
 
             ResetFiltersCommand = new MvxAsyncCommand(ClearFilters);
+
+            LoadSavedCommand = new MvxAsyncCommand<SearchItemViewModel>(SearchForSavedData);
+        }
+
+        private async Task SearchForSavedData(SearchItemViewModel selectedSearchItem)
+        {
+            await cacheService.InsertObjInMem<string>(Constants.SavedSearch, selectedSearchItem.RID);
+            
+            await ClearFilters();
         }
 
         private async Task ClearFilters()
@@ -100,6 +113,8 @@ namespace RightCRM.Core.ViewModels.Popups
 
             FilterList = new MvxObservableCollection<FilterListViewModel>(await ExtractFilterItems());
 
+            SavedSearches = new MvxObservableCollection<SearchItemViewModel>(await GetSavedSearches());
+
             SearchKeyword = await cacheService.GetObjFromMem<string>(Constants.SavedKeyword);
         }
 
@@ -109,6 +124,25 @@ namespace RightCRM.Core.ViewModels.Popups
             await cacheService.InsertObjInMem<string>(Constants.SavedKeyword, SearchKeyword);
 
             await navigationService.Close(this, FilterList);
+        }
+
+        private async Task<IEnumerable<SearchItemViewModel>> GetSavedSearches()
+        {
+            var res = await businessFacade.GetSavedSearches();
+            var searchList = new List<SearchItemViewModel>(); 
+
+            if (res != null)
+            {
+                foreach(var searchItem in res.business?.SearchDataArray ?? Enumerable.Empty<SearchData>())
+                {
+                    searchList.Add(new SearchItemViewModel(){
+                        RID = searchItem.rid,
+                        SearchName = searchItem.name
+                    });
+                }
+            }
+
+            return searchList;
         }
 
         private async Task<List<FilterListViewModel>> ExtractFilterItems()
@@ -126,6 +160,7 @@ namespace RightCRM.Core.ViewModels.Popups
             {
                 listAddress.Add(new FilterItemViewModel()
                 {
+                    FilterID = item.ID_REGION.GetValueOrDefault(),
                     SectionName = Constants.AddressFilter,
                     FilterName = item.REGION_NAME,
                     Count = item.COUNT.GetValueOrDefault()
@@ -223,6 +258,9 @@ namespace RightCRM.Core.ViewModels.Popups
         private MvxObservableCollection<FilterListViewModel> filterList;
         public MvxObservableCollection<FilterListViewModel> FilterList { get { return filterList; } set { SetProperty(ref filterList, value); } }
 
+        private MvxObservableCollection<SearchItemViewModel> savedSearches;
+        public MvxObservableCollection<SearchItemViewModel> SavedSearches { get { return savedSearches; } set { SetProperty(ref savedSearches, value); } }
+
         private FilterItemViewModel selectedFilter;
         public FilterItemViewModel SelectedFilter
         {
@@ -252,6 +290,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
         public TaskCompletionSource<object> CloseCompletionSource { get; set; }
         public IMvxCommand ResetFiltersCommand { get; private set; }
+        public IMvxCommand<SearchItemViewModel> LoadSavedCommand { get; private set; }
 
         private SaveSearchRequestModel ConvertToSaveSearchRequest(IEnumerable<FilterListViewModel> list)
         {

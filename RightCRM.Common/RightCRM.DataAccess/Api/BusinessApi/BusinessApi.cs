@@ -313,5 +313,36 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
 #endif
         }
+
+        public async Task<GetSearchesResponseModel> GetSavedSearches(GetSearchesRequestModel saveSearchParams)
+        {
+#if FAKE
+
+            return await Task.FromResult(new GetSearchesResponseModel());
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.LoadSavedSearches();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                saveSearchParams.sessionid = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<GetSearchesResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post, 
+                                                                                            saveSearchParams);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+
+#endif
+        }
+
     }
 }

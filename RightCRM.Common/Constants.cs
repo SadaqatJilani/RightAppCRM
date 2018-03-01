@@ -53,5 +53,7 @@ namespace RightCRM.Common
         public const string SelectedFilters = "SelectedFilters";
 
         public const string SavedKeyword = "SavedKeyword";
+
+        public const string SavedSearch = "SavedSearch";
     }
 }

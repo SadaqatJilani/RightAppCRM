@@ -17,6 +17,7 @@ namespace RightCRM.iOS.Views.Search
     public partial class FilterPopup : BaseViewController<FilterPopupViewModel>
     {
         SearchTVS source;
+        SavedSearchesTVS searchSource;
 
         public FilterPopup (IntPtr handle) : base (handle)
         {
@@ -35,6 +36,8 @@ namespace RightCRM.iOS.Views.Search
 
             var Set = this.CreateBindingSet<FilterPopup, FilterPopupViewModel>();
 
+            searchSource = new SavedSearchesTVS(this.tblViewSavedSearches);
+
             source = new SearchTVS(this.tblViewSearch)
             {
                 UseAnimations = true,
@@ -47,6 +50,10 @@ namespace RightCRM.iOS.Views.Search
             source.SelectedItemChanged += TxtKeywordSearch_SearchButtonClicked;
 
             Set.Bind(btnClose).To(vm => vm.CloseCommand);
+
+            Set.Bind(searchSource).For(x => x.ItemsSource).To(vm => vm.SavedSearches);
+            Set.Bind(searchSource).For(s => s.SelectionChangedCommand).To(vm => vm.LoadSavedCommand);
+
             Set.Bind(source).For(x=>x.ItemsSource).To(vm=>vm.FilterList);
             Set.Bind(source).For(x => x.SelectionChangedCommand).To(vm => vm.FilterChangedCommand);
 
@@ -57,17 +64,11 @@ namespace RightCRM.iOS.Views.Search
 
             Set.Apply();
 
-
-            //this.AddBindings(new Dictionary<object, string>
-            //{
-            //    { source, "ItemsSource BusinessFilters.AddressArray" }
-            //});
+            this.tblViewSavedSearches.Source = searchSource;
+            this.tblViewSavedSearches.ReloadData();
 
             this.tblViewSearch.Source = source;
-            //this.tblViewSearch.RowHeight = UITableView.AutomaticDimension;
-            //this.tblViewSearch.EstimatedRowHeight = 120f;
             this.tblViewSearch.ReloadData();
-
         }
 
 
