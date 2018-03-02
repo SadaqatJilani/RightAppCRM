@@ -24,6 +24,10 @@ namespace RightCRM.iOS.Views.Search
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSaveSearch { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnSearch { get; set; }
 
         [Outlet]
@@ -48,6 +52,11 @@ namespace RightCRM.iOS.Views.Search
             if (btnReset != null) {
                 btnReset.Dispose ();
                 btnReset = null;
+            }
+
+            if (btnSaveSearch != null) {
+                btnSaveSearch.Dispose ();
+                btnSaveSearch = null;
             }
 
             if (btnSearch != null) {

@@ -119,7 +119,7 @@ namespace RightCRM.Core.ViewModels
         {
             get
             {
-                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
+                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter, CanFilter);
                 return showBusinessFilterCommand;
             }
         }

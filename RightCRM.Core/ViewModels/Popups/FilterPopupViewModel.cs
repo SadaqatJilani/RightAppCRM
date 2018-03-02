@@ -44,7 +44,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
             SearchBusinessesCommand = new MvxAsyncCommand(CloseAndSearch);
 
-            ResetFiltersCommand = new MvxAsyncCommand(ClearFilters);
+            ResetFiltersCommand = new MvxAsyncCommand(ConfirmAndResetFilters);
 
             LoadSavedCommand = new MvxAsyncCommand<SearchItemViewModel>(SearchForSavedData);
         }
@@ -56,24 +56,31 @@ namespace RightCRM.Core.ViewModels.Popups
             await ClearFilters();
         }
 
-        private async Task ClearFilters()
+        private async Task ConfirmAndResetFilters()
         {
-           var confirmDialog = await userDialogs.ConfirmAsync("Are you sure you want to reset the current filters?", "Confirmation", "YES", "NO");
+            bool confirmDialog = true;
+
+            confirmDialog = await userDialogs.ConfirmAsync("Are you sure you want to reset the current filters?", "Confirmation", "YES", "NO");
 
             if (confirmDialog)
             {
-                foreach (var filterItem in FilterList)
-                {
-                    foreach (var item in filterItem)
-                    {
-                        item.IsSelected = false;
-                    }
-                }
-
-                SearchKeyword = string.Empty;
-
-                await CloseAndSearch();
+                await ClearFilters();
             }
+        }
+
+        private async Task ClearFilters()
+        {
+            foreach (var filterItem in FilterList)
+            {
+                foreach (var item in filterItem)
+                {
+                    item.IsSelected = false;
+                }
+            }
+
+            SearchKeyword = string.Empty;
+
+            await CloseAndSearch();
         }
 
         private void FilterOptions(FilterItemViewModel filterItem)
@@ -311,7 +318,7 @@ namespace RightCRM.Core.ViewModels.Popups
 
                 business_status = JsonStringFromList(list, Constants.StatusFilter),
 
-                srch_keywords = SearchKeyword
+                srch_keywords = SearchKeyword?.ToLowerInvariant()
             };
 
             return filterRequest;
