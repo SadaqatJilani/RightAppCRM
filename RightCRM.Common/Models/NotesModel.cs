@@ -14,7 +14,7 @@ namespace RightCRM.Common.Models
     public class NotesModel
     {
         [JsonProperty("RID")]
-        public int? NoteID { get; set; }
+        public string NoteID { get; set; }
 
         [JsonProperty("ACNUM")]
         public int? AccountNumber { get; set; }

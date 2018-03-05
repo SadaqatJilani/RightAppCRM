@@ -119,7 +119,7 @@ namespace RightCRM.Core.ViewModels
         {
             get
             {
-                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter, CanFilter);
+                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
                 return showBusinessFilterCommand;
             }
         }
@@ -175,10 +175,10 @@ namespace RightCRM.Core.ViewModels
 
         private async Task BusinessFilter()
         {
-            if(AllBusiness == null || !AllBusiness.Any())
-            {
-                return;
-            }
+            //if(AllBusiness == null || !AllBusiness.Any())
+            //{
+            //    return;
+            //}
 
             var filterList = await navigationService.Navigate<FilterPopupViewModel, BusinessList, IEnumerable<FilterListViewModel>>(businessFilters);
 
@@ -271,7 +271,7 @@ namespace RightCRM.Core.ViewModels
         {
             var savedSearch = await cacheService.GetObjFromMem<string>(Constants.SavedSearch);
 
-            if (savedSearch != null)
+            if (!string.IsNullOrWhiteSpace(savedSearch))
             {
                 var savedFilterRequest = new GetBusinessRequestModel
                 {

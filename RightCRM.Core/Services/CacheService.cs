@@ -233,5 +233,10 @@ namespace RightCRM.Core.Services
 
             return !string.IsNullOrEmpty(result);
         }
+
+        public async Task RemoveObjFromMem(string key)
+        {
+            await BlobCache.InMemory.Invalidate(key);
+        }
     }
 }

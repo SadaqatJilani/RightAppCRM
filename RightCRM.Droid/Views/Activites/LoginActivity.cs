@@ -30,6 +30,7 @@ namespace RightCRM.Droid.Views.Activites
         Label = "Login",
         Theme = "@style/AppTheme.Login",
         LaunchMode = LaunchMode.SingleTop,
+        NoHistory = true,
         ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize,
         Name = "rightcrm.droid.views.activities.LoginActivity"
     )]          

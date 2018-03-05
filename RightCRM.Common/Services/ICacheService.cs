@@ -67,6 +67,13 @@ namespace RightCRM.Common.Services
         Task RemoveObject(string key);
 
         /// <summary>
+        /// Removes the object from mem.
+        /// </summary>
+        /// <returns>The object from mem.</returns>
+        /// <param name="key">Key.</param>
+        Task RemoveObjFromMem(string key);
+
+        /// <summary>
         /// Saves the settings.
         /// </summary>
         /// <returns>The settings.</returns>

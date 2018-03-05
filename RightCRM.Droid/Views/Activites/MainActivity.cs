@@ -30,7 +30,7 @@ namespace RightCRM.Droid.Views.Activites
     [Activity(
        Label = "Businesses",
        Theme = "@style/AppTheme",
-       LaunchMode = LaunchMode.SingleTop,
+        LaunchMode = LaunchMode.SingleTop,
        Name = "rightcrm.droid.views.activities.MainActivity"
        )]
     public class MainActivity : MvxAppCompatActivity<MainViewModel>, INavigationActivity

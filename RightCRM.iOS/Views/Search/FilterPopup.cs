@@ -16,7 +16,7 @@ namespace RightCRM.iOS.Views.Search
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext, ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve)]
     public partial class FilterPopup : BaseViewController<FilterPopupViewModel>
     {
-        SearchTVS source;
+        SearchTVS filterSource;
         SavedSearchesTVS searchSource;
 
         public FilterPopup (IntPtr handle) : base (handle)
@@ -38,7 +38,7 @@ namespace RightCRM.iOS.Views.Search
 
             searchSource = new SavedSearchesTVS(this.tblViewSavedSearches);
 
-            source = new SearchTVS(this.tblViewSearch)
+            filterSource = new SearchTVS(this.tblViewSearch)
             {
                 UseAnimations = true,
                 AddAnimation = UITableViewRowAnimation.Left,
@@ -47,27 +47,28 @@ namespace RightCRM.iOS.Views.Search
             };
 
             txtKeywordSearch.SearchButtonClicked += TxtKeywordSearch_SearchButtonClicked;
-            source.SelectedItemChanged += TxtKeywordSearch_SearchButtonClicked;
+            filterSource.SelectedItemChanged += TxtKeywordSearch_SearchButtonClicked;
 
             Set.Bind(btnClose).To(vm => vm.CloseCommand);
 
             Set.Bind(searchSource).For(x => x.ItemsSource).To(vm => vm.SavedSearches);
             Set.Bind(searchSource).For(s => s.SelectionChangedCommand).To(vm => vm.LoadSavedCommand);
 
-            Set.Bind(source).For(x=>x.ItemsSource).To(vm=>vm.FilterList);
-            Set.Bind(source).For(x => x.SelectionChangedCommand).To(vm => vm.FilterChangedCommand);
+            Set.Bind(filterSource).For(x=>x.ItemsSource).To(vm=>vm.FilterList);
+            Set.Bind(filterSource).For(x => x.SelectionChangedCommand).To(vm => vm.FilterChangedCommand);
 
             Set.Bind(txtKeywordSearch).For(x => x.Text).To(vm => vm.SearchKeyword);
 
             Set.Bind(btnSearch).To(vm => vm.SearchBusinessesCommand);
             Set.Bind(btnReset).To(vm => vm.ResetFiltersCommand);
+            Set.Bind(btnSaveSearch).To(vm => vm.SaveSearchCommand);
 
             Set.Apply();
 
             this.tblViewSavedSearches.Source = searchSource;
             this.tblViewSavedSearches.ReloadData();
 
-            this.tblViewSearch.Source = source;
+            this.tblViewSearch.Source = filterSource;
             this.tblViewSearch.ReloadData();
         }
 
@@ -75,7 +76,7 @@ namespace RightCRM.iOS.Views.Search
         public override void ViewDidDisappear(bool animated)
         {
             txtKeywordSearch.SearchButtonClicked -= TxtKeywordSearch_SearchButtonClicked;
-            source.SelectedItemChanged -= TxtKeywordSearch_SearchButtonClicked;
+            filterSource.SelectedItemChanged -= TxtKeywordSearch_SearchButtonClicked;
                   
             base.ViewDidDisappear(animated);
         }

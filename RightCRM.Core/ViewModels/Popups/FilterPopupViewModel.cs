@@ -43,17 +43,76 @@ namespace RightCRM.Core.ViewModels.Popups
             FilterChangedCommand = new MvxCommand<FilterItemViewModel>(FilterOptions);
 
             SearchBusinessesCommand = new MvxAsyncCommand(CloseAndSearch);
-
             ResetFiltersCommand = new MvxAsyncCommand(ConfirmAndResetFilters);
-
             LoadSavedCommand = new MvxAsyncCommand<SearchItemViewModel>(SearchForSavedData);
+            SaveSearchCommand = new MvxAsyncCommand(SaveAndSetFilters);
+        }
+
+        private MvxObservableCollection<FilterListViewModel> filterList;
+        public MvxObservableCollection<FilterListViewModel> FilterList { get { return filterList; } set { SetProperty(ref filterList, value); } }
+
+        private MvxObservableCollection<SearchItemViewModel> savedSearches;
+        public MvxObservableCollection<SearchItemViewModel> SavedSearches { get { return savedSearches; } set { SetProperty(ref savedSearches, value); } }
+
+        private FilterItemViewModel selectedFilter;
+        public FilterItemViewModel SelectedFilter
+        {
+            get
+            {
+                return selectedFilter;
+            }
+            set
+            {
+                SetProperty(ref selectedFilter, value);
+                if (selectedFilter != null)
+                {
+                    selectedFilter.IsSelected = true;
+                }
+            }
+        }
+
+        private string searchKeyword;
+        public string SearchKeyword
+        {
+            get { return searchKeyword; }
+            set { SetProperty(ref searchKeyword, value); }
+        }
+
+        public IMvxCommand<FilterItemViewModel> FilterChangedCommand { get; private set; }
+        public IMvxCommand SearchBusinessesCommand { get; private set; }
+
+        public TaskCompletionSource<object> CloseCompletionSource { get; set; }
+        public IMvxCommand ResetFiltersCommand { get; private set; }
+        public IMvxCommand<SearchItemViewModel> LoadSavedCommand { get; private set; }
+        public IMvxCommand SaveSearchCommand { get; private set; }
+
+        private async Task SaveAndSetFilters()
+        {
+          var savedSearchTitle = await userDialogs.PromptAsync("Save Search", placeholder:"Enter search title...");
+
+            if (savedSearchTitle.Ok && !string.IsNullOrWhiteSpace(savedSearchTitle.Text))
+            {
+                var res = await businessFacade.SaveSearchFilters(ConvertToSaveSearchRequest(FilterList, savedSearchTitle.Text));
+
+                if (res != null)
+                {
+                    await userDialogs.AlertAsync(res.business?.msg ?? string.Empty);
+                }
+                else
+                {
+                    await userDialogs.AlertAsync(Constants.SomethingWrong);
+                }
+
+                SavedSearches.Clear();
+                SavedSearches.AddRange(await GetSavedSearches());
+            }
         }
 
         private async Task SearchForSavedData(SearchItemViewModel selectedSearchItem)
         {
             await cacheService.InsertObjInMem<string>(Constants.SavedSearch, selectedSearchItem.RID);
             
-            await ClearFilters();
+            await CloseAndSearch();
         }
 
         private async Task ConfirmAndResetFilters()
@@ -79,6 +138,9 @@ namespace RightCRM.Core.ViewModels.Popups
             }
 
             SearchKeyword = string.Empty;
+
+            await cacheService.RemoveObjFromMem(Constants.SavedKeyword);
+            await cacheService.RemoveObjFromMem(Constants.SavedSearch);
 
             await CloseAndSearch();
         }
@@ -262,48 +324,13 @@ namespace RightCRM.Core.ViewModels.Popups
             return filteredList;
         }
 
-        private MvxObservableCollection<FilterListViewModel> filterList;
-        public MvxObservableCollection<FilterListViewModel> FilterList { get { return filterList; } set { SetProperty(ref filterList, value); } }
-
-        private MvxObservableCollection<SearchItemViewModel> savedSearches;
-        public MvxObservableCollection<SearchItemViewModel> SavedSearches { get { return savedSearches; } set { SetProperty(ref savedSearches, value); } }
-
-        private FilterItemViewModel selectedFilter;
-        public FilterItemViewModel SelectedFilter
-        {
-            get
-            {
-                return selectedFilter;
-            }
-            set
-            {
-                SetProperty(ref selectedFilter, value);
-                if (selectedFilter != null)
-                {
-                    selectedFilter.IsSelected = true;
-                }
-            }
-        }
-
-        private string searchKeyword;
-        public string SearchKeyword
-        {
-            get { return searchKeyword; }
-            set { SetProperty(ref searchKeyword, value); }
-        }
-
-        public IMvxCommand<FilterItemViewModel> FilterChangedCommand { get; private set; }
-        public IMvxCommand SearchBusinessesCommand { get; private set; }
-
-        public TaskCompletionSource<object> CloseCompletionSource { get; set; }
-        public IMvxCommand ResetFiltersCommand { get; private set; }
-        public IMvxCommand<SearchItemViewModel> LoadSavedCommand { get; private set; }
-
-        private SaveSearchRequestModel ConvertToSaveSearchRequest(IEnumerable<FilterListViewModel> list)
+        private SaveSearchRequestModel ConvertToSaveSearchRequest(IEnumerable<FilterListViewModel> list, string searchTitle)
         {
 
             var filterRequest = new SaveSearchRequestModel
             {
+                srch_pageno = 1,
+
                 srch_address_id = JsonStringFromList(list, Constants.AddressFilter, true),
 
                 srch_company_size = JsonStringFromList(list, Constants.CompanySizeFilter),
@@ -318,7 +345,9 @@ namespace RightCRM.Core.ViewModels.Popups
 
                 business_status = JsonStringFromList(list, Constants.StatusFilter),
 
-                srch_keywords = SearchKeyword?.ToLowerInvariant()
+                srch_keywords = SearchKeyword?.ToLowerInvariant(),
+
+                seved_search_name = searchTitle
             };
 
             return filterRequest;

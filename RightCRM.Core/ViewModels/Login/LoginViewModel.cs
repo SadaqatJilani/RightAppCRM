@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using PCLCrypto;
 using RightCRM.Common;
 using RightCRM.Common.Services;
 using RightCRM.DataAccess.Model.RequestModels;
@@ -97,7 +99,7 @@ namespace RightCRM.Core.ViewModels
             var result = await this.userFacade.GetUserSessionId(new RequestUserLogin()
             {
                 loginid = UserName,
-                token = Password,
+                token = GetSha256(Password),
                 svsid = "crm"
             });
 
@@ -115,6 +117,25 @@ namespace RightCRM.Core.ViewModels
                 await userDialog.AlertAsync(Constants.SomethingWrong);
                 //this.GoToRootMenuCommand.Execute();
             }
+        }
+
+        private string GetSha256(string data)
+        {
+            byte[] byteData = Encoding.UTF8.GetBytes(data);
+
+            var hasher = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Sha256);
+
+            byte[] hash = hasher.HashData(byteData);
+            string hashTohex = ToHex(hash, false);
+            return hashTohex;
+        }
+
+        private string ToHex(byte[] bytes, bool upperCase)
+        {
+            StringBuilder result = new StringBuilder(bytes.Length * 2);
+            for (int i = 0; i < bytes.Length; i++)
+                result.Append(bytes[i].ToString(upperCase ? "X2" : "x2"));
+            return result.ToString();
         }
     }
 }

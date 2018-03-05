@@ -9,10 +9,15 @@
 using System;
 namespace RightCRM.DataAccess.Model.BusinessModels
 {
+    public class SavedSearchModel
+    {
+        public string msg { get; set; }
+
+        public int? status { get; set; }
+    }
+
     public class SaveSearchResponseModel
     {
-        public SaveSearchResponseModel()
-        {
-        }
+        public SavedSearchModel business;
     }
 }

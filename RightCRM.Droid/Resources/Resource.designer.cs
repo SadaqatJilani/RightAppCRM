@@ -3800,6 +3800,8 @@ namespace RightCRM.Droid
 			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_reverseLayout = global::RightCRM.Droid.Resource.Styleable.RecyclerView_reverseLayout;
 			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_spanCount = global::RightCRM.Droid.Resource.Styleable.RecyclerView_spanCount;
 			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_stackFromEnd = global::RightCRM.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::PCLCrypto.Resource.String.ApplicationName = global::RightCRM.Droid.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::RightCRM.Droid.Resource.String.Hello;
 			global::Splat.Resource.String.library_name = global::RightCRM.Droid.Resource.String.library_name;
 		}
 		
@@ -6396,14 +6398,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090095
 			public const int myButton = 2131296405;
 			
-			// aapt resource value: 0x7f0900b8
-			public const int nav_compose_message = 2131296440;
+			// aapt resource value: 0x7f0900b4
+			public const int nav_createnew = 2131296436;
 			
-			// aapt resource value: 0x7f0900b9
-			public const int nav_footer = 2131296441;
+			// aapt resource value: 0x7f0900b5
+			public const int nav_footer = 2131296437;
 			
-			// aapt resource value: 0x7f0900bb
-			public const int nav_helpfeedback = 2131296443;
+			// aapt resource value: 0x7f0900b7
+			public const int nav_helpfeedback = 2131296439;
 			
 			// aapt resource value: 0x7f0900b2
 			public const int nav_home = 2131296434;
@@ -6411,23 +6413,11 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0900b1
 			public const int nav_items = 2131296433;
 			
-			// aapt resource value: 0x7f0900b6
-			public const int nav_recyclerview = 2131296438;
-			
-			// aapt resource value: 0x7f0900b7
-			public const int nav_recyclerview_multiitem = 2131296439;
-			
 			// aapt resource value: 0x7f0900b3
-			public const int nav_second_home = 2131296435;
+			public const int nav_markets = 2131296435;
 			
-			// aapt resource value: 0x7f0900ba
-			public const int nav_settings = 2131296442;
-			
-			// aapt resource value: 0x7f0900b4
-			public const int nav_viewpager = 2131296436;
-			
-			// aapt resource value: 0x7f0900b5
-			public const int nav_viewpager_state = 2131296437;
+			// aapt resource value: 0x7f0900b6
+			public const int nav_settings = 2131296438;
 			
 			// aapt resource value: 0x7f09007d
 			public const int navigation_frame = 2131296381;
@@ -6986,6 +6976,12 @@ namespace RightCRM.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0a002b
+			public const int ApplicationName = 2131361835;
+			
+			// aapt resource value: 0x7f0a002a
+			public const int Hello = 2131361834;
+			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
 			
@@ -7079,8 +7075,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0a0012
 			public const int abc_toolbar_collapse_description = 2131361810;
 			
-			// aapt resource value: 0x7f0a002d
-			public const int app_name = 2131361837;
+			// aapt resource value: 0x7f0a002f
+			public const int app_name = 2131361839;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int appbar_scrolling_view_behavior = 2131361825;
@@ -7091,17 +7087,17 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0a0023
 			public const int character_counter_pattern = 2131361827;
 			
-			// aapt resource value: 0x7f0a002f
-			public const int drawer_close = 2131361839;
+			// aapt resource value: 0x7f0a0031
+			public const int drawer_close = 2131361841;
 			
-			// aapt resource value: 0x7f0a002e
-			public const int drawer_open = 2131361838;
-			
-			// aapt resource value: 0x7f0a002a
-			public const int fab_scroll_shrink_grow_autohide_behavior = 2131361834;
+			// aapt resource value: 0x7f0a0030
+			public const int drawer_open = 2131361840;
 			
 			// aapt resource value: 0x7f0a002c
-			public const int hello = 2131361836;
+			public const int fab_scroll_shrink_grow_autohide_behavior = 2131361836;
+			
+			// aapt resource value: 0x7f0a002e
+			public const int hello = 2131361838;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int library_name = 2131361833;
@@ -7121,8 +7117,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0a0028
 			public const int path_password_strike_through = 2131361832;
 			
-			// aapt resource value: 0x7f0a0030
-			public const int recyclerview_multiitem_templateselector = 2131361840;
+			// aapt resource value: 0x7f0a0032
+			public const int recyclerview_multiitem_templateselector = 2131361842;
 			
 			// aapt resource value: 0x7f0a0013
 			public const int search_menu_title = 2131361811;
@@ -7130,8 +7126,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0a0014
 			public const int status_bar_notification_info_overflow = 2131361812;
 			
-			// aapt resource value: 0x7f0a002b
-			public const int view_scroll_translation_autohide_behavior = 2131361835;
+			// aapt resource value: 0x7f0a002d
+			public const int view_scroll_translation_autohide_behavior = 2131361837;
 			
 			static String()
 			{
