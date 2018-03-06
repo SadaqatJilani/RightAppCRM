@@ -408,6 +408,19 @@
     <Compile Include="Views\Search\SavedSearchCell.designer.cs">
       <DependentUpon>SavedSearchCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="LeadsTab4View.cs" />
+    <Compile Include="LeadsTab4View.designer.cs">
+      <DependentUpon>LeadsTab4View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssociatedTab3View.cs" />
+    <Compile Include="AssociatedTab3View.designer.cs">
+      <DependentUpon>AssociatedTab3View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssociatedEntCell.cs" />
+    <Compile Include="AssociatedEntCell.designer.cs">
+      <DependentUpon>AssociatedEntCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BusinessTabs\AssociatedTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

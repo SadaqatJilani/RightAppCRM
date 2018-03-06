@@ -17,6 +17,7 @@ namespace RightCRM.Core.ViewModels.Home
     using RightCRM.Common;
     using RightCRM.Common.Models;
     using RightCRM.Core.ViewModels.ItemViewModels;
+    using RightCRM.Core.ViewModels.Home.BusinessTabs;
 
     /// <summary>
     /// Business detail tab view model.
@@ -95,8 +96,11 @@ namespace RightCRM.Core.ViewModels.Home
             var tasks = new List<Task>
             {
                 navigationService.Navigate<BusDetailTab1ViewModel, int>(businessItem.BusinessID.GetValueOrDefault()),
-                navigationService.Navigate<BusDetailTab2ViewModel, int>(businessItem.BusinessID.GetValueOrDefault())
+                navigationService.Navigate<BusDetailTab2ViewModel, int>(businessItem.BusinessID.GetValueOrDefault()),
+                navigationService.Navigate<AssociatedTab3ViewModel, int>(businessItem.BusinessID.GetValueOrDefault()),
+                navigationService.Navigate<LeadsTab4ViewModel, int>(businessItem.BusinessID.GetValueOrDefault())
             };
+
             await Task.WhenAll(tasks);
         }
     }

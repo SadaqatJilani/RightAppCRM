@@ -20,5 +20,8 @@ namespace RightCRM.Facade.Facades
 
         Task<GetSearchesResponseModel> GetSavedSearches();
 
+        Task<GetAssociationsResponseModel> GetAssociations(int entityID, bool isBusiness);
+
+        Task<GetLeadsResponseModel> GetLeads(int entityID, bool isBusiness);
     }
 }

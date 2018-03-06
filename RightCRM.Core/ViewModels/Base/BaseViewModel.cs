@@ -71,7 +71,8 @@ namespace RightCRM.Core.ViewModels
 
             else if (e.PropertyName == nameof(InitializeTask.IsCompleted))
             {
-                    userDialogs.HideLoading();
+                this.IsBusy = false;
+                userDialogs.HideLoading();
             }
         }
 
@@ -79,8 +80,11 @@ namespace RightCRM.Core.ViewModels
         {
             base.ViewAppeared();
 
-                if (userDialogs != null && InitializeTask != null && this.InitializeTask.IsNotCompleted)
-                    userDialogs.ShowLoading();
+            if (userDialogs != null && InitializeTask != null && this.InitializeTask.IsNotCompleted)
+            {
+                this.IsBusy = true;
+                userDialogs.ShowLoading();
+            }
         }
 
         public override void ViewDisappeared()

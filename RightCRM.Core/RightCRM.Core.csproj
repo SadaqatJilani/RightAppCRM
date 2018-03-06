@@ -85,6 +85,10 @@
     <Compile Include="ViewModels\ItemViewModels\FilterListViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModels\BusinessItemViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModels\SearchItemViewModel.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\AssociatedTab3ViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModels\AssociationItemViewModel.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\LeadsTab4ViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModels\LeadsItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

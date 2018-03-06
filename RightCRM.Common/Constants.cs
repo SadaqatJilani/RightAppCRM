@@ -23,6 +23,10 @@ namespace RightCRM.Common
 
         public const string TitleCreateNewNotePage = "New Note";
 
+        public const string TitleBusinessAssociationsPage = "Associations";
+
+        public const string TitleBusinessLeadsPage = "Leads";
+
         public const string LanguageSettingsKey = "Language";
 
         public const string SessionID = "SessionID";

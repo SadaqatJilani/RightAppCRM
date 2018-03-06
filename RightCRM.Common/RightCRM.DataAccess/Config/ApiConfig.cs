@@ -78,6 +78,17 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Businesses/loadsavedsearches";
         }
 
+        public static string GetAssociations()
+        {
+            return $"{SharedConfig.RightApiAuthenticationRoot}Businesses/getassociatedbusinessindividual";
+        }
+
+        public static string GetAllLeads()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Leads/getallleads";
+        }
+
+        //getallleads
         //Businesses/loadsavedsearches
 
         //Lists/getlist

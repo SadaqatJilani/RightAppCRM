@@ -344,5 +344,59 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 #endif
         }
 
+        public async Task<GetAssociationsResponseModel> GetAssociations(GetAssociationsRequestModel accountRequest)
+        {
+#if FAKE
+            return await Task.FromResult(new GetAssociationsResponseModel());
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.GetAssociations();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                accountRequest.sessionid = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<GetAssociationsResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            accountRequest);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+#endif
+        }
+
+        public async Task<GetLeadsResponseModel> GetLeads(GetLeadsRequestModel accountRequest)
+        {
+#if FAKE
+            return await Task.FromResult(new GetLeadsResponseModel());
+#else
+
+            try
+            {
+                string requestUrl = ApiConfig.GetAllLeads();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                accountRequest.sessionid = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<GetLeadsResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            accountRequest);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+#endif
+        }
     }
 }

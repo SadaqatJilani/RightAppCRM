@@ -48,21 +48,6 @@ namespace RightCRM.Facade.Facades
             return this.businessApi.FilterBusinesses(filterRequestModel, pageNo);
         }
 
-
-        string JsonStringFromList(IEnumerable<FilterList> filterList, string filterField)
-        {
-            var filterString = filterList.FirstOrDefault(x => x.Heading == filterField)?
-                                         .Where(x => x.IsSelected == true)?
-                                         .Select(x => x.FilterName)?
-                                         .ToList();
-
-            if (filterString == null || !filterString.Any())
-                return null;
-
-            else
-                return JsonConvert.SerializeObject(filterString);
-        }
-
         public Task<IEnumerable<TagData>> GetTagsFromList(string listName)
         {
             return businessApi.GetTagsFromList(listName);
@@ -76,6 +61,21 @@ namespace RightCRM.Facade.Facades
         public Task<GetSearchesResponseModel> GetSavedSearches()
         {
             return businessApi.GetSavedSearches(new GetSearchesRequestModel());
+        }
+
+        public Task<GetAssociationsResponseModel> GetAssociations(int entityID, bool isBusiness)
+        {
+            return businessApi.GetAssociations(new GetAssociationsRequestModel(){
+                business_account_number = entityID
+            });
+        }
+
+        public Task<GetLeadsResponseModel> GetLeads(int entityID, bool isBusiness)
+        {
+            return businessApi.GetLeads(new GetLeadsRequestModel
+            {
+                business_account_number = entityID
+            });
         }
     }
 }

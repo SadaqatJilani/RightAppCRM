@@ -67,6 +67,8 @@
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Helpers\JsonSettings.cs" />
     <Compile Include="Models\ListItem.cs" />
+    <Compile Include="Models\LeadsModel.cs" />
+    <Compile Include="Models\AssociationModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

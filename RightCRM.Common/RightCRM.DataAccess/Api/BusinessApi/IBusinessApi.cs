@@ -21,5 +21,9 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         Task<SaveSearchResponseModel> SaveSearchFilters(SaveSearchRequestModel selectedFilters);
 
         Task<GetSearchesResponseModel> GetSavedSearches(GetSearchesRequestModel saveSearchParams);
+
+        Task<GetAssociationsResponseModel> GetAssociations(GetAssociationsRequestModel accountRequest);
+
+        Task<GetLeadsResponseModel> GetLeads(GetLeadsRequestModel accountRequest);
     }
 }
