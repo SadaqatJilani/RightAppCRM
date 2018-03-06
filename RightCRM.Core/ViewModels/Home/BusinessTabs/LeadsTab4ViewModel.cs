@@ -12,6 +12,9 @@ using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
 using RightCRM.Core.ViewModels.ItemViewModels;
 using RightCRM.Facade.Facades;
+using System.Threading.Tasks;
+using System.Linq;
+using RightCRM.Common.Models;
 
 namespace RightCRM.Core.ViewModels.Home.BusinessTabs
 {
@@ -24,6 +27,38 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
         {
             this.navigationService = navigationService;
             this.businessFacade = businessFacade;
+
+            LeadsList = new MvxObservableCollection<LeadsItemViewModel>();
+        }
+
+        private MvxObservableCollection<LeadsItemViewModel> leadsList;
+        public MvxObservableCollection<LeadsItemViewModel> LeadsList
+        {
+            get { return leadsList; }
+            set { SetProperty(ref leadsList, value); }
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+            var res = await businessFacade.GetLeads(businessID, true);
+
+            if (res != null)
+            {
+                foreach(var item in res.lead?.LeadDataArray ?? Enumerable.Empty<LeadsModel>())
+                {
+                    LeadsList.Add(new LeadsItemViewModel(){
+                        BusinessName = item.BUSINESS,
+                        CTag = item.CTAG,
+                        RID = item.RID,
+                        AssignedToUsername = item.USRNAME,
+                        WorkUserID = item.WORK_USRID,
+                        WorkUsername = item.WORK_USRNAME
+                    });
+                }
+            }
+
         }
 
         public override void Prepare()

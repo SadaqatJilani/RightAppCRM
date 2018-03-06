@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="AssociatedTVS.cs" company="Zepto Systems">
+// // <copyright file="LeadsTVS.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   AssociatedTVS
+// //   LeadsTVS
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
@@ -13,16 +13,17 @@ using UIKit;
 
 namespace RightCRM.iOS.Views.BusinessTabs
 {
-    public class AssociatedTVS : MvxTableViewSource
+    public class LeadsTVS : MvxTableViewSource
     {
-        public AssociatedTVS(UITableView associationTableView) : base(associationTableView)
+        public LeadsTVS(UITableView leadsTableView) : base(leadsTableView)
         {
-
+            
         }
 
-        protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
-        {
-            return (AssociatedEntCell)tableView.DequeueReusableCell(AssociatedEntCell.Key);
-        }
+    protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
+    {
+            return (LeadsEntCell)tableView.DequeueReusableCell(LeadsEntCell.Key);
     }
+
+}
 }

@@ -5,6 +5,7 @@ using Foundation;
 using UIKit;
 using MvvmCross.iOS.Views.Presenters;
 using Akavache;
+using Xamarin;
 
 namespace RightCRM.iOS
 {
@@ -25,6 +26,9 @@ namespace RightCRM.iOS
             startup.Start();
 
             Window.MakeKeyAndVisible();
+
+            IQKeyboardManager.SharedManager.EnableAutoToolbar = false;
+            IQKeyboardManager.SharedManager.Enable = true;
 
             return true;
         }

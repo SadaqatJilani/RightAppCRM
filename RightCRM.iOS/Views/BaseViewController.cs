@@ -182,5 +182,24 @@ namespace RightCRM.iOS.Views
         }
 
         #endregion
+
+        /// <summary>
+        /// Texts the field should return.
+        /// </summary>
+        /// <returns><c>true</c>, if field should return was texted, <c>false</c> otherwise.</returns>
+        /// <param name="textField">Text field.</param>
+        protected bool TxtField_ShouldReturn(UITextField textField)
+        {
+            if (textField.CanResignFirstResponder)
+            {
+                textField.ResignFirstResponder();
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -7,9 +7,8 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 using RightCRM.Common;
 using RightCRM.Core.ViewModels.Home.BusinessTabs;
 using MvvmCross.Binding.BindingContext;
-using RightCRM.iOS.Views.BusinessTabs;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views.BusinessTabs
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
     [MvxTabPresentation(WrapInNavigationController = true, TabIconName = "ic_notes", TabName = Constants.TitleBusinessAssociationsPage)]
@@ -19,10 +18,19 @@ namespace RightCRM.iOS
         {
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            txtUserName.ShouldReturn += TxtField_ShouldReturn;
+            txtEmailAddress.ShouldReturn += TxtField_ShouldReturn;
+        }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            this.DismissKeyboardOnBackgroundTap();
 
             UIBarButtonItem backbutton = new UIBarButtonItem(UIImage.FromBundle("ic_back"), UIBarButtonItemStyle.Done, null);
 
@@ -45,6 +53,15 @@ namespace RightCRM.iOS
 
             this.tblViewAssociatedEnt.Source = source;
             this.tblViewAssociatedEnt.ReloadData();
+        }
+
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            txtUserName.ShouldReturn -= TxtField_ShouldReturn;
+            txtEmailAddress.ShouldReturn -= TxtField_ShouldReturn;
+
+            base.ViewDidDisappear(animated);
         }
     }
 }

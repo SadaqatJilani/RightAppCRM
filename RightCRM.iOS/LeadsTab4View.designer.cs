@@ -14,8 +14,25 @@ namespace RightCRM.iOS
     [Register ("LeadsTab4View")]
     partial class LeadsTab4View
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblLeadsHeading { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView tblViewLeads { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (lblLeadsHeading != null) {
+                lblLeadsHeading.Dispose ();
+                lblLeadsHeading = null;
+            }
+
+            if (tblViewLeads != null) {
+                tblViewLeads.Dispose ();
+                tblViewLeads = null;
+            }
         }
     }
 }

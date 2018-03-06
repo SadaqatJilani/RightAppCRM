@@ -7,6 +7,7 @@ using RightCRM.iOS.Views;
 using RightCRM.Core.ViewModels.Home.BusinessTabs;
 using RightCRM.Common;
 using MvvmCross.Binding.BindingContext;
+using RightCRM.iOS.Views.BusinessTabs;
 
 namespace RightCRM.iOS
 {
@@ -26,15 +27,19 @@ namespace RightCRM.iOS
 
             this.NavigationItem.LeftBarButtonItem = backbutton;
 
+            var source = new LeadsTVS(tblViewLeads);
+
             var Set = this.CreateBindingSet<LeadsTab4View, LeadsTab4ViewModel>();
 
             Set.Bind(backbutton).To(vm => vm.GoToRootMenuCommand);
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
 
+            Set.Bind(source).For(x=>x.ItemsSource).To(vm => vm.LeadsList);
+
             Set.Apply();
 
-            //this.tblViewAssociatedEnt.Source = source;
-           // this.tblViewAssociatedEnt.ReloadData();
+            this.tblViewLeads.Source = source;
+            this.tblViewLeads.ReloadData();
         }
     }
 }

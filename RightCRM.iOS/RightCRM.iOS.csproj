@@ -271,6 +271,9 @@
     <Reference Include="PCLCrypto">
       <HintPath>..\packages\PCLCrypto.2.0.147\lib\xamarinios10\PCLCrypto.dll</HintPath>
     </Reference>
+    <Reference Include="IQKeyboardManager">
+      <HintPath>..\packages\Xamarin.IQKeyboardManager.1.4.1\lib\Xamarin.iOS10\IQKeyboardManager.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -421,6 +424,11 @@
     <Compile Include="Views\BusinessTabs\AssociatedTab3View.designer.cs">
       <DependentUpon>AssociatedTab3View.cs</DependentUpon>
     </Compile>
+    <Compile Include="LeadsEntCell.cs" />
+    <Compile Include="LeadsEntCell.designer.cs">
+      <DependentUpon>LeadsEntCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BusinessTabs\LeadsTVS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

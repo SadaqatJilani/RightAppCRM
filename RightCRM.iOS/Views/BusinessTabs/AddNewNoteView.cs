@@ -21,6 +21,13 @@ namespace RightCRM.iOS.Views
         {
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            txtNoteComment.ShouldReturn += TxtField_ShouldReturn;
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -80,6 +87,13 @@ namespace RightCRM.iOS.Views
 
             Set.Bind(btnAddComment).To(vm => vm.AddCommentCommand);
             Set.Apply();
+        }
+
+        public override void ViewDidDisappear(bool animated)
+        {
+            txtNoteComment.ShouldReturn -= TxtField_ShouldReturn;
+
+            base.ViewDidDisappear(animated);
         }
     }
 }
