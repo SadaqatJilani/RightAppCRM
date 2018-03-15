@@ -42,14 +42,20 @@ namespace RightCRM.iOS
             {
                 this.NavigationItem.SetRightBarButtonItem(assignTagBtn, true);
 
-                this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+                if (this.NavigationController != null)
+                {
+                    this.NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+                }
             }
 
             else
             {
                 this.NavigationItem.SetRightBarButtonItem(filterBtn, true);
 
-                this.NavigationController.NavigationBar.BarTintColor = null;
+                if (this.NavigationController != null)
+                {
+                    this.NavigationController.NavigationBar.BarTintColor = null;
+                }
 
                 if (TableView.IndexPathsForSelectedRows != null && TableView.IndexPathsForSelectedRows.Any())
                 {

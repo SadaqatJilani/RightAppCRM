@@ -16,10 +16,19 @@ namespace RightCRM.iOS.Views.BusinessTabs
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDeleteAssociation { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblAssociatedName { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnDeleteAssociation != null) {
+                btnDeleteAssociation.Dispose ();
+                btnDeleteAssociation = null;
+            }
+
             if (lblAssociatedName != null) {
                 lblAssociatedName.Dispose ();
                 lblAssociatedName = null;

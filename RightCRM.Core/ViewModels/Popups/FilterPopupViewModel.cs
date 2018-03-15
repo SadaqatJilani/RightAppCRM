@@ -231,7 +231,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     FilterID = item.ID_REGION.GetValueOrDefault(),
                     SectionName = Constants.AddressFilter,
-                    FilterName = item.REGION_NAME,
+                    FilterName = !string.IsNullOrWhiteSpace(item.REGION_NAME) ? item.REGION_NAME : Constants.NotSpecifiedString,
                     Count = item.COUNT.GetValueOrDefault()
                 });
             }

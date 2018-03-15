@@ -7,15 +7,15 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
+using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 using RightCRM.Common;
-using System.Threading.Tasks;
+using RightCRM.Common.Models;
 using RightCRM.Core.ViewModels.ItemViewModels;
 using RightCRM.Facade.Facades;
-using System.Linq;
-using RightCRM.DataAccess.Model.BusinessModels;
-using MvvmCross.Core.Navigation;
-using RightCRM.Common.Models;
 
 namespace RightCRM.Core.ViewModels.Home.BusinessTabs
 {
@@ -23,27 +23,84 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
     {
         private int businessID;
         readonly IBusinessFacade businessFacade;
+        readonly INewBusFacade newBusFacade;
 
-        public AssociatedTab3ViewModel(IMvxNavigationService navigationService, IBusinessFacade businessFacade)
+        public AssociatedTab3ViewModel(IMvxNavigationService navigationService,
+                                       IBusinessFacade businessFacade,
+                                       INewBusFacade newBusFacade,
+                                       IUserDialogs userDialogs)
         {
+            this.userDialogs = userDialogs;
+            this.newBusFacade = newBusFacade;
             this.businessFacade = businessFacade;
             this.navigationService = navigationService;
 
             AssociatedEntities = new MvxObservableCollection<AssociationItemViewModel>();
+
+            SubmitAssociationCommand = new MvxAsyncCommand(SubmitAssociation, CanSubmitNewAssoc);
+            DeleteAssociationCommandInit = new MvxAsyncCommand<AssociationItemViewModel>(this.DeleteAssociation);
+        }
+
+        public IMvxCommand<AssociationItemViewModel> DeleteAssociationCommandInit { get; private set; }
+
+        private Task DeleteAssociation(AssociationItemViewModel arg)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool CanSubmitNewAssoc()
+        {
+            if (!string.IsNullOrWhiteSpace(AssociatedUsername) && !string.IsNullOrWhiteSpace(AssociatedEmail))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private async Task SubmitAssociation()
+        {
+            var res = await newBusFacade.SubmitNewBusiness(new DataAccess.Model.CreateNew.NewBusRequestModel
+            {
+                business_account_id = this.businessID,
+                user_name = this.AssociatedUsername,
+                user_email = this.AssociatedEmail,
+                user_login_id = this.AssociatedEmail
+            });
+
+            if (res != null)
+            {
+                if (res.register?.status == 0)
+                {
+                    this.AssociatedUsername = string.Empty;
+                    this.AssociatedEmail = string.Empty;
+
+                    await userDialogs.AlertAsync(res.register?.msg ?? string.Empty);
+
+                    await Initialize();
+                }
+
+                else
+                {
+                    await userDialogs.AlertAsync(Constants.SomethingWrong);
+                }
+            }
         }
 
         private string associatedUsername;
         public string AssociatedUsername
         {
             get { return associatedUsername; }
-            set { SetProperty(ref associatedUsername, value); }
+            set { SetProperty(ref associatedUsername, value); if(value != null){ SubmitAssociationCommand.RaiseCanExecuteChanged(); } }
         }
 
         private string associatedEmail;
         public string AssociatedEmail
         {
             get { return associatedEmail; }
-            set { SetProperty(ref associatedEmail, value); }
+            set { SetProperty(ref associatedEmail, value); if (value != null) { SubmitAssociationCommand.RaiseCanExecuteChanged(); } }
         }
 
         private MvxObservableCollection<AssociationItemViewModel> associatedEntities;
@@ -59,18 +116,20 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
         {
             await base.Initialize();
 
+            AssociatedEntities.Clear();
             var res = await businessFacade.GetAssociations(businessID, true);
 
             if (res != null)
             {
-                foreach(var item in res.business?.AssociationsArray ?? Enumerable.Empty<AssociationModel>())
+                foreach (var item in res.business?.AssociationsArray ?? Enumerable.Empty<AssociationModel>())
                 {
                     AssociatedEntities.Add(new AssociationItemViewModel
                     {
                         AccountName = item.acname,
                         AccountNum = item.acnum,
                         UserID = item.usrid,
-                        Username = item.usrname
+                        Username = item.usrname,
+                        DeleteAssociationCommand = this.DeleteAssociationCommandInit
                     });
                 }
             }

@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
@@ -27,13 +28,20 @@ namespace RightCRM.Core.ViewModels.Home
 
         private readonly ICacheService cacheService;
 
-        private ObservableCollection<PickerItem> pickerQueryType;
-        private ObservableCollection<PickerItem> pickerAnswerType;
-        private ObservableCollection<PickerItem> pickerClientType;
+        private MvxObservableCollection<PickerItem> pickerBusinessContact;
+        private MvxObservableCollection<PickerItem> pickerQueryType;
+        private MvxObservableCollection<PickerItem> pickerAnswerType;
+        private MvxObservableCollection<PickerItem> pickerClientType;
 
-        private int accountNum;
+        private PickerItem selectedBusinessContact;
+        private PickerItem selectedQueryType;
+        private PickerItem selectedAnsType;
+        private PickerItem selectedClientType;
+
+        private int businessID;
 
         private string commentText;
+        readonly IBusinessFacade businessFacade;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.AddNewNoteViewModel"/> class.
@@ -42,8 +50,10 @@ namespace RightCRM.Core.ViewModels.Home
         public AddNewNoteViewModel(IMvxNavigationService navigationService,
                                    IUserDialogs userDialogs,
                                    INotesFacade notesFacade,
-                                  ICacheService cacheService) : base (userDialogs)
+                                   ICacheService cacheService, 
+                                   IBusinessFacade businessFacade) : base (userDialogs)
         {
+            this.businessFacade = businessFacade;
             this.cacheService = cacheService;
             this.notesFacade = notesFacade;
             this.navigationService = navigationService;
@@ -57,7 +67,7 @@ namespace RightCRM.Core.ViewModels.Home
             // throw new NotImplementedException();
           var res =  await notesFacade.SaveNewNote(new DataAccess.Model.Notes.NewNoteRequestModel()
             {
-                ACNUM= accountNum,
+                ACNUM= businessID,
                 HOWCOMM = SelectedQueryType.Value,
                 TELRESP = SelectedAnsType.Value,
                 WHOCOMM = SelectedClientType.Value, 
@@ -78,10 +88,20 @@ namespace RightCRM.Core.ViewModels.Home
         }
 
         /// <summary>
+        /// Gets or sets the picker business contact.
+        /// </summary>
+        /// <value>The picker business contact.</value>
+        public MvxObservableCollection<PickerItem> PickerBusinessContact
+        {
+            get { return pickerBusinessContact; }
+            set { SetProperty(ref pickerBusinessContact, value); }
+        }
+
+        /// <summary>
         /// Gets or sets the type of the picker query.
         /// </summary>
         /// <value>The type of the picker query.</value>
-        public ObservableCollection<PickerItem> PickerQueryType
+        public MvxObservableCollection<PickerItem> PickerQueryType
         {
             get { return pickerQueryType; }
             set { SetProperty(ref pickerQueryType, value); }
@@ -91,7 +111,7 @@ namespace RightCRM.Core.ViewModels.Home
         /// Gets or sets the type of the picker answer.
         /// </summary>
         /// <value>The type of the picker answer.</value>
-        public ObservableCollection<PickerItem> PickerAnswerType
+        public MvxObservableCollection<PickerItem> PickerAnswerType
         {
             get { return pickerAnswerType; }
             set { SetProperty(ref pickerAnswerType, value); }
@@ -101,15 +121,16 @@ namespace RightCRM.Core.ViewModels.Home
         /// Gets or sets the type of the picker client.
         /// </summary>
         /// <value>The type of the picker client.</value>
-        public ObservableCollection<PickerItem> PickerClientType
+        public MvxObservableCollection<PickerItem> PickerClientType
         {
             get { return pickerClientType; }
             set { SetProperty(ref pickerClientType, value); }
         }
 
-        public PickerItem SelectedQueryType { get; set; }
-        public PickerItem SelectedAnsType { get; set; }
-        public PickerItem SelectedClientType { get; set; }
+        public PickerItem SelectedBusinessContact { get { return selectedBusinessContact; } set { SetProperty(ref selectedBusinessContact, value); } }
+        public PickerItem SelectedQueryType { get { return selectedQueryType; } set { SetProperty(ref selectedQueryType, value); } }
+        public PickerItem SelectedAnsType { get { return selectedAnsType; } set { SetProperty(ref selectedAnsType, value); } }
+        public PickerItem SelectedClientType { get { return selectedClientType; } set { SetProperty(ref selectedClientType, value); } }
 
         public string CommentText
         {
@@ -140,7 +161,7 @@ namespace RightCRM.Core.ViewModels.Home
         {
             await base.Initialize();
 
-            PickerQueryType = new ObservableCollection<PickerItem>() {
+            PickerQueryType = new MvxObservableCollection<PickerItem>() {
             new PickerItem() {DisplayName = "Call", Value = 0},
             new PickerItem() {DisplayName = "Visit", Value = 1},
             new PickerItem() {DisplayName = "Email", Value = 2},
@@ -148,23 +169,56 @@ namespace RightCRM.Core.ViewModels.Home
         };
             SelectedQueryType = PickerQueryType[0];
 
-            PickerAnswerType = new ObservableCollection<PickerItem>() {
+            PickerAnswerType = new MvxObservableCollection<PickerItem>() {
             new PickerItem() {DisplayName = "Answer", Value = 0},
             new PickerItem() {DisplayName = "No Answer", Value = 1},
             new PickerItem() {DisplayName = "Callback", Value = 2}
         };
             SelectedAnsType = PickerAnswerType[0];
 
-            PickerClientType = new ObservableCollection<PickerItem>() {
+            PickerClientType = new MvxObservableCollection<PickerItem>() {
             new PickerItem() {DisplayName = "Customer", Value = 0},
             new PickerItem() {DisplayName = "Company Agent", Value = 1}
         };
             SelectedClientType = PickerClientType[0];
+
+            PickerBusinessContact = new MvxObservableCollection<PickerItem>(await FetchAssociatedContacts());
+            SelectedBusinessContact = PickerBusinessContact[0];
+        }
+
+        private async Task<IEnumerable<PickerItem>> FetchAssociatedContacts()
+        {
+            var listAssociatedContacts = new List<PickerItem>
+            {
+                new PickerItem()
+                {
+                    DisplayName = "Business Contact",
+                    Value = 0
+                }
+            };
+
+            var res = await businessFacade.GetAssociations(businessID, true);
+
+            if (res != null)
+            {
+                foreach (var item in res.business?.AssociationsArray ?? Enumerable.Empty<AssociationModel>())
+                {
+                    var pickeritem = new PickerItem
+                    {
+                        DisplayName = item.usrname,
+                        Value = item.usrid
+                    };
+
+                    listAssociatedContacts.Add(pickeritem);
+                }
+            }
+
+            return listAssociatedContacts;
         }
 
         public void Prepare(int parameter)
         {
-            accountNum = parameter;
+            businessID = parameter;
         }
     }
 }

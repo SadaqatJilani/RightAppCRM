@@ -904,7 +904,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="58599" translatesAutoresizingMaskIntoConstraints="NO">
-                                                    <rect key="frame" x="15" y="0.0" width="360" height="44"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -912,15 +912,27 @@
                                                         <constraint id="58604" firstItem="58599" firstAttribute="height" constant="44"/>
                                                     </constraints>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="95283" translatesAutoresizingMaskIntoConstraints="NO">
+                                                    <rect key="frame" x="313" y="0.0" width="46" height="44.5"/>
+                                                    <color key="tintColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                                                    <state key="normal" image="ic_trash.png"/>
+                                                    <constraints>
+                                                        <constraint id="96537" firstItem="95283" firstAttribute="width" constant="46"/>
+                                                        <constraint id="98308" firstItem="95283" firstAttribute="height" constant="44"/>
+                                                    </constraints>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint id="58600" firstItem="58599" firstAttribute="top" secondItem="58065" secondAttribute="top"/>
                                                 <constraint id="58601" firstItem="58599" firstAttribute="leading" secondItem="58065" secondAttribute="leading" constant="15"/>
-                                                <constraint id="58602" firstItem="58599" firstAttribute="trailing" secondItem="58065" secondAttribute="trailing"/>
+                                                <constraint id="96533" firstItem="58065" firstAttribute="trailing" secondItem="95283" secondAttribute="trailing" constant="16"/>
+                                                <constraint id="96535" firstItem="95283" firstAttribute="leading" secondItem="58599" secondAttribute="trailing" constant="8"/>
+                                                <constraint id="98309" firstItem="95283" firstAttribute="top" secondItem="58065" secondAttribute="top"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lblAssociatedName" destination="58599" id="name-outlet-58599"/>
+                                            <outlet property="btnDeleteAssociation" destination="95283" id="name-outlet-95283"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1106,5 +1118,6 @@
         <image name="ic_email.png" width="24" height="24"/>
         <image name="ic_telephone.png" width="24" height="24"/>
         <image name="ic_logout.png" width="24" height="24"/>
+        <image name="ic_trash.png" width="24" height="24"/>
     </resources>
 </document>

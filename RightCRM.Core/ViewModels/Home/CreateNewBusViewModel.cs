@@ -53,14 +53,14 @@ namespace RightCRM.Core.ViewModels.Home
 
             var busRequestModel = new NewBusRequestModel
             { 
-                acname = newBusinessDetails.AccountName,
-                actype = newBusinessDetails.AccountType
+                business_account_name = newBusinessDetails.AccountName,
+                business_account_type = newBusinessDetails.AccountType
             };
 
            var res =  await newBusFacade.SubmitNewBusiness(busRequestModel);
 
             if (res != null)
-                userDialogs.Alert(res.registration?.msg);
+                userDialogs.Alert(res.register?.msg);
 
             else
                 userDialogs.Alert(Constants.SomethingWrong);

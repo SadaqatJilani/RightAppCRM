@@ -30,7 +30,7 @@ namespace RightCRM.DataAccess.Config
 
         public static string RegisterNewBusiness()
         {
-            return $"{SharedConfig.RightApiAuthenticationRoot}registrations/businessaccount";
+            return $"{SharedConfig.RightApiAuthenticationRoot}Register/registerbusinesswithuser";
         }
 
         public static string GetAllBusinesses()
@@ -88,12 +88,10 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Leads/getallleads";
         }
 
-        //getallleads
-        //Businesses/loadsavedsearches
-
-        //Lists/getlist
-
-        //Notes/getallnotes
+        public static string DeleteAssociation()
+        {
+            return $"{SharedConfig.RightApiAuthenticationRoot}Businesses/deleteassociatedbusinessindividual";
+        }
 
     }
 }

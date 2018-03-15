@@ -464,6 +464,7 @@
     <BundleResource Include="Resources\ic_email.png" />
     <BundleResource Include="Resources\ic_telephone.png" />
     <BundleResource Include="Resources\ic_logout.png" />
+    <BundleResource Include="Resources\ic_trash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />

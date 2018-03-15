@@ -1,25 +1,18 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="NewBusResponseModel.cs" company="Zepto Systems">
+// // <copyright file="DeleteAssociationResponseModel.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   NewBusResponseModel
+// //   DeleteAssociationResponseModel
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
-namespace RightCRM.DataAccess.Model.CreateNew
+namespace RightCRM.DataAccess.Model.BusinessModels
 {
-    public class Registration
+    public class DeleteAssociationResponseModel
     {
-        public string msg { get; set; }
-
-        public int? status { get; set; }
-
-    }
-
-
-    public class NewBusResponseModel
-    {
-        public Registration register;
+        public DeleteAssociationResponseModel()
+        {
+        }
     }
 }

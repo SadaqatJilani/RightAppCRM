@@ -7,6 +7,7 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
+using System.Threading.Tasks;
 using MvvmCross.Core.ViewModels;
 
 namespace RightCRM.Core.ViewModels.ItemViewModels
@@ -24,5 +25,7 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
 
         private string username;
         public string Username { get { return username; } set { SetProperty(ref username, value); } }
+
+        public IMvxCommand<AssociationItemViewModel> DeleteAssociationCommand { get; set; }
     }
 }

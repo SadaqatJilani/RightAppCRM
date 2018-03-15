@@ -13,6 +13,7 @@ namespace RightCRM.iOS.Views
     [MvxChildPresentation]
     public partial class AddNewNoteView : BaseViewController<AddNewNoteViewModel>
     {
+        Picker pickerBusinessContact;
         Picker pickerQuery;
         Picker pickerAnswer;
         Picker pickerClient;
@@ -32,10 +33,12 @@ namespace RightCRM.iOS.Views
         {
             base.ViewDidLoad();
 
+            pickerBusinessContact = new GlobalPicker();
             pickerQuery = new GlobalPicker();
             pickerAnswer = new GlobalPicker();
             pickerClient = new GlobalPicker();
 
+            View.Add(pickerBusinessContact);
             View.Add(pickerQuery);
             View.Add(pickerAnswer);
             View.Add(pickerClient);
@@ -45,8 +48,14 @@ namespace RightCRM.iOS.Views
             View.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
             View.AddConstraints(
+
+                pickerBusinessContact.ToLeftMargin(View),
+                pickerBusinessContact.Below(topHeading, 12),
+                pickerBusinessContact.Width().EqualTo(View.Center.X).Minus(30),
+                pickerBusinessContact.Height().EqualTo(24),
+
                 pickerQuery.ToLeftMargin(View),
-                pickerQuery.Below(topHeading, 12),
+                pickerQuery.Below(pickerBusinessContact, 12),
                 pickerQuery.Width().EqualTo(View.Center.X).Minus(30),
                 pickerQuery.Height().EqualTo(24),
 
@@ -74,6 +83,9 @@ namespace RightCRM.iOS.Views
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
 
             //picker bindings
+            Set.Bind(pickerBusinessContact).For(v => v.ItemsSource).To(vm => vm.PickerBusinessContact);
+            Set.Bind(pickerBusinessContact).For(v => v.SelectedItem).To(vm => vm.SelectedBusinessContact).TwoWay();
+
             Set.Bind(pickerQuery).For(v => v.ItemsSource).To(vm => vm.PickerQueryType);
             Set.Bind(pickerQuery).For(v => v.SelectedItem).To(vm => vm.SelectedQueryType).TwoWay();
 
