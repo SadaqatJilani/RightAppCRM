@@ -411,10 +411,6 @@
     <Compile Include="Views\Search\SavedSearchCell.designer.cs">
       <DependentUpon>SavedSearchCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="LeadsTab4View.cs" />
-    <Compile Include="LeadsTab4View.designer.cs">
-      <DependentUpon>LeadsTab4View.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\BusinessTabs\AssociatedTVS.cs" />
     <Compile Include="Views\BusinessTabs\AssociatedEntCell.cs" />
     <Compile Include="Views\BusinessTabs\AssociatedEntCell.designer.cs">
@@ -424,11 +420,15 @@
     <Compile Include="Views\BusinessTabs\AssociatedTab3View.designer.cs">
       <DependentUpon>AssociatedTab3View.cs</DependentUpon>
     </Compile>
-    <Compile Include="LeadsEntCell.cs" />
-    <Compile Include="LeadsEntCell.designer.cs">
+    <Compile Include="Views\BusinessTabs\LeadsTVS.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsEntCell.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsEntCell.designer.cs">
       <DependentUpon>LeadsEntCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\BusinessTabs\LeadsTVS.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsTab4View.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsTab4View.designer.cs">
+      <DependentUpon>LeadsTab4View.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">
