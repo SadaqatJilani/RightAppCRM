@@ -29,6 +29,17 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
             this.businessFacade = businessFacade;
 
             LeadsList = new MvxObservableCollection<LeadsItemViewModel>();
+            LeadSelectedCommand = new MvxAsyncCommand<LeadsItemViewModel>(OpenSelectedLead);
+        }
+
+        private async Task OpenSelectedLead(LeadsItemViewModel selectedLead)
+        {
+           var res = await navigationService.Navigate<LeadsEditViewModel, LeadsItemViewModel, bool>(selectedLead);
+
+            if (res == true)
+            {
+                await this.Initialize();
+            }
         }
 
         private MvxObservableCollection<LeadsItemViewModel> leadsList;
@@ -38,9 +49,13 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
             set { SetProperty(ref leadsList, value); }
         }
 
+        public IMvxCommand<LeadsItemViewModel> LeadSelectedCommand { get; private set; }
+
         public override async Task Initialize()
         {
             await base.Initialize();
+
+            LeadsList.Clear();
 
             var res = await businessFacade.GetLeads(businessID, true);
 
@@ -53,7 +68,7 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
                         CTag = item.CTAG,
                         RID = item.RID,
                         AssignedToUsername = item.USRNAME,
-                        WorkUserID = item.WORK_USRID,
+                        WorkUserID = item.WORK_USRID.GetValueOrDefault(),
                         WorkUsername = item.WORK_USRNAME
                     });
                 }

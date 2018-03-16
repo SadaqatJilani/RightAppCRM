@@ -93,6 +93,10 @@
     <Compile Include="Model\BusinessModels\GetLeadsResponseModel.cs" />
     <Compile Include="Model\BusinessModels\DeleteAssociationRequestModel.cs" />
     <Compile Include="Model\BusinessModels\DeleteAssociationResponseModel.cs" />
+    <Compile Include="Model\BusinessModels\DeleteLeadResponseModel.cs" />
+    <Compile Include="Model\BusinessModels\DeleteLeadRequestModel.cs" />
+    <Compile Include="Model\Users\GetSubUsersRequestModel.cs" />
+    <Compile Include="Model\Users\GetSubUsersResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

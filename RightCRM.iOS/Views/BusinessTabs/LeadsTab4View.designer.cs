@@ -9,7 +9,7 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views.BusinessTabs
 {
     [Register ("LeadsTab4View")]
     partial class LeadsTab4View

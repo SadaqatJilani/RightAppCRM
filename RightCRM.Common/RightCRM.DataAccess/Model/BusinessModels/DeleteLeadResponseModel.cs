@@ -1,26 +1,24 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="DeleteAssociationResponseModel.cs" company="Zepto Systems">
+// // <copyright file="DeleteLeadResponseModel.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   DeleteAssociationResponseModel
+// //   DeleteLeadResponseModel
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
 namespace RightCRM.DataAccess.Model.BusinessModels
 {
 
-    public class AssociationDelete
+    public class LeadStatus
     {
         public string msg { get; set; }
 
-        public string sqlerr { get; set; }
-
         public int? status { get; set; }
+        
     }
-
-    public class DeleteAssociationResponseModel
+    public class DeleteLeadResponseModel
     {
-        public AssociationDelete business;
+        public LeadStatus lead;
     }
 }

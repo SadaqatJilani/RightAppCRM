@@ -11,16 +11,24 @@ using UIKit;
 
 namespace RightCRM.iOS.Views.BusinessTabs
 {
-    [Register ("LeadsEntCell")]
-    partial class LeadsEntCell
+    [Register ("LeadsEditView")]
+    partial class LeadsEditView
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDeleteLead { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnSaveLead { get; set; }
+
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblBusinessUser { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTag { get; set; }
+        UIKit.UILabel lblEditLead { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -28,14 +36,24 @@ namespace RightCRM.iOS.Views.BusinessTabs
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnDeleteLead != null) {
+                btnDeleteLead.Dispose ();
+                btnDeleteLead = null;
+            }
+
+            if (btnSaveLead != null) {
+                btnSaveLead.Dispose ();
+                btnSaveLead = null;
+            }
+
             if (lblBusinessUser != null) {
                 lblBusinessUser.Dispose ();
                 lblBusinessUser = null;
             }
 
-            if (lblTag != null) {
-                lblTag.Dispose ();
-                lblTag = null;
+            if (lblEditLead != null) {
+                lblEditLead.Dispose ();
+                lblEditLead = null;
             }
 
             if (lblWorkUser != null) {

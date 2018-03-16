@@ -7,6 +7,9 @@ using MvvmCross.iOS.Views.Presenters.Attributes;
 using RightCRM.Common;
 using RightCRM.Core.ViewModels.Home.BusinessTabs;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platform;
+using MvvmCross.Plugins.Messenger;
+using RightCRM.Core.Services;
 
 namespace RightCRM.iOS.Views.BusinessTabs
 {
@@ -14,8 +17,16 @@ namespace RightCRM.iOS.Views.BusinessTabs
     [MvxTabPresentation(WrapInNavigationController = true, TabIconName = "ic_notes", TabName = Constants.TitleBusinessAssociationsPage)]
     public partial class AssociatedTab3View : BaseViewController<AssociatedTab3ViewModel>
     {
+        private readonly MvxSubscriptionToken token;
+
         public AssociatedTab3View (IntPtr handle) : base (handle)
         {
+            token = Mvx.Resolve<IMvxMessenger>().Subscribe<ReloadTableMessage>(OnReloadMessage);
+        }
+
+        private void OnReloadMessage(ReloadTableMessage obj)
+        {
+            this.tblViewAssociatedEnt.ReloadData();
         }
 
         public override void ViewDidAppear(bool animated)
@@ -43,7 +54,7 @@ namespace RightCRM.iOS.Views.BusinessTabs
             Set.Bind(backbutton).To(vm => vm.GoToRootMenuCommand);
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
 
-            Set.Bind(source).For(x => x.ItemsSource).To(vm => vm.AssociatedEntities);
+            Set.Bind(source).For(x=> x.ItemsSource).To(vm => vm.AssociatedEntities);
 
             Set.Bind(txtUserName).For(x=>x.Text).To(vm => vm.AssociatedUsername);
             Set.Bind(txtEmailAddress).For(x => x.Text).To(vm => vm.AssociatedEmail);

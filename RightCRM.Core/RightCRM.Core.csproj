@@ -89,6 +89,8 @@
     <Compile Include="ViewModels\ItemViewModels\AssociationItemViewModel.cs" />
     <Compile Include="ViewModels\Home\BusinessTabs\LeadsTab4ViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModels\LeadsItemViewModel.cs" />
+    <Compile Include="Services\ReloadTableMessage.cs" />
+    <Compile Include="ViewModels\Home\BusinessTabs\LeadsEditViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

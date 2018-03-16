@@ -20,8 +20,8 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
             set { SetProperty(ref rID, value); }
         }
 
-        private int? workUserID;
-        public int? WorkUserID
+        private int workUserID;
+        public int WorkUserID
         {
             get { return workUserID; }
             set { SetProperty(ref workUserID, value); }

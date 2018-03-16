@@ -347,7 +347,22 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         public async Task<GetAssociationsResponseModel> GetAssociations(GetAssociationsRequestModel accountRequest)
         {
 #if FAKE
-            return await Task.FromResult(new GetAssociationsResponseModel());
+            return await Task.FromResult(new GetAssociationsResponseModel()
+            {
+                business = new Associations
+                {
+                    AssociationsArray = new AssociationModel[]
+
+                    {
+                        new AssociationModel{ usrid = 0, acnum = 0, acname = "test", usrname = "test123" },
+                        new AssociationModel{ usrid = 1, acnum = 1, acname = "test2", usrname = "test123" },
+                        new AssociationModel{ usrid = 2, acnum = 2, acname = "test3", usrname = "test123" },
+                        new AssociationModel{ usrid = 3, acnum = 3, acname = "test4", usrname = "test123" },
+                    }, 
+                    status = 0, 
+                    msg = "success"
+                }
+            });
 
 #else
             try
@@ -395,6 +410,64 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                 Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
                 throw ex;
             }
+
+#endif
+        }
+
+        public async Task<DeleteAssociationResponseModel> DeleteAssociation(DeleteAssociationRequestModel associationToBeDeleted)
+        {
+#if FAKE
+            return await Task.FromResult(new DeleteAssociationResponseModel());
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.DeleteAssociation();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                associationToBeDeleted.sessionid = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<DeleteAssociationResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            associationToBeDeleted);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+#endif
+        }
+
+        public async Task<DeleteLeadResponseModel> DeleteLead(DeleteLeadRequestModel deleteLeadRequestModel)
+        {
+#if FAKE
+            return await Task.FromResult(new DeleteLeadResponseModel());
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.DeleteLead();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                deleteLeadRequestModel.sessionid = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<DeleteLeadResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            deleteLeadRequestModel);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+
 
 #endif
         }

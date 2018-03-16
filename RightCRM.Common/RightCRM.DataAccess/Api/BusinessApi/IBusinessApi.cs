@@ -25,5 +25,9 @@ namespace RightCRM.DataAccess.Api.BusinessApi
         Task<GetAssociationsResponseModel> GetAssociations(GetAssociationsRequestModel accountRequest);
 
         Task<GetLeadsResponseModel> GetLeads(GetLeadsRequestModel accountRequest);
-    }
+
+        Task<DeleteAssociationResponseModel> DeleteAssociation(DeleteAssociationRequestModel associationToBeDeleted);
+
+		Task<DeleteLeadResponseModel> DeleteLead(DeleteLeadRequestModel deleteLeadRequestModel);
+	}
 }

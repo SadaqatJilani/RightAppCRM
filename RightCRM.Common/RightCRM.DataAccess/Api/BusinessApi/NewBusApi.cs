@@ -35,10 +35,10 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 #if FAKE
             return await Task.FromResult( new NewBusResponseModel(){
 
-                registration = new Registration()
+                register = new Registration()
                 {
                     msg = "Business Submitted Successfully",
-                    status = 1
+                    status = 0
                 }
 
             });

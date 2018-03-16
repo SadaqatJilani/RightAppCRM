@@ -68,6 +68,11 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Individuals/userlist";
         }
 
+        public static string GetSubUsers()
+        {
+            return $"{SharedConfig.RightApiAuthenticationRoot}Individuals/getsubuserlist";
+        }
+
         public static string SaveSearch()
         {
             return $"{SharedConfig.RightCrmApiRoot}Businesses/savesearch";
@@ -91,6 +96,11 @@ namespace RightCRM.DataAccess.Config
         public static string DeleteAssociation()
         {
             return $"{SharedConfig.RightApiAuthenticationRoot}Businesses/deleteassociatedbusinessindividual";
+        }
+
+        public static string DeleteLead()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Leads/deletesaveleads";
         }
 
     }

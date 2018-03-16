@@ -9,7 +9,7 @@ using RightCRM.Common;
 using MvvmCross.Binding.BindingContext;
 using RightCRM.iOS.Views.BusinessTabs;
 
-namespace RightCRM.iOS
+namespace RightCRM.iOS.Views.BusinessTabs
 {
     [MvxFromStoryboard(StoryboardName = "Main")]
     [MvxTabPresentation(WrapInNavigationController = true, TabIconName = "ic_notes", TabName = Constants.TitleBusinessLeadsPage)]
@@ -35,6 +35,7 @@ namespace RightCRM.iOS
             Set.Bind().For(v => v.Title).To(vm => vm.Title);
 
             Set.Bind(source).For(x=>x.ItemsSource).To(vm => vm.LeadsList);
+            Set.Bind(source).For(x => x.SelectionChangedCommand).To(vm => vm.LeadSelectedCommand);
 
             Set.Apply();
 

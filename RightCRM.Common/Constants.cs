@@ -61,5 +61,7 @@ namespace RightCRM.Common
         public const string SavedSearch = "SavedSearch";
 
         public const string NotSpecifiedString = "Not Specified";
+
+        public const string TitleBusinessEditLeadsPage = "Edit Lead";
     }
 }

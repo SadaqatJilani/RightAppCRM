@@ -44,7 +44,6 @@ namespace RightCRM.Facade.Facades
 
         public Task<GetBusinessResponseModel> FilterBusinesses(GetBusinessRequestModel filterRequestModel, int pageNo)
         {
-
             return this.businessApi.FilterBusinesses(filterRequestModel, pageNo);
         }
 
@@ -65,16 +64,66 @@ namespace RightCRM.Facade.Facades
 
         public Task<GetAssociationsResponseModel> GetAssociations(int entityID, bool isBusiness)
         {
-            return businessApi.GetAssociations(new GetAssociationsRequestModel(){
-                business_account_number = entityID
-            });
+            if (isBusiness)
+            {
+                return businessApi.GetAssociations(new GetAssociationsRequestModel()
+                {
+                    business_account_number = entityID
+                });
+            }
+            else
+            {
+                return businessApi.GetAssociations(new GetAssociationsRequestModel()
+                {
+                    user_account_id = entityID
+                });
+            }
         }
 
         public Task<GetLeadsResponseModel> GetLeads(int entityID, bool isBusiness)
         {
-            return businessApi.GetLeads(new GetLeadsRequestModel
+            if (isBusiness)
             {
-                business_account_number = entityID
+                return businessApi.GetLeads(new GetLeadsRequestModel
+                {
+                    business_account_number = entityID
+                });
+            }
+            else
+            {
+                return businessApi.GetLeads(new GetLeadsRequestModel
+                {
+                    user_id = entityID
+                });
+            }
+        }
+
+        public Task<DeleteAssociationResponseModel> DeleteAssociation(int entityID, int associationID, bool isBusiness)
+        {
+            if (isBusiness)
+            {
+                return businessApi.DeleteAssociation(new DeleteAssociationRequestModel
+                {
+                    business_account_number = entityID,
+                    user_account_id = associationID
+                });
+            }
+            else
+            {
+                return businessApi.DeleteAssociation(new DeleteAssociationRequestModel
+                {
+                    business_account_number = entityID,
+                    user_account_id = associationID
+                });
+            }
+        }
+
+        public Task<DeleteLeadResponseModel> DeleteLead(int userID, string tagID, bool isBusiness)
+        {
+            return businessApi.DeleteLead(new DeleteLeadRequestModel
+            {
+                user_id = userID,
+                tag_id = tagID
             });
         }
     }

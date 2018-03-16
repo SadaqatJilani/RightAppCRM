@@ -429,6 +429,10 @@
     <Compile Include="Views\BusinessTabs\LeadsTab4View.designer.cs">
       <DependentUpon>LeadsTab4View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\BusinessTabs\LeadsEditView.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsEditView.designer.cs">
+      <DependentUpon>LeadsEditView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Core\RightCRM.Core.csproj">

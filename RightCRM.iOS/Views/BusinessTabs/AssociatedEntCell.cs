@@ -4,6 +4,7 @@ using UIKit;
 using MvvmCross.Binding.iOS.Views;
 using MvvmCross.Binding.BindingContext;
 using RightCRM.Core.ViewModels.ItemViewModels;
+using RightCRM.Core.ViewModels.Home.BusinessTabs;
 
 namespace RightCRM.iOS.Views.BusinessTabs
 {
@@ -11,7 +12,7 @@ namespace RightCRM.iOS.Views.BusinessTabs
     {
         public static readonly NSString Key = new NSString(nameof(AssociatedEntCell));
 
-        private const string BindingText = "AssociatedEnt Username";
+        private const string BindingText = "AssociatedEnt Username; AssociatedUserID UserID";
 
         public AssociatedEntCell(IntPtr handle) : base(BindingText, handle)
         {
@@ -24,13 +25,15 @@ namespace RightCRM.iOS.Views.BusinessTabs
             {
                 var set = this.CreateBindingSet<AssociatedEntCell, AssociationItemViewModel>();
 
-                set.Bind(btnDeleteAssociation).To(vm=> vm.DeleteAssociationCommand).CommandParameter(this.DataContext);
+                set.Bind(btnDeleteAssociation).To(vm => vm.DeleteAssociationCommand).CommandParameter(this.DataContext);
 
                 set.Apply();
             });
         }
 
         public string AssociatedEnt { get { return lblAssociatedName.Text; } set { lblAssociatedName.Text = value; } }
+
+        public int AssociatedUserID { get; set; }
 
     }
 }

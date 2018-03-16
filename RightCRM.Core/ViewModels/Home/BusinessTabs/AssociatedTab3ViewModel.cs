@@ -12,8 +12,10 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 using RightCRM.Common;
 using RightCRM.Common.Models;
+using RightCRM.Core.Services;
 using RightCRM.Core.ViewModels.ItemViewModels;
 using RightCRM.Facade.Facades;
 
@@ -21,15 +23,19 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
 {
     public class AssociatedTab3ViewModel : BaseViewModel, IMvxViewModel<int>
     {
-        private int businessID;
+        private int entityID;
         readonly IBusinessFacade businessFacade;
         readonly INewBusFacade newBusFacade;
+        readonly IMvxMessenger messenger;
+        private ReloadTableMessage reloadTableMessage;
 
         public AssociatedTab3ViewModel(IMvxNavigationService navigationService,
                                        IBusinessFacade businessFacade,
                                        INewBusFacade newBusFacade,
-                                       IUserDialogs userDialogs)
+                                       IUserDialogs userDialogs,
+                                       IMvxMessenger messenger)
         {
+            this.messenger = messenger;
             this.userDialogs = userDialogs;
             this.newBusFacade = newBusFacade;
             this.businessFacade = businessFacade;
@@ -41,11 +47,27 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
             DeleteAssociationCommandInit = new MvxAsyncCommand<AssociationItemViewModel>(this.DeleteAssociation);
         }
 
-        public IMvxCommand<AssociationItemViewModel> DeleteAssociationCommandInit { get; private set; }
+        public IMvxCommand<AssociationItemViewModel> DeleteAssociationCommandInit { get; set; }
 
-        private Task DeleteAssociation(AssociationItemViewModel arg)
+        private async Task DeleteAssociation(AssociationItemViewModel associatedItem)
         {
-            throw new NotImplementedException();
+          //  AssociatedEntities.Remove(associatedItem);
+
+            var res = await this.businessFacade.DeleteAssociation(entityID, associatedItem.UserID, true);
+
+            if (res != null)
+            {
+                 await userDialogs.AlertAsync(res.business?.msg ?? string.Empty);
+
+                 await LoadAssociations();
+
+                //reloadTableMessage = new ReloadTableMessage(this);
+                //messenger.Publish(reloadTableMessage);
+            }
+            else
+            {
+                await userDialogs.AlertAsync(Constants.SomethingWrong);
+            }
         }
 
         private bool CanSubmitNewAssoc()
@@ -64,7 +86,7 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
         {
             var res = await newBusFacade.SubmitNewBusiness(new DataAccess.Model.CreateNew.NewBusRequestModel
             {
-                business_account_id = this.businessID,
+                business_account_id = this.entityID,
                 user_name = this.AssociatedUsername,
                 user_email = this.AssociatedEmail,
                 user_login_id = this.AssociatedEmail
@@ -79,7 +101,7 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
 
                     await userDialogs.AlertAsync(res.register?.msg ?? string.Empty);
 
-                    await Initialize();
+                    await LoadAssociations();
                 }
 
                 else
@@ -93,7 +115,7 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
         public string AssociatedUsername
         {
             get { return associatedUsername; }
-            set { SetProperty(ref associatedUsername, value); if(value != null){ SubmitAssociationCommand.RaiseCanExecuteChanged(); } }
+            set { SetProperty(ref associatedUsername, value); if (value != null) { SubmitAssociationCommand.RaiseCanExecuteChanged(); } }
         }
 
         private string associatedEmail;
@@ -116,20 +138,39 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
         {
             await base.Initialize();
 
-            AssociatedEntities.Clear();
-            var res = await businessFacade.GetAssociations(businessID, true);
+            await LoadAssociations();
+        }
+
+        private async Task LoadAssociations()
+        {
+            Dispatcher.RequestMainThreadAction(() => { 
+
+                AssociatedEntities.Clear();
+
+            });
+
+            var res = await businessFacade.GetAssociations(entityID, true);
 
             if (res != null)
             {
+                if (res.business?.AssociationsArray == null || !res.business.AssociationsArray.Any())
+                {
+                    return;
+                }
+
                 foreach (var item in res.business?.AssociationsArray ?? Enumerable.Empty<AssociationModel>())
                 {
-                    AssociatedEntities.Add(new AssociationItemViewModel
+                    var associationItem = new AssociationItemViewModel
                     {
                         AccountName = item.acname,
-                        AccountNum = item.acnum,
-                        UserID = item.usrid,
+                        AccountNum = item.acnum.GetValueOrDefault(),
+                        UserID = item.usrid.GetValueOrDefault(),
                         Username = item.usrname,
                         DeleteAssociationCommand = this.DeleteAssociationCommandInit
+                    };
+
+                    Dispatcher.RequestMainThreadAction(() => { 
+                    AssociatedEntities.Add(associationItem);
                     });
                 }
             }
@@ -144,7 +185,7 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
 
         public void Prepare(int parameter)
         {
-            businessID = parameter;
+            entityID = parameter;
         }
     }
 }
