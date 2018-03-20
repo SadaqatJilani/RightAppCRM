@@ -103,5 +103,10 @@ namespace RightCRM.DataAccess.Config
             return $"{SharedConfig.RightCrmApiRoot}Leads/deletesaveleads";
         }
 
+        public static string UpdateLead()
+        {
+            return $"{SharedConfig.RightCrmApiRoot}Leads/updatesavedlead";
+        }
+
     }
 }

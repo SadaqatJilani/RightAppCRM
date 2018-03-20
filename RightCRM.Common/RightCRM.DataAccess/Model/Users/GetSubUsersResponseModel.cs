@@ -81,8 +81,6 @@ namespace RightCRM.DataAccess.Model.Users
 
     public class GetSubUsersResponseModel
     {
-        public GetSubUsersResponseModel()
-        {
-        }
+        public SubUserData user;
     }
 }

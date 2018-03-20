@@ -19,7 +19,19 @@ namespace RightCRM.iOS.Views.BusinessTabs
         {
         }
 
-        public override void ViewDidLoad()
+		public override void ViewWillAppear(bool animated)
+		{
+            base.ViewWillAppear(animated);
+
+            var selectedRow = tblViewLeads.IndexPathForSelectedRow;
+
+            if (selectedRow != null)
+            {
+                tblViewLeads.DeselectRow(selectedRow, true);
+            }
+		}
+
+		public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 

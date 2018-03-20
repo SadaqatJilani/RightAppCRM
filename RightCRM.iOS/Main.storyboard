@@ -1083,6 +1083,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <view contentMode="scaleToFill" id="107041" key="tableFooterView">
+                                    <rect key="frame" x="0.0" y="73" width="320" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="99248" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="16" y="64" width="111" height="21"/>
@@ -1154,25 +1159,7 @@
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" colorSpace="calibratedRGB" red="0.17254901960784313" green="0.29019607843137257" blue="0.41176470588235292" alpha="1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="102215" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
-                                <rect key="frame" x="16" y="121" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <constraints>
-                                    <constraint id="106024" firstItem="102215" firstAttribute="height" constant="21"/>
-                                </constraints>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="102216" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
-                                <rect key="frame" x="16" y="163" width="288" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <constraints>
-                                    <constraint id="106025" firstItem="102216" firstAttribute="height" constant="21"/>
-                                </constraints>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="102894" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="102894" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="60" y="243.5" width="80" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.20392156862745098" green="0.67843137254901964" blue="0.396078431372549" alpha="1"/>
                                 <state key="normal" title="Save">
@@ -1183,12 +1170,9 @@
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <constraints>
-                                    <constraint id="102895" firstItem="102894" firstAttribute="width" constant="80"/>
-                                    <constraint id="104274" firstItem="102894" firstAttribute="height" constant="30"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="104621" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="104621" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="180" y="243.5" width="80" height="30"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="1" green="0" blue="0" alpha="1"/>
                                 <state key="normal" title="Delete">
@@ -1199,31 +1183,17 @@
                                         <real key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <constraints>
-                                    <constraint id="104622" firstItem="104621" firstAttribute="width" constant="80"/>
-                                    <constraint id="105664" firstItem="104621" firstAttribute="height" constant="30"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint id="101875" firstItem="101541" firstAttribute="leading" secondItem="101203" secondAttribute="leadingMargin"/>
                             <constraint id="101876" firstItem="101541" firstAttribute="top" secondItem="101200" secondAttribute="top" constant="16"/>
                             <constraint id="101877" firstItem="101541" firstAttribute="trailing" secondItem="101203" secondAttribute="trailingMargin"/>
-                            <constraint id="102898" firstItem="101200" firstAttribute="centerX" secondItem="102894" secondAttribute="centerX" constant="60"/>
-                            <constraint id="103929" firstItem="102894" firstAttribute="top" secondItem="102216" secondAttribute="bottom" constant="60"/>
-                            <constraint id="105662" firstItem="104621" firstAttribute="centerX" secondItem="101200" secondAttribute="centerX" constant="60"/>
-                            <constraint id="105663" firstItem="104621" firstAttribute="top" secondItem="102216" secondAttribute="bottom" constant="60"/>
-                            <constraint id="106014" firstItem="102216" firstAttribute="leading" secondItem="101203" secondAttribute="leadingMargin"/>
-                            <constraint id="106015" firstItem="102216" firstAttribute="top" secondItem="102215" secondAttribute="bottom" constant="21"/>
-                            <constraint id="106016" firstItem="102215" firstAttribute="leading" secondItem="101203" secondAttribute="leadingMargin"/>
-                            <constraint id="106020" firstItem="102216" firstAttribute="trailing" secondItem="101203" secondAttribute="trailingMargin"/>
-                            <constraint id="106021" firstItem="102215" firstAttribute="trailing" secondItem="101203" secondAttribute="trailingMargin"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lblEditLead" destination="101541" id="name-outlet-101541"/>
-                        <outlet property="lblBusinessUser" destination="102215" id="name-outlet-102215"/>
-                        <outlet property="lblWorkUser" destination="102216" id="name-outlet-102216"/>
                         <outlet property="btnSaveLead" destination="102894" id="name-outlet-102894"/>
                         <outlet property="btnDeleteLead" destination="104621" id="name-outlet-104621"/>
                     </connections>

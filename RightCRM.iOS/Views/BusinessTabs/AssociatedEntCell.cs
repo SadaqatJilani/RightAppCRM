@@ -25,7 +25,7 @@ namespace RightCRM.iOS.Views.BusinessTabs
             {
                 var set = this.CreateBindingSet<AssociatedEntCell, AssociationItemViewModel>();
 
-                set.Bind(btnDeleteAssociation).To(vm => vm.DeleteAssociationCommand).CommandParameter(this.DataContext);
+                set.Bind(btnDeleteAssociation).To(vm => vm.DeleteAssociationCommand).CommandParameter(this.Index);
 
                 set.Apply();
             });
@@ -34,6 +34,8 @@ namespace RightCRM.iOS.Views.BusinessTabs
         public string AssociatedEnt { get { return lblAssociatedName.Text; } set { lblAssociatedName.Text = value; } }
 
         public int AssociatedUserID { get; set; }
+
+        public int Index { get; set; }
 
     }
 }

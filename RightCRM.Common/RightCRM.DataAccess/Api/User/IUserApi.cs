@@ -30,5 +30,7 @@ namespace RightCRM.DataAccess.Api
         Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin);
 
         Task<IEnumerable<UserInfo>> GetUserList(GetUsersRequestModel userFilters);
+
+        Task<IEnumerable<UserData>> GetSubUsers(GetSubUsersRequestModel userFilters);
     }
 }

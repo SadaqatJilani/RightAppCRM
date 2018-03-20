@@ -18,6 +18,7 @@ using System.Collections.ObjectModel;
 using Acr.UserDialogs;
 using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Core.ViewModels.ItemViewModels;
+using RightCRM.Common.Services;
 
 namespace RightCRM.Core.ViewModels.Popups
 {
@@ -28,12 +29,15 @@ namespace RightCRM.Core.ViewModels.Popups
         private readonly IBusinessFacade businessFacade;
         private List<BusinessItemViewModel> accountList;
         private readonly IUserFacade userFacade;
+        readonly IListsService listsService;
 
         public BusAddTagViewModel(IMvxNavigationService navigationService, 
                                   IBusinessFacade businessFacade, 
                                   IUserFacade userFacade,
-                                  IUserDialogs userDialogs)
+                                  IUserDialogs userDialogs,
+                                  IListsService listsService)
         {
+            this.listsService = listsService;
             this.userDialogs = userDialogs;
             this.userFacade = userFacade;
             this.businessFacade = businessFacade;
@@ -100,70 +104,12 @@ namespace RightCRM.Core.ViewModels.Popups
         {
             await base.Initialize();
 
-            PickerSelectTag = new MvxObservableCollection<PickerItem>(await GetTagsFromList());
+            PickerSelectTag = new MvxObservableCollection<PickerItem>(await listsService.GetTagsFromList());
             SelectedTag = PickerSelectTag[0];
 
-            PickerTagUser = new MvxObservableCollection<PickerItem>(await GetUsersFromList());
+            PickerTagUser = new MvxObservableCollection<PickerItem>(await listsService.GetUsersFromList());
             SelectedUser = PickerTagUser[0];
         }
-
-        async Task<IEnumerable<PickerItem>> GetTagsFromList()
-        {
-            var tagList = new List<PickerItem>
-            {
-                new PickerItem() { DisplayName = "Select Tag", Value = 0 }
-            };
-
-            var res = await businessFacade.GetTagsFromList("ctag");
-
-            if (res == null || !res.Any())
-                return tagList;
-
-
-            for (int i = 0; i < res.Count(); i++)
-            {
-                var tagItem = new PickerItem
-                {
-                    DisplayName = res.ElementAt(i).list,
-                    Value = i + 1
-                };
-
-                tagList.Add(tagItem);
-            }
-
-            return tagList;
-        }
-
-        async Task<IEnumerable<PickerItem>> GetUsersFromList()
-        {
-            var tagList = new List<PickerItem>
-            {
-                new PickerItem() { DisplayName = "Select User to Assign Tag", Value = 0 }
-            };
-
-            var res = await userFacade.GetAllUsers(new DataAccess.Model.Users.GetUsersRequestModel()
-            {
-                page_no = 1
-            });
-
-            if (res == null || !res.Any())
-                return tagList;
-
-
-            for (int i = 0; i < res.Count(); i++)
-            {
-                var tagItem = new PickerItem
-                {
-                    DisplayName = res.ElementAt(i).UserName,
-                    Value = res.ElementAt(i).UserID.GetValueOrDefault()
-                };
-
-                tagList.Add(tagItem);
-            }
-
-            return tagList;
-        }
-
 
         public void Prepare(IEnumerable<BusinessItemViewModel> parameter)
         {

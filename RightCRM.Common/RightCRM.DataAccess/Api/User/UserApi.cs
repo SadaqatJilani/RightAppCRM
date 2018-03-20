@@ -45,6 +45,36 @@ namespace RightCRM.DataAccess.Api.User
             this.restService = restService;
         }
 
+        public async Task<IEnumerable<UserData>> GetSubUsers(GetSubUsersRequestModel userFilters)
+        {
+#if FAKE
+            return await Task.FromResult(new GetSubUsersResponseModel());
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.GetSubUsers();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+
+                userFilters.session_id = sessionId;
+                userFilters.page_no = 1;
+
+                var result = await this.restService.MakeOpenRequestAsync<GetSubUsersResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            userFilters);
+                return result?.Content?.user?.UserDataArray;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+
+#endif
+        }
+
         public async Task<IEnumerable<UserInfo>> GetUserList(GetUsersRequestModel userFilters)
         {
 #if FAKE

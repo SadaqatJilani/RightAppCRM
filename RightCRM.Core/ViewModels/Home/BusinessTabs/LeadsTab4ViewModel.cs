@@ -67,9 +67,11 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
                         BusinessName = item.BUSINESS,
                         CTag = item.CTAG,
                         RID = item.RID,
+                        AccountNumber = item.ACNUM,
+                        AssignedToUserID = item.USRID,
                         AssignedToUsername = item.USRNAME,
-                        WorkUserID = item.WORK_USRID.GetValueOrDefault(),
-                        WorkUsername = item.WORK_USRNAME
+                        WorkUserID = item.WORK_USRID,
+                        WorkUsername = item.WORK_USRNAME,
                     });
                 }
             }

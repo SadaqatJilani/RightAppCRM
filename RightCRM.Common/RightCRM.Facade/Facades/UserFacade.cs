@@ -65,7 +65,12 @@ namespace RightCRM.Facade.Facades
 
         public Task<IEnumerable<UserInfo>> GetAllUsers(GetUsersRequestModel userFilters)
         {
-            return this.userApi.GetUserList(userFilters);;
+            return this.userApi.GetUserList(userFilters);
+        }
+
+        public Task<IEnumerable<UserData>> GetSubUsers(GetSubUsersRequestModel userFilters)
+        {
+            return this.userApi.GetSubUsers(userFilters);
         }
     }
 }

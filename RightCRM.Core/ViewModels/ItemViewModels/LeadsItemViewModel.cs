@@ -20,8 +20,8 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
             set { SetProperty(ref rID, value); }
         }
 
-        private int workUserID;
-        public int WorkUserID
+        private int? workUserID;
+        public int? WorkUserID
         {
             get { return workUserID; }
             set { SetProperty(ref workUserID, value); }
@@ -34,11 +34,25 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
             set { SetProperty(ref workUsername, value); }
         }
 
+        private int? accountNumber;
+        public int? AccountNumber
+        {
+            get { return accountNumber; }
+            set { SetProperty(ref accountNumber, value); }
+        }
+
         private string businessName;
         public string BusinessName
         {
             get { return businessName; }
             set { SetProperty(ref businessName, value); }
+        }
+
+        private int? assignedToUserID;
+        public int? AssignedToUserID
+        {
+            get { return assignedToUserID; }
+            set { SetProperty(ref assignedToUserID, value); }
         }
 
         private string assignedToUsername;

@@ -471,5 +471,33 @@ namespace RightCRM.DataAccess.Api.BusinessApi
 
 #endif
         }
+
+        public async Task<UpdateLeadResponseModel> UpdateLead(UpdateLeadRequestModel updateLeadRequestModel)
+        {
+#if FAKE
+            return await Task.FromResult(new UpdateLeadResponseModel());
+
+#else
+            try
+            {
+                string requestUrl = ApiConfig.UpdateLead();
+                string sessionId = await this.cacheService.RetrieveSettings<string>(Constants.SessionID);
+                updateLeadRequestModel.session_id = sessionId;
+
+                var result = await this.restService.MakeOpenRequestAsync<UpdateLeadResponseModel>(
+                                                                                            requestUrl,
+                                                                                            HttpMethod.Post,
+                                                                                            updateLeadRequestModel);
+
+                return result.Content;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0} GetUserSessionId Exception: {1}", GetType().Name, ex.Message);
+                throw ex;
+            }
+
+#endif
+        }
     }
 }

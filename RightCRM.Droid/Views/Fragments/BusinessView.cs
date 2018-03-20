@@ -15,7 +15,7 @@ namespace RightCRM.Droid.Views.Fragments
 {
     [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
     [Register("rightcrm.droid.views.fragments.HomeFragment")]
-    public class HomeFragment : BaseFragment<BusinessViewModel>
+    public class BusinessView : BaseFragment<BusinessViewModel>
     {
 
         protected override int FragmentId => Resource.Layout.fragment_home;

@@ -69,6 +69,7 @@
     <Compile Include="Models\ListItem.cs" />
     <Compile Include="Models\LeadsModel.cs" />
     <Compile Include="Models\AssociationModel.cs" />
+    <Compile Include="Services\IListsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

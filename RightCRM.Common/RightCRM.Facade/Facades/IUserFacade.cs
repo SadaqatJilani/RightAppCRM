@@ -30,5 +30,7 @@ namespace RightCRM.Facade.Facades
         Task<ResponseUserLogin> GetUserSessionId(RequestUserLogin userLogin);
 
         Task<IEnumerable<UserInfo>> GetAllUsers(GetUsersRequestModel userFilters);
+
+        Task<IEnumerable<UserData>> GetSubUsers(GetSubUsersRequestModel userFilters);
     }
 }

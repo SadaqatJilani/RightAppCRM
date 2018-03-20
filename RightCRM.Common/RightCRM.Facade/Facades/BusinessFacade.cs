@@ -98,7 +98,7 @@ namespace RightCRM.Facade.Facades
             }
         }
 
-        public Task<DeleteAssociationResponseModel> DeleteAssociation(int entityID, int associationID, bool isBusiness)
+        public Task<DeleteAssociationResponseModel> DeleteAssociation(int entityID, int? associationID, bool isBusiness)
         {
             if (isBusiness)
             {
@@ -125,6 +125,11 @@ namespace RightCRM.Facade.Facades
                 user_id = userID,
                 tag_id = tagID
             });
+        }
+
+        public Task<UpdateLeadResponseModel> UpdateLead(UpdateLeadRequestModel updateLeadRequestModel)
+        {
+            return businessApi.UpdateLead(updateLeadRequestModel);
         }
     }
 }

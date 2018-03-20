@@ -44,16 +44,16 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
             AssociatedEntities = new MvxObservableCollection<AssociationItemViewModel>();
 
             SubmitAssociationCommand = new MvxAsyncCommand(SubmitAssociation, CanSubmitNewAssoc);
-            DeleteAssociationCommandInit = new MvxAsyncCommand<AssociationItemViewModel>(this.DeleteAssociation);
+            DeleteAssociationCommandInit = new MvxAsyncCommand<int>(this.DeleteAssociation);
         }
 
-        public IMvxCommand<AssociationItemViewModel> DeleteAssociationCommandInit { get; set; }
+        public IMvxCommand<int> DeleteAssociationCommandInit { get; set; }
 
-        private async Task DeleteAssociation(AssociationItemViewModel associatedItem)
+        private async Task DeleteAssociation(int index)
         {
           //  AssociatedEntities.Remove(associatedItem);
 
-            var res = await this.businessFacade.DeleteAssociation(entityID, associatedItem.UserID, true);
+            var res = await this.businessFacade.DeleteAssociation(entityID, AssociatedEntities[index].UserID, true);
 
             if (res != null)
             {
@@ -163,8 +163,8 @@ namespace RightCRM.Core.ViewModels.Home.BusinessTabs
                     var associationItem = new AssociationItemViewModel
                     {
                         AccountName = item.acname,
-                        AccountNum = item.acnum.GetValueOrDefault(),
-                        UserID = item.usrid.GetValueOrDefault(),
+                        AccountNum = item.acnum,
+                        UserID = item.usrid,
                         Username = item.usrname,
                         DeleteAssociationCommand = this.DeleteAssociationCommandInit
                     };

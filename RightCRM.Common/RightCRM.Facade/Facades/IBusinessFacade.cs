@@ -24,8 +24,10 @@ namespace RightCRM.Facade.Facades
 
         Task<GetLeadsResponseModel> GetLeads(int entityID, bool isBusiness);
 
-        Task<DeleteAssociationResponseModel> DeleteAssociation(int entityID, int associationID, bool isBusiness);
+        Task<DeleteAssociationResponseModel> DeleteAssociation(int entityID, int? associationID, bool isBusiness);
 
         Task<DeleteLeadResponseModel> DeleteLead(int userID, string tagID, bool isBusiness);
+
+        Task<UpdateLeadResponseModel> UpdateLead(UpdateLeadRequestModel updateLeadRequestModel);
     }
 }

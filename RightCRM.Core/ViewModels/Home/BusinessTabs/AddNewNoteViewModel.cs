@@ -38,21 +38,29 @@ namespace RightCRM.Core.ViewModels.Home
         private PickerItem selectedAnsType;
         private PickerItem selectedClientType;
 
-        private int businessID;
+        private int entityID;
 
         private string commentText;
         readonly IBusinessFacade businessFacade;
+        readonly IListsService listsService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:RightCRM.Core.ViewModels.Home.AddNewNoteViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">Navigation service.</param>
+        /// <param name="userDialogs">User dialogs.</param>
+        /// <param name="notesFacade">Notes facade.</param>
+        /// <param name="cacheService">Cache service.</param>
+        /// <param name="businessFacade">Business facade.</param>
+        /// <param name="listsService">Lists service.</param>
         public AddNewNoteViewModel(IMvxNavigationService navigationService,
                                    IUserDialogs userDialogs,
                                    INotesFacade notesFacade,
                                    ICacheService cacheService, 
-                                   IBusinessFacade businessFacade) : base (userDialogs)
+                                   IBusinessFacade businessFacade,
+                                   IListsService listsService) : base (userDialogs)
         {
+            this.listsService = listsService;
             this.businessFacade = businessFacade;
             this.cacheService = cacheService;
             this.notesFacade = notesFacade;
@@ -67,7 +75,7 @@ namespace RightCRM.Core.ViewModels.Home
             // throw new NotImplementedException();
           var res =  await notesFacade.SaveNewNote(new DataAccess.Model.Notes.NewNoteRequestModel()
             {
-                ACNUM= businessID,
+                ACNUM= entityID,
                 HOWCOMM = SelectedQueryType.Value,
                 TELRESP = SelectedAnsType.Value,
                 WHOCOMM = SelectedClientType.Value, 
@@ -182,43 +190,13 @@ namespace RightCRM.Core.ViewModels.Home
         };
             SelectedClientType = PickerClientType[0];
 
-            PickerBusinessContact = new MvxObservableCollection<PickerItem>(await FetchAssociatedContacts());
+            PickerBusinessContact = new MvxObservableCollection<PickerItem>(await listsService.GetAssociationsFromList(entityID));
             SelectedBusinessContact = PickerBusinessContact[0];
-        }
-
-        private async Task<IEnumerable<PickerItem>> FetchAssociatedContacts()
-        {
-            var listAssociatedContacts = new List<PickerItem>
-            {
-                new PickerItem()
-                {
-                    DisplayName = "Business Contact",
-                    Value = 0
-                }
-            };
-
-            var res = await businessFacade.GetAssociations(businessID, true);
-
-            if (res != null)
-            {
-                foreach (var item in res.business?.AssociationsArray ?? Enumerable.Empty<AssociationModel>())
-                {
-                    var pickeritem = new PickerItem
-                    {
-                        DisplayName = item.usrname,
-                        Value = item.usrid
-                    };
-
-                    listAssociatedContacts.Add(pickeritem);
-                }
-            }
-
-            return listAssociatedContacts;
         }
 
         public void Prepare(int parameter)
         {
-            businessID = parameter;
+            entityID = parameter;
         }
     }
 }

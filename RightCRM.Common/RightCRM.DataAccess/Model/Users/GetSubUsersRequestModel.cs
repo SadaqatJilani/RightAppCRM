@@ -11,7 +11,7 @@ namespace RightCRM.DataAccess.Model.Users
 {
     public class GetSubUsersRequestModel
     {
-        public string sessionid { get; set; }
+        public string session_id { get; set; }
         public string srch_user_svsid { get; set; }
         public string srch_user_email { get; set; }
         public string srch_user_usrname { get; set; }

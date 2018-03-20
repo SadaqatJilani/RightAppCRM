@@ -31,7 +31,14 @@ namespace RightCRM.iOS.Views.BusinessTabs
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
-            return (AssociatedEntCell)tableView.DequeueReusableCell(AssociatedEntCell.Key);
+            var cell = (AssociatedEntCell)tableView.DequeueReusableCell(AssociatedEntCell.Key);
+
+            if (cell != null)
+            {
+                cell.Index = indexPath.Row;
+            }
+
+            return cell;
         }
 
 	}

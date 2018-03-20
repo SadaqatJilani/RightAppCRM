@@ -15,8 +15,8 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
         {
         }
 
-        int filterID;
-        public int FilterID
+        int? filterID;
+        public int? FilterID
         {
             get { return filterID; }
             set { SetProperty(ref filterID, value); }
@@ -36,8 +36,8 @@ namespace RightCRM.Core.ViewModels.ItemViewModels
             set{SetProperty(ref filterName, value);}
         }
 
-        int count;
-        public int Count
+        int? count;
+        public int? Count
         {
             get { return count; }
             set { SetProperty(ref count, value); }

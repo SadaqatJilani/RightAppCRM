@@ -91,6 +91,7 @@
     <Compile Include="ViewModels\ItemViewModels\LeadsItemViewModel.cs" />
     <Compile Include="Services\ReloadTableMessage.cs" />
     <Compile Include="ViewModels\Home\BusinessTabs\LeadsEditViewModel.cs" />
+    <Compile Include="Services\ListsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

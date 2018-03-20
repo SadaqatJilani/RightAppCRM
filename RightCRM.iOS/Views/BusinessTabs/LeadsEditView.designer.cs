@@ -24,15 +24,7 @@ namespace RightCRM.iOS.Views.BusinessTabs
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblBusinessUser { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblEditLead { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblWorkUser { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -46,19 +38,9 @@ namespace RightCRM.iOS.Views.BusinessTabs
                 btnSaveLead = null;
             }
 
-            if (lblBusinessUser != null) {
-                lblBusinessUser.Dispose ();
-                lblBusinessUser = null;
-            }
-
             if (lblEditLead != null) {
                 lblEditLead.Dispose ();
                 lblEditLead = null;
-            }
-
-            if (lblWorkUser != null) {
-                lblWorkUser.Dispose ();
-                lblWorkUser = null;
             }
         }
     }

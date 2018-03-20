@@ -6,12 +6,10 @@
 // //   FilterPopupViewModel
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
-using RightCRM.Common.Models;
 using System.Linq;
 using RightCRM.DataAccess.Model.BusinessModels;
 using RightCRM.Common;
@@ -229,10 +227,10 @@ namespace RightCRM.Core.ViewModels.Popups
             {
                 listAddress.Add(new FilterItemViewModel()
                 {
-                    FilterID = item.ID_REGION.GetValueOrDefault(),
+                    FilterID = item.ID_REGION,
                     SectionName = Constants.AddressFilter,
                     FilterName = !string.IsNullOrWhiteSpace(item.REGION_NAME) ? item.REGION_NAME : Constants.NotSpecifiedString,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
@@ -244,7 +242,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     SectionName = Constants.CompanySizeFilter,
                     FilterName = item.COMPANY_SIZE,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
@@ -257,7 +255,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     SectionName = Constants.IndustryFilter,
                     FilterName = item.INDUSTRY,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
@@ -269,7 +267,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     SectionName = Constants.RevenueFilter,
                     FilterName = item.ANNUAL_REVENUE,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
@@ -281,7 +279,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     SectionName = Constants.TagsFilter,
                     FilterName = item.CTAG,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
@@ -293,7 +291,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     SectionName = Constants.SalesWorkFilter,
                     FilterName = item.NAME,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
@@ -305,7 +303,7 @@ namespace RightCRM.Core.ViewModels.Popups
                 {
                     SectionName = Constants.StatusFilter,
                     FilterName = item.STATUS,
-                    Count = item.COUNT.GetValueOrDefault()
+                    Count = item.COUNT
                 });
             }
 
