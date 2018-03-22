@@ -21,7 +21,7 @@ using RightCRM.Core.ViewModels;
 namespace RightCRM.Droid.Views.Fragments
 {
     [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
-    [Register("rightcrm.droid.views.fragments.HomeFragment")]
+    [Register(nameof(BusinessView))]
     public class BusinessView : BaseFragment<BusinessViewModel>
     {
         private IDisposable itemSelectedToken;

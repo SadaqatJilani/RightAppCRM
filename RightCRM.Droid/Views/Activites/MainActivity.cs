@@ -16,10 +16,12 @@ using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Views.InputMethods;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.Droid.Views.Attributes;
 using RightCRM.Core.ViewModels;
 
 namespace RightCRM.Droid.Views.Activites
 {
+    [MvxActivityPresentation]
     [Activity(
        Label = "Businesses",
        Theme = "@style/AppTheme",

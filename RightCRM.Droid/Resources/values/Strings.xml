@@ -8,4 +8,16 @@
 
   <string name="recyclerview_multiitem_templateselector">RightCRM.Droid.Common.TemplateSelectors.MultiItemTemplateModelTemplateSelector, RightCRM.Droid</string>
 
+<!--  business details strings  -->
+  <string name="bus_accountname">Account Name</string>
+      <string name="bus_accounttype">Account Type</string>
+      <string name="bus_businessntn">Account NTN</string>
+      <string name="bus_businesswebsite">Account Website</string>
+      <string name="bus_industry">Industry</string>
+      <string name="bus_companysize">Company Size</string>
+      <string name="bus_annualrevenue">Annual Revenue</string>
+      <string name="bus_campaignname">Campaign Name</string>
+      <string name="bus_campaignsource">Campaign Source</string>
+      <string name="bus_campaignmedia">Campaign Media</string>
+
 </resources>

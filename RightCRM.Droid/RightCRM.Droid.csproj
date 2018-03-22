@@ -205,6 +205,9 @@
     <Reference Include="PCLCrypto">
       <HintPath>..\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -224,6 +227,11 @@
     <Compile Include="Views\Fragments\BaseStateFragment.cs" />
     <Compile Include="Views\Fragments\BusinessView.cs" />
     <Compile Include="Views\Fragments\MenuFragment.cs" />
+    <Compile Include="Views\BusinessTabs\BusinessDetailTabView.cs" />
+    <Compile Include="Views\BusinessTabs\BusDetailTab1View.cs" />
+    <Compile Include="Views\BusinessTabs\BusDetailTab2View.cs" />
+    <Compile Include="Views\BusinessTabs\AssociatedTab3View.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsTab4View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -256,8 +264,13 @@
     <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
     <AndroidResource Include="Resources\layout\fragment_navigation.axml" />
     <AndroidResource Include="Resources\layout\fragment_navigation_header.axml" />
-    <AndroidResource Include="Resources\layout\business_listtemplate.axml" />
+    <AndroidResource Include="Resources\layout\listitem_businesses.axml" />
     <AndroidResource Include="Resources\layout\business_detailtab1.axml" />
+    <AndroidResource Include="Resources\layout\business_rootview.axml" />
+    <AndroidResource Include="Resources\layout\business_notestab2.axml" />
+    <AndroidResource Include="Resources\layout\business_associationstab3.axml" />
+    <AndroidResource Include="Resources\layout\business_leadstab4.axml" />
+    <AndroidResource Include="Resources\layout\listitem_busnotes.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -301,4 +314,5 @@
   <Import Project="..\packages\Xamarin.Android.Support.Transition.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Transition.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Transition.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Transition.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.v7.RecyclerView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.RecyclerView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.Design.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Design.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Design.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.Design.targets')" />
+  <Import Project="..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.CardView.25.3.1\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets')" />
 </Project>

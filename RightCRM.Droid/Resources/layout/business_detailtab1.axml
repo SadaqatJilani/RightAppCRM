@@ -1,10 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:useDefaultMargins="true"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium"
+        android:paddingTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/margin_small"
         android:columnCount="2"
-        android:rowCount="10" />
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+        <TextView
+            android:text="@string/bus_accountname"
+            android:layout_row="0"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="0"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.AccountName;" />
+        <TextView
+            android:text="@string/bus_accounttype"
+            android:layout_row="1"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="1"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.AccountType;" />
+        <TextView
+            android:text="@string/bus_businessntn"
+            android:layout_row="2"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="2"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.BusinessNTN;" />
+        <TextView
+            android:text="@string/bus_businesswebsite"
+            android:layout_row="3"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="3"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.BusinessWebsite;" />
+        <TextView
+            android:text="@string/bus_industry"
+            android:layout_row="4"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="4"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.Industry;" />
+        <TextView
+            android:text="@string/bus_companysize"
+            android:layout_row="5"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="5"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.CompanySize;" />
+        <TextView
+            android:text="@string/bus_annualrevenue"
+            android:layout_row="6"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="6"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.AnnualRevenue;" />
+        <TextView
+            android:text="@string/bus_campaignname"
+            android:layout_row="7"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="7"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.CampaignName;" />
+        <TextView
+            android:text="@string/bus_campaignsource"
+            android:layout_row="8"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="8"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.CampaignSrc;" />
+        <TextView
+            android:text="@string/bus_campaignmedia"
+            android:layout_row="9"
+            android:layout_column="0"
+            style="@style/Theme.GridviewTitles" />
+        <TextView
+            android:layout_row="9"
+            android:layout_column="1"
+            style="@style/Theme.GridviewValues"
+            local:MvxBind="Text ListBusinessDetails.CampaignMedia;" />
+    </GridLayout>
 </ScrollView>

@@ -23,7 +23,7 @@ using RightCRM.Core.ViewModels;
 namespace RightCRM.Droid.Views.Fragments
 {
     [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.navigation_frame)]
-    [Register("rightcrm.droid.views.fragments.MenuFragment")]
+    [Register(nameof(MenuFragment))]
     public class MenuFragment : MvxFragment<MenuViewModel>, NavigationView.IOnNavigationItemSelectedListener
     {
         private NavigationView navigationView;
