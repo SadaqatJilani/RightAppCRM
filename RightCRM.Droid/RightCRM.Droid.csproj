@@ -222,8 +222,8 @@
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
     <Compile Include="Views\Fragments\BaseFragment.cs" />
     <Compile Include="Views\Fragments\BaseStateFragment.cs" />
-    <Compile Include="Views\Fragments\MenuFragment.cs" />
     <Compile Include="Views\Fragments\BusinessView.cs" />
+    <Compile Include="Views\Fragments\MenuFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -257,6 +257,7 @@
     <AndroidResource Include="Resources\layout\fragment_navigation.axml" />
     <AndroidResource Include="Resources\layout\fragment_navigation_header.axml" />
     <AndroidResource Include="Resources\layout\business_listtemplate.axml" />
+    <AndroidResource Include="Resources\layout\business_detailtab1.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

@@ -39,4 +39,33 @@
     <style name="AppTheme.Splash" parent="AppTheme.Base">
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
+
+
+      <style name="Theme.GridviewTitles" parent="AppTheme">
+    <item name="android:textSize">@dimen/text_tinier</item>
+    <item name="android:textIsSelectable">true</item>
+    <item name="android:inputType">none</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:freezesText">true</item>
+    <item name="android:layout_gravity">fill_horizontal</item>
+    <item name="android:gravity">start</item>
+    <item name="android:singleLine">true</item>
+
+  </style>
+
+  <style name="Theme.GridviewValues" parent="AppTheme">
+    <item name="android:textSize">@dimen/text_tinier</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:textIsSelectable">true</item>
+    <item name="android:freezesText">true</item>
+    <item name="android:layout_gravity">fill_horizontal</item>
+    <item name="android:scrollHorizontally">true</item>
+    <item name="android:inputType">none</item>
+    <item name="android:singleLine">true</item>
+    <item name="android:gravity">end</item>
+
+  </style>
 </resources>

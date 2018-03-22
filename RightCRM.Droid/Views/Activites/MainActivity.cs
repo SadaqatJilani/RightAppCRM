@@ -7,21 +7,14 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Views.InputMethods;
-using Android.Widget;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using RightCRM.Core.ViewModels;
 
