@@ -10,7 +10,6 @@ namespace RightCRM.Droid
     [Activity(
         Label = "RightCRM.Droid"
         , MainLauncher = true
-        , Icon = "@mipmap/icon"
         , Theme = "@style/AppTheme.Splash"
         , NoHistory = true
         , ScreenOrientation = ScreenOrientation.Portrait)]

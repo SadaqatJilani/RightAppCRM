@@ -55,7 +55,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                     HttpMethod.Post,
                     busDetails);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_actionbar" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerBusContact"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerBusinessContact; SelectedItem SelectedBusinessContact" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerQuery"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerQueryType; SelectedItem SelectedQueryType" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerAnswer"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerAnswerType; SelectedItem SelectedAnsType" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerClient"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerClientType; SelectedItem SelectedClientType" />
+    <EditText
+        android:id="@+id/txt_NoteComment"
+        android:hint="Type your comment here"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_tiny"
+        local:MvxBind="Text CommentText" />
+    <Button
+        android:id="@+id/btn_addNote"
+        android:text="Add Note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        local:MvxBind="Click AddCommentCommand" />
+</LinearLayout>

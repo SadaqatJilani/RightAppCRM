@@ -28,7 +28,7 @@
             android:textSize="@dimen/text_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="MvvmCross Android Example" />
+            android:text="First User" />
         <TextView
             android:id="@+id/text_view_username"
             android:singleLine="true"
@@ -36,6 +36,6 @@
             android:textSize="@dimen/text_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="More information available on GitHub" />
+            android:text="Right CRM" />
     </LinearLayout>
 </RelativeLayout>

@@ -28,8 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
-    <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -232,6 +231,7 @@
     <Compile Include="Views\BusinessTabs\BusDetailTab2View.cs" />
     <Compile Include="Views\BusinessTabs\AssociatedTab3View.cs" />
     <Compile Include="Views\BusinessTabs\LeadsTab4View.cs" />
+    <Compile Include="Views\BusinessTabs\AddNewNoteView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -271,6 +271,20 @@
     <AndroidResource Include="Resources\layout\business_associationstab3.axml" />
     <AndroidResource Include="Resources\layout\business_leadstab4.axml" />
     <AndroidResource Include="Resources\layout\listitem_busnotes.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\appicon_crm.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\appicon_crm.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\appicon_crm.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\appicon_crm.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\appicon_crm.png" />
+    <AndroidResource Include="Resources\layout\toolbar.axml" />
+    <AndroidResource Include="Resources\layout\business_addnewnote.axml" />
+    <AndroidResource Include="Resources\layout\spinneritem_text.axml" />
+    <AndroidResource Include="Resources\layout\spinnerdropdownitem_text.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

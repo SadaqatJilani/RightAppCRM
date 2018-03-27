@@ -7,29 +7,22 @@
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Util;
 using Android.Views;
-using Android.Widget;
 using MvvmCross.Droid.Views.Attributes;
 using RightCRM.Core.ViewModels.Home;
 using RightCRM.Common;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
-using MvvmCross.Droid.Support.V7.RecyclerView;
-using Android.Support.V7.Widget;
 
 namespace RightCRM.Droid.Views.BusinessTabs
 {
-    [MvxTabLayoutPresentation(TabLayoutResourceId = Resource.Id.tabs, ViewPagerResourceId = Resource.Id.viewpager, Title = Constants.TitleBusinessNotesPage, ActivityHostViewModelType = typeof(BusinessDetailTabViewModel))]
+    [MvxTabLayoutPresentation(TabLayoutResourceId = Resource.Id.tabs, 
+                              ViewPagerResourceId = Resource.Id.viewpager, 
+                              Title = Constants.TitleBusinessNotesPage, 
+                              ActivityHostViewModelType = typeof(BusinessDetailTabViewModel))]
     [Register(nameof(BusDetailTab2View))]
     public class BusDetailTab2View : MvxFragment<BusDetailTab2ViewModel>
     {

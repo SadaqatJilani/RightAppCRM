@@ -56,7 +56,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                         acnum = AccountNum
                     });
 
-                return result.Content.note.DataArray;
+                return result?.Content?.note?.DataArray;
             }
             catch (Exception ex)
             {
@@ -93,7 +93,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                     HttpMethod.Post,
                     newNote);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {

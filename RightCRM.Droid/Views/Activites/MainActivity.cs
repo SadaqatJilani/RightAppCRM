@@ -18,12 +18,13 @@ using Android.Views.InputMethods;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Views.Attributes;
 using RightCRM.Core.ViewModels;
+using RightCRM.Common;
 
 namespace RightCRM.Droid.Views.Activites
 {
     [MvxActivityPresentation]
     [Activity(
-       Label = "Businesses",
+        Label = Constants.TitleBusinessPage,
        Theme = "@style/AppTheme",
         LaunchMode = LaunchMode.SingleTop,
        Name = "rightcrm.droid.views.activities.MainActivity"

@@ -13,5 +13,10 @@ namespace RightCRM.Common.Models
     {
         public string DisplayName { get; set; }
         public int? Value { get; set; }
-    }
+
+		public override string ToString()
+		{
+            return DisplayName;
+		}
+	}
 }

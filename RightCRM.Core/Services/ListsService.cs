@@ -36,15 +36,15 @@ namespace RightCRM.Core.Services
 
             var res = await businessFacade.GetAssociations(entityID, true);
 
-            if (res == null || (bool)!res?.business?.AssociationsArray?.Any())
+            if (res == null)
                 return busUserList;
             
             for (int i = 0; i < res?.business?.AssociationsArray?.Count(); i++)
             {
                 var tagItem = new PickerItem
                 {
-                    DisplayName = res?.business?.AssociationsArray?.ElementAt(i).usrname,
-                    Value = res?.business?.AssociationsArray?.ElementAt(i).usrid
+                    DisplayName = res?.business?.AssociationsArray?.ElementAt(i)?.usrname,
+                    Value = res?.business?.AssociationsArray?.ElementAt(i)?.usrid
                 };
 
                 busUserList.Add(tagItem);

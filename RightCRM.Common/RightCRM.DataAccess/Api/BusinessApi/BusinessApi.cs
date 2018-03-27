@@ -93,7 +93,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                                 srch_company_size = null,
                                                                                                 srch_annual_revenue = null
                                                                                             });
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -147,7 +147,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                     account_number= businessID
                     });
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -196,7 +196,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             filterRequest);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -232,7 +232,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             requestedTags);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -272,7 +272,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                     list_name= listName
                 });
 
-                return result.Content?.list?.TagDataArray ?? Enumerable.Empty<TagData>();
+                return result?.Content?.list?.TagDataArray ?? Enumerable.Empty<TagData>();
                 
             }
             catch (Exception ex)
@@ -302,7 +302,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post, 
                                                                                             selectedFiltersRequest);
 
-                return result.Content;
+                return result?.Content;
 
             }
             catch (Exception ex)
@@ -332,7 +332,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post, 
                                                                                             saveSearchParams);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -376,7 +376,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             accountRequest);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -403,7 +403,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             accountRequest);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -431,7 +431,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             associationToBeDeleted);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -459,7 +459,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             deleteLeadRequestModel);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {
@@ -489,7 +489,7 @@ namespace RightCRM.DataAccess.Api.BusinessApi
                                                                                             HttpMethod.Post,
                                                                                             updateLeadRequestModel);
 
-                return result.Content;
+                return result?.Content;
             }
             catch (Exception ex)
             {

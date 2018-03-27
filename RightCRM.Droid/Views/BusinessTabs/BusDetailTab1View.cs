@@ -28,7 +28,10 @@ using MvvmCross.Binding.Droid.BindingContext;
 
 namespace RightCRM.Droid.Views.BusinessTabs
 {
-    [MvxTabLayoutPresentation(TabLayoutResourceId = Resource.Id.tabs, ViewPagerResourceId = Resource.Id.viewpager, Title = Constants.TitleBusinessDetailsPage, ActivityHostViewModelType = typeof(BusinessDetailTabViewModel))]
+    [MvxTabLayoutPresentation(TabLayoutResourceId = Resource.Id.tabs, 
+                              ViewPagerResourceId = Resource.Id.viewpager, 
+                              Title = Constants.TitleBusinessDetailsPage, 
+                              ActivityHostViewModelType = typeof(BusinessDetailTabViewModel))]
     [Register(nameof(BusDetailTab1View))]
     public class BusDetailTab1View : MvxFragment<BusDetailTab1ViewModel>
     {

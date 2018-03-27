@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="BusinessDetailTabView.cs" company="Zepto Systems">
+// // <copyright file="AddNewNoteView.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   BusinessDetailTabView
+// //   AddNewNoteView
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -20,24 +20,24 @@ using Android.Views;
 using Android.Support.V7.Widget;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Views.Attributes;
-using RightCRM.Core.ViewModels.Home;
 using RightCRM.Common;
+using RightCRM.Core.ViewModels.Home;
 
 namespace RightCRM.Droid.Views.BusinessTabs
 {
     [MvxActivityPresentation()]
-    [Activity(Label = Constants.TitleBusinessDetailsPage,
-              Theme = "@style/AppTheme",
-              ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
-    public class BusinessDetailTabView : MvxAppCompatActivity<BusinessDetailTabViewModel>
+    [Activity(Label = Constants.TitleCreateNewNotePage,
+          Theme = "@style/AppTheme",
+          ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
+    public class AddNewNoteView : MvxAppCompatActivity<AddNewNoteViewModel>
     {
         private Toolbar toolbar;
-              
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.business_rootview);
+            SetContentView(Resource.Layout.business_addnewnote);
 
             // Create your application here
 
@@ -48,15 +48,10 @@ namespace RightCRM.Droid.Views.BusinessTabs
                 this.SetSupportActionBar(toolbar);
                 this.SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             }
-
-            if (bundle == null)
-            {
-                ViewModel.ShowInitialViewModelsCommand.Execute();
-            }
         }
 
-		public override bool OnOptionsItemSelected(IMenuItem item)
-		{
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
@@ -66,6 +61,6 @@ namespace RightCRM.Droid.Views.BusinessTabs
                 default:
                     return base.OnOptionsItemSelected(item);
             }
-		}
-	}
+        }
+    }
 }

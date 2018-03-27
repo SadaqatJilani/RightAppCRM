@@ -28,7 +28,10 @@ using RightCRM.Core.ViewModels.Home;
 
 namespace RightCRM.Droid.Views.BusinessTabs
 {
-    [MvxTabLayoutPresentation(TabLayoutResourceId = Resource.Id.tabs, ViewPagerResourceId = Resource.Id.viewpager, Title = Constants.TitleBusinessLeadsPage, ActivityHostViewModelType = typeof(BusinessDetailTabViewModel))]
+    [MvxTabLayoutPresentation(TabLayoutResourceId = Resource.Id.tabs, 
+                              ViewPagerResourceId = Resource.Id.viewpager, 
+                              Title = Constants.TitleBusinessLeadsPage, 
+                              ActivityHostViewModelType = typeof(BusinessDetailTabViewModel))]
     [Register(nameof(LeadsTab4View))]
     public class LeadsTab4View : MvxFragment<LeadsTab4ViewModel>
     {
