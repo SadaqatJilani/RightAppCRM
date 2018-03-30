@@ -4961,44 +4961,50 @@ namespace RightCRM.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0054
-			public const int abc_background_cache_hint_selector_material_dark = 2131427412;
+			// aapt resource value: 0x7f0b004e
+			public const int ButtonGreen = 2131427406;
 			
-			// aapt resource value: 0x7f0b0055
-			public const int abc_background_cache_hint_selector_material_light = 2131427413;
+			// aapt resource value: 0x7f0b004d
+			public const int TextHeading = 2131427405;
 			
 			// aapt resource value: 0x7f0b0056
-			public const int abc_btn_colored_borderless_text_material = 2131427414;
+			public const int abc_background_cache_hint_selector_material_dark = 2131427414;
 			
 			// aapt resource value: 0x7f0b0057
-			public const int abc_btn_colored_text_material = 2131427415;
+			public const int abc_background_cache_hint_selector_material_light = 2131427415;
 			
 			// aapt resource value: 0x7f0b0058
-			public const int abc_color_highlight_material = 2131427416;
+			public const int abc_btn_colored_borderless_text_material = 2131427416;
 			
 			// aapt resource value: 0x7f0b0059
-			public const int abc_hint_foreground_material_dark = 2131427417;
+			public const int abc_btn_colored_text_material = 2131427417;
 			
 			// aapt resource value: 0x7f0b005a
-			public const int abc_hint_foreground_material_light = 2131427418;
+			public const int abc_color_highlight_material = 2131427418;
+			
+			// aapt resource value: 0x7f0b005b
+			public const int abc_hint_foreground_material_dark = 2131427419;
+			
+			// aapt resource value: 0x7f0b005c
+			public const int abc_hint_foreground_material_light = 2131427420;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int abc_input_method_navigation_guard = 2131427333;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int abc_primary_text_disable_only_material_dark = 2131427419;
-			
-			// aapt resource value: 0x7f0b005c
-			public const int abc_primary_text_disable_only_material_light = 2131427420;
-			
 			// aapt resource value: 0x7f0b005d
-			public const int abc_primary_text_material_dark = 2131427421;
+			public const int abc_primary_text_disable_only_material_dark = 2131427421;
 			
 			// aapt resource value: 0x7f0b005e
-			public const int abc_primary_text_material_light = 2131427422;
+			public const int abc_primary_text_disable_only_material_light = 2131427422;
 			
 			// aapt resource value: 0x7f0b005f
-			public const int abc_search_url_text = 2131427423;
+			public const int abc_primary_text_material_dark = 2131427423;
+			
+			// aapt resource value: 0x7f0b0060
+			public const int abc_primary_text_material_light = 2131427424;
+			
+			// aapt resource value: 0x7f0b0061
+			public const int abc_search_url_text = 2131427425;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int abc_search_url_text_normal = 2131427334;
@@ -5009,32 +5015,32 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b0008
 			public const int abc_search_url_text_selected = 2131427336;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int abc_secondary_text_material_dark = 2131427424;
-			
-			// aapt resource value: 0x7f0b0061
-			public const int abc_secondary_text_material_light = 2131427425;
-			
 			// aapt resource value: 0x7f0b0062
-			public const int abc_tint_btn_checkable = 2131427426;
+			public const int abc_secondary_text_material_dark = 2131427426;
 			
 			// aapt resource value: 0x7f0b0063
-			public const int abc_tint_default = 2131427427;
+			public const int abc_secondary_text_material_light = 2131427427;
 			
 			// aapt resource value: 0x7f0b0064
-			public const int abc_tint_edittext = 2131427428;
+			public const int abc_tint_btn_checkable = 2131427428;
 			
 			// aapt resource value: 0x7f0b0065
-			public const int abc_tint_seek_thumb = 2131427429;
+			public const int abc_tint_default = 2131427429;
 			
 			// aapt resource value: 0x7f0b0066
-			public const int abc_tint_spinner = 2131427430;
+			public const int abc_tint_edittext = 2131427430;
 			
 			// aapt resource value: 0x7f0b0067
-			public const int abc_tint_switch_thumb = 2131427431;
+			public const int abc_tint_seek_thumb = 2131427431;
 			
 			// aapt resource value: 0x7f0b0068
-			public const int abc_tint_switch_track = 2131427432;
+			public const int abc_tint_spinner = 2131427432;
+			
+			// aapt resource value: 0x7f0b0069
+			public const int abc_tint_switch_thumb = 2131427433;
+			
+			// aapt resource value: 0x7f0b006a
+			public const int abc_tint_switch_track = 2131427434;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int accent_material_dark = 2131427337;
@@ -5054,8 +5060,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int background_material_light = 2131427342;
 			
-			// aapt resource value: 0x7f0b0052
-			public const int black = 2131427410;
+			// aapt resource value: 0x7f0b0054
+			public const int black = 2131427412;
 			
 			// aapt resource value: 0x7f0b000f
 			public const int bright_foreground_disabled_material_dark = 2131427343;
@@ -5102,14 +5108,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b004b
 			public const int colorPrimaryDark = 2131427403;
 			
-			// aapt resource value: 0x7f0b0051
-			public const int dark_gray = 2131427409;
+			// aapt resource value: 0x7f0b0053
+			public const int dark_gray = 2131427411;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int design_bottom_navigation_shadow_color = 2131427391;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int design_error = 2131427433;
+			// aapt resource value: 0x7f0b006b
+			public const int design_error = 2131427435;
 			
 			// aapt resource value: 0x7f0b0040
 			public const int design_fab_shadow_end_color = 2131427392;
@@ -5141,8 +5147,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b0049
 			public const int design_textinput_error_color_light = 2131427401;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int design_tint_password_toggle = 2131427434;
+			// aapt resource value: 0x7f0b006c
+			public const int design_tint_password_toggle = 2131427436;
 			
 			// aapt resource value: 0x7f0b0017
 			public const int dim_foreground_disabled_material_dark = 2131427351;
@@ -5162,8 +5168,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b001c
 			public const int foreground_material_light = 2131427356;
 			
-			// aapt resource value: 0x7f0b0050
-			public const int gray = 2131427408;
+			// aapt resource value: 0x7f0b0052
+			public const int gray = 2131427410;
 			
 			// aapt resource value: 0x7f0b001d
 			public const int highlighted_text_material_dark = 2131427357;
@@ -5171,8 +5177,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b001e
 			public const int highlighted_text_material_light = 2131427358;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int light_gray = 2131427406;
+			// aapt resource value: 0x7f0b0050
+			public const int light_gray = 2131427408;
 			
 			// aapt resource value: 0x7f0b001f
 			public const int material_blue_grey_800 = 2131427359;
@@ -5210,8 +5216,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b002a
 			public const int material_grey_900 = 2131427370;
 			
-			// aapt resource value: 0x7f0b004f
-			public const int med_gray = 2131427407;
+			// aapt resource value: 0x7f0b0051
+			public const int med_gray = 2131427409;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int notification_action_color_filter = 2131427332;
@@ -5270,11 +5276,11 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b003c
 			public const int switch_thumb_disabled_material_light = 2131427388;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int switch_thumb_material_dark = 2131427435;
+			// aapt resource value: 0x7f0b006d
+			public const int switch_thumb_material_dark = 2131427437;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int switch_thumb_material_light = 2131427436;
+			// aapt resource value: 0x7f0b006e
+			public const int switch_thumb_material_light = 2131427438;
 			
 			// aapt resource value: 0x7f0b003d
 			public const int switch_thumb_normal_material_dark = 2131427389;
@@ -5282,11 +5288,11 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0b003e
 			public const int switch_thumb_normal_material_light = 2131427390;
 			
-			// aapt resource value: 0x7f0b0053
-			public const int text_gray = 2131427411;
+			// aapt resource value: 0x7f0b0055
+			public const int text_gray = 2131427413;
 			
-			// aapt resource value: 0x7f0b004d
-			public const int white = 2131427405;
+			// aapt resource value: 0x7f0b004f
+			public const int white = 2131427407;
 			
 			static Color()
 			{
@@ -6055,104 +6061,137 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f02006f
-			public const int avd_hide_password_1 = 2130837615;
+			// aapt resource value: 0x7f02007a
+			public const int avd_hide_password_1 = 2130837626;
 			
-			// aapt resource value: 0x7f020070
-			public const int avd_hide_password_2 = 2130837616;
+			// aapt resource value: 0x7f02007b
+			public const int avd_hide_password_2 = 2130837627;
 			
-			// aapt resource value: 0x7f020071
-			public const int avd_hide_password_3 = 2130837617;
+			// aapt resource value: 0x7f02007c
+			public const int avd_hide_password_3 = 2130837628;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020072
-			public const int avd_show_password_1 = 2130837618;
+			// aapt resource value: 0x7f02007d
+			public const int avd_show_password_1 = 2130837629;
 			
-			// aapt resource value: 0x7f020073
-			public const int avd_show_password_2 = 2130837619;
+			// aapt resource value: 0x7f02007e
+			public const int avd_show_password_2 = 2130837630;
 			
-			// aapt resource value: 0x7f020074
-			public const int avd_show_password_3 = 2130837620;
+			// aapt resource value: 0x7f02007f
+			public const int avd_show_password_3 = 2130837631;
 			
 			// aapt resource value: 0x7f020055
-			public const int design_bottom_navigation_item_background = 2130837589;
+			public const int crossicon = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int design_fab_background = 2130837590;
+			public const int design_bottom_navigation_item_background = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int design_ic_visibility = 2130837591;
+			public const int design_fab_background = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int design_ic_visibility_off = 2130837592;
+			public const int design_ic_visibility = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int design_password_eye = 2130837593;
+			public const int design_ic_visibility_off = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int design_snackbar_background = 2130837594;
+			public const int design_password_eye = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_add_white = 2130837595;
+			public const int design_snackbar_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_errorstatus = 2130837596;
+			public const int filtericon = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_successstatus = 2130837597;
+			public const int ic_add_white = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int navigation_empty_icon = 2130837598;
+			public const int ic_back = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_action_background = 2130837599;
+			public const int ic_compose = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg = 2130837600;
+			public const int ic_contact = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_low = 2130837601;
+			public const int ic_email = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg_low_normal = 2130837602;
+			public const int ic_errorstatus = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_bg_low_pressed = 2130837603;
+			public const int ic_logout = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_bg_normal = 2130837604;
+			public const int ic_notes = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_bg_normal_pressed = 2130837605;
+			public const int ic_paper = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_icon_background = 2130837606;
-			
-			// aapt resource value: 0x7f02006d
-			public const int notification_template_icon_bg = 2130837613;
-			
-			// aapt resource value: 0x7f02006e
-			public const int notification_template_icon_low_bg = 2130837614;
+			public const int ic_successstatus = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notification_tile_bg = 2130837607;
+			public const int ic_telephone = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notify_panel_notification_icon_bg = 2130837608;
+			public const int ic_trash = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int right_crm_logo = 2130837609;
+			public const int navigation_empty_icon = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int roundedbg = 2130837610;
+			public const int notification_action_background = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int roundedbgdark = 2130837611;
+			public const int notification_bg = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int splash = 2130837612;
+			public const int notification_bg_low = 2130837612;
+			
+			// aapt resource value: 0x7f02006d
+			public const int notification_bg_low_normal = 2130837613;
+			
+			// aapt resource value: 0x7f02006e
+			public const int notification_bg_low_pressed = 2130837614;
+			
+			// aapt resource value: 0x7f02006f
+			public const int notification_bg_normal = 2130837615;
+			
+			// aapt resource value: 0x7f020070
+			public const int notification_bg_normal_pressed = 2130837616;
+			
+			// aapt resource value: 0x7f020071
+			public const int notification_icon_background = 2130837617;
+			
+			// aapt resource value: 0x7f020078
+			public const int notification_template_icon_bg = 2130837624;
+			
+			// aapt resource value: 0x7f020079
+			public const int notification_template_icon_low_bg = 2130837625;
+			
+			// aapt resource value: 0x7f020072
+			public const int notification_tile_bg = 2130837618;
+			
+			// aapt resource value: 0x7f020073
+			public const int notify_panel_notification_icon_bg = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int right_crm_logo = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int roundedbg = 2130837621;
+			
+			// aapt resource value: 0x7f020076
+			public const int roundedbgdark = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int splash = 2130837623;
 			
 			static Drawable()
 			{
@@ -6182,8 +6221,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090077
 			public const int TbxUsername = 2131296375;
 			
-			// aapt resource value: 0x7f0900a6
-			public const int action0 = 2131296422;
+			// aapt resource value: 0x7f0900b7
+			public const int action0 = 2131296439;
 			
 			// aapt resource value: 0x7f090066
 			public const int action_bar = 2131296358;
@@ -6206,17 +6245,17 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090043
 			public const int action_bar_title = 2131296323;
 			
-			// aapt resource value: 0x7f0900a3
-			public const int action_container = 2131296419;
+			// aapt resource value: 0x7f0900b4
+			public const int action_container = 2131296436;
 			
 			// aapt resource value: 0x7f090067
 			public const int action_context_bar = 2131296359;
 			
-			// aapt resource value: 0x7f0900aa
-			public const int action_divider = 2131296426;
+			// aapt resource value: 0x7f0900bb
+			public const int action_divider = 2131296443;
 			
-			// aapt resource value: 0x7f0900a4
-			public const int action_image = 2131296420;
+			// aapt resource value: 0x7f0900b5
+			public const int action_image = 2131296437;
 			
 			// aapt resource value: 0x7f090003
 			public const int action_menu_divider = 2131296259;
@@ -6233,11 +6272,11 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090045
 			public const int action_mode_close_button = 2131296325;
 			
-			// aapt resource value: 0x7f0900a5
-			public const int action_text = 2131296421;
+			// aapt resource value: 0x7f0900b6
+			public const int action_text = 2131296438;
 			
-			// aapt resource value: 0x7f0900b3
-			public const int actions = 2131296435;
+			// aapt resource value: 0x7f0900c4
+			public const int actions = 2131296452;
 			
 			// aapt resource value: 0x7f090046
 			public const int activity_chooser_view_content = 2131296326;
@@ -6254,8 +6293,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090025
 			public const int always = 2131296293;
 			
-			// aapt resource value: 0x7f090087
-			public const int appbar = 2131296391;
+			// aapt resource value: 0x7f090095
+			public const int appbar = 2131296405;
 			
 			// aapt resource value: 0x7f090031
 			public const int auto = 2131296305;
@@ -6266,20 +6305,41 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09002a
 			public const int bottom = 2131296298;
 			
+			// aapt resource value: 0x7f0900ab
+			public const int btnDelete = 2131296427;
+			
+			// aapt resource value: 0x7f090088
+			public const int btn_Submit = 2131296392;
+			
 			// aapt resource value: 0x7f090084
 			public const int btn_addNote = 2131296388;
 			
-			// aapt resource value: 0x7f090096
-			public const int business_recycler_view = 2131296406;
+			// aapt resource value: 0x7f09008c
+			public const int btn_delete = 2131296396;
+			
+			// aapt resource value: 0x7f09008b
+			public const int btn_save = 2131296395;
+			
+			// aapt resource value: 0x7f090091
+			public const int btnsearch = 2131296401;
+			
+			// aapt resource value: 0x7f090085
+			public const int business_Associations_rec = 2131296389;
+			
+			// aapt resource value: 0x7f090092
+			public const int business_Leads_rec = 2131296402;
+			
+			// aapt resource value: 0x7f0900a4
+			public const int business_recycler_view = 2131296420;
 			
 			// aapt resource value: 0x7f09004d
 			public const int buttonPanel = 2131296333;
 			
-			// aapt resource value: 0x7f0900a7
-			public const int cancel_action = 2131296423;
+			// aapt resource value: 0x7f0900b8
+			public const int cancel_action = 2131296440;
 			
-			// aapt resource value: 0x7f09009d
-			public const int card_view_notes = 2131296413;
+			// aapt resource value: 0x7f0900ac
+			public const int card_view_notes = 2131296428;
 			
 			// aapt resource value: 0x7f090032
 			public const int center = 2131296306;
@@ -6293,8 +6353,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09005d
 			public const int checkbox = 2131296349;
 			
-			// aapt resource value: 0x7f0900af
-			public const int chronometer = 2131296431;
+			// aapt resource value: 0x7f0900c0
+			public const int chronometer = 2131296448;
 			
 			// aapt resource value: 0x7f09003b
 			public const int clip_horizontal = 2131296315;
@@ -6323,20 +6383,20 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090049
 			public const int default_activity_button = 2131296329;
 			
-			// aapt resource value: 0x7f09008d
-			public const int design_bottom_sheet = 2131296397;
+			// aapt resource value: 0x7f09009b
+			public const int design_bottom_sheet = 2131296411;
 			
-			// aapt resource value: 0x7f090094
-			public const int design_menu_item_action_area = 2131296404;
+			// aapt resource value: 0x7f0900a2
+			public const int design_menu_item_action_area = 2131296418;
 			
-			// aapt resource value: 0x7f090093
-			public const int design_menu_item_action_area_stub = 2131296403;
+			// aapt resource value: 0x7f0900a1
+			public const int design_menu_item_action_area_stub = 2131296417;
 			
-			// aapt resource value: 0x7f090092
-			public const int design_menu_item_text = 2131296402;
+			// aapt resource value: 0x7f0900a0
+			public const int design_menu_item_text = 2131296416;
 			
-			// aapt resource value: 0x7f090091
-			public const int design_navigation_view = 2131296401;
+			// aapt resource value: 0x7f09009f
+			public const int design_navigation_view = 2131296415;
 			
 			// aapt resource value: 0x7f090014
 			public const int disableHome = 2131296276;
@@ -6350,8 +6410,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090023
 			public const int end = 2131296291;
 			
-			// aapt resource value: 0x7f0900b9
-			public const int end_padder = 2131296441;
+			// aapt resource value: 0x7f0900ca
+			public const int end_padder = 2131296458;
 			
 			// aapt resource value: 0x7f09002c
 			public const int enterAlways = 2131296300;
@@ -6368,8 +6428,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09005c
 			public const int expanded_menu = 2131296348;
 			
-			// aapt resource value: 0x7f090086
-			public const int fab = 2131296390;
+			// aapt resource value: 0x7f090094
+			public const int fab = 2131296404;
 			
 			// aapt resource value: 0x7f09003d
 			public const int fill = 2131296317;
@@ -6380,8 +6440,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090035
 			public const int fill_vertical = 2131296309;
 			
+			// aapt resource value: 0x7f090090
+			public const int filteroptions_explv = 2131296400;
+			
 			// aapt resource value: 0x7f090041
 			public const int @fixed = 2131296321;
+			
+			// aapt resource value: 0x7f0900ad
+			public const int grouptext = 2131296429;
 			
 			// aapt resource value: 0x7f090005
 			public const int home = 2131296261;
@@ -6392,8 +6458,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09004b
 			public const int icon = 2131296331;
 			
-			// aapt resource value: 0x7f0900b4
-			public const int icon_group = 2131296436;
+			// aapt resource value: 0x7f0900c5
+			public const int icon_group = 2131296453;
 			
 			// aapt resource value: 0x7f090027
 			public const int ifRoom = 2131296295;
@@ -6404,29 +6470,32 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090075
 			public const int imageView = 2131296373;
 			
-			// aapt resource value: 0x7f090098
-			public const int image_view_row_icon = 2131296408;
+			// aapt resource value: 0x7f0900a6
+			public const int image_view_row_icon = 2131296422;
 			
-			// aapt resource value: 0x7f0900b0
-			public const int info = 2131296432;
+			// aapt resource value: 0x7f0900c1
+			public const int info = 2131296449;
 			
-			// aapt resource value: 0x7f09009c
-			public const int innerText = 2131296412;
+			// aapt resource value: 0x7f0900aa
+			public const int innerText = 2131296426;
 			
 			// aapt resource value: 0x7f090000
 			public const int item_touch_helper_previous_elevation = 2131296256;
 			
-			// aapt resource value: 0x7f09008b
-			public const int largeLabel = 2131296395;
+			// aapt resource value: 0x7f090099
+			public const int largeLabel = 2131296409;
+			
+			// aapt resource value: 0x7f09008e
+			public const int lblSavedSearch = 2131296398;
 			
 			// aapt resource value: 0x7f090036
 			public const int left = 2131296310;
 			
-			// aapt resource value: 0x7f0900b5
-			public const int line1 = 2131296437;
+			// aapt resource value: 0x7f0900c6
+			public const int line1 = 2131296454;
 			
-			// aapt resource value: 0x7f0900b7
-			public const int line3 = 2131296439;
+			// aapt resource value: 0x7f0900c8
+			public const int line3 = 2131296456;
 			
 			// aapt resource value: 0x7f090011
 			public const int listMode = 2131296273;
@@ -6434,14 +6503,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09004a
 			public const int list_item = 2131296330;
 			
-			// aapt resource value: 0x7f0900a0
-			public const int loadingImage = 2131296416;
+			// aapt resource value: 0x7f0900b1
+			public const int loadingImage = 2131296433;
 			
-			// aapt resource value: 0x7f09009e
-			public const int loadingProgressBar = 2131296414;
+			// aapt resource value: 0x7f0900af
+			public const int loadingProgressBar = 2131296431;
 			
-			// aapt resource value: 0x7f0900a1
-			public const int loadingProgressWheel = 2131296417;
+			// aapt resource value: 0x7f0900b2
+			public const int loadingProgressWheel = 2131296434;
 			
 			// aapt resource value: 0x7f09007e
 			public const int main_content = 2131296382;
@@ -6449,11 +6518,11 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09007b
 			public const int main_frame = 2131296379;
 			
-			// aapt resource value: 0x7f0900bd
-			public const int masked = 2131296445;
+			// aapt resource value: 0x7f0900ce
+			public const int masked = 2131296462;
 			
-			// aapt resource value: 0x7f0900a9
-			public const int media_actions = 2131296425;
+			// aapt resource value: 0x7f0900ba
+			public const int media_actions = 2131296442;
 			
 			// aapt resource value: 0x7f090024
 			public const int middle = 2131296292;
@@ -6464,38 +6533,38 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09001c
 			public const int multiply = 2131296284;
 			
-			// aapt resource value: 0x7f0900a2
-			public const int myButton = 2131296418;
+			// aapt resource value: 0x7f0900b3
+			public const int myButton = 2131296435;
 			
-			// aapt resource value: 0x7f0900c1
-			public const int nav_createnew = 2131296449;
+			// aapt resource value: 0x7f0900d2
+			public const int nav_createnew = 2131296466;
 			
-			// aapt resource value: 0x7f0900c2
-			public const int nav_footer = 2131296450;
+			// aapt resource value: 0x7f0900d3
+			public const int nav_footer = 2131296467;
 			
-			// aapt resource value: 0x7f0900c4
-			public const int nav_helpfeedback = 2131296452;
+			// aapt resource value: 0x7f0900d5
+			public const int nav_helpfeedback = 2131296469;
 			
-			// aapt resource value: 0x7f0900bf
-			public const int nav_home = 2131296447;
+			// aapt resource value: 0x7f0900d0
+			public const int nav_home = 2131296464;
 			
-			// aapt resource value: 0x7f0900be
-			public const int nav_items = 2131296446;
+			// aapt resource value: 0x7f0900cf
+			public const int nav_items = 2131296463;
 			
-			// aapt resource value: 0x7f0900c0
-			public const int nav_markets = 2131296448;
+			// aapt resource value: 0x7f0900d1
+			public const int nav_markets = 2131296465;
 			
-			// aapt resource value: 0x7f0900c3
-			public const int nav_settings = 2131296451;
+			// aapt resource value: 0x7f0900d4
+			public const int nav_settings = 2131296468;
 			
 			// aapt resource value: 0x7f09007d
 			public const int navigation_frame = 2131296381;
 			
-			// aapt resource value: 0x7f090090
-			public const int navigation_header_container = 2131296400;
+			// aapt resource value: 0x7f09009e
+			public const int navigation_header_container = 2131296414;
 			
-			// aapt resource value: 0x7f090097
-			public const int navigation_view = 2131296407;
+			// aapt resource value: 0x7f0900a5
+			public const int navigation_view = 2131296421;
 			
 			// aapt resource value: 0x7f090028
 			public const int never = 2131296296;
@@ -6506,17 +6575,17 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090012
 			public const int normal = 2131296274;
 			
-			// aapt resource value: 0x7f090085
-			public const int notes_recycler = 2131296389;
+			// aapt resource value: 0x7f090093
+			public const int notes_recycler = 2131296403;
 			
-			// aapt resource value: 0x7f0900b2
-			public const int notification_background = 2131296434;
+			// aapt resource value: 0x7f0900c3
+			public const int notification_background = 2131296451;
 			
-			// aapt resource value: 0x7f0900ac
-			public const int notification_main_column = 2131296428;
+			// aapt resource value: 0x7f0900bd
+			public const int notification_main_column = 2131296445;
 			
-			// aapt resource value: 0x7f0900ab
-			public const int notification_main_column_container = 2131296427;
+			// aapt resource value: 0x7f0900bc
+			public const int notification_main_column_container = 2131296444;
 			
 			// aapt resource value: 0x7f090039
 			public const int parallax = 2131296313;
@@ -6539,11 +6608,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090037
 			public const int right = 2131296311;
 			
-			// aapt resource value: 0x7f0900b1
-			public const int right_icon = 2131296433;
+			// aapt resource value: 0x7f0900c2
+			public const int right_icon = 2131296450;
 			
-			// aapt resource value: 0x7f0900ad
-			public const int right_side = 2131296429;
+			// aapt resource value: 0x7f0900be
+			public const int right_side = 2131296446;
+			
+			// aapt resource value: 0x7f09008f
+			public const int savedfilters_rec = 2131296399;
 			
 			// aapt resource value: 0x7f09001d
 			public const int screen = 2131296285;
@@ -6596,6 +6668,9 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090074
 			public const int select_dialog_listview = 2131296372;
 			
+			// aapt resource value: 0x7f0900ae
+			public const int selectedimg = 2131296430;
+			
 			// aapt resource value: 0x7f09005e
 			public const int shortcut = 2131296350;
 			
@@ -6608,14 +6683,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090019
 			public const int showTitle = 2131296281;
 			
-			// aapt resource value: 0x7f09008a
-			public const int smallLabel = 2131296394;
+			// aapt resource value: 0x7f090098
+			public const int smallLabel = 2131296408;
 			
-			// aapt resource value: 0x7f09008f
-			public const int snackbar_action = 2131296399;
+			// aapt resource value: 0x7f09009d
+			public const int snackbar_action = 2131296413;
 			
-			// aapt resource value: 0x7f09008e
-			public const int snackbar_text = 2131296398;
+			// aapt resource value: 0x7f09009c
+			public const int snackbar_text = 2131296412;
 			
 			// aapt resource value: 0x7f090030
 			public const int snap = 2131296304;
@@ -6632,11 +6707,17 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090082
 			public const int spinnerClient = 2131296386;
 			
+			// aapt resource value: 0x7f090089
+			public const int spinnerLeadType = 2131296393;
+			
 			// aapt resource value: 0x7f090080
 			public const int spinnerQuery = 2131296384;
 			
-			// aapt resource value: 0x7f0900ba
-			public const int spinner_itemstyle = 2131296442;
+			// aapt resource value: 0x7f09008a
+			public const int spinnerWorkUser = 2131296394;
+			
+			// aapt resource value: 0x7f0900cb
+			public const int spinner_itemstyle = 2131296459;
 			
 			// aapt resource value: 0x7f090008
 			public const int split_action_bar = 2131296264;
@@ -6653,8 +6734,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090038
 			public const int start = 2131296312;
 			
-			// aapt resource value: 0x7f0900a8
-			public const int status_bar_latest_event_content = 2131296424;
+			// aapt resource value: 0x7f0900b9
+			public const int status_bar_latest_event_content = 2131296441;
 			
 			// aapt resource value: 0x7f090060
 			public const int submenuarrow = 2131296352;
@@ -6665,14 +6746,14 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090013
 			public const int tabMode = 2131296275;
 			
-			// aapt resource value: 0x7f090088
-			public const int tabs = 2131296392;
+			// aapt resource value: 0x7f090096
+			public const int tabs = 2131296406;
 			
-			// aapt resource value: 0x7f0900b8
-			public const int text = 2131296440;
+			// aapt resource value: 0x7f0900c9
+			public const int text = 2131296457;
 			
-			// aapt resource value: 0x7f0900b6
-			public const int text2 = 2131296438;
+			// aapt resource value: 0x7f0900c7
+			public const int text2 = 2131296455;
 			
 			// aapt resource value: 0x7f090054
 			public const int textSpacerNoButtons = 2131296340;
@@ -6683,20 +6764,20 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090076
 			public const int textView1 = 2131296374;
 			
-			// aapt resource value: 0x7f09009f
-			public const int textViewStatus = 2131296415;
+			// aapt resource value: 0x7f0900b0
+			public const int textViewStatus = 2131296432;
 			
-			// aapt resource value: 0x7f090099
-			public const int text_container = 2131296409;
+			// aapt resource value: 0x7f0900a7
+			public const int text_container = 2131296423;
 			
-			// aapt resource value: 0x7f090095
-			public const int text_input_password_toggle = 2131296405;
+			// aapt resource value: 0x7f0900a3
+			public const int text_input_password_toggle = 2131296419;
 			
-			// aapt resource value: 0x7f09009a
-			public const int text_view_fullname = 2131296410;
+			// aapt resource value: 0x7f0900a8
+			public const int text_view_fullname = 2131296424;
 			
-			// aapt resource value: 0x7f09009b
-			public const int text_view_username = 2131296411;
+			// aapt resource value: 0x7f0900a9
+			public const int text_view_username = 2131296425;
 			
 			// aapt resource value: 0x7f09000c
 			public const int textinput_counter = 2131296268;
@@ -6704,8 +6785,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09000d
 			public const int textinput_error = 2131296269;
 			
-			// aapt resource value: 0x7f0900ae
-			public const int time = 2131296430;
+			// aapt resource value: 0x7f0900bf
+			public const int time = 2131296447;
 			
 			// aapt resource value: 0x7f09004c
 			public const int title = 2131296332;
@@ -6716,8 +6797,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090059
 			public const int title_template = 2131296345;
 			
-			// aapt resource value: 0x7f0900bb
-			public const int toolbar = 2131296443;
+			// aapt resource value: 0x7f0900cc
+			public const int toolbar = 2131296460;
 			
 			// aapt resource value: 0x7f09002b
 			public const int top = 2131296299;
@@ -6725,8 +6806,8 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f090058
 			public const int topPanel = 2131296344;
 			
-			// aapt resource value: 0x7f09008c
-			public const int touch_outside = 2131296396;
+			// aapt resource value: 0x7f09009a
+			public const int touch_outside = 2131296410;
 			
 			// aapt resource value: 0x7f09000a
 			public const int transition_current_scene = 2131296266;
@@ -6734,8 +6815,17 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09000b
 			public const int transition_scene_layoutid_cache = 2131296267;
 			
+			// aapt resource value: 0x7f090087
+			public const int txt_EmailAddress = 2131296391;
+			
 			// aapt resource value: 0x7f090083
 			public const int txt_NoteComment = 2131296387;
+			
+			// aapt resource value: 0x7f090086
+			public const int txt_Username = 2131296390;
+			
+			// aapt resource value: 0x7f09008d
+			public const int txtsearchbusinesses = 2131296397;
 			
 			// aapt resource value: 0x7f090009
 			public const int up = 2131296265;
@@ -6746,11 +6836,11 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f09000e
 			public const int view_offset_helper = 2131296270;
 			
-			// aapt resource value: 0x7f090089
-			public const int viewpager = 2131296393;
+			// aapt resource value: 0x7f090097
+			public const int viewpager = 2131296407;
 			
-			// aapt resource value: 0x7f0900bc
-			public const int visible = 2131296444;
+			// aapt resource value: 0x7f0900cd
+			public const int visible = 2131296461;
 			
 			// aapt resource value: 0x7f090029
 			public const int withText = 2131296297;
@@ -6908,157 +6998,178 @@ namespace RightCRM.Droid
 			public const int business_detailtab1 = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int business_leadstab4 = 2130968608;
+			public const int business_editlead = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int business_notestab2 = 2130968609;
+			public const int business_filterview = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int business_rootview = 2130968610;
+			public const int business_leadstab4 = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int design_bottom_navigation_item = 2130968611;
+			public const int business_notestab2 = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int design_bottom_sheet_dialog = 2130968612;
+			public const int business_rootview = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_layout_snackbar = 2130968613;
+			public const int design_bottom_navigation_item = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_layout_snackbar_include = 2130968614;
+			public const int design_bottom_sheet_dialog = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_layout_tab_icon = 2130968615;
+			public const int design_layout_snackbar = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int design_layout_tab_text = 2130968616;
+			public const int design_layout_snackbar_include = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int design_menu_item_action_area = 2130968617;
+			public const int design_layout_tab_icon = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int design_navigation_item = 2130968618;
+			public const int design_layout_tab_text = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int design_navigation_item_header = 2130968619;
+			public const int design_menu_item_action_area = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int design_navigation_item_separator = 2130968620;
+			public const int design_navigation_item = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int design_navigation_item_subheader = 2130968621;
+			public const int design_navigation_item_header = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int design_navigation_menu = 2130968622;
+			public const int design_navigation_item_separator = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int design_navigation_menu_item = 2130968623;
+			public const int design_navigation_item_subheader = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int design_text_input_password_icon = 2130968624;
+			public const int design_navigation_menu = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int fragment_home = 2130968625;
+			public const int design_navigation_menu_item = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int fragment_navigation = 2130968626;
+			public const int design_text_input_password_icon = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int fragment_navigation_header = 2130968627;
+			public const int fragment_home = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int listitem_businesses = 2130968628;
+			public const int fragment_navigation = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int listitem_busnotes = 2130968629;
+			public const int fragment_navigation_header = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int loading = 2130968630;
+			public const int listitem_associations = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int loadingimage = 2130968631;
+			public const int listitem_businesses = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int loadingprogress = 2130968632;
+			public const int listitem_busnotes = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int Main = 2130968633;
+			public const int listitem_filtergroup = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int MainView = 2130968634;
+			public const int listitem_filteritem = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_action = 2130968635;
+			public const int listitem_leads = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_action_tombstone = 2130968636;
+			public const int listitem_savedsearches = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_media_action = 2130968637;
+			public const int loading = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_media_cancel_action = 2130968638;
+			public const int loadingimage = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int notification_template_big_media = 2130968639;
+			public const int loadingprogress = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int notification_template_big_media_custom = 2130968640;
+			public const int Main = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int notification_template_big_media_narrow = 2130968641;
+			public const int MainView = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int notification_template_big_media_narrow_custom = 2130968642;
+			public const int notification_action = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int notification_template_custom_big = 2130968643;
+			public const int notification_action_tombstone = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int notification_template_icon_group = 2130968644;
+			public const int notification_media_action = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int notification_template_lines_media = 2130968645;
+			public const int notification_media_cancel_action = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int notification_template_media = 2130968646;
+			public const int notification_template_big_media = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int notification_template_media_custom = 2130968647;
+			public const int notification_template_big_media_custom = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int notification_template_part_chronometer = 2130968648;
+			public const int notification_template_big_media_narrow = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int notification_template_part_time = 2130968649;
+			public const int notification_template_big_media_narrow_custom = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int select_dialog_item_material = 2130968650;
+			public const int notification_template_custom_big = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int select_dialog_multichoice_material = 2130968651;
+			public const int notification_template_icon_group = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int select_dialog_singlechoice_material = 2130968652;
+			public const int notification_template_lines_media = 2130968652;
 			
 			// aapt resource value: 0x7f04004d
-			public const int spinnerdropdownitem_text = 2130968653;
+			public const int notification_template_media = 2130968653;
 			
 			// aapt resource value: 0x7f04004e
-			public const int spinneritem_text = 2130968654;
+			public const int notification_template_media_custom = 2130968654;
 			
 			// aapt resource value: 0x7f04004f
-			public const int SplashScreen = 2130968655;
+			public const int notification_template_part_chronometer = 2130968655;
 			
 			// aapt resource value: 0x7f040050
-			public const int support_simple_spinner_dropdown_item = 2130968656;
+			public const int notification_template_part_time = 2130968656;
 			
 			// aapt resource value: 0x7f040051
-			public const int toolbar = 2130968657;
+			public const int select_dialog_item_material = 2130968657;
 			
 			// aapt resource value: 0x7f040052
-			public const int toolbar_actionbar = 2130968658;
+			public const int select_dialog_multichoice_material = 2130968658;
+			
+			// aapt resource value: 0x7f040053
+			public const int select_dialog_singlechoice_material = 2130968659;
+			
+			// aapt resource value: 0x7f040054
+			public const int spinnerdropdownitem_text = 2130968660;
+			
+			// aapt resource value: 0x7f040055
+			public const int spinneritem_text = 2130968661;
+			
+			// aapt resource value: 0x7f040056
+			public const int SplashScreen = 2130968662;
+			
+			// aapt resource value: 0x7f040057
+			public const int support_simple_spinner_dropdown_item = 2130968663;
+			
+			// aapt resource value: 0x7f040058
+			public const int toolbar = 2130968664;
+			
+			// aapt resource value: 0x7f040059
+			public const int toolbar_actionbar = 2130968665;
 			
 			static Layout()
 			{
@@ -7257,6 +7368,9 @@ namespace RightCRM.Droid
 			
 			// aapt resource value: 0x7f0c002c
 			public const int fab_scroll_shrink_grow_autohide_behavior = 2131492908;
+			
+			// aapt resource value: 0x7f0c003d
+			public const int filter_searchhint = 2131492925;
 			
 			// aapt resource value: 0x7f0c002e
 			public const int hello = 2131492910;
@@ -7808,6 +7922,9 @@ namespace RightCRM.Droid
 			// aapt resource value: 0x7f0a0003
 			public const int CardView_Light = 2131361795;
 			
+			// aapt resource value: 0x7f0a018a
+			public const int LeadHeadings = 2131362186;
+			
 			// aapt resource value: 0x7f0a0188
 			public const int MySpinnerLook = 2131362184;
 			
@@ -8110,6 +8227,9 @@ namespace RightCRM.Droid
 			
 			// aapt resource value: 0x7f0a0105
 			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131362053;
+			
+			// aapt resource value: 0x7f0a0189
+			public const int TextHeadings = 2131362185;
 			
 			// aapt resource value: 0x7f0a0106
 			public const int Theme_AppCompat = 2131362054;

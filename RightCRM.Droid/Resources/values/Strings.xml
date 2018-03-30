@@ -20,4 +20,6 @@
       <string name="bus_campaignsource">Campaign Source</string>
       <string name="bus_campaignmedia">Campaign Media</string>
 
+          <string name="filter_searchhint">Search Businesses</string>
+
 </resources>

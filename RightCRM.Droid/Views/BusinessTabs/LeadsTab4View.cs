@@ -25,6 +25,9 @@ using MvvmCross.Droid.Views.Attributes;
 using RightCRM.Core.ViewModels.Home.BusinessTabs;
 using RightCRM.Common;
 using RightCRM.Core.ViewModels.Home;
+using MvvmCross.Droid.Support.V7.RecyclerView;
+using MvvmCross.Droid.Support.V7.AppCompat.Widget;
+using Android.Support.V7.Widget;
 
 namespace RightCRM.Droid.Views.BusinessTabs
 {
@@ -35,6 +38,8 @@ namespace RightCRM.Droid.Views.BusinessTabs
     [Register(nameof(LeadsTab4View))]
     public class LeadsTab4View : MvxFragment<LeadsTab4ViewModel>
     {
+        private MvxRecyclerView recyclerLeads;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -47,6 +52,19 @@ namespace RightCRM.Droid.Views.BusinessTabs
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = this.BindingInflate(Resource.Layout.business_leadstab4, null);
+
+            recyclerLeads = view.FindViewById<MvxRecyclerView>(Resource.Id.business_Leads_rec);
+            if (recyclerLeads != null)
+            {
+                recyclerLeads.HasFixedSize = true;
+                var layoutManager = new MvxGuardedLinearLayoutManager(Activity);
+                recyclerLeads.SetLayoutManager(layoutManager);
+
+                //add divider
+                var dividerItemDecoration = new DividerItemDecoration(recyclerLeads.Context,
+                                                                                        layoutManager.Orientation);
+                recyclerLeads.AddItemDecoration(dividerItemDecoration);
+            }
 
             return view;
         }

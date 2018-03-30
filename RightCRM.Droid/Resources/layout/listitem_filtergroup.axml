@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/grouptext"
+    android:text="hello"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/text_very_huge"
+    android:textStyle="bold"
+    android:background="@color/button_material_light"
+    android:paddingTop="@dimen/element_margin_small"
+    android:paddingBottom="@dimen/element_margin_small"
+    android:paddingStart="30dp"
+    local:MvxBind="Text Heading" />

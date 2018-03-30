@@ -93,4 +93,24 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/margin_medium</item>
     </style>
+
+           <style name="TextHeadings" 
+        parent="@style/AppTheme">
+        <item name="android:textSize">@dimen/text_very_huge</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/TextHeading</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+               <style name="LeadHeadings" 
+        parent="@style/AppTheme">
+        <item name="android:textSize">@dimen/text_tiny</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_weight">0.33</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 </resources>

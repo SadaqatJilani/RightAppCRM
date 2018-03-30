@@ -232,6 +232,8 @@
     <Compile Include="Views\BusinessTabs\AssociatedTab3View.cs" />
     <Compile Include="Views\BusinessTabs\LeadsTab4View.cs" />
     <Compile Include="Views\BusinessTabs\AddNewNoteView.cs" />
+    <Compile Include="Views\BusinessTabs\LeadsEditView.cs" />
+    <Compile Include="Views\Search\FilterPopupView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -285,6 +287,24 @@
     <AndroidResource Include="Resources\layout\business_addnewnote.axml" />
     <AndroidResource Include="Resources\layout\spinneritem_text.axml" />
     <AndroidResource Include="Resources\layout\spinnerdropdownitem_text.axml" />
+    <AndroidResource Include="Resources\layout\listitem_associations.axml" />
+    <AndroidResource Include="Resources\drawable\crossicon.png" />
+    <AndroidResource Include="Resources\drawable\filtericon.png" />
+    <AndroidResource Include="Resources\drawable\ic_back.png" />
+    <AndroidResource Include="Resources\drawable\ic_compose.png" />
+    <AndroidResource Include="Resources\drawable\ic_contact.png" />
+    <AndroidResource Include="Resources\drawable\ic_email.png" />
+    <AndroidResource Include="Resources\drawable\ic_logout.png" />
+    <AndroidResource Include="Resources\drawable\ic_notes.png" />
+    <AndroidResource Include="Resources\drawable\ic_paper.png" />
+    <AndroidResource Include="Resources\drawable\ic_telephone.png" />
+    <AndroidResource Include="Resources\drawable\ic_trash.png" />
+    <AndroidResource Include="Resources\layout\listitem_leads.axml" />
+    <AndroidResource Include="Resources\layout\business_editlead.axml" />
+    <AndroidResource Include="Resources\layout\business_filterview.axml" />
+    <AndroidResource Include="Resources\layout\listitem_savedsearches.axml" />
+    <AndroidResource Include="Resources\layout\listitem_filtergroup.axml" />
+    <AndroidResource Include="Resources\layout\listitem_filteritem.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

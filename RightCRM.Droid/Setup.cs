@@ -15,7 +15,7 @@ using MvvmCross.Droid.Views;
 
 namespace RightCRM.Droid
 {
-    public class Setup : MvxAndroidSetup
+    public class Setup : MvxAppCompatSetup
     {
         public Setup(Context applicationContext) : base(applicationContext)
         {

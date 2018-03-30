@@ -19,6 +19,7 @@ using MvvmCross.Droid.Support.V4;
 using RightCRM.Core.ViewModels.Menu;
 using RightCRM.Droid.Views.Activites;
 using RightCRM.Core.ViewModels;
+using RightCRM.Common;
 
 namespace RightCRM.Droid.Views.Fragments
 {
@@ -37,19 +38,37 @@ namespace RightCRM.Droid.Views.Fragments
 
             navigationView = view.FindViewById<NavigationView>(Resource.Id.navigation_view);
             navigationView.SetNavigationItemSelectedListener(this);
-            navigationView.Menu.FindItem(Resource.Id.nav_home).SetChecked(true);
+
+            navigationView.Menu.Clear();
+
+            for (int i = 0; i < ViewModel?.MenuItems?.Count; i++)
+            {
+                navigationView.Menu.Add(Menu.None, 
+                                        Menu.First + i, 
+                                        Menu.None, 
+                                        ViewModel?.MenuItems[i]?.Title ?? string.Empty);
+            }
+
+            navigationView.Menu.FindItem(Menu.First).SetChecked(true);
 
             return view;
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
-            item.SetCheckable(true);
-            item.SetChecked(true);
-            previousMenuItem?.SetChecked(false);
-            previousMenuItem = item;
+            if (previousMenuItem != item)
+            {
+                item.SetCheckable(true);
+                item.SetChecked(true);
+                previousMenuItem?.SetChecked(false);
+                previousMenuItem = item;
 
-            Navigate(item.ItemId);
+                Navigate(item.ItemId);
+            }
+            else
+            {
+                ((MainActivity)Activity).DrawerLayout.CloseDrawers();
+            }
 
             return true;
         }
@@ -61,14 +80,14 @@ namespace RightCRM.Droid.Views.Fragments
 
             switch (itemId)
             {
-                case Resource.Id.nav_home:
+                case 1:
                     //ViewModel.ShowViewModelAndroid(typeof(BusinessViewModel));
                     ViewModel.NavigateHome.Execute();
                     break;
-                case Resource.Id.nav_markets:
+                case 2:
                     //ViewModel.ShowViewModelAndroid(typeof(SecondHostViewModel));
                     break;
-                case Resource.Id.nav_createnew:
+                case 3:
                     //ViewModel.ShowViewModelAndroid(typeof(ExampleViewPagerViewModel));
                     break;
                 case Resource.Id.nav_settings:

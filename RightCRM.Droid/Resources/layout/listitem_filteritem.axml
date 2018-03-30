@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground">
     <TextView
         android:id="@+id/innerText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:text="hello"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:padding="@dimen/element_margin_small"
-        local:MvxBind="Text CompanyName" />
+        local:MvxBind="Text FilterName" />
+    <ImageView
+        android:id="@+id/selectedimg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="?android:attr/textCheckMark"
+        local:MvxBind="Visibility Visibility(IsSelected)" />
 </LinearLayout>

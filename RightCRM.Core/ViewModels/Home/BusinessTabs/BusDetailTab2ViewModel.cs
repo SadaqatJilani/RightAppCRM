@@ -42,7 +42,7 @@ namespace RightCRM.Core.ViewModels.Home
             this.userDialogs = userDialogs;
 
             this.NewNoteCommand = new MvxAsyncCommand(SaveNoteAndReturn);
-            this.AllNotesList = new MvxObservableCollection<NotesModel>();
+            this.AllNotesList = new MvxObservableCollection<NotesItemViewModel>();
         }
 
         async Task SaveNoteAndReturn()
@@ -62,9 +62,8 @@ namespace RightCRM.Core.ViewModels.Home
         /// <value>The new note command.</value>
         public IMvxCommand NewNoteCommand { get; private set; }
 
-        MvxObservableCollection<NotesModel> allNotesList;
-
-        public MvxObservableCollection<NotesModel> AllNotesList { get { return allNotesList; } set { SetProperty(ref allNotesList, value); } }
+        private MvxObservableCollection<NotesItemViewModel> allNotesList;
+        public MvxObservableCollection<NotesItemViewModel> AllNotesList { get { return allNotesList; } set { SetProperty(ref allNotesList, value); } }
 
         /// <summary>
         /// Prepare this instance.
@@ -95,7 +94,7 @@ namespace RightCRM.Core.ViewModels.Home
 
             foreach (var note in result)
             {
-                var noteItem = new NotesModel
+                var noteItem = new NotesItemViewModel
                 {
                     NoteID = note.NoteID,
                     BusinessUserName = note.BusinessUserName,

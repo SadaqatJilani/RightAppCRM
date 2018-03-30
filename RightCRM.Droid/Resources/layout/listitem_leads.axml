@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/element_margin_small"
+    android:paddingBottom="@dimen/element_margin_small"
+    android:background="?android:attr/selectableItemBackground"
+    android:weightSum="1">
+    <TextView
+        android:text="TAG"
+        android:gravity="start"
+        android:textStyle="normal"
+        style="@style/LeadHeadings"
+        local:MvxBind="Text CTag" />
+    <TextView
+        android:text="BUSINESS USER"
+        android:gravity="center_horizontal"
+        android:textStyle="normal"
+        style="@style/LeadHeadings"
+        local:MvxBind="Text AssignedToUsername" />
+    <TextView
+        android:text="WORK USER"
+        android:gravity="end"
+        android:textStyle="normal"
+        style="@style/LeadHeadings"
+        local:MvxBind="Text WorkUsername" />
+</LinearLayout>

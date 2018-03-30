@@ -1,7 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:padding="@dimen/margin_medium">
+    <TextView
+        android:text="Associated Individuals"
+        style="@style/TextHeadings" />
+    <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
+        android:id="@+id/business_Associations_rec"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        local:MvxItemTemplate="@layout/listitem_associations"
+        local:MvxBind="ItemsSource AssociatedEntities" />
+    <TextView
+        android:text="Link Person"
+        style="@style/TextHeadings" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <EditText
+            android:id="@+id/txt_Username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:hint="Username"
+            android:layout_marginEnd="@dimen/element_margin_tiny"
+            local:MvxBind="Text AssociatedUsername" />
+        <EditText
+            android:id="@+id/txt_EmailAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:hint="Email Address"
+            android:layout_marginStart="@dimen/element_margin_tiny"
+            local:MvxBind="Text AssociatedEmail" />
+    </TableRow>
+    <Button
+        android:id="@+id/btn_Submit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_gravity="center_horizontal"
+        android:text="Submit"
+        android:layout_margin="@dimen/element_margin_small"
+        local:MvxBind="Click SubmitAssociationCommand" />
 </LinearLayout>

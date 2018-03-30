@@ -24,7 +24,6 @@ namespace RightCRM.iOS.Helpers
         }
     }
 
-
     public class MvxLongPressGestureRecognizerBehaviour
         : MvxGestureRecognizerBehavior<UILongPressGestureRecognizer>
     {
@@ -40,6 +39,8 @@ namespace RightCRM.iOS.Helpers
 
 
             var selectedCell = target?.CellAt(indexPath);
+
+            //var selectedItem = target?.CellAt(indexPath);
 
 
             // Long press recognizer fires continuously. This will ensure we fire

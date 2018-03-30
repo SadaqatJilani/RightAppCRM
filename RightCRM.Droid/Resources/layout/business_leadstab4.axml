@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_medium">
+    <TextView
+        android:text="Leads"
+        style="@style/TextHeadings" />
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/element_margin_small"
+        android:layout_marginBottom="@dimen/element_margin_small"
+        android:weightSum="1">
+        <TextView
+            android:text="TAG"
+            android:gravity="start"
+            style="@style/LeadHeadings" />
+        <TextView
+            android:text="BUSINESS USER"
+            android:gravity="center_horizontal"
+            style="@style/LeadHeadings" />
+        <TextView
+            android:text="WORK USER"
+            android:gravity="end"
+            style="@style/LeadHeadings" />
+    </TableRow>
+    <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
+        android:id="@+id/business_Leads_rec"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        local:MvxItemTemplate="@layout/listitem_leads"
+        android:paddingBottom="50dp"
+        android:clipToPadding="false"
+        local:MvxBind="ItemsSource LeadsList; ItemClick LeadSelectedCommand" />
+</LinearLayout>

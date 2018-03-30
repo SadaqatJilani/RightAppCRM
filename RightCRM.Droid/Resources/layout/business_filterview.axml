@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar_actionbar" />
+    <android.support.v7.widget.SearchView
+        android:id="@+id/txtsearchbusinesses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:iconifiedByDefault="false"
+        local:queryHint="@string/filter_searchhint"
+        local:defaultQueryHint="@string/filter_searchhint"
+        local:MvxBind="Query SearchKeyword" />
+    <TextView
+        android:id="@+id/lblSavedSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/text_very_huge"
+        android:text="Saved Searches"
+        android:layout_margin="@dimen/element_margin_small" />
+    <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
+        android:id="@+id/savedfilters_rec"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        local:MvxItemTemplate="@layout/listitem_savedsearches"
+        local:MvxBind="ItemsSource SavedSearches; ItemClick LoadSavedCommand" />
+    <MvvmCross.Binding.Droid.Views.MvxExpandableListView
+        android:id="@+id/filteroptions_explv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/element_margin_small"
+        android:layout_marginBottom="@dimen/element_margin_small"
+        android:layout_weight="0.8"
+        local:MvxItemTemplate="@layout/listitem_filteritem"
+        local:MvxGroupItemTemplate="@layout/listitem_filtergroup"
+        local:MvxBind="ItemsSource FilterList; ItemClick FilterChangedCommand" />
+    <Button
+        android:id="@+id/btnsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        local:MvxBind="Click SearchBusinessesCommand" />
+</LinearLayout>

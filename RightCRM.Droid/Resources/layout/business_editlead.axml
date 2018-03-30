@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_actionbar" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerLeadType"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerLeadTag; SelectedItem SelectedTag" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerBusContact"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerBusinessUser; SelectedItem SelectedBusUser" />
+    <MvvmCross.Binding.Droid.Views.MvxSpinner
+        android:id="@+id/spinnerWorkUser"
+        style="@style/MySpinnerLook"
+        local:MvxBind="ItemsSource PickerWorkUser; SelectedItem SelectedWorkUser" />
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <Button
+            android:id="@+id/btn_save"
+            android:text="Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/element_margin_small"
+            local:MvxBind="Click SaveLeadCommand" />
+        <Button
+            android:id="@+id/btn_delete"
+            android:text="Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/element_margin_small"
+            local:MvxBind="Click DeleteLeadCommand" />
+    </TableRow>
+</LinearLayout>

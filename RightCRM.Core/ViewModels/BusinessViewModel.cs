@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -55,11 +56,35 @@ namespace RightCRM.Core.ViewModels
 
             BusinessDetailCommand = new MvxAsyncCommand<BusinessItemViewModel>(ShowBusinessDetails);
             BusLongPressedCommand = new MvxCommand<int>(SelectBusForTag);
+
+            BusLongPressedAndroidCommand = new MvxCommand<BusinessItemViewModel>(SelectBusForTagAndroid);
+
             LoadMoreBusinessesCommand = new MvxAsyncCommand(LoadMoreBusinesses);
-                
+
             AllBusiness = new MvxObservableCollection<BusinessItemViewModel>();
 
             cachedFilters = new List<FilterListViewModel>();
+        }
+
+        private void SelectBusForTagAndroid(BusinessItemViewModel businessItem)
+        {
+            if (IsLongPress == false)
+            {
+                IsLongPress = true;
+
+                longPressMessage = new LongPressMessage(this, true);
+                messenger.Publish(longPressMessage);
+            }
+
+            if (AllBusiness[AllBusiness.IndexOf(businessItem)].IsSelected == false)
+            {
+                AllBusiness[AllBusiness.IndexOf(businessItem)].IsSelected = true;
+            }
+            else
+            {
+                AllBusiness[AllBusiness.IndexOf(businessItem)].IsSelected = false;
+            }
+
         }
 
         public void ShowMenu()
@@ -147,7 +172,7 @@ namespace RightCRM.Core.ViewModels
         public bool IsFilterOn
         {
             get { return isFilterOn; }
-            set{SetProperty(ref isFilterOn, value); }
+            set { SetProperty(ref isFilterOn, value); }
         }
 
         private async Task AssignFilter()
@@ -232,27 +257,28 @@ namespace RightCRM.Core.ViewModels
 
         public IMvxCommand<BusinessItemViewModel> BusinessDetailCommand { get; private set; }
         public IMvxCommand<int> BusLongPressedCommand { get; private set; }
+        public IMvxCommand<BusinessItemViewModel> BusLongPressedAndroidCommand { get; private set; }
         public IMvxCommand LoadMoreBusinessesCommand { get; private set; }
 
         public override async Task Initialize()
         {
             await base.Initialize();
 
-            businessPageno = 1;
-            cachedFilters = new List<FilterListViewModel>(await cacheService.GetObjFromMem<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters) ??
-                                                          Enumerable.Empty<FilterListViewModel>());
+                businessPageno = 1;
+                cachedFilters = new List<FilterListViewModel>(await cacheService.GetObjFromMem<IEnumerable<FilterListViewModel>>(Constants.SelectedFilters) ??
+                                                              Enumerable.Empty<FilterListViewModel>());
 
-            var result = await this.businessFacade.FilterBusinesses(await ConvertToBusRequest(cachedFilters), businessPageno);
+                var result = await this.businessFacade.FilterBusinesses(await ConvertToBusRequest(cachedFilters), businessPageno);
 
-            if (result != null)
-            {
-                businessFilters = result.business;
-                await cacheService.InsertObject(Constants.AllSavedFilters, businessFilters);
+                if (result != null)
+                {
+                    businessFilters = result.business;
+                    await cacheService.InsertObject(Constants.AllSavedFilters, businessFilters);
 
-                PopulateBusinesses(result.business?.DataArray);
-            }
+                    PopulateBusinesses(result.business?.DataArray);
+                }
 
-            ShowBusinessFilterCommand.RaiseCanExecuteChanged();
+                ShowBusinessFilterCommand.RaiseCanExecuteChanged();
         }
 
         public override void ViewAppeared()
