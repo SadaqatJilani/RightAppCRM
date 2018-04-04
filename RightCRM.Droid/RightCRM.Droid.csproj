@@ -234,6 +234,10 @@
     <Compile Include="Views\BusinessTabs\AddNewNoteView.cs" />
     <Compile Include="Views\BusinessTabs\LeadsEditView.cs" />
     <Compile Include="Views\Search\FilterPopupView.cs" />
+    <Compile Include="Helpers\ActionBarCallBack.cs" />
+    <Compile Include="Helpers\IconTinter.cs" />
+    <Compile Include="Views\Activites\BusAddTagView.cs" />
+    <Compile Include="Helpers\RecyclerViewOnScrollListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -256,7 +260,6 @@
     <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\layout\activity_login.axml" />
     <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\drawable\right_crm_logo.png" />
@@ -305,6 +308,29 @@
     <AndroidResource Include="Resources\layout\listitem_savedsearches.axml" />
     <AndroidResource Include="Resources\layout\listitem_filtergroup.axml" />
     <AndroidResource Include="Resources\layout\listitem_filteritem.axml" />
+    <AndroidResource Include="Resources\menu\contextual_menu.xml" />
+    <AndroidResource Include="Resources\layout\business_assigntag.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_login_email.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_login_password.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_login_email.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_login_password.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_login_email.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_login_password.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_email.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_login_password.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_login_email.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_login_password.png" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_business.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_business.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_business.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_business.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_business.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -315,6 +341,7 @@
     <Folder Include="Views\BusinessTabs\" />
     <Folder Include="Views\Menu\" />
     <Folder Include="Views\Search\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RightCRM.Common\RightCRM.Common.csproj">

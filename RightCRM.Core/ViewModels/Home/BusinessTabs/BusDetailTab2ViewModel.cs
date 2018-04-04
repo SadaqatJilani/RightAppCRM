@@ -98,7 +98,19 @@ namespace RightCRM.Core.ViewModels.Home
                 {
                     NoteID = note.NoteID,
                     BusinessUserName = note.BusinessUserName,
-                    NoteString = note.NoteString
+                    BusinessUserID = note.BusinessUserID,
+                    NoteString = note.NoteString,
+                    AccountNumber = note.AccountNumber,
+                    CreatedOnTimeStamp = note.CreatedOnTimeStamp,
+                    WorkUserName = "Reported By: " + note.WorkUserName,
+                    WorkUserID = note.WorkUserID,
+                    CreatedByID = note.CreatedByID,
+
+                    WhoComm = note.WhoComm,
+                    HowComm = note.HowComm,
+                    TelephoneResponse = note.TelephoneResponse,
+                    Attachment = note.Attachment,
+                    FollowUpTimeStamp = note.FollowUpTimeStamp
                 };
 
                 this.AllNotesList.Add(noteItem);

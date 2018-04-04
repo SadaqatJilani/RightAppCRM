@@ -1,9 +1,9 @@
 ﻿// // --------------------------------------------------------------------------------------------------------------------
-// // <copyright file="FilterPopupView.cs" company="Zepto Systems">
+// // <copyright file="BusAddTagView.cs" company="Zepto Systems">
 // //   Zepto Systems
 // // </copyright>
 // // <summary>
-// //   FilterPopupView
+// //   BusAddTagView
 // // </summary>
 // // --------------------------------------------------------------------------------------------------------------------
 
@@ -20,23 +20,23 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Views.Attributes;
-using RightCRM.Common;
 using RightCRM.Core.ViewModels.Popups;
+using RightCRM.Common;
 
-namespace RightCRM.Droid.Views.Search
+namespace RightCRM.Droid.Views.Activites
 {
     [MvxActivityPresentation]
-    [Activity(Label = "Filter Businesses",
-          Theme = "@style/AppTheme",
-          ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
-    public class FilterPopupView : MvxAppCompatActivity<FilterPopupViewModel>
+    [Activity(Label = "Assign Tag",
+         Theme = "@style/AppTheme",
+         ConfigurationChanges = Android.Content.PM.ConfigChanges.Orientation | Android.Content.PM.ConfigChanges.ScreenSize)]
+    public class BusAddTagView : MvxAppCompatActivity<BusAddTagViewModel>
     {
         private Toolbar toolbar;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.business_filterview);
+            SetContentView(Resource.Layout.business_assigntag);
 
             // Create your application here
 
@@ -50,35 +50,12 @@ namespace RightCRM.Droid.Views.Search
 
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            menu.Add(Menu.None,
-                     Menu.First,
-                     Menu.None,
-                     "SAVE").SetShowAsAction(ShowAsAction.Always);
-
-            menu.Add(Menu.None,
-                     Menu.First + 1,
-                     Menu.None,
-                     "RESET").SetShowAsAction(ShowAsAction.Always);
-
-            return base.OnCreateOptionsMenu(menu);
-        }
-
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case Android.Resource.Id.Home:
                     Finish();
-                    break;
-
-                case Menu.First:
-                    ViewModel?.SaveSearchCommand?.Execute();
-                    break;
-
-                case Menu.First + 1:
-                    ViewModel?.ResetFiltersCommand?.Execute();
                     break;
 
                 default:

@@ -48,7 +48,12 @@ namespace RightCRM.DataAccess.Api.User
         public async Task<IEnumerable<UserData>> GetSubUsers(GetSubUsersRequestModel userFilters)
         {
 #if FAKE
-            return await Task.FromResult(new GetSubUsersResponseModel());
+            return await Task.FromResult(new List<UserData>(){
+                new UserData(){ usrid = 23, usrname = "Alfred" },
+                new UserData(){ usrid = 24, usrname = "Batman" },
+                new UserData(){ usrid = 25, usrname = "Superman" },
+                new UserData(){ usrid = 26, usrname = "Spongbob" },
+            });
 
 #else
             try

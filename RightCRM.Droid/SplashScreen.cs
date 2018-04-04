@@ -8,7 +8,7 @@ using MvvmCross.Platform.Droid.Platform;
 namespace RightCRM.Droid
 {
     [Activity(
-        Label = "RightCRM.Droid"
+        Label = "RightCRM"
         , MainLauncher = true
         , Theme = "@style/AppTheme.Splash"
         , NoHistory = true

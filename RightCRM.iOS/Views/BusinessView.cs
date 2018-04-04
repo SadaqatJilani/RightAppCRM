@@ -65,6 +65,8 @@ namespace RightCRM.iOS
                         TableView.Delegate?.RowDeselected(TableView, index);
                     }
                 }
+
+                ViewModel?.DeselectAllRowsCommand?.Execute();
             }
         }
 

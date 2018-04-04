@@ -69,7 +69,6 @@
     <Compile Include="ViewModels\Menu\MenuViewModel.cs" />
     <Compile Include="ViewModels\Home\MarketsViewModel.cs" />
     <Compile Include="ViewModels\Popups\FilterPopupViewModel.cs" />
-    <Compile Include="ViewModels\Home\CreateNewBusViewModel.cs" />
     <Compile Include="ViewModels\Home\BusinessTabs\AddNewNoteViewModel.cs" />
     <Compile Include="ViewModels\Home\BusinessTabs\BusDetailTab1ViewModel.cs" />
     <Compile Include="ViewModels\Home\BusinessTabs\BusDetailTab2ViewModel.cs" />
@@ -93,6 +92,7 @@
     <Compile Include="ViewModels\Home\BusinessTabs\LeadsEditViewModel.cs" />
     <Compile Include="Services\ListsService.cs" />
     <Compile Include="ViewModels\ItemViewModels\NotesItemViewModel.cs" />
+    <Compile Include="ViewModels\Home\CreateNewBusViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

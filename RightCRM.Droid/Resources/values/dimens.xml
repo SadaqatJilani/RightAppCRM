@@ -25,6 +25,7 @@
 
     <!-- font definitions -->
 
+        <dimen name="text_tiniest">9sp</dimen>
     <dimen name="text_tinier">11sp</dimen>
     <dimen name="text_tiny">13sp</dimen>
     <dimen name="text_small">14sp</dimen>

@@ -9,21 +9,18 @@
 using System;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using Android.Views;
-using MvvmCross.Droid.Support.V4;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Droid.Views.Attributes;
-using MvvmCross.Platform.WeakSubscription;
 using RightCRM.Core.ViewModels;
-using Android.Support.V4.View;
-using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Graphics.Drawable;
 using MvvmCross.Platform;
 using MvvmCross.Plugins.Messenger;
 using RightCRM.Core.Services;
+using MvvmCross.Droid.Support.V7.AppCompat;
+using RightCRM.Droid.Helpers;
 
 namespace RightCRM.Droid.Views.Fragments
 {
@@ -37,6 +34,15 @@ namespace RightCRM.Droid.Views.Fragments
         private IMenuItem assignTagBtn;
         private IMenu menuInstance;
         private MvxSubscriptionToken token;
+        private MvxAppCompatActivity appInstance;
+
+        private ActionBarCallback actionBarCallback;
+
+        private Android.Support.V7.View.ActionMode actionMode;
+
+        private MvxRecyclerView recyclerBusiness;
+
+        private RecyclerViewOnScrollListener onScrollListener;
 
         protected override int FragmentId => Resource.Layout.fragment_home;
 
@@ -51,14 +57,20 @@ namespace RightCRM.Droid.Views.Fragments
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            var recyclerBusiness = view.FindViewById<MvxRecyclerView>(Resource.Id.business_recycler_view);
+            recyclerBusiness = view.FindViewById<MvxRecyclerView>(Resource.Id.business_recycler_view);
+
             if (recyclerBusiness != null)
             {
                 recyclerBusiness.HasFixedSize = true;
                 var layoutManager = new LinearLayoutManager(Activity);
+
+                onScrollListener = new RecyclerViewOnScrollListener(layoutManager);
+
+                //onScrollListener.LoadMoreEvent += OnScrollListener_LoadMoreEvent;
+                //recyclerBusiness.AddOnScrollListener(onScrollListener);
+
                 recyclerBusiness.SetLayoutManager(layoutManager);
 
-                //add divider
                 var dividerItemDecoration = new DividerItemDecoration(recyclerBusiness.Context,
                                                                                         layoutManager.Orientation);
                 recyclerBusiness.AddItemDecoration(dividerItemDecoration);
@@ -67,17 +79,49 @@ namespace RightCRM.Droid.Views.Fragments
             return view;
         }
 
+        void OnScrollListener_LoadMoreEvent(object sender, EventArgs e)
+        {
+            ViewModel?.LoadMoreBusinessesCommand?.Execute();
+        }
+
+
+		public override void OnResume()
+		{
+            onScrollListener.LoadMoreEvent += OnScrollListener_LoadMoreEvent;
+            recyclerBusiness.AddOnScrollListener(onScrollListener);
+
+            base.OnResume();
+		}
+
+		public override void OnPause()
+		{
+            onScrollListener.LoadMoreEvent -= OnScrollListener_LoadMoreEvent;
+            recyclerBusiness.RemoveOnScrollListener(onScrollListener);
+
+            base.OnPause();
+        }
+
         private void OnLongPress(LongPressMessage message)
         {
+
+            if (appInstance == null)
+            {
+                appInstance = (MvxAppCompatActivity)this.Activity;
+            }
+
+            if (actionBarCallback == null)
+            {
+                actionBarCallback = new ActionBarCallback(this.Activity, ViewModel);
+            }
+
             if (message.IsLongPress == true)
             {
-                menuInstance.FindItem(Menu.First).SetVisible(false);
-                menuInstance.FindItem(Menu.First + 1).SetVisible(true);
+                actionMode = appInstance?.StartSupportActionMode(actionBarCallback);
             }
+
             else
             {
-                menuInstance.FindItem(Menu.First).SetVisible(true);
-                menuInstance.FindItem(Menu.First + 1).SetVisible(false);
+                actionMode?.Finish();
             }
         }
 
@@ -90,16 +134,7 @@ namespace RightCRM.Droid.Views.Fragments
             filterBtn.SetIcon(Resource.Drawable.filtericon)
                      .SetShowAsAction(ShowAsAction.IfRoom);
 
-            tintMenuIcon(filterBtn);
-
-            assignTagBtn = menu.Add(Menu.None,
-                            Menu.First + 1,
-                            Menu.None,
-                            "Assign Tag");
-            assignTagBtn.SetIcon(Resource.Drawable.ic_compose)
-                     .SetShowAsAction(ShowAsAction.IfRoom);
-
-            tintMenuIcon(assignTagBtn);
+            IconTinter.tintMenuIcon(filterBtn);
 
             menuInstance = menu;
 
@@ -114,7 +149,7 @@ namespace RightCRM.Droid.Views.Fragments
             switch (item.ItemId)
             {
                 case Menu.First:
-                    ViewModel.ShowBusinessFilterCommand.Execute();
+                    ViewModel?.ShowBusinessFilterCommand?.Execute();
                     break;
 
                 default:
@@ -122,16 +157,6 @@ namespace RightCRM.Droid.Views.Fragments
             }
 
             return base.OnOptionsItemSelected(item);
-        }
-
-
-        void tintMenuIcon(IMenuItem item)
-        {
-            Drawable normalDrawable = item.Icon;
-            Drawable wrapDrawable = DrawableCompat.Wrap(normalDrawable);
-            DrawableCompat.SetTint(wrapDrawable, Android.Graphics.Color.White);
-
-            item.SetIcon(wrapDrawable);
         }
     }
 }

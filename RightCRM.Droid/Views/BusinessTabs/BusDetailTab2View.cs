@@ -16,6 +16,8 @@ using RightCRM.Core.ViewModels.Home;
 using RightCRM.Common;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
+using MvvmCross.Droid.Support.V7.RecyclerView;
+using Android.Support.V7.Widget;
 
 namespace RightCRM.Droid.Views.BusinessTabs
 {
@@ -26,6 +28,8 @@ namespace RightCRM.Droid.Views.BusinessTabs
     [Register(nameof(BusDetailTab2View))]
     public class BusDetailTab2View : MvxFragment<BusDetailTab2ViewModel>
     {
+        private MvxRecyclerView recyclerNotes;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -40,18 +44,18 @@ namespace RightCRM.Droid.Views.BusinessTabs
             var view = this.BindingInflate(Resource.Layout.business_notestab2, null);
 
 
-            //var recyclerBusiness = view.FindViewById<MvxRecyclerView>(Resource.Id.notes_recycler);
-            //if (recyclerBusiness != null)
-            //{
-            //    recyclerBusiness.HasFixedSize = true;
-            //    var layoutManager = new LinearLayoutManager(Activity);
-            //    recyclerBusiness.SetLayoutManager(layoutManager);
+            recyclerNotes = view.FindViewById<MvxRecyclerView>(Resource.Id.notes_recycler);
+            if (recyclerNotes != null)
+            {
+                recyclerNotes.HasFixedSize = true;
+                var layoutManager = new LinearLayoutManager(Activity);
+                recyclerNotes.SetLayoutManager(layoutManager);
 
-            //    //add divider
-            //    var dividerItemDecoration = new DividerItemDecoration(recyclerBusiness.Context,
-            //                                                                            layoutManager.Orientation);
-            //    recyclerBusiness.AddItemDecoration(dividerItemDecoration);
-            //}
+                //add divider
+                var dividerItemDecoration = new DividerItemDecoration(recyclerNotes.Context,
+                                                                                        layoutManager.Orientation);
+                recyclerNotes.AddItemDecoration(dividerItemDecoration);
+            }
 
             return view;
         }

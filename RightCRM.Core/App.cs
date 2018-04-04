@@ -33,6 +33,9 @@ namespace RightCRM.Core
             Mvx.RegisterType<INewBusFacade, NewBusFacade>();
             Mvx.RegisterType<INewBusApi, NewBusApi>();
 
+            Mvx.RegisterType<ICacheService, CacheService>();
+            Mvx.RegisterType<IListsService, ListsService>();
+
             Mvx.LazyConstructAndRegisterSingleton<IMvxMessenger, MvxMessengerHub>();
 
             Mvx.RegisterSingleton(() => UserDialogs.Instance);

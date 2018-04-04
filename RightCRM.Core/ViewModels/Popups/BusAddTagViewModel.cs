@@ -53,20 +53,13 @@ namespace RightCRM.Core.ViewModels.Popups
 
             var res = new AddTagsResponseModel();
 
-            if (SelectedTag.Value == 0)
+            if (SelectedTag.Value == null)
             {
                 await userDialogs.AlertAsync("Please select a tag first");
             }
             else
             {
-                if (SelectedUser.Value == 0)
-                {
-                    res = await businessFacade.AddTagToBusinesses(accNums, SelectedTag.DisplayName);
-                }
-                else
-                {
-                    res = await businessFacade.AddTagToBusinesses(accNums, SelectedTag.DisplayName, selectedUser.Value);
-                }
+                res = await businessFacade.AddTagToBusinesses(accNums, SelectedTag.DisplayName, selectedUser.Value);
 
                 if (res?.lead?.status == 0)
                 {
