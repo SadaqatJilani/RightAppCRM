@@ -51,7 +51,7 @@ namespace RightCRM.Droid.Helpers
 
         public void OnDestroyActionMode(Android.Support.V7.View.ActionMode mode)
         {
-            mode?.Finish();
+          //  mode?.Dispose();
             viewModel?.DeselectAllRowsCommand?.Execute();
         }
 

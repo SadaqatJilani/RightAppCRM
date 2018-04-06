@@ -67,7 +67,7 @@ namespace RightCRM.Core.ViewModels.Home
             this.navigationService = navigationService;
             this.userDialogs = userDialogs;
 
-            AddCommentCommand = new MvxAsyncCommand(async () => await AddCommentAndGoBack());
+            AddCommentCommand = new MvxAsyncCommand(async () => await AddCommentAndGoBack(), CanSubmitNoteCheck);
         }
 
         private async Task AddCommentAndGoBack()
@@ -80,7 +80,8 @@ namespace RightCRM.Core.ViewModels.Home
                 TELRESP = SelectedAnsType.Value,
                 WHOCOMM = SelectedClientType.Value, 
                 Note = CommentText, 
-                USRID = Convert.ToInt32(await cacheService.RetrieveSettings<string>(Constants.UserID))
+                //USRID = Convert.ToInt32(await cacheService.RetrieveSettings<string>(Constants.UserID))
+                USRID = selectedBusinessContact.Value
             });
 
             bool refreshList = false;
@@ -143,10 +144,23 @@ namespace RightCRM.Core.ViewModels.Home
         public string CommentText
         {
             get { return commentText; }
-            set { SetProperty(ref commentText, value); }
+            set { SetProperty(ref commentText, value); if (value != null) AddCommentCommand.RaiseCanExecuteChanged(); }
         }
 
         public IMvxCommand AddCommentCommand { get; set; }
+
+        private bool CanSubmitNoteCheck()
+        {
+            if (!string.IsNullOrWhiteSpace(CommentText))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         public TaskCompletionSource<object> CloseCompletionSource { get; set; }
 
@@ -174,20 +188,20 @@ namespace RightCRM.Core.ViewModels.Home
             new PickerItem() {DisplayName = "Visit", Value = 1},
             new PickerItem() {DisplayName = "Email", Value = 2},
             new PickerItem() {DisplayName = "General", Value = 3}
-        };
+            };
             SelectedQueryType = PickerQueryType[0];
 
             PickerAnswerType = new MvxObservableCollection<PickerItem>() {
             new PickerItem() {DisplayName = "Answer", Value = 0},
             new PickerItem() {DisplayName = "No Answer", Value = 1},
             new PickerItem() {DisplayName = "Callback", Value = 2}
-        };
+            };
             SelectedAnsType = PickerAnswerType[0];
 
             PickerClientType = new MvxObservableCollection<PickerItem>() {
             new PickerItem() {DisplayName = "Customer", Value = 0},
             new PickerItem() {DisplayName = "Company Agent", Value = 1}
-        };
+            };
             SelectedClientType = PickerClientType[0];
 
             PickerBusinessContact = new MvxObservableCollection<PickerItem>(await listsService.GetAssociationsFromList(entityID));

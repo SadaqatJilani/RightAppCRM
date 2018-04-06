@@ -8,6 +8,7 @@
 // // --------------------------------------------------------------------------------------------------------------------
 using System;
 using Android.Support.V7.Widget;
+using Android.Views;
 
 namespace RightCRM.Droid.Helpers
 {
@@ -27,15 +28,21 @@ namespace RightCRM.Droid.Helpers
         {
             base.OnScrolled(recyclerView, dx, dy);
 
+            if (layoutManager == null || recyclerView.GetAdapter() == null)
+            {
+                return;
+            }
+
             var visibleItemCount = recyclerView.ChildCount;
             var totalItemCount = recyclerView.GetAdapter().ItemCount;
             var pastVisiblesItems = layoutManager.FindFirstVisibleItemPosition();
 
-            if (recyclerView.GetAdapter().ItemCount != 0 && 
+            if (recyclerView.ComputeVerticalScrollRange() > recyclerView.Height &&
                 layoutManager.FindLastCompletelyVisibleItemPosition() == recyclerView.GetAdapter().ItemCount - 1)
             {
                 LoadMoreEvent(this, null);
             }
         }
+
     }
 }

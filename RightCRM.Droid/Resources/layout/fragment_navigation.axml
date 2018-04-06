@@ -8,4 +8,16 @@
     android:fitsSystemWindows="true"
     android:theme="@style/AppTheme.Menu"
     local:headerLayout="@layout/fragment_navigation_header"
-    local:menu="@menu/navigation_drawer" />
+    local:menu="@menu/navigation_drawer">
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Logout"
+        android:backgroundTint="@color/white"
+        android:gravity="start|center_vertical"
+        android:drawableStart="@drawable/ic_side_menu_logout"
+        android:drawablePadding="@dimen/element_margin_medium"
+        android:layout_gravity="bottom"
+        local:MvxBind="Click LogoutCommand" />
+</android.support.design.widget.NavigationView>

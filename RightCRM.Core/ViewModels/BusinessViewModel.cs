@@ -25,14 +25,6 @@ namespace RightCRM.Core.ViewModels
         private int businessPageno = 1;
 
         private LongPressMessage longPressMessage;
-
-        private MvxObservableCollection<BusinessItemViewModel> _allBusiness;
-        public MvxObservableCollection<BusinessItemViewModel> AllBusiness
-        {
-            get { return _allBusiness; }
-            set { SetProperty(ref _allBusiness, value, "AllBus"); }
-        }
-
         readonly IBusinessFacade businessFacade;
         readonly IMvxMessenger messenger;
 
@@ -68,9 +60,88 @@ namespace RightCRM.Core.ViewModels
             DeselectAllRowsCommand = new MvxCommand(DeselectAllRows);
         }
 
+        private bool noResult;
+        public bool NoResult
+        {
+            get { return noResult; }
+            set { SetProperty(ref noResult, value); }
+        }
+
+        private MvxObservableCollection<BusinessItemViewModel> _allBusiness;
+        public MvxObservableCollection<BusinessItemViewModel> AllBusiness
+        {
+            get { return _allBusiness; }
+            set { SetProperty(ref _allBusiness, value, "AllBus"); }
+        }
+
+        IMvxCommand showBusinessFilterCommand;
+        public IMvxCommand ShowBusinessFilterCommand
+        {
+            get
+            {
+                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
+                return showBusinessFilterCommand;
+            }
+        }
+
+        IMvxCommand assignTagCommand;
+        public IMvxCommand AssignTagCommand
+        {
+            get
+            {
+                assignTagCommand = assignTagCommand ?? new MvxAsyncCommand(AssignFilter);
+                return assignTagCommand;
+            }
+        }
+
+        private bool isLongPress = false;
+        public bool IsLongPress
+        {
+            get { return isLongPress; }
+            set
+            {
+                isLongPress = value;
+                RaisePropertyChanged(() => IsLongPress);
+            }
+        }
+
+        private bool isFilterOn;
+        public bool IsFilterOn
+        {
+            get { return isFilterOn; }
+            set { SetProperty(ref isFilterOn, value); }
+        }
+
+        public IMvxCommand<BusinessItemViewModel> BusinessDetailCommand { get; private set; }
+        public IMvxCommand<int> BusLongPressedCommand { get; private set; }
+        public IMvxCommand<BusinessItemViewModel> BusLongPressedAndroidCommand { get; private set; }
+        public IMvxCommand LoadMoreBusinessesCommand { get; private set; }
+        public IMvxCommand DeselectAllRowsCommand { get; private set; }
+
+        private async Task AssignFilter()
+        {
+
+            //  AllBusiness.chang
+            var selectedBusinesses = AllBusiness.Where(x => x.IsSelected == true);
+
+            await navigationService.Navigate<BusAddTagViewModel, IEnumerable<BusinessItemViewModel>>(selectedBusinesses);
+        }
+
+        private bool CanFilter()
+        {
+            if (this.AllBusiness != null && this.AllBusiness.Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void DeselectAllRows()
         {
-           var selectedItems = AllBusiness.Where(x => x.IsSelected == true);
+            var selectedItems = AllBusiness.Where(x => x.IsSelected == true);
 
             foreach (var item in selectedItems)
             {
@@ -153,65 +224,6 @@ namespace RightCRM.Core.ViewModels
                 await navigationService.Navigate<BusinessDetailTabViewModel, BusinessItemViewModel>(business);
         }
 
-        IMvxCommand showBusinessFilterCommand;
-        public IMvxCommand ShowBusinessFilterCommand
-        {
-            get
-            {
-                showBusinessFilterCommand = showBusinessFilterCommand ?? new MvxAsyncCommand(BusinessFilter);
-                return showBusinessFilterCommand;
-            }
-        }
-
-        IMvxCommand assignTagCommand;
-        public IMvxCommand AssignTagCommand
-        {
-            get
-            {
-                assignTagCommand = assignTagCommand ?? new MvxAsyncCommand(AssignFilter);
-                return assignTagCommand;
-            }
-        }
-
-        private bool isLongPress = false;
-        public bool IsLongPress
-        {
-            get { return isLongPress; }
-            set
-            {
-                isLongPress = value;
-                RaisePropertyChanged(() => IsLongPress);
-            }
-        }
-
-        private bool isFilterOn;
-        public bool IsFilterOn
-        {
-            get { return isFilterOn; }
-            set { SetProperty(ref isFilterOn, value); }
-        }
-
-        private async Task AssignFilter()
-        {
-
-            //  AllBusiness.chang
-            var selectedBusinesses = AllBusiness.Where(x => x.IsSelected == true);
-
-            await navigationService.Navigate<BusAddTagViewModel, IEnumerable<BusinessItemViewModel>>(selectedBusinesses);
-        }
-
-        private bool CanFilter()
-        {
-            if (this.AllBusiness != null && this.AllBusiness.Any())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private async Task BusinessFilter()
         {
             //if(AllBusiness == null || !AllBusiness.Any())
@@ -271,11 +283,6 @@ namespace RightCRM.Core.ViewModels
             Title = parameter;
         }
 
-        public IMvxCommand<BusinessItemViewModel> BusinessDetailCommand { get; private set; }
-        public IMvxCommand<int> BusLongPressedCommand { get; private set; }
-        public IMvxCommand<BusinessItemViewModel> BusLongPressedAndroidCommand { get; private set; }
-        public IMvxCommand LoadMoreBusinessesCommand { get; private set; }
-
         public override async Task Initialize()
         {
             await base.Initialize();
@@ -306,8 +313,6 @@ namespace RightCRM.Core.ViewModels
             longPressMessage = new LongPressMessage(this, false);
             messenger.Publish(longPressMessage);
         }
-
-        public IMvxCommand DeselectAllRowsCommand { get; private set; }
 
         async Task<GetBusinessRequestModel> ConvertToBusRequest(IEnumerable<FilterListViewModel> filterList)
         {
